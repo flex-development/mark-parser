@@ -158,8 +158,8 @@
     "@types/rollup": "0.54.0",
     "@types/unist": "3.0.3",
     "@vates/toggle-scripts": "1.0.0",
-    "@vitest/coverage-v8": "4.1.6",
-    "@vitest/ui": "4.1.6",
+    "@vitest/coverage-v8": "4.1.7",
+    "@vitest/ui": "4.1.7",
     "concat-stream": "2.0.0",
     "convert-hrtime": "5.0.0",
     "cross-env": "10.1.0",
@@ -188,7 +188,7 @@
     "typescript": "6.0.3",
     "unified": "11.0.5",
     "vfile": "6.0.3",
-    "vitest": "4.1.6"
+    "vitest": "4.1.7"
   },
   "packageManager": "yarn@4.14.1",
   "sideEffects": false
