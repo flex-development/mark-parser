@@ -99,7 +99,9 @@ const codes = {
   equal: 61, // =
   gt: 62, // >
   rightAngleBracket: 62, // >
+  /** @deprecated use {@linkcode questionMark} */
   question: 63, // ?
+  questionMark: 63, // ?
   at: 64, // @
   uppercaseA: 65, // A
   uppercaseB: 66, // B

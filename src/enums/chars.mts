@@ -106,7 +106,9 @@ const chars = {
   percent: '%',
   plus: '+',
   ps: '\u2029',
+  /** @deprecated use {@linkcode questionMark} */
   question: '?',
+  questionMark: '?',
   quotation: '"',
   replacement: '�',
   rightAngleBracket: '>',
