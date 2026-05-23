@@ -1,3 +1,31 @@
+## [1.0.0-alpha.6](https://github.com/flex-development/fsm-tokenizer/compare/1.0.0-alpha.5...1.0.0-alpha.6) (2026-05-22)
+
+### ⚠ BREAKING CHANGES
+
+- **ts:** `Options#initial` -> `Options#initialize`
+
+### :package: Build
+
+- [[`b1a080e`](https://github.com/flex-development/fsm-tokenizer/commit/b1a080e59561016c0e749e362b5f66fa616e0df1)] **deps-dev:** bump rollup from 4.60.3 to 4.60.4 ([#341](https://github.com/flex-development/fsm-tokenizer/issues/341))
+- [[`bceba21`](https://github.com/flex-development/fsm-tokenizer/commit/bceba2191fda94857cf79ca9bb4750541a0667ac)] **deps-dev:** bump the vitest group with 3 updates ([#344](https://github.com/flex-development/fsm-tokenizer/issues/344))
+- [[`534d992`](https://github.com/flex-development/fsm-tokenizer/commit/534d9923e7923669276e25341ad566ae50e386b9)] **ts:** `rewriteRelativeImportExtensions`
+
+### :robot: Continuous Integration
+
+- [[`ea2df98`](https://github.com/flex-development/fsm-tokenizer/commit/ea2df9857f2c96349e644f67348c7faaf1026394)] **deps:** bump codecov/codecov-action from 6.0.0 to 6.0.1 ([#342](https://github.com/flex-development/fsm-tokenizer/issues/342))
+
+### :pencil: Documentation
+
+- [[`29430db`](https://github.com/flex-development/fsm-tokenizer/commit/29430dbe6e8e0bf864187ab4a1466b58e4e13206)] add bundlephobia badges
+
+### :sparkles: Features
+
+- [[`36e3b82`](https://github.com/flex-development/fsm-tokenizer/commit/36e3b82c2586bdf8670d8ab74c904d4476046266)] **enums:** `chars.questionMark`, `codes.questionMark`
+
+### :mechanical_arm: Refactors
+
+- [[`43605bc`](https://github.com/flex-development/fsm-tokenizer/commit/43605bc5372e208e0b23895a29bd3cf83085565d)] **ts:** `Options#initial` -> `Options#initialize`
+
 ## [1.0.0-alpha.5](https://github.com/flex-development/fsm-tokenizer/compare/1.0.0-alpha.4...1.0.0-alpha.5) (2026-05-14)
 
 ### :pencil: Documentation
@@ -596,6 +624,7 @@
 
 - [[`85f91f2`](https://github.com/flex-development/fsm-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/fsm-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
 
