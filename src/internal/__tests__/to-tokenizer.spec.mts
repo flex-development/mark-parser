@@ -23,7 +23,7 @@ describe('unit:internal/toTokenizer', () => {
 
   it('should return new tokenizer if `value` is not a tokenizer', () => {
     // Arrange
-    const value: TokenizeOptions = { initial: initialize([]) }
+    const value: TokenizeOptions = { initialize: initialize([]) }
 
     // Act
     const result = testSubject(value)

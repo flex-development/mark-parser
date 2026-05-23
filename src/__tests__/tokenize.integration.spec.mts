@@ -134,7 +134,7 @@ describe('integration:tokenize', () => {
       tokenizer = createTokenizer({
         debug: pathe.basename(import.meta.url),
         encoding: options?.encoding,
-        initial: initialize([])
+        initialize: initialize([])
       })
 
       consume = vi.spyOn(tokenizer.effects, 'consume')
@@ -184,7 +184,7 @@ describe('integration:tokenize', () => {
         tokenizer = createTokenizer({
           debug,
           disabled: [letter.name!],
-          initial: initialize({
+          initialize: initialize({
             [codes.break]: streamBreak,
             [codes.lowercaseB]: letter,
             null: [letter, digit]
@@ -235,7 +235,7 @@ describe('integration:tokenize', () => {
 
       beforeEach(() => {
         tokenizer = createTokenizer({
-          initial: initialize({
+          initialize: initialize({
             [codes.lowercaseA]: letter,
             [codes.digit1]: digit,
             null: [digit, letter, streamBreak, end]
@@ -265,34 +265,49 @@ describe('integration:tokenize', () => {
     })
 
     describe.each<[value: Raw, options: TokenizeOptions]>([
-      [chars.ht + chars.lf + chars.crlf, { initial: initialize(lineEnding) }],
-      ['--standalone=', { initial: constant(initialize(cli)) }],
-      [['--max='], { initial: initialize([longFlag]) }],
+      [
+        chars.ht + chars.lf + chars.crlf,
+        {
+          initialize: initialize(lineEnding)
+        }
+      ],
+      [
+        '--standalone=',
+        {
+          initialize: constant(initialize(cli))
+        }
+      ],
+      [
+        ['--max='],
+        {
+          initialize: initialize([longFlag])
+        }
+      ],
       [
         ['--debug', '--color=3'],
         {
-          initial: initialize(cli),
+          initialize: initialize(cli),
           moveOnBreak: true
         }
       ],
       [
         read('__fixtures__/gemoji.txt'),
         {
-          initial: initialize({ [codes.colon]: shortcode })
+          initialize: initialize({ [codes.colon]: shortcode })
         }
       ],
       [
         read('__fixtures__/markdown/code-indented.md'),
         {
           finalizeContext: finalizeMicromarkContext,
-          initial: initialize(micromark)
+          initialize: initialize(micromark)
         }
       ],
       [
         read('__fixtures__/markdown/code-text.md'),
         {
           finalizeContext: finalizeMicromarkContext,
-          initial: constant(initialize(micromark))
+          initialize: constant(initialize(micromark))
         }
       ]
     ])('at least one construct succeeds (%#)', (value, options) => {

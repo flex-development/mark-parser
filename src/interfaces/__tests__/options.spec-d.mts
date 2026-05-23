@@ -59,9 +59,9 @@ describe('unit-d:interfaces/Options', () => {
       .toEqualTypeOf<Nilable<Point>>()
   })
 
-  it('should match [initial: CreateInitialConstruct | InitialConstruct]', () => {
+  it('should match [initialize: CreateInitialConstruct | InitialConstruct]', () => {
     expectTypeOf<TestSubject>()
-      .toHaveProperty('initial')
+      .toHaveProperty('initialize')
       .toEqualTypeOf<CreateInitialConstruct | InitialConstruct>()
   })
 

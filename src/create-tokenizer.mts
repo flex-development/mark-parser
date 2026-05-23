@@ -85,9 +85,9 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
    *
    * @const {InitialConstruct} initialize
    */
-  const initialize: InitialConstruct = typeof options.initial === 'function'
-    ? options.initial()
-    : options.initial
+  const initialize: InitialConstruct = typeof options.initialize === 'function'
+    ? options.initialize()
+    : options.initialize
 
   /**
    * The location utility.

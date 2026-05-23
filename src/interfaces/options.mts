@@ -76,7 +76,7 @@ interface Options extends PreprocessOptions {
    * @see {@linkcode CreateInitialConstruct}
    * @see {@linkcode InitialConstruct}
    */
-  initial: CreateInitialConstruct | InitialConstruct
+  initialize: CreateInitialConstruct | InitialConstruct
 
   /**
    * Whether to move the position of the tokenizer forward at stream breaks.
