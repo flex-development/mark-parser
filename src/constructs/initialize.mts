@@ -19,9 +19,9 @@ import type {
  * @see {@linkcode InitialConstruct}
  *
  * @param {Constructs} constructs
- *  Construct(s) to try
+ *  The construct(s) to try
  * @return {InitialConstruct}
- *  Initial construct
+ *  The initial construct
  */
 function initialize(constructs: Constructs): InitialConstruct {
   return { name: 'fsm-tokenizer:initialize', tokenize: initialize }

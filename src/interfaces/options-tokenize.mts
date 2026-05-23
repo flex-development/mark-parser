@@ -6,7 +6,7 @@
 import type { Options } from '@flex-development/fsm-tokenizer'
 
 /**
- * Options for tokenizing.
+ * Options for tokenizing a value.
  *
  * @see {@linkcode Options}
  *

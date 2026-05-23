@@ -7,8 +7,8 @@
  * A list.
  *
  * @template {any} [T=unknown]
- *  List item type
+ *  The list item type
  */
-type List<T = unknown> = Set<T> | readonly T[]
+type List<T = unknown> = ReadonlySet<T> | readonly T[]
 
 export type { List as default }

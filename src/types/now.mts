@@ -13,7 +13,7 @@ import type { Place } from '@flex-development/fsm-tokenizer'
  * @this {void}
  *
  * @return {Place}
- *  Current place in file
+ *  The current place in file
  */
 type Now = (this: void) => Place
 

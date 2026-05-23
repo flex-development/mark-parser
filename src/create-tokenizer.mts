@@ -57,6 +57,8 @@ import { Location } from '@flex-development/vfile-location'
 import createDebug, { type Debugger } from 'debug'
 import { ok as assert } from 'devlop'
 
+export default createTokenizer
+
 /**
  * Create a tokenizer.
  *
@@ -66,20 +68,20 @@ import { ok as assert } from 'devlop'
  * @this {void}
  *
  * @param {Options} options
- *  Tokenizer options
+ *  The tokenizer options
  * @return {TokenizeContext}
- *  Tokenize context
+ *  The tokenize context
  */
 function createTokenizer(this: void, options: Options): TokenizeContext {
   /**
-   * Debug logger.
+   * The debug logger.
    *
    * @const {Debugger} debug
    */
   const debug: Debugger = createDebug(options.debug ?? 'fsm-tokenizer')
 
   /**
-   * Initial construct.
+   * The initial construct.
    *
    * @const {InitialConstruct} initialize
    */
@@ -88,14 +90,14 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
     : options.initial
 
   /**
-   * Location utility.
+   * The location utility.
    *
    * @const {Location} location
    */
   const location: Location = new Location(null, options.from)
 
   /**
-   * Constructs with `resolveAll` handlers.
+   * The list of constructs with `resolveAll` handlers.
    *
    * @const {Construct[]} resolveAlls
    */
@@ -130,28 +132,28 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
   }
 
   /**
-   * List of chunks.
+   * The list of chunks.
    *
    * @var {Chunk[]} chunks
    */
   let chunks: Chunk[] = []
 
   /**
-   * Character code consumption state, used for tracking bugs.
+   * The character code consumption state, used for tracking bugs.
    *
    * @var {boolean | null} consumed
    */
   let consumed: boolean | null = true
 
   /**
-   * Current point in file.
+   * The current point in file.
    *
    * @var {Place} place
    */
   let place: Place = location.place as Place
 
   /**
-   * Token stack.
+   * The token stack.
    *
    * @var {Token[]} stack
    */
@@ -172,14 +174,16 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
   }
 
   /**
-   * Last buffer chunk index.
+   * The last buffer chunk index.
    *
    * @var {number} lastBufferIndex
    */
   let lastBufferIndex: number = -1
 
   /**
-   * State and tools for resolving and serializing.
+   * The tokenization context.
+   *
+   * Contains state and tools for resolving and serializing.
    *
    * @var {TokenizeContext} context
    */
@@ -213,14 +217,14 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
   onsuccessfulconstruct(initialize)
 
   /**
-   * Expected character code, used for tracking bugs.
+   * The expected character code, used for tracking bugs.
    *
    * @var {Code} expected
    */
   let expected: Code
 
   /**
-   * Current state.
+   * The current state.
    *
    * @var {State | undefined} state
    */
@@ -260,7 +264,7 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
      * @param {State | undefined} [fail]
      *  Failed tokenization state
      * @return {State}
-     *  Next state
+     *  The next state
      */
     function hook(
       this: void,
@@ -283,14 +287,14 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
       let info: Info
 
       /**
-       * Index of current construct.
+       * The index of the current construct.
        *
        * @var {number} j
        */
       let j: number
 
       /**
-       * Construct list.
+       * The construct list.
        *
        * @var {Construct[]} list
        */
@@ -309,7 +313,7 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
        * @param {Construct[]} constructs
        *  The list of constructs to try
        * @return {State}
-       *  Next state
+       *  The next state
        */
       function handleConstructList(this: void, constructs: Construct[]): State {
         list = constructs
@@ -332,7 +336,7 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
        * @param {ConstructRecord} map
        *  The record of constructs to try
        * @return {State}
-       *  Next state
+       *  The next state
        */
       function handleConstructRecord(this: void, map: ConstructRecord): State {
         return record
@@ -343,11 +347,11 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
          * @param {Code} code
          *  The current character code
          * @return {State | undefined}
-         *  Next state
+         *  The next state
          */
         function record(this: void, code: Code): State | undefined {
           /**
-           * List of constructs to try.
+           * The list of constructs to try.
            *
            * @const {Construct[]} list
            */
@@ -368,7 +372,7 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
        * @param {Construct} construct
        *  The construct to try
        * @return {State}
-       *  Next state
+       *  The next state
        */
       function handleConstruct(this: void, construct: Construct): State {
         return start
@@ -379,7 +383,7 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
          * @param {Code} code
          *  The current character code
          * @return {State | undefined}
-         *  Next state
+         *  The next state
          */
         function start(code: Code): State | undefined {
           debug('start: %o', code)
@@ -425,14 +429,14 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
       }
 
       /**
-       * State to go on successful tokenization.
+       * The state to go on successful tokenization.
        *
        * @this {void}
        *
        * @param {Code} code
        *  The current character code
        * @return {State}
-       *  Next state
+       *  The next state
        */
       function ok(this: void, code: Code): State {
         assert(code === expected, 'expected `code` to equal expected code')
@@ -445,14 +449,14 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
       }
 
       /**
-       * State to go on failed tokenization.
+       * The state to go on failed tokenization.
        *
        * @this {void}
        *
        * @param {Code} code
        *  The current character code
        * @return {State | undefined}
-       *  Next state
+       *  The next state
        */
       function nok(this: void, code: Code): State | undefined {
         assert(list, 'expected construct list')
@@ -512,7 +516,7 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
       lastBufferIndex = ++place._bufferIndex
 
       /**
-       * Current chunk.
+       * The current chunk.
        *
        * @const {Chunk | undefined} chunk
        */
@@ -541,11 +545,11 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
    * @this {void}
    *
    * @param {TokenType} type
-   *  Token type
+   *  The token type
    * @param {TokenFields | null | undefined} [fields]
    *  Token fields
    * @return {Token}
-   *  Open token
+   *  The open token
    */
   function enter(
     this: void,
@@ -555,7 +559,7 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
     skip(place, skips)
 
     /**
-     * New token.
+     * The new token.
      *
      * @const {Token} token
      */
@@ -582,9 +586,9 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
    * @this {void}
    *
    * @param {TokenType} type
-   *  Token type
+   *  The token type
    * @return {Token}
-   *  Closed token
+   *  The closed token
    */
   function exit(this: void, type: TokenType): Token {
     assert(typeof type === 'string', 'expected `type` to be a string')
@@ -649,7 +653,7 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
    * @this {void}
    *
    * @return {Place}
-   *  Current point in file
+   *  The current point
    */
   function now(this: void): Place {
     const { _bufferIndex, _index, column, line, offset } = place
@@ -712,7 +716,7 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
    * @this {void}
    *
    * @return {Code}
-   *  Peeked character code
+   *  The peeked character code
    */
   function peek(this: void): Code {
     /**
@@ -749,11 +753,11 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
    * @this {void}
    *
    * @param {Range} range
-   *  Position in stream
+   *  The position in stream
    * @param {SerializeOptions | boolean | null | undefined} [options]
    *  Options for serializing or whether to expand tabs
    * @return {string}
-   *  Serialized slice
+   *  The serialized slice
    */
   function sliceSerialize(
     this: void,
@@ -769,9 +773,9 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
    * @this {void}
    *
    * @param {Range} range
-   *  Position in stream
+   *  The position in stream
    * @return {Chunk[]}
-   *  Chunks in stream spanning `range`
+   *  The chunks in stream spanning `range`
    */
   function sliceStream(this: void, range: Range): Chunk[] {
     return sliceChunks(chunks, range)
@@ -914,7 +918,7 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
    * @param {Chunk | List<Chunk | Value> | Value} slice
    *  The chunk, value, or list of chunks and/or values to write
    * @return {Event[]}
-   *  List of events
+   *  The list of events
    */
   function write(
     this: void,
@@ -923,7 +927,7 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
     chunks = push(chunks, toList(slice).map(value => {
       // raw chunk.
       if (!Array.isArray(value) && !isCode(value)) {
-        value = context.preprocess(value, options.encoding)
+        value = context.preprocess(value, context.encoding)
       }
 
       // empty buffer chunk.
@@ -945,5 +949,3 @@ function createTokenizer(this: void, options: Options): TokenizeContext {
     return context.events
   }
 }
-
-export default createTokenizer

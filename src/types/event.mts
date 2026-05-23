@@ -22,7 +22,7 @@ import type {
  * @see {@linkcode TokenizeContext}
  *
  * @template {TokenType} [T=TokenType]
- *  Token type
+ *  The token type
  */
 type Event<T extends TokenType = TokenType> = [
   event: EventType,

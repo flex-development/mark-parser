@@ -10,7 +10,7 @@ import type { Value } from '@flex-development/fsm-tokenizer'
  */
 type FileLike = {
   /**
-   * Contents of file.
+   * The contents of the file.
    *
    * @see {@linkcode Value}
    */

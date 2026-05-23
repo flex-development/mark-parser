@@ -16,7 +16,7 @@ export default toList
  * @template {any} T
  *  The value to convert
  */
-type ToList<T> = T extends List ? T extends Set<infer U> ? U[] : T : T[]
+type ToList<T> = T extends List ? T extends ReadonlySet<infer U> ? U[] : T : T[]
 
 /**
  * Convert `value` to a list.

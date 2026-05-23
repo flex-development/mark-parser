@@ -19,11 +19,11 @@ import type {
  * @this {void}
  *
  * @param {TokenType} type
- *  Token type
+ *  The token type
  * @param {TokenFields | null | undefined} [fields]
- *  Token fields
+ *  The token fields
  * @return {Token}
- *  Open token
+ *  The open token
  */
 type Enter = (
   this: void,

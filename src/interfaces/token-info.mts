@@ -10,7 +10,7 @@ import type {
 } from '@flex-development/fsm-tokenizer'
 
 /**
- * Token data.
+ * Information related to a token.
  *
  * @see {@linkcode Position}
  * @see {@linkcode TokenFields}
@@ -20,14 +20,14 @@ import type {
  */
 interface TokenInfo extends Position, TokenFields {
   /**
-   * Next token.
+   * The next token.
    *
    * @see {@linkcode Token}
    */
   next?: Token | undefined
 
   /**
-   * Previous token.
+   * The previous token.
    *
    * @see {@linkcode Token}
    */

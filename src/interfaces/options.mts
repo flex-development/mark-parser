@@ -26,21 +26,21 @@ import type { Point } from '@flex-development/vfile-location'
  */
 interface Options extends PreprocessOptions {
   /**
-   * Debug logger name.
+   * The name of the debug logger.
    *
    * @default 'fsm-tokenizer'
    */
   debug?: string | null | undefined
 
   /**
-   * List of disabled construct names.
+   * The list of disabled construct names.
    *
    * @see {@linkcode List}
    */
   disabled?: List<string> | null | undefined
 
   /**
-   * Line ending code check.
+   * Check if a character code represents a line ending.
    *
    * @see {@linkcode CodeCheck}
    */
@@ -62,7 +62,7 @@ interface Options extends PreprocessOptions {
   finalizeContext?: FinalizeContext | null | undefined
 
   /**
-   * Point before first character.
+   * The point before first character.
    *
    * @see {@linkcode Point}
    *
@@ -71,7 +71,7 @@ interface Options extends PreprocessOptions {
   from?: Point | null | undefined
 
   /**
-   * Initial construct.
+   * The initial construct, or a function that returns an initial construct.
    *
    * @see {@linkcode CreateInitialConstruct}
    * @see {@linkcode InitialConstruct}

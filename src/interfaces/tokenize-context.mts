@@ -20,6 +20,15 @@ import type {
 
 /**
  * Context object to assist with tokenization.
+ *
+ * This interface can be augmented to register custom fields.
+ *
+ * @example
+ *  declare module '@flex-development/fsm-tokenizer' {
+ *    interface TokenizeContext {
+ *      globstar?: boolean | null | undefined
+ *    }
+ *  }
  */
 interface TokenizeContext {
   /**
@@ -51,22 +60,22 @@ interface TokenizeContext {
   defineSkip: DefineSkip
 
   /**
-   * The character encoding used when {@linkcode Uint8Array}s are converted to
-   * chunks.
+   * The character encoding used when {@linkcode Uint8Array}s
+   * are converted to chunks.
    *
    * @see {@linkcode Encoding}
    */
   encoding?: Encoding | null | undefined
 
   /**
-   * List of events.
+   * The current list of events.
    *
    * @see {@linkcode Event}
    */
   events: Event[]
 
   /**
-   * Boolean indicating a construct is interrupting another construct.
+   * Whether a construct is interrupting another construct.
    */
   interrupt?: boolean | null | undefined
 
@@ -113,7 +122,7 @@ interface TokenizeContext {
   sliceStream: SliceStream
 
   /**
-   * Token factory.
+   * The token factory.
    *
    * @see {@linkcode TokenFactory}
    */

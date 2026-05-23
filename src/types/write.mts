@@ -30,7 +30,7 @@ import type {
  * @param {Chunk | List<Chunk | Value> | Value} slice
  *  The chunk, value, or list of chunks and/or values to write
  * @return {Event[]}
- *  List of events
+ *  The list of events
  */
 type Write = (
   this: void,

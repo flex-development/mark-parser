@@ -10,14 +10,14 @@ import type { RangeInfo } from '@flex-development/fsm-tokenizer'
  */
 interface Range {
   /**
-   * Position of last chunk in range.
+   * The position of the last chunk in the range.
    *
    * @see {@linkcode RangeInfo}
    */
   end: RangeInfo
 
   /**
-   * Position of first chunk in range.
+   * The position of the first chunk in the range.
    *
    * @see {@linkcode Position}
    */

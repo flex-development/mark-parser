@@ -6,7 +6,7 @@
 import type { Construct, Info } from '@flex-development/fsm-tokenizer'
 
 /**
- * Successful construct callback.
+ * The callback to fire when a construct is successful.
  *
  * @see {@linkcode Construct}
  * @see {@linkcode Info}

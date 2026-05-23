@@ -19,7 +19,7 @@ import type { Code } from '@flex-development/fsm-tokenizer'
  * @param {Code} code
  *  Th current character code
  * @return {State | undefined}
- *  Next state
+ *  The next state
  */
 type State = (this: void, code: Code) => State | undefined
 

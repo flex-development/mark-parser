@@ -11,7 +11,7 @@ import type {
 } from '@flex-development/fsm-tokenizer'
 
 /**
- * Turn `value` into character code chunks.
+ * Turn a value into character code chunks.
  *
  * @see {@linkcode Code}
  * @see {@linkcode Encoding}

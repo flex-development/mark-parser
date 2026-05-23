@@ -13,7 +13,7 @@ import type { Code } from '@flex-development/fsm-tokenizer'
  * @this {void}
  *
  * @param {Code} code
- *  Character code to check
+ *  The character code to check
  * @return {boolean}
  *  `true` if `code` passes test, `false` otherwise
  */

@@ -14,9 +14,9 @@ import type { Chunk, Range } from '@flex-development/fsm-tokenizer'
  * @this {void}
  *
  * @param {Range} range
- *  Position in stream
+ *  The position in stream
  * @return {Chunk[]}
- *  Chunks in stream spanning `range`
+ *  The chunks in stream spanning `range`
  */
 type SliceStream = (this: void, range: Range) => Chunk[]
 

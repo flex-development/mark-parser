@@ -6,7 +6,7 @@
 import type { Code, TokenizeContext } from '@flex-development/fsm-tokenizer'
 
 /**
- * Check the given character `code`.
+ * Check a character `code`.
  *
  * @see {@linkcode Code}
  * @see {@linkcode TokenizeContext}
@@ -14,7 +14,7 @@ import type { Code, TokenizeContext } from '@flex-development/fsm-tokenizer'
  * @this {TokenizeContext}
  *
  * @param {Code} code
- *  Character code to check
+ *  The character code to check
  * @return {boolean}
  *  `true` if `code` passes check, `false` otherwise
  */

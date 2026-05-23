@@ -19,13 +19,13 @@ import type {
  * @this {TokenizeContext}
  *
  * @param {Effects} effects
- *  Context object to transition state machine
+ *  The context object to transition the state machine
  * @param {State} ok
- *  Successful tokenization state
+ *  The successful tokenization state
  * @param {State} nok
- *  Failed tokenization state
+ *  The failed tokenization state
  * @return {State}
- *  Initial state
+ *  The initial state
  */
 type Tokenizer = (
   this: TokenizeContext,

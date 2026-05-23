@@ -3,4 +3,4 @@
  * @module fsm-tokenizer/constructs
  */
 
-export { default as initialize } from '#constructs/initialize'
+export { default as initialize } from './initialize.mts'

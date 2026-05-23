@@ -13,7 +13,7 @@ import type { InitialConstruct } from '@flex-development/fsm-tokenizer'
  * @this {void}
  *
  * @return {InitialConstruct}
- *  Initial construct
+ *  The initial construct
  */
 type CreateInitialConstruct = (this: void) => InitialConstruct
 

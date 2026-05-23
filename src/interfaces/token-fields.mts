@@ -4,7 +4,7 @@
  */
 
 /**
- * Token fields registry.
+ * Registry of token fields.
  *
  * This interface can be augmented to register custom token fields.
  *

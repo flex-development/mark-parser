@@ -14,11 +14,11 @@ import type { Range, SerializeOptions } from '@flex-development/fsm-tokenizer'
  * @this {void}
  *
  * @param {Range} range
- *  Slice position
+ *  The slice position
  * @param {SerializeOptions | boolean | null | undefined} [options]
  *  Options for serializing or whether to expand tabs
  * @return {string}
- *  Serialized slice
+ *  The serialized slice
  */
 type SliceSerialize = (
   this: void,

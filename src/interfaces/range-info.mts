@@ -8,12 +8,12 @@
  */
 interface RangeInfo {
   /**
-   * Position in a string chunk (or `-1` when pointing to a numeric chunk).
+   * The position in a string chunk (or `-1` when pointing to a numeric chunk).
    */
   _bufferIndex: number
 
   /**
-   * Position in a list of chunks.
+   * The position in a list of chunks.
    */
   _index: number
 }

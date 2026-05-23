@@ -14,9 +14,9 @@ import type { Token, TokenType } from '@flex-development/fsm-tokenizer'
  * @this {void}
  *
  * @param {TokenType} type
- *  Token type
+ *  The token type
  * @return {Token}
- *  Closed token
+ *  The closed token
  */
 type Exit = (this: void, type: TokenType) => Token
 

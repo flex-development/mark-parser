@@ -9,8 +9,8 @@ import type {
 } from '@flex-development/fsm-tokenizer'
 
 /**
- * A single construct, list of constructs, or several constructs mapped from
- * their initial codes.
+ * A single construct, list of constructs,
+ * or several constructs mapped from their initial codes.
  *
  * @see {@linkcode ConstructPack}
  * @see {@linkcode ConstructRecord}

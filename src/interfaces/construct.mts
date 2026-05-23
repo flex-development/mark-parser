@@ -14,7 +14,7 @@ import type {
  */
 interface Construct {
   /**
-   * Name of the construct, used to toggle constructs off.
+   * The name of the construct, used to toggle constructs off.
    */
   name?: string | null | undefined
 
@@ -24,7 +24,7 @@ interface Construct {
   partial?: boolean | null | undefined
 
   /**
-   * Check if the previous character code can come before this construct.
+   * Check if the previous character code can precede this construct.
    *
    * @see {@linkcode Guard}
    */

@@ -13,9 +13,9 @@ import type { TokenizeContext } from '@flex-development/fsm-tokenizer'
  * @this {void}
  *
  * @param {TokenizeContext} context
- *  Base tokenize context
+ *  The base tokenize context
  * @return {TokenizeContext | null | undefined}
- *  Final context
+ *  The final context
  */
 type FinalizeContext = (
   this: void,

@@ -32,13 +32,14 @@ import type {
  * @see {@linkcode TokenInfo}
  * @see {@linkcode TokenType}
  *
- * @template {TokenType} [T=TokenType] - Token type
+ * @template {TokenType} [T=TokenType]
+ *  The token type
  *
  * @extends {TokenInfo}
  */
 interface Token<T extends TokenType = TokenType> extends TokenInfo {
   /**
-   * Token type.
+   * The token type.
    */
   type: T
 }

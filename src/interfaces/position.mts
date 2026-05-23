@@ -10,14 +10,14 @@ import type { Place } from '@flex-development/fsm-tokenizer'
  */
 interface Position {
   /**
-   * Place of last character code in range.
+   * The place of the last character code in the range.
    *
    * @see {@linkcode Place}
    */
   end: Place
 
   /**
-   * Place of first character code in range.
+   * The place of the first character code in the range.
    *
    * @see {@linkcode Place}
    */

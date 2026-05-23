@@ -19,11 +19,11 @@ import type {
  * @this {void}
  *
  * @param {TokenType} type
- *  Token type
+ *  The token type
  * @param {TokenInfo} info
- *  Token info
+ *  The token info
  * @return {Token}
- *  New token
+ *  The new token
  */
 type TokenFactory = (this: void, type: TokenType, info: TokenInfo) => Token
 

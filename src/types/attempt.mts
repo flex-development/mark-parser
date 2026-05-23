@@ -21,13 +21,13 @@ import type { Constructs, State } from '@flex-development/fsm-tokenizer'
  * @this {void}
  *
  * @param {Constructs} construct
- *  Construct(s) to try
+ *  The construct(s) to try
  * @param {State} [ok]
- *  Successful tokenization state
+ *  The successful tokenization state
  * @param {State} [nok]
- *  Failed tokenization state
+ *  The failed tokenization state
  * @return {State}
- *  Next state
+ *  The next state
  */
 type Attempt = (
   this: void,

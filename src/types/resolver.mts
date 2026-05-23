@@ -19,11 +19,11 @@ import type {
  * @this {void}
  *
  * @param {Event[]} events
- *  List of events
+ *  The current list of events
  * @param {TokenizeContext} context
- *  Tokenize context
+ *  The tokenize context
  * @return {Event[]}
- *  List of changed events
+ *  The list of changed events
  */
 type Resolver = (
   this: void,

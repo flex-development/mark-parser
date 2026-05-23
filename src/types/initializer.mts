@@ -22,9 +22,9 @@ import type {
  * @this {TokenizeContext}
  *
  * @param {Effects} effects
- *  Context object to transition state machine
+ *  The context object to transition the state machine
  * @return {State}
- *  Initial state
+ *  The initial state
  */
 type Initializer = (this: TokenizeContext, effects: Effects) => State
 

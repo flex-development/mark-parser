@@ -4,11 +4,11 @@
  */
 
 /**
- * Preprocessor configuration options.
+ * Options for configuring a preprocessor.
  */
 interface PreprocessOptions {
   /**
-   * Number of spaces a tab is equivalent to.
+   * The number of spaces a tab is equivalent to.
    *
    * @default constants.tabSize
    */

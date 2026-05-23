@@ -20,7 +20,7 @@ import type { Point } from '@flex-development/fsm-tokenizer'
  * @this {void}
  *
  * @param {Pick<Point, 'column' | 'line'>} point
- *  Skip point
+ *  The skip point
  * @return {undefined}
  */
 type DefineSkip = (

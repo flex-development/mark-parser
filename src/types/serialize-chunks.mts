@@ -18,7 +18,7 @@ import type { Chunk, SerializeOptions } from '@flex-development/fsm-tokenizer'
  * @param {SerializeOptions | boolean | null | undefined} [options]
  *  Options for serializing or whether to expand tabs
  * @return {string}
- *  String value of `chunks`
+ *  The string value of `chunks`
  */
 type SerializeChunks = (
   this: void,

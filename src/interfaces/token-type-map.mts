@@ -4,7 +4,7 @@
  */
 
 /**
- * Token type registry.
+ * Registry of token types.
  *
  * This interface can be augmented to register custom token types.
  *

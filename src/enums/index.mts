@@ -3,7 +3,7 @@
  * @module fsm-tokenizer/enums
  */
 
-export { default as chars } from '#enums/chars'
-export { default as codes } from '#enums/codes'
-export { default as constants } from '#enums/constants'
-export { default as ev } from '#enums/ev'
+export { default as chars } from './chars.mts'
+export { default as codes } from './codes.mts'
+export { default as constants } from './constants.mts'
+export { default as ev } from './ev.mts'

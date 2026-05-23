@@ -10,7 +10,7 @@ import type { Restore } from '@flex-development/fsm-tokenizer'
  */
 type Info = {
   /**
-   * Last known length of event list.
+   * The last known length of the event list.
    */
   from: number
 
