@@ -139,7 +139,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.2",
-    "@commitlint/cli": "21.0.1",
+    "@commitlint/cli": "21.0.2",
     "@commitlint/types": "21.0.1",
     "@edge-runtime/vm": "5.0.0",
     "@flex-development/commitlint-config": "1.0.1",
