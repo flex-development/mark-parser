@@ -163,7 +163,7 @@
     "concat-stream": "2.0.0",
     "convert-hrtime": "5.0.0",
     "cross-env": "10.1.0",
-    "cspell": "10.0.0",
+    "cspell": "10.0.1",
     "dprint": "0.54.0",
     "editorconfig": "3.0.2",
     "eslint": "9.33.0",
