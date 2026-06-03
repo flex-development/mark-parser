@@ -4,22 +4,58 @@
  */
 
 import type {
+  ConstructPosition,
   Guard,
   Resolver,
   Tokenizer
 } from '@flex-development/fsm-tokenizer'
 
 /**
- * Object describing how to tokenize a region of a source value.
+ * Object describing how to tokenize a syntax construct.
  */
 interface Construct {
+  /**
+   * Whether the construct, when in a `ConstructRecord`, precedes over existing
+   * constructs for the same character code when merged.
+   *
+   * @see {@linkcode ConstructPosition}
+   */
+  add?: ConstructPosition | null | undefined
+
+  /**
+   * Whether the construct is concrete.
+   *
+   * Concrete constructs cannot be interrupted by other constructs.
+   *
+   * For example, when parsing a markdown document (containers, such as block
+   * quotes and lists) and this construct is parsing fenced code:
+   *
+   * ````markdown
+   * > ```js
+   * > - list?
+   * ````
+   *
+   * …then `- list?` cannot form if this fenced code construct is concrete.
+   *
+   * An example of a construct that is not concrete is a GFM table:
+   *
+   * ````markdown
+   * | a |
+   * | - |
+   * > | b |
+   * ````
+   *
+   * ...`b` is not part of the table.
+   */
+  concrete?: boolean | null | undefined
+
   /**
    * The name of the construct, used to toggle constructs off.
    */
   name?: string | null | undefined
 
   /**
-   * Whether this construct represents a partial construct.
+   * Whether the construct represents a partial construct.
    */
   partial?: boolean | null | undefined
 
@@ -40,7 +76,7 @@ interface Construct {
   /**
    * Resolve all events when the content is complete, from the start to the end.
    *
-   * > 👉 **Note**: Only used if {@linkcode tokenize} is successful at least
+   * > 👉 **Note**: Only called if {@linkcode tokenize} is successful at least
    * > once in the content.
    *
    * @see {@linkcode Resolver}
@@ -54,13 +90,6 @@ interface Construct {
    * @see {@linkcode Resolver}
    */
   resolveTo?: Resolver | null | undefined
-
-  /**
-   * Check if the current character code can start this construct.
-   *
-   * @see {@linkcode Guard}
-   */
-  test?: Guard | null | undefined
 
   /**
    * Set up a state machine to handle character codes streaming in.

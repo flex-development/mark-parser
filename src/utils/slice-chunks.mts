@@ -38,7 +38,7 @@ function sliceChunks<T extends Chunk | string>(
   range: Range
 ): T[] {
   /**
-   * Slice of chunks.
+   * The slice of chunks.
    *
    * @var {T[]} slice
    */
@@ -49,7 +49,7 @@ function sliceChunks<T extends Chunk | string>(
     const { _bufferIndex: startBufferIndex, _index: startIndex } = range.start
 
     /**
-     * List of chunks.
+     * The list of chunks.
      *
      * @const {T[]} list
      */
@@ -63,7 +63,7 @@ function sliceChunks<T extends Chunk | string>(
 
       if (startBufferIndex > -1) {
         /**
-         * First chunk in slice.
+         * The first chunk in the slice.
          *
          * @const {T | undefined} head
          */

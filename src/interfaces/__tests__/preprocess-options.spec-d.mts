@@ -1,0 +1,15 @@
+/**
+ * @file Type Tests - PreprocessOptions
+ * @module fsm-tokenizer/interfaces/tests/unit-d/PreprocessOptions
+ */
+
+import type TestSubject from '#interfaces/preprocess-options'
+import type { Nilable } from '@flex-development/tutils'
+
+describe('unit-d:interfaces/PreprocessOptions', () => {
+  it('should match [tabSize?: number | null | undefined]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('tabSize')
+      .toEqualTypeOf<Nilable<number>>()
+  })
+})

@@ -3,106 +3,131 @@
  * @module fsm-tokenizer/tokenize
  */
 
-import codes from '#enums/codes'
-import isList from '#internal/is-list'
-import size from '#internal/size'
-import toTokenizer from '#internal/to-tokenizer'
 import type {
-  Chunk,
-  Code,
   Event,
   FileLike,
-  List,
+  Tokenizable,
   TokenizeContext,
   TokenizeOptions,
   Value
 } from '@flex-development/fsm-tokenizer'
-import { ok } from 'devlop'
+import codes from './enums/codes.mts'
+import isList from './internal/is-list.mts'
+import nil from './internal/nil.mts'
+import size from './internal/size.mts'
+import decode from './utils/decode.mts'
+
+export default tokenize
 
 /**
- * Tokenize `value`.
+ * Tokenize a `value`.
  *
  * @see {@linkcode Event}
- * @see {@linkcode FileLike}
- * @see {@linkcode List}
+ * @see {@linkcode Tokenizable}
  * @see {@linkcode TokenizeContext}
  * @see {@linkcode TokenizeOptions}
- * @see {@linkcode Value}
  *
  * @this {void}
  *
- * @param {FileLike | List<FileLike | Value> | Value | null | undefined} value
- *  The file, value, or list of files and/or values to tokenize
- * @param {TokenizeContext | TokenizeOptions} options
- *  Configuration options or the tokenizer to use
+ * @param {Tokenizable | null | undefined} value
+ *  The file, value, or list to tokenize
+ * @param {TokenizeContext} context
+ *  The tokenizer to write to
+ * @param {TokenizeOptions | null | undefined} [options]
+ *  Options for tokenizing `value`
  * @return {Event[]}
- *  List of events
+ *  The list of events
  */
 function tokenize(
   this: void,
-  value: FileLike | List<FileLike | Value> | Value | null | undefined,
-  options: TokenizeContext | TokenizeOptions
+  value: Tokenizable | null | undefined,
+  context: TokenizeContext,
+  options?: TokenizeOptions | null | undefined
 ): Event[] {
-  /**
-   * Tokenize context.
-   *
-   * @const {TokenizeContext} context
-   */
-  const context: TokenizeContext = toTokenizer(options)
+  options ??= {}
 
-  // write chunks to stream.
-  if (
-    value === null ||
-    value === undefined ||
-    isList(value) && !size(value)
-  ) {
-    context.write(codes.eof)
-  } else if (!isList(value)) {
+  if (isList<FileLike | Value>(value)) {
     /**
-     * The chunks to write.
+     * The size of the list.
      *
-     * @const {Code[]} slice
+     * @const {number} count
      */
-    const slice: Code[] = context.preprocess(value, options.encoding, true)
+    const count: number = size(value)
 
-    if (slice.length === 1) { // empty value.
-      ok(slice[0] === codes.eof, 'expected eof code')
-      slice.unshift(codes.empty)
-    }
-
-    context.write(slice)
-  } else {
-    context.breaks = options.breaks
-
-    for (const [i, chunk] of [...value].entries()) {
+    for (const [index, chunk] of decode(value, context.encoding).entries()) {
       /**
        * Whether this is the end of the stream.
        *
        * @const {boolean} end
        */
-      const end: boolean = i === size(value) - 1
+      const end: boolean = index === count - 1
 
-      /**
-       * The values to write.
-       *
-       * @var {(Chunk | Value)[]} slice
-       */
-      let slice: (Chunk | Value)[] = []
-
-      if (typeof chunk === 'object' && 'value' in chunk) {
-        slice.push(chunk.value)
+      // write to tokenizer or chunk again and write.
+      if (chunk === codes.empty || !options.chunker) {
+        context.write(chunk)
       } else {
-        slice.push(chunk)
+        chunker(options.chunker, chunk)
       }
 
-      if (context.breaks && !end) slice.push(codes.break)
-      if (end) slice.push(codes.eos)
+      // conditionally write stream break.
+      if (options.breaks && !end) context.write(codes.break)
+    }
+  } else if (!nil(value)) {
+    /**
+     * The decoded chunk.
+     *
+     * @const {string | typeof codes.empty} decoded
+     */
+    const decoded: string | typeof codes.empty = decode(value, context.encoding)
 
-      context.write(slice)
+    if (decoded === codes.empty) {
+      context.write(decoded)
+    } else if (options.chunker) {
+      chunker(options.chunker, decoded)
+    } else {
+      context.write(context.preprocess(decoded, context.encoding))
     }
   }
 
-  return context.events
-}
+  return context.write(codes.eos)
 
-export default tokenize
+  /**
+   * @this {void}
+   *
+   * @param {RegExp} pattern
+   *  The regular expression used to create chunks
+   * @param {string} input
+   *  The string to chunk
+   * @return {undefined}
+   */
+  function chunker(this: void, pattern: RegExp, input: string): undefined {
+    /**
+     * The index where the last match ends.
+     *
+     * @var {number} index
+     */
+    let index: number = 0
+
+    // write chunks to the tokenizer.
+    for (const { 0: match, index: start } of input.matchAll(pattern)) {
+      /**
+       * The index at which the match ends.
+       *
+       * @const {number} end
+       */
+      const end: number = start + match.length
+
+      // text between matches.
+      if (start > index) context.write(input.slice(index, start))
+
+      // the match itself; write preprocessed match to stream.
+      context.write(context.preprocess(match))
+      index = end
+    }
+
+    // remaining tail text; write character code chunks to stream.
+    index < input.length && context.write(input.slice(index))
+
+    return void context
+  }
+}

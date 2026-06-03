@@ -1,5 +1,6 @@
 attw
 cefc
+chunker
 commitlintrc
 dedupe
 devlop
@@ -16,6 +17,7 @@ onsuccessfulcheck
 onsuccessfulconstruct
 shfmt
 succ
+tokenizable
 unstub
 vates
 vitest

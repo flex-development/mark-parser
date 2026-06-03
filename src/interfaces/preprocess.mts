@@ -11,7 +11,7 @@ import type {
 } from '@flex-development/fsm-tokenizer'
 
 /**
- * Turn a value into character code chunks.
+ * Turn a code, file, or value into character code chunks.
  *
  * @see {@linkcode Code}
  * @see {@linkcode Encoding}
@@ -29,19 +29,19 @@ interface Preprocess {
    *
    * @this {void}
    *
-   * @param {FileLike | Value | null | undefined} value
-   *  The value to preprocess
+   * @param {Code | FileLike | Value | undefined} value
+   *  The code, file, or value to preprocess
    * @param {Encoding | null | undefined} encoding
    *  The character encoding to use when `value`
    *  or its contents is {@linkcode Uint8Array}
    * @param {true} end
    *  Whether the end of stream has been reached
    * @return {Code[]}
-   *  Character code chunks
+   *  The list of character code chunks
    */
   (
     this: void,
-    value: FileLike | Value | null | undefined,
+    value: Code | FileLike | Value | undefined,
     encoding: Encoding | null | undefined,
     end: true
   ): Code[]
@@ -56,19 +56,19 @@ interface Preprocess {
    *
    * @this {void}
    *
-   * @param {FileLike | Value | null | undefined} value
-   *  The value to preprocess
+   * @param {Code | FileLike | Value | undefined} value
+   *  The code, file, or value to preprocess
    * @param {Encoding | null | undefined} encoding
    *  The character encoding to use when `value`
    *  or its contents is {@linkcode Uint8Array}
    * @param {false | null | undefined} end
    *  Whether the end of stream has been reached
    * @return {NonNullable<Code>[]}
-   *  Character code chunks
+   *  The list of character code chunks
    */
   (
     this: void,
-    value: FileLike | Value | null | undefined,
+    value: Code | FileLike | Value | undefined,
     encoding: Encoding | null | undefined,
     end: false | null | undefined
   ): NonNullable<Code>[]
@@ -83,19 +83,19 @@ interface Preprocess {
    *
    * @this {void}
    *
-   * @param {FileLike | Value | null | undefined} value
-   *  The value to preprocess
+   * @param {Code | FileLike | Value | undefined} value
+   *  The code, file, or value to preprocess
    * @param {Encoding | null | undefined} [encoding]
    *  The character encoding to use when `value`
    *  or its contents is {@linkcode Uint8Array}
    * @param {false | null | undefined} [end]
    *  Whether the end of stream has been reached
    * @return {NonNullable<Code>[]}
-   *  Character code chunks
+   *  The list of character code chunks
    */
   (
     this: void,
-    value: FileLike | Value | null | undefined,
+    value: Code | FileLike | Value | undefined,
     encoding?: Encoding | null | undefined,
     end?: false | null | undefined
   ): NonNullable<Code>[]
@@ -110,19 +110,19 @@ interface Preprocess {
    *
    * @this {void}
    *
-   * @param {FileLike | Value | null | undefined} value
-   *  The value to preprocess
+   * @param {Code | FileLike | Value | undefined} value
+   *  The code, file, or value to preprocess
    * @param {Encoding | null | undefined} [encoding]
    *  The character encoding to use when `value`
    *  or its contents is {@linkcode Uint8Array}
    * @param {boolean | null | undefined} [end]
    *  Whether the end of stream has been reached
    * @return {Code[]}
-   *  Character code chunks
+   *  The list of character code chunks
    */
   (
     this: void,
-    value: FileLike | Value | null | undefined,
+    value: Code | FileLike | Value | undefined,
     encoding?: Encoding | null | undefined,
     end?: boolean | null | undefined
   ): Code[]

@@ -9,6 +9,7 @@ import nil from '#internal/nil'
 import size from '#internal/size'
 import type {
   Chunk,
+  Code,
   List,
   SerializeOptions
 } from '@flex-development/fsm-tokenizer'
@@ -18,6 +19,7 @@ import { ok } from 'devlop'
  * Get the string value of a slice of `chunks`.
  *
  * @see {@linkcode Chunk}
+ * @see {@linkcode Code}
  * @see {@linkcode List}
  * @see {@linkcode SerializeOptions}
  *
@@ -26,16 +28,16 @@ import { ok } from 'devlop'
  *
  * @this {void}
  *
- * @param {List<Chunk | string>} chunks
+ * @param {List<Chunk | NonNullable<Code>[]>} chunks
  *  The chunks to serialize
  * @param {SerializeOptions | boolean | null | undefined} [options]
  *  Options for serializing or whether to expand tabs
  * @return {string}
- *  String value of `chunks`
+ *  The string value of `chunks`
  */
 function serializeChunks(
   this: void,
-  chunks: List<Chunk | string>,
+  chunks: List<Chunk | NonNullable<Code>[]>,
   options?: SerializeOptions | boolean | null | undefined
 ): string {
   if (typeof options === 'boolean' || !options) {
@@ -43,14 +45,14 @@ function serializeChunks(
   }
 
   /**
-   * Serialized character codes.
+   * The serialized character codes.
    *
    * @const {string[]} result
    */
   const result: string[] = []
 
   /**
-   * Index of current chunk.
+   * The index of the current chunk.
    *
    * @var {number} index
    */
@@ -65,14 +67,14 @@ function serializeChunks(
 
   while (++index < size(chunks)) {
     /**
-     * Current chunk.
+     * The current chunk.
      *
-     * @const {Chunk | string | undefined} chunk
+     * @const {Chunk | NonNullable<Code>[] | undefined} chunk
      */
-    const chunk: Chunk | string | undefined = [...chunks][index]
+    const chunk: Chunk | NonNullable<Code>[] | undefined = [...chunks][index]
 
     /**
-     * Serialized chunk.
+     * The serialized chunk.
      *
      * @var {string} value
      */

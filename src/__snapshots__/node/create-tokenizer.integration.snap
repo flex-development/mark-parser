@@ -1,0 +1,174 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`integration:createTokenizer > should resolve events via resolvers 1`] = `
+[
+  [
+    "enter",
+    {
+      "end": {
+        "_bufferIndex": -1,
+        "_index": 1,
+        "column": 2,
+        "line": 1,
+        "offset": 1,
+      },
+      "start": {
+        "_bufferIndex": -1,
+        "_index": 0,
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+      "type": "succ",
+      "value": "a",
+    },
+  ],
+  [
+    "exit",
+    {
+      "end": {
+        "_bufferIndex": -1,
+        "_index": 1,
+        "column": 2,
+        "line": 1,
+        "offset": 1,
+      },
+      "start": {
+        "_bufferIndex": -1,
+        "_index": 0,
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+      "type": "succ",
+      "value": "a",
+    },
+  ],
+  [
+    "enter",
+    {
+      "end": {
+        "_bufferIndex": -1,
+        "_index": 2,
+        "column": 3,
+        "line": 1,
+        "offset": 2,
+      },
+      "start": {
+        "_bufferIndex": -1,
+        "_index": 1,
+        "column": 2,
+        "line": 1,
+        "offset": 1,
+      },
+      "type": "succ",
+      "value": "b",
+    },
+  ],
+  [
+    "exit",
+    {
+      "end": {
+        "_bufferIndex": -1,
+        "_index": 2,
+        "column": 3,
+        "line": 1,
+        "offset": 2,
+      },
+      "start": {
+        "_bufferIndex": -1,
+        "_index": 1,
+        "column": 2,
+        "line": 1,
+        "offset": 1,
+      },
+      "type": "succ",
+      "value": "b",
+    },
+  ],
+  [
+    "enter",
+    {
+      "end": {
+        "_bufferIndex": -1,
+        "_index": 3,
+        "column": 4,
+        "line": 1,
+        "offset": 3,
+      },
+      "start": {
+        "_bufferIndex": -1,
+        "_index": 2,
+        "column": 3,
+        "line": 1,
+        "offset": 2,
+      },
+      "type": "succ",
+      "value": "c",
+    },
+  ],
+  [
+    "exit",
+    {
+      "end": {
+        "_bufferIndex": -1,
+        "_index": 3,
+        "column": 4,
+        "line": 1,
+        "offset": 3,
+      },
+      "start": {
+        "_bufferIndex": -1,
+        "_index": 2,
+        "column": 3,
+        "line": 1,
+        "offset": 2,
+      },
+      "type": "succ",
+      "value": "c",
+    },
+  ],
+  [
+    "enter",
+    {
+      "end": {
+        "_bufferIndex": -1,
+        "_index": 4,
+        "column": 4,
+        "line": 1,
+        "offset": 3,
+      },
+      "start": {
+        "_bufferIndex": -1,
+        "_index": 4,
+        "column": 4,
+        "line": 1,
+        "offset": 3,
+      },
+      "type": "eoc",
+      "value": null,
+    },
+  ],
+  [
+    "exit",
+    {
+      "end": {
+        "_bufferIndex": -1,
+        "_index": 4,
+        "column": 4,
+        "line": 1,
+        "offset": 3,
+      },
+      "start": {
+        "_bufferIndex": -1,
+        "_index": 4,
+        "column": 4,
+        "line": 1,
+        "offset": 3,
+      },
+      "type": "eoc",
+      "value": null,
+    },
+  ],
+]
+`;

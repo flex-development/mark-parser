@@ -16,10 +16,10 @@ describe('unit-d:types/TokenFactory', () => {
   })
 
   describe('parameters', () => {
-    it('should be callable with [TokenType, TokenInfo]', () => {
+    it('should be callable with [TokenType, (TokenInfo | null | undefined)?]', () => {
       expectTypeOf<TestSubject>()
         .parameters
-        .toEqualTypeOf<[TokenType, TokenInfo]>()
+        .toEqualTypeOf<[TokenType, (TokenInfo | null | undefined)?]>()
     })
   })
 

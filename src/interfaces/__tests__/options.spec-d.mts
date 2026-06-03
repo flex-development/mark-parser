@@ -6,11 +6,12 @@
 import type TestSubject from '#interfaces/options'
 import type {
   CodeCheck,
-  CreateInitialConstruct,
   Encoding,
+  Extensions,
   FinalizeContext,
-  InitialConstruct,
+  Initialize,
   List,
+  ParseContext,
   Preprocess,
   PreprocessOptions,
   TokenFactory
@@ -29,9 +30,9 @@ describe('unit-d:interfaces/Options', () => {
       .toEqualTypeOf<Nilable<string>>()
   })
 
-  it('should match [disabled?: List<string> | null | undefined]', () => {
+  it('should match [disable?: List<string> | null | undefined]', () => {
     expectTypeOf<TestSubject>()
-      .toHaveProperty('disabled')
+      .toHaveProperty('disable')
       .toEqualTypeOf<Nilable<List<string>>>()
   })
 
@@ -47,6 +48,12 @@ describe('unit-d:interfaces/Options', () => {
       .toEqualTypeOf<Nilable<Encoding>>()
   })
 
+  it('should match [extensions?: Extensions | null | undefined]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('extensions')
+      .toEqualTypeOf<Nilable<Extensions>>()
+  })
+
   it('should match [finalizeContext?: FinalizeContext | null | undefined]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('finalizeContext')
@@ -59,16 +66,22 @@ describe('unit-d:interfaces/Options', () => {
       .toEqualTypeOf<Nilable<Point>>()
   })
 
-  it('should match [initialize: CreateInitialConstruct | InitialConstruct]', () => {
+  it('should match [initialize: Initialize]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('initialize')
-      .toEqualTypeOf<CreateInitialConstruct | InitialConstruct>()
+      .toEqualTypeOf<Initialize>()
   })
 
   it('should match [moveOnBreak?: boolean | null | undefined]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('moveOnBreak')
       .toEqualTypeOf<Nilable<boolean>>()
+  })
+
+  it('should match [parser?: ParseContext | null | undefined]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('parser')
+      .toEqualTypeOf<Nilable<ParseContext>>()
   })
 
   it('should match [preprocess?: Preprocess | null | undefined]', () => {

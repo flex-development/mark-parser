@@ -6,6 +6,7 @@
 import type {
   Code,
   Constructs,
+  ContentType,
   Effects,
   InitialConstruct,
   State,
@@ -16,32 +17,62 @@ import type {
  * Create an initial construct.
  *
  * @see {@linkcode Constructs}
+ * @see {@linkcode ContentType}
  * @see {@linkcode InitialConstruct}
  *
- * @param {Constructs} constructs
- *  The construct(s) to try
+ * @this {void}
+ *
+ * @param {Constructs | ContentType | null | undefined} [constructs]
+ *  The construct(s) to try or the name of the content parser
+ * @param {Partial<InitialConstruct> | null | undefined} [data]
+ *  The initial construct data
  * @return {InitialConstruct}
  *  The initial construct
  */
-function initialize(constructs: Constructs): InitialConstruct {
-  return { name: 'fsm-tokenizer:initialize', tokenize: initialize }
+function initialize(
+  this: void,
+  constructs?: Constructs | ContentType | null | undefined,
+  data?: Partial<InitialConstruct> | null | undefined
+): InitialConstruct {
+  return { ...data, tokenize: tokenizeInitial }
 
   /**
    * Set up a state machine to handle character codes streaming in.
    *
-   * @see {@linkcode Effects}
-   * @see {@linkcode State}
-   * @see {@linkcode TokenizeContext}
-   *
    * @this {TokenizeContext}
    *
    * @param {Effects} effects
-   *  Context object to transition state machine
+   *  The context object to transition state machine
    * @return {State}
-   *  Initial state
+   *  The initial state
    */
-  function initialize(this: TokenizeContext, effects: Effects): State {
-    return state
+  function tokenizeInitial(this: TokenizeContext, effects: Effects): State {
+    /**
+     * The tokenize context.
+     *
+     * @const {TokenizeContext} self
+     */
+    const self: TokenizeContext = this
+
+    return attempt
+
+    /**
+     * Try {@linkcode constructs}.
+     *
+     * @this {void}
+     *
+     * @param {Code} code
+     *  The current character code
+     * @return {State | undefined}
+     *  The next state
+     */
+    function attempt(this: void, code: Code): State | undefined {
+      if (typeof constructs === 'string') {
+        constructs = self.parser.constructs[constructs]
+      }
+
+      return effects.attempt(constructs ?? [], attempt, eat)(code)
+    }
 
     /**
      * Consume `code` and retry {@linkcode constructs}.
@@ -49,26 +80,12 @@ function initialize(constructs: Constructs): InitialConstruct {
      * @this {void}
      *
      * @param {Code} code
-     *  Current character code
+     *  The current character code
      * @return {State | undefined}
-     *  Next state
+     *  The next state
      */
     function eat(this: void, code: Code): State | undefined {
-      return effects.consume(code), state
-    }
-
-    /**
-     * Try a construct.
-     *
-     * @this {void}
-     *
-     * @param {Code} code
-     *  Current character code
-     * @return {State | undefined}
-     *  Next state
-     */
-    function state(this: void, code: Code): State | undefined {
-      return effects.attempt(constructs, state, eat)(code)
+      return effects.consume(code), attempt
     }
   }
 }

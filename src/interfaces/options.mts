@@ -5,11 +5,12 @@
 
 import type {
   CodeCheck,
-  CreateInitialConstruct,
   Encoding,
+  Extensions,
   FinalizeContext,
-  InitialConstruct,
+  Initialize,
   List,
+  ParseContext,
   Preprocess,
   PreprocessOptions,
   TokenFactory
@@ -18,7 +19,7 @@ import type { u } from '@flex-development/unist-util-builder'
 import type { Point } from '@flex-development/vfile-location'
 
 /**
- * Configuration options.
+ * Options for configuring a tokenizer.
  *
  * @see {@linkcode PreprocessOptions}
  *
@@ -35,9 +36,12 @@ interface Options extends PreprocessOptions {
   /**
    * The list of disabled construct names.
    *
+   * > 👉 **Note**: This is a shortcut for `Extension.disable.null` when using
+   * > content types.
+   *
    * @see {@linkcode List}
    */
-  disabled?: List<string> | null | undefined
+  disable?: List<string> | null | undefined
 
   /**
    * Check if a character code represents a line ending.
@@ -47,12 +51,18 @@ interface Options extends PreprocessOptions {
   eol?: CodeCheck | null | undefined
 
   /**
-   * The character encoding to use when converting a {@linkcode Uint8Array} to
-   * character code chunks.
+   * The character encoding to use when decoding a {@linkcode Uint8Array}.
    *
    * @see {@linkcode Encoding}
    */
   encoding?: Encoding | null | undefined
+
+  /**
+   * A syntax extension, or a list of syntax extensions.
+   *
+   * @see {@linkcode Extensions}
+   */
+  extensions?: Extensions | null | undefined
 
   /**
    * Finalize the tokenization context.
@@ -62,21 +72,22 @@ interface Options extends PreprocessOptions {
   finalizeContext?: FinalizeContext | null | undefined
 
   /**
-   * The point before first character.
+   * The point before the first character in the content.
    *
    * @see {@linkcode Point}
    *
-   * @default { column: 1, line: 1, offset: 0 }
+   * @default
+   *  { column: 1, line: 1, offset: 0 }
    */
   from?: Point | null | undefined
 
   /**
-   * The initial construct, or a function that returns an initial construct.
+   * The initial construct, a record of initial constructs,
+   * or a function that returns the initial construct or record.
    *
-   * @see {@linkcode CreateInitialConstruct}
-   * @see {@linkcode InitialConstruct}
+   * @see {@linkcode Initialize}
    */
-  initialize: CreateInitialConstruct | InitialConstruct
+  initialize: Initialize
 
   /**
    * Whether to move the position of the tokenizer forward at stream breaks.
@@ -84,7 +95,14 @@ interface Options extends PreprocessOptions {
   moveOnBreak?: boolean | null | undefined
 
   /**
-   * Turn a value into character code chunks.
+   * The relevant parsing context.
+   *
+   * @see {@linkcode ParseContext}
+   */
+  parser?: ParseContext | null | undefined
+
+  /**
+   * Turn a code, file, or value into character code chunks.
    *
    * @see {@linkcode Preprocess}
    */

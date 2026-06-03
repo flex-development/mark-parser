@@ -10,6 +10,8 @@ import type {
   Encoding,
   Event,
   Now,
+  ParseContext,
+  Peek,
   Preprocess,
   SerializeChunks,
   SliceSerialize,
@@ -31,11 +33,6 @@ import type {
  *  }
  */
 interface TokenizeContext {
-  /**
-   * Whether the stream break code was written between chunks.
-   */
-  breaks?: boolean | null | undefined
-
   /**
    * The current character code.
    *
@@ -87,7 +84,25 @@ interface TokenizeContext {
   now: Now
 
   /**
-   * Turn a value into character code chunks.
+   * The relevant parsing context.
+   *
+   * Tokenizers typically deal with one content type.
+   * The parser is the object dealing with it all.
+   *
+   * @see {@linkcode ParseContext}
+   */
+  parser: ParseContext
+
+  /**
+   * Get the next character code without changing position without changing the
+   * position of the tokenizer.
+   *
+   * @see {@linkcode Peek}
+   */
+  peek: Peek
+
+  /**
+   * Turn a code, file, or value into character code chunks.
    *
    * @see {@linkcode Preprocess}
    */

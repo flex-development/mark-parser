@@ -4,7 +4,11 @@
  */
 
 import type TestSubject from '#types/serialize-chunks'
-import type { Chunk, SerializeOptions } from '@flex-development/fsm-tokenizer'
+import type {
+  Chunk,
+  Code,
+  SerializeOptions
+} from '@flex-development/fsm-tokenizer'
 
 describe('unit-d:types/SerializeChunks', () => {
   it('should match [this: void]', () => {
@@ -12,15 +16,15 @@ describe('unit-d:types/SerializeChunks', () => {
   })
 
   describe('parameters', () => {
-    it('should be callable with [(Chunk | string)[], (SerializeOptions | boolean | null | undefined)?]', () => {
+    it('should be callable with [(Chunk | NonNullable<Code>[])[], (SerializeOptions | boolean | null | undefined)?]', () => {
       // Arrange
-      type Params = [
-        (Chunk | string)[],
+      type Expect = [
+        (Chunk | NonNullable<Code>[])[],
         (SerializeOptions | boolean | null | undefined)?
       ]
 
       // Expect
-      expectTypeOf<TestSubject>().parameters.toEqualTypeOf<Params>()
+      expectTypeOf<TestSubject>().parameters.toEqualTypeOf<Expect>()
     })
   })
 

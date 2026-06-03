@@ -4,19 +4,9 @@
  */
 
 import isList from '#internal/is-list'
-import type { List } from '@flex-development/fsm-tokenizer'
+import type ToList from '#types/to-list'
 
 export default toList
-
-/**
- * Convert `T` to a list.
- *
- * @internal
- *
- * @template {any} T
- *  The value to convert
- */
-type ToList<T> = T extends List ? T extends ReadonlySet<infer U> ? U[] : T : T[]
 
 /**
  * Convert `value` to a list.

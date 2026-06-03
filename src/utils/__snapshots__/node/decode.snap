@@ -1,0 +1,60 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`unit:utils/decode > should return decoded \`chunks\` (0) 1`] = `
+[
+  -999,
+  10,
+  ":+1:",
+  null,
+]
+`;
+
+exports[`unit:utils/decode > should return decoded \`chunks\` (1) 1`] = `
+[
+  "a",
+  "b",
+  "c",
+]
+`;
+
+exports[`unit:utils/decode > should return decoded \`chunks\` (2) 1`] = `
+[
+  97,
+  98,
+  99,
+  null,
+]
+`;
+
+exports[`unit:utils/decode > should return decoded \`chunks\` (3) 1`] = `
+[
+  -999,
+  null,
+]
+`;
+
+exports[`unit:utils/decode > should return new list from \`chunks\` (0) 1`] = `
+[
+  "x",
+  "y",
+  "z",
+]
+`;
+
+exports[`unit:utils/decode > should return new list from \`chunks\` (1) 1`] = `
+[
+  120,
+  121,
+  122,
+  null,
+]
+`;
+
+exports[`unit:utils/decode > should return new list from \`chunks\` (2) 1`] = `
+[
+  "hello world",
+  "
+",
+  null,
+]
+`;

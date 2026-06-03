@@ -180,7 +180,7 @@ function config(this: void, env: ConfigEnv): ViteUserConfig {
           inline: ['@flex-development/pathe', 'devlop']
         }
       },
-      setupFiles: [],
+      setupFiles: [pathe.resolve('__tests__/setup/chai.mts')],
       snapshotFormat: {
         callToJSON: true,
         min: false,

@@ -8,9 +8,10 @@ import type { EventType } from '@flex-development/fsm-tokenizer'
 /**
  * Event types.
  *
+ * @const
  * @enum {EventType}
  */
-enum ev {
+const enum ev {
   enter = 'enter',
   exit = 'exit'
 }

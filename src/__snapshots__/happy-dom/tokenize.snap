@@ -1,0 +1,65 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`unit:tokenize > list values > should write chunks after chunking decoded item w/ chunker (0) 1`] = `
+[
+  "hello",
+  [
+    32,
+  ],
+  "world",
+  "🌎",
+  [
+    32,
+  ],
+  "👋",
+  null,
+]
+`;
+
+exports[`unit:tokenize > list values > should write chunks after chunking decoded item w/ chunker (1) 1`] = `
+[
+  [
+    32,
+  ],
+  "🌎",
+  [
+    32,
+  ],
+  "👋",
+  -13,
+  "hello",
+  [
+    32,
+  ],
+  "world!",
+  null,
+]
+`;
+
+exports[`unit:tokenize > list values > should write decoded item chunk w/o chunker (0) 1`] = `
+[
+  -999,
+  "a",
+  null,
+]
+`;
+
+exports[`unit:tokenize > list values > should write decoded item chunk w/o chunker (1) 1`] = `
+[
+  "hello",
+  -13,
+  "world",
+  null,
+]
+`;
+
+exports[`unit:tokenize > non-list values > should write chunks after chunking decoded \`value\` w/ chunker 1`] = `
+[
+  "a",
+  [
+    32,
+  ],
+  "b",
+  null,
+]
+`;

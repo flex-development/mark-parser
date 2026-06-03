@@ -12,7 +12,7 @@ import type {
 } from '@flex-development/fsm-tokenizer'
 
 describe('unit-d:types/Event', () => {
-  type T = tt.end
+  type T = tt.eoc
   type Subject = TestSubject<T>
 
   it('should match [0: EventType]', () => {

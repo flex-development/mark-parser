@@ -3,7 +3,7 @@
  * @module fsm-tokenizer/utils/push
  */
 
-import splice from '#utils/splice'
+import splice from './splice.mts'
 
 /**
  * Append items to the end of `list`.

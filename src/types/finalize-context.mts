@@ -13,13 +13,12 @@ import type { TokenizeContext } from '@flex-development/fsm-tokenizer'
  * @this {void}
  *
  * @param {TokenizeContext} context
- *  The base tokenize context
- * @return {TokenizeContext | null | undefined}
- *  The final context
+ *  The current tokenize context
+ * @return {null | undefined}
  */
 type FinalizeContext = (
   this: void,
   context: TokenizeContext
-) => TokenizeContext | null | undefined
+) => null | undefined
 
 export type { FinalizeContext as default }

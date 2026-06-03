@@ -11,15 +11,9 @@ import type { TokenType } from '@flex-development/fsm-tokenizer'
  * @enum {TokenType}
  */
 enum tt {
-  break = 'break',
-  digit = 'digit',
-  end = 'end',
-  flag = 'flag',
-  id = 'id',
-  letter = 'letter',
-  lineEnding = 'lineEnding',
-  operand = 'operand',
-  shortcode = 'shortcode'
+  eoc = 'eoc',
+  fail = 'fail',
+  succ = 'succ'
 }
 
 export default tt

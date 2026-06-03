@@ -3,11 +3,7 @@
  * @module fsm-tokenizer/interfaces/TokenInfo
  */
 
-import type {
-  Position,
-  Token,
-  TokenFields
-} from '@flex-development/fsm-tokenizer'
+import type { Position, TokenFields } from '@flex-development/fsm-tokenizer'
 
 /**
  * Information related to a token.
@@ -18,20 +14,6 @@ import type {
  * @extends {Position}
  * @extends {TokenFields}
  */
-interface TokenInfo extends Position, TokenFields {
-  /**
-   * The next token.
-   *
-   * @see {@linkcode Token}
-   */
-  next?: Token | undefined
-
-  /**
-   * The previous token.
-   *
-   * @see {@linkcode Token}
-   */
-  previous?: Token | undefined
-}
+interface TokenInfo extends Position, TokenFields {}
 
 export type { TokenInfo as default }

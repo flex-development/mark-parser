@@ -3,14 +3,14 @@
  * @module fsm-tokenizer/utils/sliceSerialize
  */
 
-import serializeChunks from '#utils/serialize-chunks'
-import sliceChunks from '#utils/slice-chunks'
 import type {
   Chunk,
   List,
   Range,
   SerializeOptions
 } from '@flex-development/fsm-tokenizer'
+import serializeChunks from './serialize-chunks.mts'
+import sliceChunks from './slice-chunks.mts'
 
 /**
  * Get the text spanning `range`.

@@ -6,7 +6,7 @@
 import type { Code, TokenizeContext } from '@flex-development/fsm-tokenizer'
 
 /**
- * Check a character `code`.
+ * Guard a character `code`.
  *
  * @see {@linkcode Code}
  * @see {@linkcode TokenizeContext}

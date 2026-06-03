@@ -6,6 +6,7 @@
 import type {
   Chunk,
   Event,
+  FileLike,
   List,
   Value
 } from '@flex-development/fsm-tokenizer'
@@ -22,19 +23,20 @@ import type {
  *
  * @see {@linkcode Chunk}
  * @see {@linkcode Event}
+ * @see {@linkcode FileLike}
  * @see {@linkcode List}
  * @see {@linkcode Value}
  *
  * @this {void}
  *
- * @param {Chunk | List<Chunk | Value> | Value} slice
- *  The chunk, value, or list of chunks and/or values to write
+ * @param {Chunk | FileLike | List<Chunk | FileLike | Value> | Value} slice
+ *  The chunk, file, buffer, or list to write
  * @return {Event[]}
- *  The list of events
+ *  The current list of events
  */
 type Write = (
   this: void,
-  slice: Chunk | List<Chunk | Value> | Value
+  slice: Chunk | FileLike | List<Chunk | FileLike | Value> | Value
 ) => Event[]
 
 export type { Write as default }

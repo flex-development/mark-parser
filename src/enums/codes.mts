@@ -26,7 +26,7 @@ import type { Code } from '@flex-development/fsm-tokenizer'
 const codes = {
   eof: null,
   eos: null,
-  empty: Number.NEGATIVE_INFINITY, // empty buffer chunk
+  empty: -999, // empty string chunk
   break: -13, // stream break
   vcr: -5, // virtual carriage return (\r)
   vlf: -4, // virtual line feed (\n)

@@ -3,8 +3,6 @@
  * @module fsm-tokenizer/preprocess
  */
 
-import codes from '#enums/codes'
-import constants from '#enums/constants'
 import type {
   Code,
   Column,
@@ -14,6 +12,11 @@ import type {
   PreprocessOptions,
   Value
 } from '@flex-development/fsm-tokenizer'
+import chars from './enums/chars.mts'
+import codes from './enums/codes.mts'
+import constants from './enums/constants.mts'
+import nil from './internal/nil.mts'
+import decode from './utils/decode.mts'
 
 /**
  * Create a preprocessor to turn a value into character code chunks.
@@ -24,131 +27,130 @@ import type {
  * @this {void}
  *
  * @param {PreprocessOptions | null | undefined} [options]
- *  Configuration options
+ *  The configuration options
  * @return {Preprocess}
- *  Character code preprocessor
+ *  The character code preprocessor
  */
 function preprocess(
   this: void,
   options?: PreprocessOptions | null | undefined
 ): Preprocess {
-  return Object.defineProperties(preprocessor.bind(options ?? {}), {
-    name: { value: 'preprocess' }
-  }) as Preprocess
+  /**
+   * The number of spaces a tab is equivalent to.
+   *
+   * @const {number} tabSize
+   */
+  const tabSize: number = options?.tabSize ?? constants.tabSize
+
+  Object.defineProperties(preprocessor, { name: { value: 'preprocess' } })
+  return preprocessor as Preprocess
 
   /**
    * Turn `value` into character code chunks.
    *
-   * @this {PreprocessOptions}
+   * @this {void}
    *
-   * @param {FileLike | Value | null | undefined} value
-   *  The value to preprocess
+   * @param {Code | FileLike | Value | undefined} value
+   *  The code, file, or value to preprocess
    * @param {Encoding | null | undefined} [encoding]
    *  The character encoding to use when `value`
    *  or its contents is {@linkcode Uint8Array}
    * @param {boolean | null | undefined} [end]
    *  Whether the end of stream has been reached
    * @return {Code[]}
-   *  Character code chunks
+   *  The list of character code chunks
    */
   function preprocessor(
-    this: PreprocessOptions,
-    value: FileLike | Value | null | undefined,
+    this: void,
+    value: Code | FileLike | Value | undefined,
     encoding?: Encoding | null | undefined,
     end?: boolean | null | undefined
   ): Code[] {
     /**
-     * Character code chunks.
+     * The list of character code chunks.
      *
      * @const {Code[]} chunks
      */
     const chunks: Code[] = []
 
-    /**
-     * Number of spaces a tab is equivalent to.
-     *
-     * @const {number} tabSize
-     */
-    const tabSize: number = this.tabSize ?? constants.tabSize
+    if (typeof value === 'number') {
+      chunks.push(value)
+    } else if (value === chars.empty) {
+      chunks.push(codes.empty)
+    } else if (!nil(value)) {
+      value = decode<string | typeof codes.empty>(value, encoding)
 
-    if (value === null) {
-      chunks.push(codes.break)
-    } else if (value !== undefined) {
-      if (typeof value === 'object' && 'value' in value) {
-        value = value.value
-      }
-
-      if (typeof value !== 'string') {
-        value = new TextDecoder(encoding ?? undefined).decode(value)
-      }
-
-      /**
-       * Current column.
-       *
-       * @var {Column} column
-       */
-      let column: Column = 1
-
-      /**
-       * Index of current character code.
-       *
-       * @var {number} index
-       */
-      let index: number = 0
-
-      while (index < value.length) {
+      if (typeof value === 'number') {
+        chunks.push(codes.empty)
+      } else {
         /**
-         * Character code.
+         * The current column.
          *
-         * @var {NonNullable<Code>} code
+         * @var {Column} column
          */
-        let code: NonNullable<Code> = value[index]!.codePointAt(0)!
+        let column: Column = 1
 
         /**
-         * Difference between next column and current column.
+         * The index of the current character code.
          *
-         * @var {number} k
+         * @var {number} index
          */
-        let k: number = 1
+        let index: number = 0
 
-        switch (true) {
-          case code === codes.cr:
-            if (value[index + 1]?.codePointAt(0) === codes.lf) {
-              chunks.push(codes.crlf)
-              k++
-            } else {
-              chunks.push(codes.vcr)
-            }
+        while (index < value.length) {
+          /**
+           * The current character code.
+           *
+           * @var {NonNullable<Code>} code
+           */
+          let code: NonNullable<Code> = value[index]!.codePointAt(0)!
 
-            column = 1
-            break
-          case code === codes.ht:
-            /**
-             * Next column.
-             *
-             * @const {number} n
-             */
-            const n: number = Math.ceil(column / tabSize) * tabSize
+          /**
+           * The difference between the next column and the current column.
+           *
+           * @var {number} k
+           */
+          let k: number = 1
 
-            chunks.push(codes.vht)
-            while (column++ < n) chunks.push(codes.vs)
+          switch (true) {
+            case code === codes.cr:
+              if (value[index + 1]?.codePointAt(0) === codes.lf) {
+                chunks.push(codes.crlf)
+                k++
+              } else {
+                chunks.push(codes.vcr)
+              }
 
-            break
-          case code === codes.lf:
-            chunks.push(codes.vlf)
-            column = 1
-            break
-          default:
-            chunks.push(code)
-            column++
-            break
+              column = 1
+              break
+            case code === codes.ht:
+              /**
+               * The next column.
+               *
+               * @const {number} n
+               */
+              const n: number = Math.ceil(column / tabSize) * tabSize
+
+              chunks.push(codes.vht)
+              while (column++ < n) chunks.push(codes.vs)
+
+              break
+            case code === codes.lf:
+              chunks.push(codes.vlf)
+              column = 1
+              break
+            default:
+              chunks.push(code)
+              column++
+              break
+          }
+
+          index += k
         }
-
-        index += k
       }
     }
 
-    return end && chunks.push(codes.eof), chunks
+    return end && chunks.push(codes.eos), chunks
   }
 }
 

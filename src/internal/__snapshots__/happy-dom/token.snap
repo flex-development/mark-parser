@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`unit:internal/token > should return new token 1`] = `
+{
+  "end": {
+    "_bufferIndex": -1,
+    "_index": 6,
+    "column": 10,
+    "line": 1,
+    "offset": 9,
+  },
+  "start": {
+    "_bufferIndex": -1,
+    "_index": 5,
+    "column": 10,
+    "line": 1,
+    "offset": 9,
+  },
+  "type": "eoc",
+}
+`;

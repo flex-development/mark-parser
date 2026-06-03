@@ -1,0 +1,21 @@
+/**
+ * @file Type Tests - SerializeOptions
+ * @module fsm-tokenizer/interfaces/tests/unit-d/SerializeOptions
+ */
+
+import type TestSubject from '#interfaces/serialize-options'
+import type { Nilable } from '@flex-development/tutils'
+
+describe('unit-d:interfaces/SerializeOptions', () => {
+  it('should match [breaks?: boolean | string | null | undefined]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('breaks')
+      .toEqualTypeOf<Nilable<boolean | string>>()
+  })
+
+  it('should match [expandTabs?: boolean | null | undefined]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('expandTabs')
+      .toEqualTypeOf<Nilable<boolean>>()
+  })
+})

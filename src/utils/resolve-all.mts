@@ -11,7 +11,7 @@ import type {
 } from '@flex-development/fsm-tokenizer'
 
 /**
- * Call all `resolveAll`s.
+ * Call all `resolveAll` handlers.
  *
  * @see {@linkcode Construct.resolveAll}
  * @see {@linkcode Event}
@@ -23,13 +23,13 @@ import type {
  * @this {void}
  *
  * @param {Partial<Construct>[]} constructs
- *  List of constructs
+ *  The list of constructs
  * @param {Event[]} events
- *  List of events
+ *  The list of events
  * @param {TokenizeContext} context
- *  Tokenize context
+ *  The tokenize context
  * @return {Event[]}
- *  List of changed events
+ *  The list of changed events
  */
 function resolveAll(
   this: void,
@@ -38,14 +38,14 @@ function resolveAll(
   context: TokenizeContext
 ): Event[] {
   /**
-   * Called resolvers.
+   * The list of called resolvers.
    *
    * @const {Resolver[]} called
    */
   const called: Resolver[] = []
 
   /**
-   * Current index.
+   * The index of the current construct.
    *
    * @var {number} i
    */
@@ -53,7 +53,7 @@ function resolveAll(
 
   while (++i < constructs.length) {
     /**
-     * Resolver.
+     * The resolver.
      *
      * @const {Resolver | null | undefined} resolver
      */

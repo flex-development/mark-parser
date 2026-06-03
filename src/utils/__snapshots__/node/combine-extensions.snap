@@ -1,0 +1,72 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`unit:utils/combineExtensions > should return combined extension (0) 1`] = `{}`;
+
+exports[`unit:utils/combineExtensions > should return combined extension (1) 1`] = `{}`;
+
+exports[`unit:utils/combineExtensions > should return combined extension (2) 1`] = `
+{
+  "disable": {
+    "null": [],
+  },
+}
+`;
+
+exports[`unit:utils/combineExtensions > should return combined extension (3) 1`] = `
+{
+  "disable": {
+    "null": [
+      "fail",
+      "eoc",
+    ],
+  },
+}
+`;
+
+exports[`unit:utils/combineExtensions > should return combined extension (4) 1`] = `
+{
+  "document": {
+    "97": [
+      {
+        "tokenize": [Function tokenizeConsumeThenSucc],
+      },
+    ],
+  },
+}
+`;
+
+exports[`unit:utils/combineExtensions > should return combined extension (5) 1`] = `
+{
+  "document": {
+    "98": [
+      {
+        "tokenize": [Function tokenizeConsumeThenSucc],
+      },
+      {
+        "name": "eventsThenSucc",
+        "tokenize": [Function tokenizeEventsThenSucc],
+      },
+    ],
+  },
+}
+`;
+
+exports[`unit:utils/combineExtensions > should return combined extension (6) 1`] = `
+{
+  "document": {
+    "99": [
+      {
+        "name": "eventsThenSucc",
+        "tokenize": [Function tokenizeEventsThenSucc],
+      },
+      {
+        "tokenize": [Function tokenizeConsumeThenSucc],
+      },
+      {
+        "add": "after",
+        "tokenize": [Function tokenizeConsumeThenFail],
+      },
+    ],
+  },
+}
+`;

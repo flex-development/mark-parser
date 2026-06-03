@@ -2,6 +2,10 @@
 
 exports[`e2e:utils > should expose public api 1`] = `
 [
+  "combineExtensions",
+  "decode",
+  "defineConstruct",
+  "defineConstructs",
   "eof",
   "eos",
   "eol",

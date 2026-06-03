@@ -3,6 +3,10 @@
  * @module fsm-tokenizer/utils
  */
 
+export { default as combineExtensions } from './combine-extensions.mts'
+export { default as decode } from './decode.mts'
+export { default as defineConstruct } from './define-construct.mts'
+export { default as defineConstructs } from './define-constructs.mts'
 export { default as eof, default as eos } from './eof.mts'
 export { default as eol } from './eol.mts'
 export { default as isCode } from './is-code.mts'

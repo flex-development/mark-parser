@@ -6,6 +6,7 @@
 /**
  * Constant values.
  *
+ * @const
  * @enum {number}
  */
 const enum constants {

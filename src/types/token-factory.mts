@@ -20,11 +20,15 @@ import type {
  *
  * @param {TokenType} type
  *  The token type
- * @param {TokenInfo} info
+ * @param {TokenInfo | null | undefined} [info]
  *  The token info
  * @return {Token}
  *  The new token
  */
-type TokenFactory = (this: void, type: TokenType, info: TokenInfo) => Token
+type TokenFactory = (
+  this: void,
+  type: TokenType,
+  info?: TokenInfo | null | undefined
+) => Token
 
 export type { TokenFactory as default }

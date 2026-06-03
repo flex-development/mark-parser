@@ -27,7 +27,7 @@ import type { List, Numeric } from '@flex-development/fsm-tokenizer'
  * @param {T[]} list
  *  The list to operate on
  * @param {Numeric | number} start
- *  The index in `list` to remove/ and/or insert items at (can be negative)
+ *  The index in `list` to remove and/or insert items at (can be negative)
  * @param {Numeric | number} remove
  *  The number of items to remove
  * @param {List<T> | null | undefined} [items]

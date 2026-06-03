@@ -5,7 +5,7 @@
 
 export * from './constructs/index.mts'
 export { default as createTokenizer } from './create-tokenizer.mts'
-export { chars, codes, ev } from './enums/index.mts'
+export * from './enums/index.mts'
 export type * from './interfaces/index.mts'
 export {
   default as createPreprocess,

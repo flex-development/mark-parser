@@ -17,10 +17,10 @@ describe('unit-d:interfaces/Preprocess', () => {
   })
 
   describe('parameters', () => {
-    it('should be callable with [FileLike | Value | null | undefined, Encoding | null | undefined, false | null | undefined]', () => {
+    it('should be callable with [Code | FileLike | Value | undefined, Encoding | null | undefined, false | null | undefined]', () => {
       // Arrange
       type P = [
-        value: FileLike | Value | null | undefined,
+        value: Code | FileLike | Value | undefined,
         encoding: Encoding | null | undefined,
         end: false | null | undefined
       ]
@@ -29,10 +29,10 @@ describe('unit-d:interfaces/Preprocess', () => {
       expectTypeOf<TestSubject>().parameters.extract<P>().not.toBeNever()
     })
 
-    it('should be callable with [FileLike | Value | null | undefined, Encoding | null | undefined, true]', () => {
+    it('should be callable with [Code | FileLike | Value | undefined, Encoding | null | undefined, true]', () => {
       // Arrange
       type P = [
-        value: FileLike | Value | null | undefined,
+        value: Code | FileLike | Value | undefined,
         encoding: Encoding | null | undefined,
         end: true
       ]
@@ -41,10 +41,10 @@ describe('unit-d:interfaces/Preprocess', () => {
       expectTypeOf<TestSubject>().parameters.extract<P>().not.toBeNever()
     })
 
-    it('should be callable with [FileLike | Value | null | undefined, (Encoding | null | undefined)?, (boolean | null | undefined)?]', () => {
+    it('should be callable with [Code | FileLike | Value | undefined, (Encoding | null | undefined)?, (boolean | null | undefined)?]', () => {
       // Arrange
       type P = [
-        value: FileLike | Value | null | undefined,
+        value: Code | FileLike | Value | undefined,
         encoding?: Encoding | null | undefined,
         end?: boolean | null | undefined
       ]
@@ -53,10 +53,10 @@ describe('unit-d:interfaces/Preprocess', () => {
       expectTypeOf<TestSubject>().parameters.extract<P>().not.toBeNever()
     })
 
-    it('should be callable with [FileLike | Value | null | undefined, (Encoding | null | undefined)?, (false | null | undefined)?]', () => {
+    it('should be callable with [Code | FileLike | Value | undefined, (Encoding | null | undefined)?, (false | null | undefined)?]', () => {
       // Arrange
       type P = [
-        value: FileLike | Value | null | undefined,
+        value: Code | FileLike | Value | undefined,
         encoding?: Encoding | null | undefined,
         end?: false | null | undefined
       ]

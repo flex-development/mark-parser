@@ -5,6 +5,7 @@
 
 import type TestSubject from '#interfaces/construct'
 import type {
+  ConstructPosition,
   Guard,
   Resolver,
   Tokenizer
@@ -12,6 +13,18 @@ import type {
 import type { Nilable } from '@flex-development/tutils'
 
 describe('unit-d:interfaces/Construct', () => {
+  it('should match [add?: ConstructPosition | null | undefined]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('add')
+      .toEqualTypeOf<Nilable<ConstructPosition>>()
+  })
+
+  it('should match [concrete?: boolean | null | undefined]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('concrete')
+      .toEqualTypeOf<Nilable<boolean>>()
+  })
+
   it('should match [name?: string | null | undefined]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('name')
@@ -46,12 +59,6 @@ describe('unit-d:interfaces/Construct', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('resolveTo')
       .toEqualTypeOf<Nilable<Resolver>>()
-  })
-
-  it('should match [test?: Guard | null | undefined]', () => {
-    expectTypeOf<TestSubject>()
-      .toHaveProperty('test')
-      .toEqualTypeOf<Nilable<Guard>>()
   })
 
   it('should match [tokenize: Tokenizer]', () => {

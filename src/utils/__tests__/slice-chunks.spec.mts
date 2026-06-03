@@ -17,17 +17,10 @@ describe('unit:utils/sliceChunks', () => {
       }
     ],
     [
-      [codes.leftBracket, codes.rightBracket, codes.eof],
+      [codes.leftBracket, codes.rightBracket, codes.eos],
       {
         end: { _bufferIndex: -1, _index: 1 },
         start: { _bufferIndex: -1, _index: 1 }
-      }
-    ],
-    [
-      ['--color=3', codes.eos],
-      {
-        end: { _bufferIndex: 7, _index: 0 },
-        start: { _bufferIndex: 0, _index: 0 }
       }
     ],
     [
@@ -54,11 +47,25 @@ describe('unit:utils/sliceChunks', () => {
         codes.digit7,
         codes.digit8,
         codes.digit9,
-        codes.eof
+        codes.eos
       ],
       {
         end: { _bufferIndex: -1, _index: 7 },
         start: { _bufferIndex: -1, _index: 3 }
+      }
+    ],
+    [
+      ['--color=3', codes.eos],
+      {
+        end: { _bufferIndex: 7, _index: 0 },
+        start: { _bufferIndex: 0, _index: 0 }
+      }
+    ],
+    [
+      [' hello world ', codes.eos],
+      {
+        end: { _bufferIndex: 12, _index: 0 },
+        start: { _bufferIndex: 1, _index: 0 }
       }
     ]
   ])('should return chunks spanning `range` (%#)', (chunks, range) => {
