@@ -1,3 +1,21 @@
+## [1.0.0-alpha.7](https://github.com/flex-development/fsm-tokenizer/compare/1.0.0-alpha.6...1.0.0-alpha.7) (2026-06-03)
+
+### ⚠ BREAKING CHANGES
+
+- api improvements
+
+### :package: Build
+
+- [[`7b945cc`](https://github.com/flex-development/fsm-tokenizer/commit/7b945ccc58d28715828487120f299aa33469f383)] **deps-dev:** bump @arethetypeswrong/cli from 0.18.2 to 0.18.3 ([#350](https://github.com/flex-development/fsm-tokenizer/issues/350))
+- [[`6be1e93`](https://github.com/flex-development/fsm-tokenizer/commit/6be1e9306977b158a1de441e3026c7706e3277fc)] **deps-dev:** bump @commitlint/cli from 21.0.1 to 21.0.2 in the commitlint group ([#347](https://github.com/flex-development/fsm-tokenizer/issues/347))
+- [[`356f95e`](https://github.com/flex-development/fsm-tokenizer/commit/356f95e307f9cef98446df01b7e4041dabc83d9d)] **deps-dev:** bump cspell from 10.0.0 to 10.0.1 ([#349](https://github.com/flex-development/fsm-tokenizer/issues/349))
+- [[`7d24745`](https://github.com/flex-development/fsm-tokenizer/commit/7d24745326b882e72e6c039c73a3b9c898b40611)] **deps-dev:** bump rollup from 4.60.4 to 4.61.0 ([#351](https://github.com/flex-development/fsm-tokenizer/issues/351))
+- [[`42a429d`](https://github.com/flex-development/fsm-tokenizer/commit/42a429dfaf475025fccf157305aa232074f02fd3)] **deps-dev:** bump the vitest group with 3 updates ([#348](https://github.com/flex-development/fsm-tokenizer/issues/348))
+
+### :mechanical_arm: Refactors
+
+- [[`d430997`](https://github.com/flex-development/fsm-tokenizer/commit/d430997025c9812f805eec602ed89acaa727bb74)] api improvements
+
 ## [1.0.0-alpha.6](https://github.com/flex-development/fsm-tokenizer/compare/1.0.0-alpha.5...1.0.0-alpha.6) (2026-05-22)
 
 ### ⚠ BREAKING CHANGES
@@ -624,6 +642,7 @@
 
 - [[`85f91f2`](https://github.com/flex-development/fsm-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/fsm-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
 
