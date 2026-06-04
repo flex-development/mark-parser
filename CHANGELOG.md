@@ -1,3 +1,23 @@
+## [1.0.0-alpha.8](https://github.com/flex-development/fsm-tokenizer/compare/1.0.0-alpha.7...1.0.0-alpha.8) (2026-06-04)
+
+### :package: Build
+
+- [[`32133e7`](https://github.com/flex-development/fsm-tokenizer/commit/32133e7859ea4e7652fc6176d00ec0b8e2732403)] **deps-dev:** bump happy-dom from 20.9.0 to 20.10.1 ([#357](https://github.com/flex-development/fsm-tokenizer/issues/357))
+- [[`e6ef6ff`](https://github.com/flex-development/fsm-tokenizer/commit/e6ef6ff2b55168f80178edc63d80fbe2e1fffbd2)] **deps-dev:** bump rollup from 4.61.0 to 4.61.1 ([#358](https://github.com/flex-development/fsm-tokenizer/issues/358))
+- [[`25d21f2`](https://github.com/flex-development/fsm-tokenizer/commit/25d21f28ea57ac8307a873ee40740f9a7da9370c)] **deps-dev:** bump tsx from 4.22.3 to 4.22.4 ([#356](https://github.com/flex-development/fsm-tokenizer/issues/356))
+
+### :robot: Continuous Integration
+
+- [[`069cd19`](https://github.com/flex-development/fsm-tokenizer/commit/069cd19d75f35f3496f303d827c7563b742cd8e6)] **deps:** bump actions/checkout from 6.0.2 to 6.0.3 ([#355](https://github.com/flex-development/fsm-tokenizer/issues/355))
+
+### :sparkles: Features
+
+- [[`52e9000`](https://github.com/flex-development/fsm-tokenizer/commit/52e9000276e22651dfdb3cce13169fba05ad2b2e)] syntax extensions factory
+
+### :bug: Fixes
+
+- [[`cf67bf5`](https://github.com/flex-development/fsm-tokenizer/commit/cf67bf558769e9709614672ecf890328269b6b98)] **ts:** `Cannot access ambient const enums when "verbatimModuleSyntax" is enabled`
+
 ## [1.0.0-alpha.7](https://github.com/flex-development/fsm-tokenizer/compare/1.0.0-alpha.6...1.0.0-alpha.7) (2026-06-03)
 
 ### ⚠ BREAKING CHANGES
@@ -642,6 +662,7 @@
 
 - [[`85f91f2`](https://github.com/flex-development/fsm-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/fsm-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
 
