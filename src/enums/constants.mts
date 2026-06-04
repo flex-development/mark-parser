@@ -6,10 +6,9 @@
 /**
  * Constant values.
  *
- * @const
  * @enum {number}
  */
-const enum constants {
+enum constants {
   tabSize = 2,
   v8MaxSafeChunkSize = 10_000
 }
