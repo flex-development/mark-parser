@@ -15,6 +15,7 @@ import type {
   Create,
   Effects,
   Event,
+  Extension,
   FileLike,
   Info,
   InitialConstruct,
@@ -770,11 +771,21 @@ function createTokenizer(
      * @const {NormalizedExtension} extension
      */
     const extension: NormalizedExtension = {
-      disable: { null: options.disable && [...options.disable] }
+      disable: { null: options.disable ? [...options.disable] : [] }
     }
 
+    /**
+     * The extension, or extensions, to combine.
+     *
+     * @const {Extension | List<Extension> | null | undefined} extensions
+     */
+    const extensions: Extension | List<Extension> | null | undefined =
+      typeof options.extensions === 'function'
+        ? options.extensions()
+        : options.extensions
+
     // combine extensions.
-    context.parser.constructs = combineExtensions(extension, options.extensions)
+    context.parser.constructs = combineExtensions(extension, extensions)
 
     // add content-level tokenizers.
     if (!Object.prototype.hasOwnProperty.call(initialize, 'tokenize')) {
@@ -785,7 +796,7 @@ function createTokenizer(
       }
     }
 
-    return options.finalizeContext?.(context)
+    return options.finalizeContext?.(context, initialize, options)
   }
 
   /**

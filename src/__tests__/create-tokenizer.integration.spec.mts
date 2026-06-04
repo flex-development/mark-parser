@@ -37,6 +37,7 @@ import type {
   Tokenizer,
   Value
 } from '@flex-development/fsm-tokenizer'
+import { constant } from '@flex-development/tutils'
 import type { Mock } from 'vitest'
 
 describe('integration:createTokenizer', () => {
@@ -196,7 +197,7 @@ describe('integration:createTokenizer', () => {
           }
         },
         options: {
-          extensions: { [ct.document]: { null: [partialSucc] } },
+          extensions: constant({ [ct.document]: { null: [partialSucc] } }),
           initialize: { document: initialize(ct.document) }
         },
         parser: ct.document,

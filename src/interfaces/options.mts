@@ -58,7 +58,7 @@ interface Options extends PreprocessOptions {
   encoding?: Encoding | null | undefined
 
   /**
-   * A syntax extension, or a list of syntax extensions.
+   * A syntax extension, a list of syntax extensions, or a factory function.
    *
    * @see {@linkcode Extensions}
    */

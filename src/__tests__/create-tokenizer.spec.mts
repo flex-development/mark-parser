@@ -66,12 +66,20 @@ describe('unit:createTokenizer', () => {
   ])('should create tokenize context (%#)', initialize => {
     // Arrange
     const finalizeContext: FinalizeContext = vi.fn().mockName('finalizeContext')
+    const options: Options = { finalizeContext, initialize }
+    let initializer: Initialize = initialize
 
     // Act
-    const result = testSubject({ finalizeContext, initialize })
+    const result = testSubject(options)
+
+    // get expected initializer.
+    if (typeof initialize === 'function') {
+      initializer = vi.mocked(initialize).mock.results[0]?.value
+    }
 
     // Expect
-    expect(finalizeContext).toHaveBeenCalledExactlyOnceWith(result)
+    expect(finalizeContext).toHaveBeenCalledOnce()
+    expect(finalizeContext).toHaveBeenCalledWith(result, initializer, options)
     expect(result).to.have.property('effects').satisfy(isObjectCurly)
     expect(result).to.have.property('debug').be.a('function')
     expect(result).toMatchSnapshot()
@@ -91,8 +99,10 @@ describe('unit:createTokenizer', () => {
 
     // Expect
     expect(finalizeContext).toHaveBeenCalledTimes(2)
-    expect(finalizeContext).toHaveBeenCalledWith(context)
-    expect(finalizeContext).toHaveBeenLastCalledWith(result)
+    expect(vi.mocked(finalizeContext).mock.calls[0]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[0]![0]).to.eq(context)
+    expect(vi.mocked(finalizeContext).mock.calls[1]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[1]![0]).to.eq(result)
     expect(result).to.not.eq(context)
     expect(result.now()).to.eql(place)
     expect(result).toMatchSnapshot()

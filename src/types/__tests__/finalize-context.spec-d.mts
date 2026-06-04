@@ -4,7 +4,12 @@
  */
 
 import type TestSubject from '#types/finalize-context'
-import type { TokenizeContext } from '@flex-development/fsm-tokenizer'
+import type {
+  InitialConstruct,
+  InitialConstructs,
+  Options,
+  TokenizeContext
+} from '@flex-development/fsm-tokenizer'
 
 describe('unit-d:types/FinalizeContext', () => {
   it('should match [this: void]', () => {
@@ -12,9 +17,13 @@ describe('unit-d:types/FinalizeContext', () => {
   })
 
   describe('parameters', () => {
-    it('should be callable with [TokenizeContext]', () => {
+    it('should be callable with [TokenizeContext, InitialConstruct | InitialConstructs, Partial<Options>]', () => {
       // Arrange
-      type P = [TokenizeContext]
+      type P = [
+        TokenizeContext,
+        InitialConstruct | InitialConstructs,
+        Partial<Options>
+      ]
 
       // Expect
       expectTypeOf<TestSubject>().parameters.toEqualTypeOf<P>()

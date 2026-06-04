@@ -4,9 +4,17 @@
  */
 
 import type TestSubject from '#types/extensions'
-import type { Extension, List } from '@flex-development/fsm-tokenizer'
+import type {
+  CreateExtensions,
+  Extension,
+  List
+} from '@flex-development/fsm-tokenizer'
 
 describe('unit-d:types/Extensions', () => {
+  it('should extract CreateExtensions', () => {
+    expectTypeOf<TestSubject>().extract<CreateExtensions>().not.toBeNever()
+  })
+
   it('should extract Extension', () => {
     expectTypeOf<TestSubject>().extract<Extension>().not.toBeNever()
   })
