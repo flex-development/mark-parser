@@ -43,7 +43,7 @@ import type {
 import { Location } from '@flex-development/vfile-location'
 import type { Debugger } from 'debug'
 import { ok as assert } from 'devlop'
-import { codes, constants, ev } from './enums/index.mts'
+import { chars, codes, constants, ev } from './enums/index.mts'
 import createDebugger from './internal/create-debugger.mts'
 import createDefineSkip from './internal/create-define-skip.mts'
 import createTokenFactory from './internal/create-token-factory.mts'
@@ -639,6 +639,7 @@ function createTokenizer(
 
       return createTokenizer(initialize[contentType], {
         ...options,
+        debug: debug.namespace + chars.colon + contentType,
         from: from ?? options.from,
         parser: context.parser
       })
