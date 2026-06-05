@@ -1,3 +1,9 @@
+## [1.0.0-alpha.9](https://github.com/flex-development/fsm-tokenizer/compare/1.0.0-alpha.8...1.0.0-alpha.9) (2026-06-05)
+
+### :sparkles: Features
+
+- [[`29cabdc`](https://github.com/flex-development/fsm-tokenizer/commit/29cabdc1f712d8b8d542e8a9f9fc49350d7a2324)] set debug namespace for content type tokenizer
+
 ## [1.0.0-alpha.8](https://github.com/flex-development/fsm-tokenizer/compare/1.0.0-alpha.7...1.0.0-alpha.8) (2026-06-04)
 
 ### :package: Build
@@ -662,6 +668,7 @@
 
 - [[`85f91f2`](https://github.com/flex-development/fsm-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/fsm-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
 
