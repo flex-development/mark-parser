@@ -1698,7 +1698,7 @@ __metadata:
     rollup-plugin-dts: "npm:6.4.1"
     sh-syntax: "npm:0.5.8"
     trash-cli: "npm:7.2.0"
-    ts-dedent: "npm:2.2.0"
+    ts-dedent: "npm:2.3.0"
     tsx: "npm:4.22.4"
     typescript: "npm:6.0.3"
     unified: "npm:11.0.5"
@@ -11391,10 +11391,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-dedent@npm:2.2.0":
-  version: 2.2.0
-  resolution: "ts-dedent@npm:2.2.0"
-  checksum: 10/93ed8f7878b6d5ed3c08d99b740010eede6bccfe64bce61c5a4da06a2c17d6ddbb80a8c49c2d15251de7594a4f93ffa21dd10e7be75ef66a4dc9951b4a94e2af
+"ts-dedent@npm:2.3.0":
+  version: 2.3.0
+  resolution: "ts-dedent@npm:2.3.0"
+  checksum: 10/fc56bfac5daf2a3d2197eda2c804125756ecfbbc830ad3ce28cf775cca0027fe848abf827a913be67d33fb0f57dfbdd536f9c908e9979fa65968443b514561b2
   languageName: node
   linkType: hard
 
