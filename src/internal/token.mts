@@ -7,7 +7,7 @@ import type {
   Token,
   TokenInfo,
   TokenType
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import { u } from '@flex-development/unist-util-builder'
 
 /**

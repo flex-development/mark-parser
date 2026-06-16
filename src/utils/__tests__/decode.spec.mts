@@ -6,13 +6,13 @@
 import chars from '#enums/chars'
 import codes from '#enums/codes'
 import testSubject from '#utils/decode'
+import type { List } from '@flex-development/fsm/core'
 import type {
   Chunk,
   Encoding,
   FileLike,
-  List,
   Value
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 describe('unit:utils/decode', () => {
   it.each<[chunk: Chunk]>([

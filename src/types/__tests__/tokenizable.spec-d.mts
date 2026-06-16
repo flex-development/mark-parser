@@ -4,7 +4,8 @@
  */
 
 import type TestSubject from '#types/tokenizable'
-import type { FileLike, List, Value } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
+import type { FileLike, Value } from '@flex-development/fsm/parse'
 
 describe('unit-d:types/Tokenizable', () => {
   it('should extract FileLike', () => {

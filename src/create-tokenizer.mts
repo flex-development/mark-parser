@@ -3,6 +3,10 @@
  * @module fsm-tokenizer/createTokenizer
  */
 
+import type Info from '#types/info'
+import type ReturnHandle from '#types/return-handle'
+import type { Initialize, Options } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
 import type {
   Attempt,
   Chunk,
@@ -13,33 +17,28 @@ import type {
   Constructs,
   ContentType,
   Create,
+  CreateToken,
   Effects,
   Event,
   Extension,
   FileLike,
-  Info,
   InitialConstruct,
   InitialConstructs,
-  Initialize,
   Line,
-  List,
   NormalizedExtension,
-  Options,
   ParseContext,
   Place,
   Point,
   Range,
-  ReturnHandle,
   SerializeOptions,
   State,
   Token,
-  TokenFactory,
   TokenFields,
   TokenInfo,
   TokenizeContext,
   TokenType,
   Value
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import { Location } from '@flex-development/vfile-location'
 import type { Debugger } from 'debug'
 import { ok as assert } from 'devlop'
@@ -185,9 +184,9 @@ function createTokenizer(
   /**
    * The token factory.
    *
-   * @const {TokenFactory} token
+   * @const {CreateToken} token
    */
-  const token: TokenFactory = createTokenFactory(options)
+  const token: CreateToken = createTokenFactory(options)
 
   /**
    * The list of chunks.

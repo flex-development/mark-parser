@@ -3,7 +3,7 @@
  * @module fsm-tokenizer/utils/defineConstruct
  */
 
-import type { Construct } from '@flex-development/fsm-tokenizer'
+import type { Construct } from '@flex-development/fsm/parse'
 
 /**
  * Define a construct.

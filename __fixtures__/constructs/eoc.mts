@@ -11,7 +11,7 @@ import type {
   Effects,
   State,
   TokenizeContext
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 /**
  * The end-of-content construct.

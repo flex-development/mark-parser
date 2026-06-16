@@ -3,7 +3,8 @@
  * @module fsm-tokenizer/types/Tokenizable
  */
 
-import type { FileLike, List, Value } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
+import type { FileLike, Value } from '@flex-development/fsm/parse'
 
 /**
  * Union of values that can be tokenized.

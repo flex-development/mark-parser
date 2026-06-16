@@ -3,7 +3,7 @@
  * @module fsm-tokenizer/internal/isList
  */
 
-import type { List } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
 
 /**
  * Check if `value` is a list.
@@ -11,7 +11,7 @@ import type { List } from '@flex-development/fsm-tokenizer'
  * @internal
  *
  * @template {any} [T=unknown]
- *  List item type
+ *  The list item type
  *
  * @this {void}
  *

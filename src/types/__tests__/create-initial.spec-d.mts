@@ -7,7 +7,7 @@ import type TestSubject from '#types/create-initial'
 import type {
   InitialConstruct,
   InitialConstructs
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import type { EmptyArray } from '@flex-development/tutils'
 
 describe('unit-d:types/CreateInitial', () => {

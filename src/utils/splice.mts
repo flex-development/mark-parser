@@ -4,7 +4,7 @@
  */
 
 import constants from '#enums/constants'
-import type { List, Numeric } from '@flex-development/fsm-tokenizer'
+import type { List, Numeric } from '@flex-development/fsm/core'
 
 /**
  * Remove items from `list` and, if necessary, insert new `items` in their

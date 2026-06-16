@@ -3,7 +3,7 @@
  * @module fixtures/tt
  */
 
-import type { TokenType } from '@flex-development/fsm-tokenizer'
+import type { TokenType } from '@flex-development/fsm/parse'
 
 /**
  * Token types.

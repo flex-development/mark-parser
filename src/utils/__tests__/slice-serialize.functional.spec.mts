@@ -7,7 +7,8 @@ import codes from '#enums/codes'
 import serializeChunks from '#utils/serialize-chunks'
 import sliceChunks from '#utils/slice-chunks'
 import testSubject from '#utils/slice-serialize'
-import type { Chunk, List, Range } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
+import type { Chunk, Range } from '@flex-development/fsm/parse'
 import type { MockContext } from 'vitest'
 
 vi.mock('#utils/serialize-chunks')

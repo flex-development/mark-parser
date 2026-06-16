@@ -4,7 +4,7 @@
  */
 
 import type TestSubject from '#types/code-check'
-import type { Code } from '@flex-development/fsm-tokenizer'
+import type { Code } from '@flex-development/fsm/parse'
 
 describe('unit-d:types/CodeCheck', () => {
   it('should match [this: void]', () => {

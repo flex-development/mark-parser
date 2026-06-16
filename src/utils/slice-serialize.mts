@@ -3,12 +3,12 @@
  * @module fsm-tokenizer/utils/sliceSerialize
  */
 
+import type { List } from '@flex-development/fsm/core'
 import type {
   Chunk,
-  List,
   Range,
   SerializeOptions
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import serializeChunks from './serialize-chunks.mts'
 import sliceChunks from './slice-chunks.mts'
 

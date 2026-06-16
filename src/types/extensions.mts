@@ -3,11 +3,9 @@
  * @module fsm-tokenizer/types/Extensions
  */
 
-import type {
-  CreateExtensions,
-  Extension,
-  List
-} from '@flex-development/fsm-tokenizer'
+import type { CreateExtensions } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
+import type { Extension } from '@flex-development/fsm/parse'
 
 /**
  * A syntax extension, a list of syntax extensions, or a factory function.

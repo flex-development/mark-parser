@@ -3,11 +3,11 @@
  * @module fsm-tokenizer/types/Initialize
  */
 
+import type { CreateInitial } from '@flex-development/fsm-tokenizer'
 import type {
-  CreateInitial,
   InitialConstruct,
   InitialConstructs
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 /**
  * An initial construct, a record of initial constructs, or a function that

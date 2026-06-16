@@ -5,18 +5,20 @@
 
 import type {
   CodeCheck,
-  Encoding,
   Extensions,
   FinalizeContext,
   Initialize,
-  List,
-  ParseContext,
-  Preprocess,
-  PreprocessOptions,
-  TokenFactory
+  PreprocessOptions
 } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
+import type {
+  CreateToken,
+  Encoding,
+  ParseContext,
+  Point,
+  Preprocess
+} from '@flex-development/fsm/parse'
 import type { u } from '@flex-development/unist-util-builder'
-import type { Point } from '@flex-development/vfile-location'
 
 /**
  * Options for configuring a tokenizer.
@@ -111,12 +113,12 @@ interface Options extends PreprocessOptions {
   /**
    * Create a new token.
    *
-   * @see {@linkcode TokenFactory}
+   * @see {@linkcode CreateToken}
    * @see {@linkcode u}
    *
    * @default u
    */
-  token?: TokenFactory | null | undefined
+  token?: CreateToken | null | undefined
 }
 
 export type { Options as default }

@@ -3,8 +3,9 @@
  * @module fsm-tokenizer/types/tests/unit-d/ReturnHandle
  */
 
+import type Info from '#types/info'
 import type TestSubject from '#types/return-handle'
-import type { Construct, Info } from '@flex-development/fsm-tokenizer'
+import type { Construct } from '@flex-development/fsm/parse'
 
 describe('unit-d:types/ReturnHandle', () => {
   it('should match [this: void]', () => {

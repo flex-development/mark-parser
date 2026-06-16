@@ -5,7 +5,7 @@
 
 import tt from '#fixtures/tt'
 import testSubject from '#internal/token'
-import type { TokenInfo } from '@flex-development/fsm-tokenizer'
+import type { TokenInfo } from '@flex-development/fsm/parse'
 
 describe('unit:internal/token', () => {
   let info: TokenInfo

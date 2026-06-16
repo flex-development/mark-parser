@@ -7,14 +7,14 @@ import chars from '#enums/chars'
 import codes from '#enums/codes'
 import isList from '#internal/is-list'
 import isMutableArray from '#internal/is-mutable-array'
+import type { List } from '@flex-development/fsm/core'
 import type {
   Chunk,
   Code,
   Encoding,
   FileLike,
-  List,
   Value
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import isCode from './is-code.mts'
 import splice from './splice.mts'
 

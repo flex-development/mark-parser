@@ -3,7 +3,7 @@
  * @module fsm-tokenizer/types/ToList
  */
 
-import type { List } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
 
 /**
  * Convert `T` to a list.

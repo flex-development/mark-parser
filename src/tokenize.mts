@@ -4,13 +4,15 @@
  */
 
 import type {
+  Tokenizable,
+  TokenizeOptions
+} from '@flex-development/fsm-tokenizer'
+import type {
   Event,
   FileLike,
-  Tokenizable,
   TokenizeContext,
-  TokenizeOptions,
   Value
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import codes from './enums/codes.mts'
 import isList from './internal/is-list.mts'
 import nil from './internal/nil.mts'

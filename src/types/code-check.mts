@@ -3,7 +3,7 @@
  * @module fsm-tokenizer/types/CodeCheck
  */
 
-import type { Code } from '@flex-development/fsm-tokenizer'
+import type { Code } from '@flex-development/fsm/parse'
 
 /**
  * Check whether a character `code` passes a test.

@@ -3,7 +3,7 @@
  * @module fixtures/resolvers/resolveAll
  */
 
-import type { Event, Resolver } from '@flex-development/fsm-tokenizer'
+import type { Event, Resolver } from '@flex-development/fsm/parse'
 import type { Mock } from 'vitest'
 
 /**

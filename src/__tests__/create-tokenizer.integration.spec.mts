@@ -23,20 +23,19 @@ import resolveTo from '#fixtures/resolvers/resolve-to'
 import tt from '#fixtures/tt'
 import alwaysFalse from '#tests/utils/always-false'
 import snapshot from '#tests/utils/snapshot-events'
+import type { Initialize, Options } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
 import type {
   Chunk,
   ContentType,
   Event,
   FileLike,
-  Initialize,
-  List,
-  Options,
   Place,
   Token,
   TokenizeContext,
   Tokenizer,
   Value
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import { constant } from '@flex-development/tutils'
 import type { Mock } from 'vitest'
 

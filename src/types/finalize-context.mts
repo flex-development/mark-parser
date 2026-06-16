@@ -3,12 +3,12 @@
  * @module fsm-tokenizer/types/FinalizeContext
  */
 
+import type { Options } from '@flex-development/fsm-tokenizer'
 import type {
   InitialConstruct,
   InitialConstructs,
-  Options,
   TokenizeContext
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 /**
  * Finalize the tokenize context.

@@ -8,7 +8,7 @@ import type {
   Event,
   Resolver,
   TokenizeContext
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 /**
  * Call all `resolveAll` handlers.

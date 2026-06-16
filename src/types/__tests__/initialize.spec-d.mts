@@ -4,11 +4,11 @@
  */
 
 import type TestSubject from '#types/initialize'
+import type { CreateInitial } from '@flex-development/fsm-tokenizer'
 import type {
-  CreateInitial,
   InitialConstruct,
   InitialConstructs
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 describe('unit-d:types/Initialize', () => {
   it('should extract CreateInitial', () => {

@@ -6,7 +6,7 @@
 import type {
   InitialConstruct,
   InitialConstructs
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 /**
  * Create an initial construct, a record of initial constructs.

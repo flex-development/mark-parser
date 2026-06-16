@@ -3,7 +3,7 @@
  * @module fsm-tokenizer/internal/skip
  */
 
-import type { Column, Line, Point } from '@flex-development/vfile-location'
+import type { Column, Line, Point } from '@flex-development/fsm/parse'
 
 /**
  * Move `point` a bit forward.

@@ -4,7 +4,7 @@
  */
 
 import type TestSubject from '#types/to-list'
-import type { Chunk } from '@flex-development/fsm-tokenizer'
+import type { Chunk } from '@flex-development/fsm/parse'
 
 describe('unit-d:types/ToList', () => {
   it('should return T if T extends readonly unknown[]', () => {

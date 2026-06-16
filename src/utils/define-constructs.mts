@@ -6,7 +6,7 @@
 import type {
   Construct,
   ConstructRecord
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 export default defineConstructs
 

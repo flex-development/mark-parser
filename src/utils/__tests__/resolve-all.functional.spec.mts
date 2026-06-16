@@ -13,7 +13,7 @@ import type {
   Resolver,
   Token,
   TokenizeContext
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import type { MockInstance } from 'vitest'
 
 describe('functional:utils/resolveAll', () => {

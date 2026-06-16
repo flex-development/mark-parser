@@ -11,7 +11,7 @@ import type {
   InitialConstruct,
   State,
   TokenizeContext
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 /**
  * Create an initial construct.

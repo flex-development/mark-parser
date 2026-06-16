@@ -11,19 +11,21 @@ import ev from '#enums/ev'
 import ct from '#fixtures/ct'
 import tt from '#fixtures/tt'
 import type {
+  FinalizeContext,
+  Initialize,
+  Options
+} from '@flex-development/fsm-tokenizer'
+import type {
   Chunk,
   Code,
   Effects,
-  FinalizeContext,
   InitialConstruct,
-  Initialize,
-  Options,
   Place,
   Point,
   State,
   Token,
   TokenizeContext
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import { isObjectCurly } from '@flex-development/tutils'
 
 describe('unit:createTokenizer', () => {

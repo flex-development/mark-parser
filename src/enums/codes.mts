@@ -3,7 +3,7 @@
  * @module fsm-tokenizer/enums/codes
  */
 
-import type { Code } from '@flex-development/fsm-tokenizer'
+import type { Code } from '@flex-development/fsm/parse'
 
 /**
  * Character codes.

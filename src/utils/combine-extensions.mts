@@ -4,12 +4,12 @@
  */
 
 import toList from '#internal/to-list'
+import type { List } from '@flex-development/fsm/core'
 import type {
   Construct,
   Extension,
-  List,
   NormalizedExtension
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import { ok } from 'devlop'
 import splice from './splice.mts'
 

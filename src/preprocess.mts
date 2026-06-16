@@ -3,15 +3,15 @@
  * @module fsm-tokenizer/preprocess
  */
 
+import type { PreprocessOptions } from '@flex-development/fsm-tokenizer'
 import type {
   Code,
   Column,
   Encoding,
   FileLike,
   Preprocess,
-  PreprocessOptions,
   Value
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import chars from './enums/chars.mts'
 import codes from './enums/codes.mts'
 import constants from './enums/constants.mts'

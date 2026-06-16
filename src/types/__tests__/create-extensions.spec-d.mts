@@ -4,7 +4,8 @@
  */
 
 import type TestSubject from '#types/create-extensions'
-import type { Extension, List } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
+import type { Extension } from '@flex-development/fsm/parse'
 
 describe('unit-d:types/CreateExtensions', () => {
   it('should match [this: void]', () => {

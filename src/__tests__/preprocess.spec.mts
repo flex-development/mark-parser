@@ -7,13 +7,13 @@ import chars from '#enums/chars'
 import codes from '#enums/codes'
 import nil from '#internal/nil'
 import testSubject from '#preprocess'
+import type { PreprocessOptions } from '@flex-development/fsm-tokenizer'
 import type {
   Code,
   FileLike,
   Preprocess,
-  PreprocessOptions,
   Value
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 describe('unit:preprocess', () => {
   it('should return character code preprocessor', () => {

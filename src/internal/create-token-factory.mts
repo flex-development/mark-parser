@@ -3,7 +3,8 @@
  * @module fsm-tokenizer/internal/createTokenFactory
  */
 
-import type { Options, TokenFactory } from '@flex-development/fsm-tokenizer'
+import type { Options } from '@flex-development/fsm-tokenizer'
+import type { CreateToken } from '@flex-development/fsm/parse'
 import token from './token.mts'
 
 /**
@@ -15,13 +16,13 @@ import token from './token.mts'
  *
  * @param {Partial<Options>} options
  *  The tokenizer options
- * @return {TokenFactory}
+ * @return {CreateToken}
  *  The token factory
  */
 function createTokenFactory(
   this: void,
   options: Partial<Options>
-): TokenFactory {
+): CreateToken {
   return options.token ?? token
 }
 

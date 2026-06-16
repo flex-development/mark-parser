@@ -5,7 +5,8 @@
 
 import size from '#internal/size'
 import sliceable from '#internal/sliceable'
-import type { Chunk, List, Range } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
+import type { Chunk, Range } from '@flex-development/fsm/parse'
 import { ok } from 'devlop'
 
 export default sliceChunks

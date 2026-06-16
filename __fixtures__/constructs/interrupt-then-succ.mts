@@ -10,7 +10,7 @@ import type {
   Effects,
   State,
   TokenizeContext
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import eventsThenSucc from './events-then-succ.mts'
 
 /**

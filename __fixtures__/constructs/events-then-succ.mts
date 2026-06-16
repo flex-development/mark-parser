@@ -11,7 +11,7 @@ import type {
   NamedConstruct,
   State,
   TokenizeContext
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 /**
  * A construct that produces a single event pack and then succeeds.

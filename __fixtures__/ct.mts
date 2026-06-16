@@ -3,9 +3,9 @@
  * @module fixtures/ct
  */
 
-import type { ContentType } from '@flex-development/fsm-tokenizer'
+import type { ContentType } from '@flex-development/fsm/parse'
 
-declare module '@flex-development/fsm-tokenizer' {
+declare module '@flex-development/fsm/parse' {
   interface ContentTypeMap {
     document: ct.document
   }

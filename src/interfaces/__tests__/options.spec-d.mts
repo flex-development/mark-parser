@@ -6,18 +6,20 @@
 import type TestSubject from '#interfaces/options'
 import type {
   CodeCheck,
-  Encoding,
   Extensions,
   FinalizeContext,
   Initialize,
-  List,
-  ParseContext,
-  Preprocess,
-  PreprocessOptions,
-  TokenFactory
+  PreprocessOptions
 } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
+import type {
+  CreateToken,
+  Encoding,
+  ParseContext,
+  Point,
+  Preprocess
+} from '@flex-development/fsm/parse'
 import type { Nilable } from '@flex-development/tutils'
-import type { Point } from '@flex-development/vfile-location'
 
 describe('unit-d:interfaces/Options', () => {
   it('should extend PreprocessOptions', () => {
@@ -90,9 +92,9 @@ describe('unit-d:interfaces/Options', () => {
       .toEqualTypeOf<Nilable<Preprocess>>()
   })
 
-  it('should match [token?: TokenFactory | null | undefined]', () => {
+  it('should match [token?: CreateToken | null | undefined]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('token')
-      .toEqualTypeOf<Nilable<TokenFactory>>()
+      .toEqualTypeOf<Nilable<CreateToken>>()
   })
 })

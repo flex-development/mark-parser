@@ -9,7 +9,7 @@ import type {
   Effects,
   State,
   TokenizeContext
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 /**
  * A construct that consumes a single character code and then fails.

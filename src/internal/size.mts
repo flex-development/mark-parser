@@ -3,7 +3,7 @@
  * @module fsm-tokenizer/internal/size
  */
 
-import type { List } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
 
 /**
  * Get the size of a `list`.

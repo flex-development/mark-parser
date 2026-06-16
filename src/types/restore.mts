@@ -6,6 +6,8 @@
 /**
  * Restore internal state.
  *
+ * @internal
+ *
  * @this {void}
  *
  * @return {undefined}

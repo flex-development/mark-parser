@@ -10,7 +10,8 @@ import eventsThenSucc from '#fixtures/constructs/events-then-succ'
 import ct from '#fixtures/ct'
 import tt from '#fixtures/tt'
 import testSubject from '#utils/combine-extensions'
-import type { Extension, List } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
+import type { Extension } from '@flex-development/fsm/parse'
 
 describe('unit:utils/combineExtensions', () => {
   type Combinable = Extension | List<Extension> | null | undefined

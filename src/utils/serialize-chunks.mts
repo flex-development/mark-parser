@@ -7,12 +7,12 @@ import chars from '#enums/chars'
 import codes from '#enums/codes'
 import nil from '#internal/nil'
 import size from '#internal/size'
+import type { List } from '@flex-development/fsm/core'
 import type {
   Chunk,
   Code,
-  List,
   SerializeOptions
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import { ok } from 'devlop'
 
 /**

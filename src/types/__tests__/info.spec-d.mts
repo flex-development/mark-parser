@@ -4,7 +4,7 @@
  */
 
 import type TestSubject from '#types/info'
-import type { Restore } from '@flex-development/fsm-tokenizer'
+import type Restore from '#types/restore'
 
 describe('unit-d:types/Info', () => {
   it('should match [from: number]', () => {

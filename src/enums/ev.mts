@@ -3,7 +3,7 @@
  * @module fsm-tokenizer/enums/ev
  */
 
-import type { EventType } from '@flex-development/fsm-tokenizer'
+import type { EventType } from '@flex-development/fsm/parse'
 
 /**
  * Event types.

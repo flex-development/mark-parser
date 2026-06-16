@@ -10,12 +10,13 @@
     "rewriteRelativeImportExtensions": true,
     "rootDir": "src",
     "sourceMap": false,
+    "stripInternal": true,
     "target": "es2024"
   },
   "exclude": ["**/__mocks__/**", "**/__tests__/**"],
   "extends": "./tsconfig.json",
   "files": [
-    "typings/@flex-development/fsm-tokenizer/index.d.mts",
+    "typings/@flex-development/fsm/parse/index.d.mts",
     "typings/typescript/lib.es5.d.ts"
   ],
   "include": ["dist/**/*", "src/**/**.mts"]

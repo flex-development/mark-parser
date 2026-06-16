@@ -4,12 +4,12 @@
  */
 
 import skip from '#internal/skip'
-import type { DefineSkip } from '@flex-development/fsm-tokenizer'
 import type {
   Column,
+  DefineSkip,
   Line,
   Point
-} from '@flex-development/vfile-location'
+} from '@flex-development/fsm/parse'
 import type { Debugger } from 'debug'
 
 /**

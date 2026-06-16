@@ -1655,13 +1655,13 @@ __metadata:
     "@flex-development/commitlint-config": "npm:1.0.1"
     "@flex-development/eslint-config": "npm:1.1.1"
     "@flex-development/export-regex": "npm:2.0.0"
+    "@flex-development/fsm": "flex-development/fsm#commit=566fbcd8394301afc14115eee8377a560a6f1c84"
     "@flex-development/grease": "npm:3.0.0-alpha.9"
     "@flex-development/pathe": "npm:4.0.2"
     "@flex-development/remark-preset": "npm:1.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
     "@flex-development/unist-util-builder": "npm:2.0.0"
     "@flex-development/unist-util-inspect": "npm:1.1.0"
-    "@flex-development/unist-util-types": "npm:1.6.1"
     "@flex-development/vfile-location": "npm:1.1.1"
     "@rollup/plugin-node-resolve": "npm:16.0.3"
     "@tsconfig/strictest": "npm:2.0.8"
@@ -1706,6 +1706,16 @@ __metadata:
     vitest: "npm:4.1.9"
   languageName: unknown
   linkType: soft
+
+"@flex-development/fsm@flex-development/fsm#commit=566fbcd8394301afc14115eee8377a560a6f1c84":
+  version: 0.0.0
+  resolution: "@flex-development/fsm@https://github.com/flex-development/fsm.git#commit=566fbcd8394301afc14115eee8377a560a6f1c84"
+  dependencies:
+    "@flex-development/unist-util-types": "npm:1.6.1"
+    "@types/unist": "npm:3.0.3"
+  checksum: 10/bddfcb58a989b854e608523539697a745405856390d6293dd8ba373d88fc94a5bb75f3fdb4aec86fd4eeca0da600fcc7f1b90148f131a2de89598c5e1278c640
+  languageName: node
+  linkType: hard
 
 "@flex-development/grease@npm:3.0.0-alpha.9":
   version: 3.0.0-alpha.9

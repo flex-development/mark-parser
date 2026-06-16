@@ -10,16 +10,16 @@ import codes from '#enums/codes'
 import consumeThenSucc from '#fixtures/constructs/consume-then-succ'
 import testSubject from '#tokenize'
 import decode from '#utils/decode'
+import type { TokenizeOptions } from '@flex-development/fsm-tokenizer'
+import type { List } from '@flex-development/fsm/core'
 import type {
   Encoding,
   FileLike,
-  List,
   Preprocess,
   TokenizeContext,
-  TokenizeOptions,
   Value,
   Write
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 import type { NIL } from '@flex-development/tutils'
 import type { Mock } from 'vitest'
 

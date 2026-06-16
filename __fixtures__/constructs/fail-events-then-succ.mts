@@ -11,7 +11,7 @@ import type {
   Effects,
   State,
   TokenizeContext
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/fsm/parse'
 
 /**
  * A construct that produces a single `fail` event pack and then succeeds.
