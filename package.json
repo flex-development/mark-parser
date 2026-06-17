@@ -169,7 +169,7 @@
     "eslint": "9.33.0",
     "gemoji": "8.1.0",
     "growl": "1.10.5",
-    "happy-dom": "20.10.4",
+    "happy-dom": "20.10.5",
     "husky": "9.1.7",
     "is-ci": "4.1.0",
     "micromark-core-commonmark": "2.0.3",
