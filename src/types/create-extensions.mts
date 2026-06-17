@@ -3,20 +3,18 @@
  * @module fsm-tokenizer/types/CreateExtensions
  */
 
-import type { List } from '@flex-development/fsm/core'
-import type { Extension } from '@flex-development/fsm/parse'
+import type { Extensions } from '@flex-development/fsm/parse'
 
 /**
  * Create a syntax extension or a collection of syntax extensions.
  *
- * @see {@linkcode Extension}
- * @see {@linkcode List}
+ * @see {@linkcode Extensions}
  *
  * @this {void}
  *
- * @return {Extension | List<Extension>}
+ * @return {Extensions}
  *  The syntax extension, or the list of extensions
  */
-type CreateExtensions = (this: void) => Extension | List<Extension>
+type CreateExtensions = (this: void) => Extensions
 
 export type { CreateExtensions as default }

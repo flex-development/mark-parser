@@ -130,7 +130,7 @@
     "typecheck:ui": "yarn test:ui --typecheck --mode=typecheck"
   },
   "dependencies": {
-    "@flex-development/fsm": "flex-development/fsm#commit=566fbcd8394301afc14115eee8377a560a6f1c84",
+    "@flex-development/fsm": "flex-development/fsm#commit=4f448371fcc0ce0adba6e8ef45126a8eb56437ee",
     "@flex-development/unist-util-builder": "2.0.0",
     "@flex-development/vfile-location": "1.1.1",
     "debug": "4.4.3",

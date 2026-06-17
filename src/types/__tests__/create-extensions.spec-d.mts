@@ -4,8 +4,7 @@
  */
 
 import type TestSubject from '#types/create-extensions'
-import type { List } from '@flex-development/fsm/core'
-import type { Extension } from '@flex-development/fsm/parse'
+import type { Extensions } from '@flex-development/fsm/parse'
 
 describe('unit-d:types/CreateExtensions', () => {
   it('should match [this: void]', () => {
@@ -19,10 +18,8 @@ describe('unit-d:types/CreateExtensions', () => {
   })
 
   describe('returns', () => {
-    it('should return Extension | List<Extension>', () => {
-      expectTypeOf<TestSubject>()
-        .returns
-        .toEqualTypeOf<Extension | List<Extension>>()
+    it('should return Extensions', () => {
+      expectTypeOf<TestSubject>().returns.toEqualTypeOf<Extensions>()
     })
   })
 })

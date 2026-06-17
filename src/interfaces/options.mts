@@ -5,7 +5,7 @@
 
 import type {
   CodeCheck,
-  Extensions,
+  CreateExtensions,
   FinalizeContext,
   Initialize,
   PreprocessOptions
@@ -14,6 +14,7 @@ import type { List } from '@flex-development/fsm/core'
 import type {
   CreateToken,
   Encoding,
+  Extensions,
   ParseContext,
   Point,
   Preprocess
@@ -62,9 +63,10 @@ interface Options extends PreprocessOptions {
   /**
    * A syntax extension, a list of syntax extensions, or a factory function.
    *
+   * @see {@linkcode CreateExtensions}
    * @see {@linkcode Extensions}
    */
-  extensions?: Extensions | null | undefined
+  extensions?: CreateExtensions | Extensions | null | undefined
 
   /**
    * Finalize the tokenization context.

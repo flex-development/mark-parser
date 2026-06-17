@@ -6,7 +6,7 @@
 import type TestSubject from '#interfaces/options'
 import type {
   CodeCheck,
-  Extensions,
+  CreateExtensions,
   FinalizeContext,
   Initialize,
   PreprocessOptions
@@ -15,6 +15,7 @@ import type { List } from '@flex-development/fsm/core'
 import type {
   CreateToken,
   Encoding,
+  Extensions,
   ParseContext,
   Point,
   Preprocess
@@ -50,10 +51,10 @@ describe('unit-d:interfaces/Options', () => {
       .toEqualTypeOf<Nilable<Encoding>>()
   })
 
-  it('should match [extensions?: Extensions | null | undefined]', () => {
+  it('should match [extensions?: CreateExtensions | Extensions | null | undefined]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('extensions')
-      .toEqualTypeOf<Nilable<Extensions>>()
+      .toEqualTypeOf<Nilable<CreateExtensions | Extensions>>()
   })
 
   it('should match [finalizeContext?: FinalizeContext | null | undefined]', () => {
