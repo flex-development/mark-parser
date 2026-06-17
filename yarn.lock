@@ -1685,7 +1685,7 @@ __metadata:
     eslint: "npm:9.33.0"
     gemoji: "npm:8.1.0"
     growl: "npm:1.10.5"
-    happy-dom: "npm:20.10.4"
+    happy-dom: "npm:20.10.5"
     husky: "npm:9.1.7"
     is-ci: "npm:4.1.0"
     micromark-core-commonmark: "npm:2.0.3"
@@ -6426,9 +6426,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:20.10.4":
-  version: 20.10.4
-  resolution: "happy-dom@npm:20.10.4"
+"happy-dom@npm:20.10.5":
+  version: 20.10.5
+  resolution: "happy-dom@npm:20.10.5"
   dependencies:
     "@types/node": "npm:>=20.0.0"
     "@types/whatwg-mimetype": "npm:^3.0.2"
@@ -6437,7 +6437,7 @@ __metadata:
     entities: "npm:^7.0.1"
     whatwg-mimetype: "npm:^3.0.0"
     ws: "npm:^8.21.0"
-  checksum: 10/f8ded323fdcf6693013005d1f2bfd9485cd63618cd4a2827f67d3764294fc6d2e32e0993c53491df580ab7a5fcc0afc14f082248cdfee40af92aedb7606ec025
+  checksum: 10/2eff3dde2be9624148a955bfd55f9b24b4749d35742d4ca503808af01b81827a0fd69466715871d29400ccf46f59ea764cfd918896de9eb837151b9383439e1b
   languageName: node
   linkType: hard
 
