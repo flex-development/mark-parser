@@ -1,15 +1,15 @@
 /**
  * @file Type Tests - FinalizeContext
- * @module fsm-tokenizer/types/tests/unit-d/FinalizeContext
+ * @module mark-parser/types/tests/unit-d/FinalizeContext
  */
 
 import type TestSubject from '#types/finalize-context'
-import type { Options } from '@flex-development/fsm-tokenizer'
+import type { Options } from '@flex-development/mark-parser'
 import type {
   InitialConstruct,
   InitialConstructs,
   TokenizeContext
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 
 describe('unit-d:types/FinalizeContext', () => {
   it('should match [this: void]', () => {

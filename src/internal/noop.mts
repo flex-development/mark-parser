@@ -1,6 +1,6 @@
 /**
  * @file Internal - noop
- * @module fsm-tokenizer/internal/noop
+ * @module mark-parser/internal/noop
  */
 
 /**

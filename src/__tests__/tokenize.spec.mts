@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - tokenize
- * @module fsm-tokenizer/tests/unit/tokenize
+ * @module mark-parser/tests/unit/tokenize
  */
 
 import initialize from '#constructs/initialize'
@@ -10,8 +10,8 @@ import codes from '#enums/codes'
 import consumeThenSucc from '#fixtures/constructs/consume-then-succ'
 import testSubject from '#tokenize'
 import decode from '#utils/decode'
-import type { TokenizeOptions } from '@flex-development/fsm-tokenizer'
-import type { List } from '@flex-development/fsm/core'
+import type { TokenizeOptions } from '@flex-development/mark-parser'
+import type { List } from '@flex-development/mark/core'
 import type {
   Encoding,
   FileLike,
@@ -19,7 +19,7 @@ import type {
   TokenizeContext,
   Value,
   Write
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import type { NIL } from '@flex-development/tutils'
 import type { Mock } from 'vitest'
 

@@ -1,12 +1,12 @@
 /**
  * @file Utilities - defineConstructs
- * @module fsm-tokenizer/utils/defineConstructs
+ * @module mark-parser/utils/defineConstructs
  */
 
 import type {
   Construct,
   ConstructRecord
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 
 export default defineConstructs
 

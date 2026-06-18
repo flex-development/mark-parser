@@ -1,9 +1,9 @@
 /**
  * @file Type Aliases - CreateExtensions
- * @module fsm-tokenizer/types/CreateExtensions
+ * @module mark-parser/types/CreateExtensions
  */
 
-import type { Extensions } from '@flex-development/fsm/parse'
+import type { Extensions } from '@flex-development/mark/parse'
 
 /**
  * Create a syntax extension or a collection of syntax extensions.

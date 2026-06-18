@@ -1,14 +1,14 @@
-# fsm-tokenizer
+# mark-parser
 
-[![github release](https://img.shields.io/github/v/release/flex-development/fsm-tokenizer.svg?include_prereleases\&sort=semver)](https://github.com/flex-development/fsm-tokenizer/releases/latest)
-[![npm](https://img.shields.io/npm/v/@flex-development/fsm-tokenizer.svg)](https://npmjs.com/package/@flex-development/fsm-tokenizer)
-[![npm downloads](https://img.shields.io/npm/dm/@flex-development/fsm-tokenizer.svg)](https://www.npmcharts.com/compare/@flex-development/fsm-tokenizer?interval=30)
-[![install size](https://packagephobia.now.sh/badge?p=@flex-development/fsm-tokenizer)](https://packagephobia.now.sh/result?p=@flex-development/fsm-tokenizer)
-[![minified bundle size](https://badgen.net/bundlephobia/min/@flex-development/fsm-tokenizer?cache)](https://bundlephobia.com/package/@flex-development/fsm-tokenizer)
-[![tree shaking suppport](https://badgen.net/bundlephobia/tree-shaking/@flex-development/fsm-tokenizer)](https://bundlephobia.com/package/@flex-development/fsm-tokenizer)
-[![codecov](https://codecov.io/gh/flex-development/fsm-tokenizer/graph/badge.svg?token=iA1BvaucoZ)](https://codecov.io/gh/flex-development/fsm-tokenizer)
+[![github release](https://img.shields.io/github/v/release/flex-development/mark-parser.svg?include_prereleases\&sort=semver)](https://github.com/flex-development/mark-parser/releases/latest)
+[![npm](https://img.shields.io/npm/v/@flex-development/mark-parser.svg)](https://npmjs.com/package/@flex-development/mark-parser)
+[![npm downloads](https://img.shields.io/npm/dm/@flex-development/mark-parser.svg)](https://www.npmcharts.com/compare/@flex-development/mark-parser?interval=30)
+[![install size](https://packagephobia.now.sh/badge?p=@flex-development/mark-parser)](https://packagephobia.now.sh/result?p=@flex-development/mark-parser)
+[![minified bundle size](https://badgen.net/bundlephobia/min/@flex-development/mark-parser?cache)](https://bundlephobia.com/package/@flex-development/mark-parser)
+[![tree shaking suppport](https://badgen.net/bundlephobia/tree-shaking/@flex-development/mark-parser)](https://bundlephobia.com/package/@flex-development/mark-parser)
+[![codecov](https://codecov.io/gh/flex-development/mark-parser/graph/badge.svg?token=iA1BvaucoZ)](https://codecov.io/gh/flex-development/mark-parser)
 [![module type: esm](https://img.shields.io/badge/module%20type-esm-brightgreen)](https://github.com/voxpelli/badges-cjs-esm)
-[![license](https://img.shields.io/github/license/flex-development/fsm-tokenizer.svg)](LICENSE.md)
+[![license](https://img.shields.io/github/license/flex-development/mark-parser.svg)](LICENSE.md)
 [![conventional commits](https://img.shields.io/badge/-conventional%20commits-fe5196?logo=conventional-commits\&logoColor=ffffff)](https://conventionalcommits.org)
 [![typescript](https://img.shields.io/badge/-typescript-3178c6?logo=typescript\&logoColor=ffffff)](https://typescriptlang.org)
 [![vitest](https://img.shields.io/badge/-vitest-6e9f18?style=flat\&logo=vitest\&logoColor=ffffff)](https://vitest.dev)
@@ -45,7 +45,7 @@ This package is [ESM only][esm].
 In Node.js with [yarn][]:
 
 ```sh
-yarn add @flex-development/fsm-tokenizer
+yarn add @flex-development/mark-parser
 ```
 
 <blockquote>
@@ -58,14 +58,14 @@ yarn add @flex-development/fsm-tokenizer
 In Deno with [`esm.sh`][esmsh]:
 
 ```ts
-import { tokenize } from 'https://esm.sh/@flex-development/fsm-tokenizer'
+import { tokenize } from 'https://esm.sh/@flex-development/mark-parser'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import { tokenize } from 'https://esm.sh/@flex-development/fsm-tokenizer'
+  import { tokenize } from 'https://esm.sh/@flex-development/mark-parser'
 </script>
 ```
 

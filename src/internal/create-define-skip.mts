@@ -1,6 +1,6 @@
 /**
  * @file Internal - createDefineSkip
- * @module fsm-tokenizer/internal/createDefineSkip
+ * @module mark-parser/internal/createDefineSkip
  */
 
 import skip from '#internal/skip'
@@ -9,7 +9,7 @@ import type {
   DefineSkip,
   Line,
   Point
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import type { Debugger } from 'debug'
 
 /**

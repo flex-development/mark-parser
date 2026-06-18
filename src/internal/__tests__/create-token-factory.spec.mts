@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - createTokenFactory
- * @module fsm-tokenizer/internal/tests/unit/createTokenFactory
+ * @module mark-parser/internal/tests/unit/createTokenFactory
  */
 
 import testSubject from '#internal/create-token-factory'

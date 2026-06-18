@@ -1,6 +1,6 @@
 /**
  * @file E2E Tests - constructs
- * @module fsm-tokenizer/constructs/tests/e2e/api
+ * @module mark-parser/constructs/tests/e2e/api
  */
 
 import * as testSubject from '#constructs/index'

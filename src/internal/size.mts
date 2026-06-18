@@ -1,9 +1,9 @@
 /**
  * @file Internal - size
- * @module fsm-tokenizer/internal/size
+ * @module mark-parser/internal/size
  */
 
-import type { List } from '@flex-development/fsm/core'
+import type { List } from '@flex-development/mark/core'
 
 /**
  * Get the size of a `list`.

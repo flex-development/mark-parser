@@ -1,6 +1,6 @@
 /**
  * @file Functional Tests - createDefineSkip
- * @module fsm-tokenizer/internal/tests/functional/createDefineSkip
+ * @module mark-parser/internal/tests/functional/createDefineSkip
  */
 
 import testSubject from '#internal/create-define-skip'

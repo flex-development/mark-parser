@@ -1,6 +1,6 @@
 /**
  * @file Utilities - push
- * @module fsm-tokenizer/utils/push
+ * @module mark-parser/utils/push
  */
 
 import splice from './splice.mts'

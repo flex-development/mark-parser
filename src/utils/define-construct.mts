@@ -1,9 +1,9 @@
 /**
  * @file Utilities - defineConstruct
- * @module fsm-tokenizer/utils/defineConstruct
+ * @module mark-parser/utils/defineConstruct
  */
 
-import type { Construct } from '@flex-development/fsm/parse'
+import type { Construct } from '@flex-development/mark/parse'
 
 /**
  * Define a construct.

@@ -1,9 +1,9 @@
 /**
  * @file Type Aliases - CodeCheck
- * @module fsm-tokenizer/types/CodeCheck
+ * @module mark-parser/types/CodeCheck
  */
 
-import type { Code } from '@flex-development/fsm/parse'
+import type { Code } from '@flex-development/mark/parse'
 
 /**
  * Check whether a character `code` passes a test.

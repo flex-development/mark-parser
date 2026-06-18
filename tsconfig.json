@@ -3,7 +3,7 @@
     "allowImportingTsExtensions": true,
     "allowJs": true,
     "alwaysStrict": true,
-    "customConditions": ["fsm-tokenizer", "development"],
+    "customConditions": ["mark-parser", "development"],
     "declaration": true,
     "declarationMap": true,
     "lib": ["es2024", "dom"],

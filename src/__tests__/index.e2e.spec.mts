@@ -1,11 +1,11 @@
 /**
  * @file E2E Tests - api
- * @module fsm-tokenizer/tests/e2e/api
+ * @module mark-parser/tests/e2e/api
  */
 
-import * as testSubject from '@flex-development/fsm-tokenizer'
+import * as testSubject from '@flex-development/mark-parser'
 
-describe('e2e:fsm-tokenizer', () => {
+describe('e2e:mark-parser', () => {
   it('should expose public api', () => {
     expect(Object.keys(testSubject)).toMatchSnapshot()
   })

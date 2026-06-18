@@ -1,11 +1,11 @@
 /**
  * @file Unit Tests - token
- * @module fsm-tokenizer/internal/tests/unit/token
+ * @module mark-parser/internal/tests/unit/token
  */
 
 import tt from '#fixtures/tt'
 import testSubject from '#internal/token'
-import type { TokenInfo } from '@flex-development/fsm/parse'
+import type { TokenInfo } from '@flex-development/mark/parse'
 
 describe('unit:internal/token', () => {
   let info: TokenInfo

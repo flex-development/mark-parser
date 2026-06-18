@@ -1,18 +1,18 @@
 /**
  * @file tokenize
- * @module fsm-tokenizer/tokenize
+ * @module mark-parser/tokenize
  */
 
 import type {
   Tokenizable,
   TokenizeOptions
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/mark-parser'
 import type {
   Event,
   FileLike,
   TokenizeContext,
   Value
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import codes from './enums/codes.mts'
 import isList from './internal/is-list.mts'
 import nil from './internal/nil.mts'

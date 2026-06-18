@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - tab
- * @module fsm-tokenizer/utils/tests/unit/tab
+ * @module mark-parser/utils/tests/unit/tab
  */
 
 import codes from '#enums/codes'

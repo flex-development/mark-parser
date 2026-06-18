@@ -1,6 +1,6 @@
 /**
  * @file E2E Tests - enums
- * @module fsm-tokenizer/enums/tests/e2e/api
+ * @module mark-parser/enums/tests/e2e/api
  */
 
 import * as testSubject from '#enums/index'

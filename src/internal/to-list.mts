@@ -1,6 +1,6 @@
 /**
  * @file Internal - toList
- * @module fsm-tokenizer/internal/toList
+ * @module mark-parser/internal/toList
  */
 
 import isList from '#internal/is-list'

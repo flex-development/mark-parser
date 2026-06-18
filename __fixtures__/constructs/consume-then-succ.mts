@@ -1,6 +1,6 @@
 /**
  * @file Fixtures - consumeThenSucc
- * @module fsm-tokenizer/constructs/consumeThenSucc
+ * @module mark-parser/constructs/consumeThenSucc
  */
 
 import type {
@@ -9,7 +9,7 @@ import type {
   Effects,
   State,
   TokenizeContext
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 
 /**
  * A construct that consumes a single character code and then succeeds.

@@ -3,7 +3,7 @@
  * @module tests/utils/snapshotEvents
  */
 
-import type { Event, EventType, Token } from '@flex-development/fsm/parse'
+import type { Event, EventType, Token } from '@flex-development/mark/parse'
 
 /**
  * Get a snapshot-compliant list of events.

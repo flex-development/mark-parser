@@ -1,10 +1,10 @@
 /**
  * @file Utilities - tab
- * @module fsm-tokenizer/utils/tab
+ * @module mark-parser/utils/tab
  */
 
 import codes from '#enums/codes'
-import type { Code } from '@flex-development/fsm/parse'
+import type { Code } from '@flex-development/mark/parse'
 
 /**
  * Check if `code` is a character code representing a horizontal tab.

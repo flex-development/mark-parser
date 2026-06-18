@@ -1,6 +1,6 @@
 /**
  * @file Type Aliases - Restore
- * @module fsm-tokenizer/types/Restore
+ * @module mark-parser/types/Restore
  */
 
 /**

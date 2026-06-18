@@ -1,20 +1,20 @@
 /**
  * @file Utilities - decode
- * @module fsm-tokenizer/utils/decode
+ * @module mark-parser/utils/decode
  */
 
 import chars from '#enums/chars'
 import codes from '#enums/codes'
 import isList from '#internal/is-list'
 import isMutableArray from '#internal/is-mutable-array'
-import type { List } from '@flex-development/fsm/core'
+import type { List } from '@flex-development/mark/core'
 import type {
   Chunk,
   Code,
   Encoding,
   FileLike,
   Value
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import isCode from './is-code.mts'
 import splice from './splice.mts'
 

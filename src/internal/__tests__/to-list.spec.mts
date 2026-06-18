@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - toList
- * @module fsm-tokenizer/internal/tests/unit/toList
+ * @module mark-parser/internal/tests/unit/toList
  */
 
 import chars from '#enums/chars'

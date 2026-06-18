@@ -1,6 +1,6 @@
 /**
  * @file Entry Point - Enums
- * @module fsm-tokenizer/enums
+ * @module mark-parser/enums
  */
 
 export { default as chars } from './chars.mts'

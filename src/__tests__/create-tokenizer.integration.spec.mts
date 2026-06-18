@@ -1,6 +1,6 @@
 /**
  * @file Integration Tests - createTokenizer
- * @module fsm-tokenizer/tests/integration/createTokenizer
+ * @module mark-parser/tests/integration/createTokenizer
  */
 
 import initialize from '#constructs/initialize'
@@ -23,8 +23,8 @@ import resolveTo from '#fixtures/resolvers/resolve-to'
 import tt from '#fixtures/tt'
 import alwaysFalse from '#tests/utils/always-false'
 import snapshot from '#tests/utils/snapshot-events'
-import type { Initialize, Options } from '@flex-development/fsm-tokenizer'
-import type { List } from '@flex-development/fsm/core'
+import type { Initialize, Options } from '@flex-development/mark-parser'
+import type { List } from '@flex-development/mark/core'
 import type {
   Chunk,
   ContentType,
@@ -35,7 +35,7 @@ import type {
   TokenizeContext,
   Tokenizer,
   Value
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import { constant } from '@flex-development/tutils'
 import type { Mock } from 'vitest'
 

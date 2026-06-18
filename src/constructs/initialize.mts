@@ -1,6 +1,6 @@
 /**
  * @file Constructs - initialize
- * @module fsm-tokenizer/constructs/initialize
+ * @module mark-parser/constructs/initialize
  */
 
 import type {
@@ -11,7 +11,7 @@ import type {
   InitialConstruct,
   State,
   TokenizeContext
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 
 /**
  * Create an initial construct.

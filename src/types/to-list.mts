@@ -1,9 +1,9 @@
 /**
  * @file Type Aliases - ToList
- * @module fsm-tokenizer/types/ToList
+ * @module mark-parser/types/ToList
  */
 
-import type { List } from '@flex-development/fsm/core'
+import type { List } from '@flex-development/mark/core'
 
 /**
  * Convert `T` to a list.

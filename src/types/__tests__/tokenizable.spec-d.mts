@@ -1,11 +1,11 @@
 /**
  * @file Type Tests - Tokenizable
- * @module fsm-tokenizer/types/tests/unit-d/Tokenizable
+ * @module mark-parser/types/tests/unit-d/Tokenizable
  */
 
 import type TestSubject from '#types/tokenizable'
-import type { List } from '@flex-development/fsm/core'
-import type { FileLike, Value } from '@flex-development/fsm/parse'
+import type { List } from '@flex-development/mark/core'
+import type { FileLike, Value } from '@flex-development/mark/parse'
 
 describe('unit-d:types/Tokenizable', () => {
   it('should extract FileLike', () => {

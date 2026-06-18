@@ -1,6 +1,6 @@
 /**
  * @file Entry Point - Interfaces
- * @module fsm-tokenizer/interfaces
+ * @module mark-parser/interfaces
  */
 
 export type { default as Options } from './options.mts'

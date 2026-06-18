@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - createTokenizer
- * @module fsm-tokenizer/tests/unit/createTokenizer
+ * @module mark-parser/tests/unit/createTokenizer
  */
 
 import testSubject from '#create-tokenizer'
@@ -14,7 +14,7 @@ import type {
   FinalizeContext,
   Initialize,
   Options
-} from '@flex-development/fsm-tokenizer'
+} from '@flex-development/mark-parser'
 import type {
   Chunk,
   Code,
@@ -25,7 +25,7 @@ import type {
   State,
   Token,
   TokenizeContext
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import { isObjectCurly } from '@flex-development/tutils'
 
 describe('unit:createTokenizer', () => {

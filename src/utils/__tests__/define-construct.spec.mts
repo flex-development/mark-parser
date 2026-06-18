@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - defineConstruct
- * @module fsm-tokenizer/utils/tests/unit/defineConstruct
+ * @module mark-parser/utils/tests/unit/defineConstruct
  */
 
 import testSubject from '#utils/define-construct'

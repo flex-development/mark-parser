@@ -1,6 +1,6 @@
 /**
  * @file Interfaces - PreprocessOptions
- * @module fsm-tokenizer/interfaces/PreprocessOptions
+ * @module mark-parser/interfaces/PreprocessOptions
  */
 
 /**

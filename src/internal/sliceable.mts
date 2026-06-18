@@ -1,6 +1,6 @@
 /**
  * @file Internal - sliceable
- * @module fsm-tokenizer/internal/sliceable
+ * @module mark-parser/internal/sliceable
  */
 
 /**

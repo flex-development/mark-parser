@@ -1,15 +1,15 @@
 /**
  * @file Utilities - combineExtensions
- * @module fsm-tokenizer/utils/combineExtensions
+ * @module mark-parser/utils/combineExtensions
  */
 
 import toList from '#internal/to-list'
-import type { List } from '@flex-development/fsm/core'
+import type { List } from '@flex-development/mark/core'
 import type {
   Construct,
   Extension,
   NormalizedExtension
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import { ok } from 'devlop'
 import splice from './splice.mts'
 

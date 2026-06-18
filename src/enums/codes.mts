@@ -1,9 +1,9 @@
 /**
  * @file Enums - codes
- * @module fsm-tokenizer/enums/codes
+ * @module mark-parser/enums/codes
  */
 
-import type { Code } from '@flex-development/fsm/parse'
+import type { Code } from '@flex-development/mark/parse'
 
 /**
  * Character codes.

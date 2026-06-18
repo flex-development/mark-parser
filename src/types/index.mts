@@ -1,6 +1,6 @@
 /**
  * @file Entry Point - Type Aliases
- * @module fsm-tokenizer/types
+ * @module mark-parser/types
  */
 
 export type { default as CodeCheck } from './code-check.mts'

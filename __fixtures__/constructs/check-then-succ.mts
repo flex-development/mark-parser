@@ -1,6 +1,6 @@
 /**
  * @file Fixtures - checkThenSucc
- * @module fsm-tokenizer/constructs/checkThenSucc
+ * @module mark-parser/constructs/checkThenSucc
  */
 
 import type {
@@ -9,7 +9,7 @@ import type {
   Effects,
   State,
   TokenizeContext
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import eventsThenSucc from './events-then-succ.mts'
 
 /**

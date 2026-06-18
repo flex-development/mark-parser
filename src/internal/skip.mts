@@ -1,9 +1,9 @@
 /**
  * @file Internal - skip
- * @module fsm-tokenizer/internal/skip
+ * @module mark-parser/internal/skip
  */
 
-import type { Column, Line, Point } from '@flex-development/fsm/parse'
+import type { Column, Line, Point } from '@flex-development/mark/parse'
 
 /**
  * Move `point` a bit forward.

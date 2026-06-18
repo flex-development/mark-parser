@@ -1,6 +1,6 @@
 /**
  * @file Fixtures - partialSucc
- * @module fsm-tokenizer/constructs/partialSucc
+ * @module mark-parser/constructs/partialSucc
  */
 
 import type {
@@ -9,7 +9,7 @@ import type {
   PartialConstruct,
   State,
   TokenizeContext
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import eventsThenSucc from './events-then-succ.mts'
 
 /**

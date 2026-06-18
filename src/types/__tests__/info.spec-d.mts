@@ -1,6 +1,6 @@
 /**
  * @file Type Tests - Info
- * @module fsm-tokenizer/types/tests/unit-d/Info
+ * @module mark-parser/types/tests/unit-d/Info
  */
 
 import type TestSubject from '#types/info'

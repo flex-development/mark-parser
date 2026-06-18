@@ -1,18 +1,18 @@
 /**
  * @file Utilities - serializeChunks
- * @module fsm-tokenizer/utils/serializeChunks
+ * @module mark-parser/utils/serializeChunks
  */
 
 import chars from '#enums/chars'
 import codes from '#enums/codes'
 import nil from '#internal/nil'
 import size from '#internal/size'
-import type { List } from '@flex-development/fsm/core'
+import type { List } from '@flex-development/mark/core'
 import type {
   Chunk,
   Code,
   SerializeOptions
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import { ok } from 'devlop'
 
 /**

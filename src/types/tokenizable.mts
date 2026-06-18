@@ -1,10 +1,10 @@
 /**
  * @file Type Aliases - Tokenizable
- * @module fsm-tokenizer/types/Tokenizable
+ * @module mark-parser/types/Tokenizable
  */
 
-import type { List } from '@flex-development/fsm/core'
-import type { FileLike, Value } from '@flex-development/fsm/parse'
+import type { List } from '@flex-development/mark/core'
+import type { FileLike, Value } from '@flex-development/mark/parse'
 
 /**
  * Union of values that can be tokenized.

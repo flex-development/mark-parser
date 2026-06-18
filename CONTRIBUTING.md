@@ -15,8 +15,8 @@ Follow the steps below to setup your local development environment:
 1. Clone repository
 
    ```sh
-   git clone https://github.com/flex-development/fsm-tokenizer
-   cd fsm-tokenizer
+   git clone https://github.com/flex-development/mark-parser
+   cd mark-parser
    ```
 
 2. Install binaries with [Homebrew][]
@@ -293,7 +293,7 @@ A well-written issue
 When you're ready to submit your changes, open a pull request (PR) against `main`:
 
 ```sh
-https://github.com/flex-development/fsm-tokenizer/compare/main...$branch
+https://github.com/flex-development/mark-parser/compare/main...$branch
 ```
 
 where `$branch` is the name of the branch you'd like to merge into `main`.
@@ -406,7 +406,7 @@ e.g:
 
 [ohmyzsh]: https://github.com/ohmyzsh/ohmyzsh
 
-[qa]: https://github.com/flex-development/fsm-tokenizer/discussions/new?category=q-a
+[qa]: https://github.com/flex-development/mark-parser/discussions/new?category=q-a
 
 [tbd-short-lived-feature-branches]: https://trunkbaseddevelopment.com/styles/#short-lived-feature-branches
 

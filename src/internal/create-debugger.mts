@@ -1,9 +1,9 @@
 /**
  * @file Internal - createDebugger
- * @module fsm-tokenizer/internal/createDebugger
+ * @module mark-parser/internal/createDebugger
  */
 
-import type { Options } from '@flex-development/fsm-tokenizer'
+import type { Options } from '@flex-development/mark-parser'
 import createDebug, { type Debugger } from 'debug'
 
 /**
@@ -19,7 +19,7 @@ import createDebug, { type Debugger } from 'debug'
  *  The debugger
  */
 function createDebugger(this: void, options: Partial<Options>): Debugger {
-  return createDebug(options.debug ?? 'fsm-tokenizer')
+  return createDebug(options.debug ?? 'mark-parser')
 }
 
 export default createDebugger

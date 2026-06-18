@@ -1,6 +1,6 @@
 /**
  * @file Package Entry Point
- * @module fsm-tokenizer
+ * @module mark-parser
  */
 
 export * from './constructs/index.mts'

@@ -1,6 +1,6 @@
 /**
  * @file Type Aliases - Info
- * @module fsm-tokenizer/types/Info
+ * @module mark-parser/types/Info
  */
 
 import type Restore from './restore.mts'

@@ -1,6 +1,6 @@
 /**
  * @file Entry Point - Utilities
- * @module fsm-tokenizer/utils
+ * @module mark-parser/utils
  */
 
 export { default as combineExtensions } from './combine-extensions.mts'

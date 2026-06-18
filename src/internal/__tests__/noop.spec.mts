@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - noop
- * @module fsm-tokenizer/internal/tests/unit/noop
+ * @module mark-parser/internal/tests/unit/noop
  */
 
 import testSubject from '#internal/noop'

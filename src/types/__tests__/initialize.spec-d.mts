@@ -1,14 +1,14 @@
 /**
  * @file Type Tests - Initialize
- * @module fsm-tokenizer/types/tests/unit-d/Initialize
+ * @module mark-parser/types/tests/unit-d/Initialize
  */
 
 import type TestSubject from '#types/initialize'
-import type { CreateInitial } from '@flex-development/fsm-tokenizer'
+import type { CreateInitial } from '@flex-development/mark-parser'
 import type {
   InitialConstruct,
   InitialConstructs
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 
 describe('unit-d:types/Initialize', () => {
   it('should extract CreateInitial', () => {

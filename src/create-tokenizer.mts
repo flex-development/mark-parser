@@ -1,12 +1,12 @@
 /**
  * @file createTokenizer
- * @module fsm-tokenizer/createTokenizer
+ * @module mark-parser/createTokenizer
  */
 
 import type Info from '#types/info'
 import type ReturnHandle from '#types/return-handle'
-import type { Initialize, Options } from '@flex-development/fsm-tokenizer'
-import type { List } from '@flex-development/fsm/core'
+import type { Initialize, Options } from '@flex-development/mark-parser'
+import type { List } from '@flex-development/mark/core'
 import type {
   Attempt,
   Chunk,
@@ -38,7 +38,7 @@ import type {
   TokenizeContext,
   TokenType,
   Value
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import { Location } from '@flex-development/vfile-location'
 import type { Debugger } from 'debug'
 import { ok as assert } from 'devlop'

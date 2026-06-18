@@ -1,9 +1,9 @@
 /**
  * @file Enums - ev
- * @module fsm-tokenizer/enums/ev
+ * @module mark-parser/enums/ev
  */
 
-import type { EventType } from '@flex-development/fsm/parse'
+import type { EventType } from '@flex-development/mark/parse'
 
 /**
  * Event types.

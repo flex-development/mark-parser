@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - eof
- * @module fsm-tokenizer/utils/tests/unit/eof
+ * @module mark-parser/utils/tests/unit/eof
  */
 
 import codes from '#enums/codes'

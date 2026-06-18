@@ -1,10 +1,10 @@
 /**
  * @file Utilities - isCode
- * @module fsm-tokenizer/utils/isCode
+ * @module mark-parser/utils/isCode
  */
 
 import codes from '#enums/codes'
-import type { Code } from '@flex-development/fsm/parse'
+import type { Code } from '@flex-development/mark/parse'
 
 /**
  * Check if `value` looks like a character code.

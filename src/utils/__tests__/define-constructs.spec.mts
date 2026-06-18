@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - defineConstructs
- * @module fsm-tokenizer/utils/tests/unit/defineConstructs
+ * @module mark-parser/utils/tests/unit/defineConstructs
  */
 
 import codes from '#enums/codes'

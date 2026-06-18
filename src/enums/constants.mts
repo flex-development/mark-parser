@@ -1,6 +1,6 @@
 /**
  * @file Enums - constants
- * @module fsm-tokenizer/enums/constants
+ * @module mark-parser/enums/constants
  */
 
 /**

@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - sliceable
- * @module fsm-tokenizer/internal/tests/unit/sliceable
+ * @module mark-parser/internal/tests/unit/sliceable
  */
 
 import chars from '#enums/chars'

@@ -1,10 +1,10 @@
 /**
  * @file Type Tests - CodeCheck
- * @module fsm-tokenizer/types/tests/unit-d/CodeCheck
+ * @module mark-parser/types/tests/unit-d/CodeCheck
  */
 
 import type TestSubject from '#types/code-check'
-import type { Code } from '@flex-development/fsm/parse'
+import type { Code } from '@flex-development/mark/parse'
 
 describe('unit-d:types/CodeCheck', () => {
   it('should match [this: void]', () => {

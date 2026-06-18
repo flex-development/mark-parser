@@ -1,13 +1,13 @@
 /**
  * @file Internal - token
- * @module fsm-tokenizer/internal/token
+ * @module mark-parser/internal/token
  */
 
 import type {
   Token,
   TokenInfo,
   TokenType
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import { u } from '@flex-development/unist-util-builder'
 
 /**

@@ -32,6 +32,8 @@ on:
       - .github/infrastructure.yml
       - .github/workflows/infrastructure.yml
   workflow_dispatch:
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 concurrency:
   cancel-in-progress: true
   group: ${{ github.workflow }}-${{ github.ref }}

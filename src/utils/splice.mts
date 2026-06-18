@@ -1,10 +1,10 @@
 /**
  * @file Utilities - splice
- * @module fsm-tokenizer/utils/splice
+ * @module mark-parser/utils/splice
  */
 
 import constants from '#enums/constants'
-import type { List, Numeric } from '@flex-development/fsm/core'
+import type { List, Numeric } from '@flex-development/mark/core'
 
 /**
  * Remove items from `list` and, if necessary, insert new `items` in their

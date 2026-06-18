@@ -1,13 +1,13 @@
 /**
  * @file Type Aliases - Initialize
- * @module fsm-tokenizer/types/Initialize
+ * @module mark-parser/types/Initialize
  */
 
-import type { CreateInitial } from '@flex-development/fsm-tokenizer'
+import type { CreateInitial } from '@flex-development/mark-parser'
 import type {
   InitialConstruct,
   InitialConstructs
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 
 /**
  * An initial construct, a record of initial constructs, or a function that

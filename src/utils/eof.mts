@@ -1,6 +1,6 @@
 /**
  * @file Utilities - eof
- * @module fsm-tokenizer/utils/eof
+ * @module mark-parser/utils/eof
  */
 
 import codes from '#enums/codes'

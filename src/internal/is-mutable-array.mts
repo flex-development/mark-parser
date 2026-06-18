@@ -1,6 +1,6 @@
 /**
  * @file Internal - isMutableArray
- * @module fsm-tokenizer/internal/isMutableArray
+ * @module mark-parser/internal/isMutableArray
  */
 
 /**

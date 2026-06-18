@@ -1,6 +1,6 @@
 /**
  * @file Type Tests - Options
- * @module fsm-tokenizer/interfaces/tests/unit-d/Options
+ * @module mark-parser/interfaces/tests/unit-d/Options
  */
 
 import type TestSubject from '#interfaces/options'
@@ -10,8 +10,8 @@ import type {
   FinalizeContext,
   Initialize,
   PreprocessOptions
-} from '@flex-development/fsm-tokenizer'
-import type { List } from '@flex-development/fsm/core'
+} from '@flex-development/mark-parser'
+import type { List } from '@flex-development/mark/core'
 import type {
   CreateToken,
   Encoding,
@@ -19,7 +19,7 @@ import type {
   ParseContext,
   Point,
   Preprocess
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import type { Nilable } from '@flex-development/tutils'
 
 describe('unit-d:interfaces/Options', () => {

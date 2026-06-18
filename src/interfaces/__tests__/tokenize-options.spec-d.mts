@@ -1,6 +1,6 @@
 /**
  * @file Type Tests - TokenizeOptions
- * @module fsm-tokenizer/interfaces/tests/unit-d/TokenizeOptions
+ * @module mark-parser/interfaces/tests/unit-d/TokenizeOptions
  */
 
 import type TestSubject from '#interfaces/tokenize-options'

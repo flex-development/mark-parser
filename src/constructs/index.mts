@@ -1,6 +1,6 @@
 /**
  * @file Entry Point - Constructs
- * @module fsm-tokenizer/constructs
+ * @module mark-parser/constructs
  */
 
 export { default as initialize } from './initialize.mts'

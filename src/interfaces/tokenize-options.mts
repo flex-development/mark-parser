@@ -1,6 +1,6 @@
 /**
  * @file Interfaces - TokenizeOptions
- * @module fsm-tokenizer/interfaces/TokenizeOptions
+ * @module mark-parser/interfaces/TokenizeOptions
  */
 
 /**

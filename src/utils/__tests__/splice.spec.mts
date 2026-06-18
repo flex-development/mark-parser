@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - splice
- * @module fsm-tokenizer/utils/tests/unit/splice
+ * @module mark-parser/utils/tests/unit/splice
  */
 
 import chars from '#enums/chars'

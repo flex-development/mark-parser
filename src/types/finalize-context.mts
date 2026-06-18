@@ -1,14 +1,14 @@
 /**
  * @file Type Aliases - FinalizeContext
- * @module fsm-tokenizer/types/FinalizeContext
+ * @module mark-parser/types/FinalizeContext
  */
 
-import type { Options } from '@flex-development/fsm-tokenizer'
+import type { Options } from '@flex-development/mark-parser'
 import type {
   InitialConstruct,
   InitialConstructs,
   TokenizeContext
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 
 /**
  * Finalize the tokenize context.

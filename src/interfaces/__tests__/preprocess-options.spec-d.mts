@@ -1,6 +1,6 @@
 /**
  * @file Type Tests - PreprocessOptions
- * @module fsm-tokenizer/interfaces/tests/unit-d/PreprocessOptions
+ * @module mark-parser/interfaces/tests/unit-d/PreprocessOptions
  */
 
 import type TestSubject from '#interfaces/preprocess-options'

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "customConditions": ["fsm-tokenizer", "development", "node"]
+    "customConditions": ["mark-parser", "development", "node"]
   },
   "extends": "./tsconfig.json"
 }

@@ -1,6 +1,6 @@
 /**
  * @file Fixtures - eventsThenSucc
- * @module fsm-tokenizer/constructs/eventsThenSucc
+ * @module mark-parser/constructs/eventsThenSucc
  */
 
 import codes from '#enums/codes'
@@ -11,7 +11,7 @@ import type {
   NamedConstruct,
   State,
   TokenizeContext
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 
 /**
  * A construct that produces a single event pack and then succeeds.

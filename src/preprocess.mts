@@ -1,9 +1,9 @@
 /**
  * @file preprocess
- * @module fsm-tokenizer/preprocess
+ * @module mark-parser/preprocess
  */
 
-import type { PreprocessOptions } from '@flex-development/fsm-tokenizer'
+import type { PreprocessOptions } from '@flex-development/mark-parser'
 import type {
   Code,
   Column,
@@ -11,7 +11,7 @@ import type {
   FileLike,
   Preprocess,
   Value
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import chars from './enums/chars.mts'
 import codes from './enums/codes.mts'
 import constants from './enums/constants.mts'

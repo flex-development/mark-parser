@@ -1,9 +1,9 @@
 /**
  * @file Type Aliases - ReturnHandle
- * @module fsm-tokenizer/types/ReturnHandle
+ * @module mark-parser/types/ReturnHandle
  */
 
-import type { Construct } from '@flex-development/fsm/parse'
+import type { Construct } from '@flex-development/mark/parse'
 import type Info from './info.mts'
 
 /**

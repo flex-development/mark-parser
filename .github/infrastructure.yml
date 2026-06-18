@@ -184,19 +184,17 @@ repository:
   has_issues: true
   has_projects: true
   has_wiki: false
-  homepage: https://github.com/flex-development/fsm-tokenizer
+  homepage: https://github.com/flex-development/mark-parser
   is_template: false
   private: false
   squash_merge_commit_message: BLANK
   squash_merge_commit_title: PR_TITLE
   topics:
-    - finite-state-machine
     - fsm
-    - lexer
     - parse
     - state
+    - syntax
     - tokenize
-    - tokenizer
   visibility: public
   vulnerability_alerts: true
   web_commit_signoff_required: true

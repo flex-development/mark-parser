@@ -1,6 +1,6 @@
 /**
  * @file Fixtures - interruptThenSucc
- * @module fsm-tokenizer/constructs/interruptThenSucc
+ * @module mark-parser/constructs/interruptThenSucc
  */
 
 import codes from '#enums/codes'
@@ -10,7 +10,7 @@ import type {
   Effects,
   State,
   TokenizeContext
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import eventsThenSucc from './events-then-succ.mts'
 
 /**

@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - serializeChunks
- * @module fsm-tokenizer/utils/tests/unit/serializeChunks
+ * @module mark-parser/utils/tests/unit/serializeChunks
  */
 
 import chars from '#enums/chars'

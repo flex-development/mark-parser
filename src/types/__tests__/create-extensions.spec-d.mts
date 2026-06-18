@@ -1,10 +1,10 @@
 /**
  * @file Type Tests - CreateExtensions
- * @module fsm-tokenizer/types/tests/unit-d/CreateExtensions
+ * @module mark-parser/types/tests/unit-d/CreateExtensions
  */
 
 import type TestSubject from '#types/create-extensions'
-import type { Extensions } from '@flex-development/fsm/parse'
+import type { Extensions } from '@flex-development/mark/parse'
 
 describe('unit-d:types/CreateExtensions', () => {
   it('should match [this: void]', () => {

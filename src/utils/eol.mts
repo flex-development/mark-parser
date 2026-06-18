@@ -1,10 +1,10 @@
 /**
  * @file Utilities - eol
- * @module fsm-tokenizer/utils/eol
+ * @module mark-parser/utils/eol
  */
 
 import codes from '#enums/codes'
-import type { Code } from '@flex-development/fsm/parse'
+import type { Code } from '@flex-development/mark/parse'
 
 /**
  * Check if `code` is a character code representing a line ending.

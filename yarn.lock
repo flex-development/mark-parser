@@ -1644,79 +1644,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/fsm-tokenizer@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@flex-development/fsm-tokenizer@workspace:."
-  dependencies:
-    "@arethetypeswrong/cli": "npm:0.18.3"
-    "@commitlint/cli": "npm:21.0.2"
-    "@commitlint/types": "npm:21.0.1"
-    "@edge-runtime/vm": "npm:5.0.0"
-    "@flex-development/commitlint-config": "npm:1.0.1"
-    "@flex-development/eslint-config": "npm:1.1.1"
-    "@flex-development/export-regex": "npm:2.0.0"
-    "@flex-development/fsm": "flex-development/fsm#commit=4f448371fcc0ce0adba6e8ef45126a8eb56437ee"
-    "@flex-development/grease": "npm:3.0.0-alpha.9"
-    "@flex-development/pathe": "npm:4.0.2"
-    "@flex-development/remark-preset": "npm:1.0.0"
-    "@flex-development/tutils": "npm:6.0.0-alpha.25"
-    "@flex-development/unist-util-builder": "npm:2.0.0"
-    "@flex-development/unist-util-inspect": "npm:1.1.0"
-    "@flex-development/vfile-location": "npm:1.1.1"
-    "@rollup/plugin-node-resolve": "npm:16.0.3"
-    "@tsconfig/strictest": "npm:2.0.8"
-    "@types/concat-stream": "npm:2.0.3"
-    "@types/debug": "npm:4.1.13"
-    "@types/is-ci": "npm:3.0.4"
-    "@types/node-notifier": "npm:8.0.5"
-    "@types/rollup": "npm:0.54.0"
-    "@types/unist": "npm:3.0.3"
-    "@vates/toggle-scripts": "npm:1.0.0"
-    "@vitest/coverage-v8": "npm:4.1.9"
-    "@vitest/ui": "npm:4.1.9"
-    concat-stream: "npm:2.0.0"
-    convert-hrtime: "npm:5.0.0"
-    cross-env: "npm:10.1.0"
-    cspell: "npm:10.0.1"
-    debug: "npm:4.4.3"
-    devlop: "npm:1.1.0"
-    dprint: "npm:0.54.0"
-    editorconfig: "npm:3.0.2"
-    eslint: "npm:9.33.0"
-    gemoji: "npm:8.1.0"
-    growl: "npm:1.10.5"
-    happy-dom: "npm:20.10.5"
-    husky: "npm:9.1.7"
-    is-ci: "npm:4.1.0"
-    micromark-core-commonmark: "npm:2.0.3"
-    node-notifier: "npm:10.0.1"
-    pkg-size: "npm:2.4.0"
-    remark: "npm:15.0.1"
-    remark-cli: "npm:12.0.1"
-    rollup: "npm:4.62.0"
-    rollup-plugin-cleanup: "npm:3.2.1"
-    rollup-plugin-dts: "npm:6.4.1"
-    sh-syntax: "npm:0.5.8"
-    trash-cli: "npm:7.2.0"
-    ts-dedent: "npm:2.3.0"
-    tsx: "npm:4.22.4"
-    typescript: "npm:6.0.3"
-    unified: "npm:11.0.5"
-    vfile: "npm:6.0.3"
-    vitest: "npm:4.1.9"
-  languageName: unknown
-  linkType: soft
-
-"@flex-development/fsm@flex-development/fsm#commit=4f448371fcc0ce0adba6e8ef45126a8eb56437ee":
-  version: 0.0.0
-  resolution: "@flex-development/fsm@https://github.com/flex-development/fsm.git#commit=4f448371fcc0ce0adba6e8ef45126a8eb56437ee"
-  dependencies:
-    "@flex-development/unist-util-types": "npm:1.6.1"
-    "@types/unist": "npm:3.0.3"
-  checksum: 10/a43a96388ffc3ae007f9c19771e1189b535d5697e9295978011913c5b6e1aea349831f99b972dd83cf558d620492d65936e5e515cb4b94f5696051027f20ad30
-  languageName: node
-  linkType: hard
-
 "@flex-development/grease@npm:3.0.0-alpha.9":
   version: 3.0.0-alpha.9
   resolution: "@flex-development/grease@npm:3.0.0-alpha.9"
@@ -1792,6 +1719,79 @@ __metadata:
     "@types/node":
       optional: true
   checksum: 10/0705a8176aa44697404d77b0225e5c6026e9b575bdab479c499e2ccd3a1fd4601693da0cafa79b7548899e811360e2b92303e95f68269ec45e558eba8b9dbd4d
+  languageName: node
+  linkType: hard
+
+"@flex-development/mark-parser@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@flex-development/mark-parser@workspace:."
+  dependencies:
+    "@arethetypeswrong/cli": "npm:0.18.3"
+    "@commitlint/cli": "npm:21.0.2"
+    "@commitlint/types": "npm:21.0.1"
+    "@edge-runtime/vm": "npm:5.0.0"
+    "@flex-development/commitlint-config": "npm:1.0.1"
+    "@flex-development/eslint-config": "npm:1.1.1"
+    "@flex-development/export-regex": "npm:2.0.0"
+    "@flex-development/grease": "npm:3.0.0-alpha.9"
+    "@flex-development/mark": "flex-development/mark#commit=a63a5f141eab963ad04acc45a6e883ae510448b7"
+    "@flex-development/pathe": "npm:4.0.2"
+    "@flex-development/remark-preset": "npm:1.0.0"
+    "@flex-development/tutils": "npm:6.0.0-alpha.25"
+    "@flex-development/unist-util-builder": "npm:2.0.0"
+    "@flex-development/unist-util-inspect": "npm:1.1.0"
+    "@flex-development/vfile-location": "npm:1.1.1"
+    "@rollup/plugin-node-resolve": "npm:16.0.3"
+    "@tsconfig/strictest": "npm:2.0.8"
+    "@types/concat-stream": "npm:2.0.3"
+    "@types/debug": "npm:4.1.13"
+    "@types/is-ci": "npm:3.0.4"
+    "@types/node-notifier": "npm:8.0.5"
+    "@types/rollup": "npm:0.54.0"
+    "@types/unist": "npm:3.0.3"
+    "@vates/toggle-scripts": "npm:1.0.0"
+    "@vitest/coverage-v8": "npm:4.1.9"
+    "@vitest/ui": "npm:4.1.9"
+    concat-stream: "npm:2.0.0"
+    convert-hrtime: "npm:5.0.0"
+    cross-env: "npm:10.1.0"
+    cspell: "npm:10.0.1"
+    debug: "npm:4.4.3"
+    devlop: "npm:1.1.0"
+    dprint: "npm:0.54.0"
+    editorconfig: "npm:3.0.2"
+    eslint: "npm:9.33.0"
+    gemoji: "npm:8.1.0"
+    growl: "npm:1.10.5"
+    happy-dom: "npm:20.10.5"
+    husky: "npm:9.1.7"
+    is-ci: "npm:4.1.0"
+    micromark-core-commonmark: "npm:2.0.3"
+    node-notifier: "npm:10.0.1"
+    pkg-size: "npm:2.4.0"
+    remark: "npm:15.0.1"
+    remark-cli: "npm:12.0.1"
+    rollup: "npm:4.62.0"
+    rollup-plugin-cleanup: "npm:3.2.1"
+    rollup-plugin-dts: "npm:6.4.1"
+    sh-syntax: "npm:0.5.8"
+    trash-cli: "npm:7.2.0"
+    ts-dedent: "npm:2.3.0"
+    tsx: "npm:4.22.4"
+    typescript: "npm:6.0.3"
+    unified: "npm:11.0.5"
+    vfile: "npm:6.0.3"
+    vitest: "npm:4.1.9"
+  languageName: unknown
+  linkType: soft
+
+"@flex-development/mark@flex-development/mark#commit=a63a5f141eab963ad04acc45a6e883ae510448b7":
+  version: 0.0.0
+  resolution: "@flex-development/mark@https://github.com/flex-development/mark.git#commit=a63a5f141eab963ad04acc45a6e883ae510448b7"
+  dependencies:
+    "@flex-development/unist-util-types": "npm:1.6.1"
+    "@types/unist": "npm:3.0.3"
+  checksum: 10/313a21161b597ae1e8620ed75bc22f075429a59508c4e6719e1f6064a8398c9eb2e4485dfea32dbb764db1925482fdf4c24fd496736ea8080b1fd27b9356ef1e
   languageName: node
   linkType: hard
 

@@ -1,6 +1,6 @@
 /**
  * @file Utilities - resolveAll
- * @module fsm-tokenizer/utils/resolveAll
+ * @module mark-parser/utils/resolveAll
  */
 
 import type {
@@ -8,7 +8,7 @@ import type {
   Event,
   Resolver,
   TokenizeContext
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 
 /**
  * Call all `resolveAll` handlers.

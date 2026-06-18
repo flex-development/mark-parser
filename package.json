@@ -1,28 +1,26 @@
 {
-  "name": "@flex-development/fsm-tokenizer",
+  "name": "@flex-development/mark-parser",
   "description": "finite state machine tokenizer",
   "version": "1.0.0-alpha.9",
   "keywords": [
-    "finite",
     "fsm",
     "lexer",
     "parse",
     "state",
-    "tokenize",
-    "tokenizer"
+    "tokenize"
   ],
   "license": "BSD-3-Clause",
-  "homepage": "https://github.com/flex-development/fsm-tokenizer",
-  "repository": "https://github.com/flex-development/fsm-tokenizer.git",
-  "bugs": "https://github.com/flex-development/fsm-tokenizer/issues",
+  "homepage": "https://github.com/flex-development/mark-parser",
+  "repository": "https://github.com/flex-development/mark-parser.git",
+  "bugs": "https://github.com/flex-development/mark-parser/issues",
   "author": {
     "name": "Lexus Drumgold",
     "url": "https://github.com/unicornware"
   },
   "publishConfig": {
     "access": "public",
-    "diff-dst-prefix": "fsm-tokenizer",
-    "diff-src-prefix": "fsm-tokenizer",
+    "diff-dst-prefix": "mark-parser",
+    "diff-src-prefix": "mark-parser",
     "directory": "./",
     "executableFiles": [],
     "node-options": null,
@@ -40,48 +38,48 @@
   ],
   "exports": {
     ".": {
-      "fsm-tokenizer": "./src/index.mts",
+      "mark-parser": "./src/index.mts",
       "default": "./dist/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "imports": {
     "#constructs/*": {
-      "fsm-tokenizer": "./src/constructs/*.mts",
+      "mark-parser": "./src/constructs/*.mts",
       "default": "./dist/constructs/*.mjs"
     },
     "#create-tokenizer": {
-      "fsm-tokenizer": "./src/create-tokenizer.mts",
+      "mark-parser": "./src/create-tokenizer.mts",
       "default": "./dist/create-tokenizer.mjs"
     },
     "#enums/*": {
-      "fsm-tokenizer": "./src/enums/*.mts",
+      "mark-parser": "./src/enums/*.mts",
       "default": "./dist/enums/*.mjs"
     },
     "#fixtures/*": "./__fixtures__/*.mts",
     "#interfaces/*": {
-      "fsm-tokenizer": "./src/interfaces/*.mts",
+      "mark-parser": "./src/interfaces/*.mts",
       "default": "./dist/interfaces/*.d.mts"
     },
     "#internal/*": {
-      "fsm-tokenizer": "./src/internal/*.mts",
+      "mark-parser": "./src/internal/*.mts",
       "default": "./dist/internal/*.mjs"
     },
     "#preprocess": {
-      "fsm-tokenizer": "./src/preprocess.mts",
+      "mark-parser": "./src/preprocess.mts",
       "default": "./dist/preprocess.mjs"
     },
     "#tests/*": "./__tests__/*.mts",
     "#tokenize": {
-      "fsm-tokenizer": "./src/tokenize.mts",
+      "mark-parser": "./src/tokenize.mts",
       "default": "./dist/tokenize.mjs"
     },
     "#types/*": {
-      "fsm-tokenizer": "./src/types/*.mts",
+      "mark-parser": "./src/types/*.mts",
       "default": "./dist/types/*.d.mts"
     },
     "#utils/*": {
-      "fsm-tokenizer": "./src/utils/*.mts",
+      "mark-parser": "./src/utils/*.mts",
       "default": "./dist/utils/*.mjs"
     }
   },
@@ -130,7 +128,7 @@
     "typecheck:ui": "yarn test:ui --typecheck --mode=typecheck"
   },
   "dependencies": {
-    "@flex-development/fsm": "flex-development/fsm#commit=4f448371fcc0ce0adba6e8ef45126a8eb56437ee",
+    "@flex-development/mark": "flex-development/mark#commit=a63a5f141eab963ad04acc45a6e883ae510448b7",
     "@flex-development/unist-util-builder": "2.0.0",
     "@flex-development/vfile-location": "1.1.1",
     "debug": "4.4.3",

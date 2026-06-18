@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - isMutableArray
- * @module fsm-tokenizer/internal/tests/unit/isMutableArray
+ * @module mark-parser/internal/tests/unit/isMutableArray
  */
 
 import codes from '#enums/codes'

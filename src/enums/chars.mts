@@ -1,6 +1,6 @@
 /**
  * @file chars
- * @module fsm-tokenizer/chars
+ * @module mark-parser/chars
  */
 
 /**

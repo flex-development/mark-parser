@@ -1,10 +1,10 @@
 /**
  * @file Internal - createTokenFactory
- * @module fsm-tokenizer/internal/createTokenFactory
+ * @module mark-parser/internal/createTokenFactory
  */
 
-import type { Options } from '@flex-development/fsm-tokenizer'
-import type { CreateToken } from '@flex-development/fsm/parse'
+import type { Options } from '@flex-development/mark-parser'
+import type { CreateToken } from '@flex-development/mark/parse'
 import token from './token.mts'
 
 /**

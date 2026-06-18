@@ -1,13 +1,13 @@
 /**
  * @file Type Tests - CreateInitial
- * @module fsm-tokenizer/types/tests/unit-d/CreateInitial
+ * @module mark-parser/types/tests/unit-d/CreateInitial
  */
 
 import type TestSubject from '#types/create-initial'
 import type {
   InitialConstruct,
   InitialConstructs
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import type { EmptyArray } from '@flex-development/tutils'
 
 describe('unit-d:types/CreateInitial', () => {

@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - combineExtensions
- * @module fsm-tokenizer/utils/tests/unit/combineExtensions
+ * @module mark-parser/utils/tests/unit/combineExtensions
  */
 
 import codes from '#enums/codes'
@@ -10,8 +10,8 @@ import eventsThenSucc from '#fixtures/constructs/events-then-succ'
 import ct from '#fixtures/ct'
 import tt from '#fixtures/tt'
 import testSubject from '#utils/combine-extensions'
-import type { List } from '@flex-development/fsm/core'
-import type { Extension } from '@flex-development/fsm/parse'
+import type { List } from '@flex-development/mark/core'
+import type { Extension } from '@flex-development/mark/parse'
 
 describe('unit:utils/combineExtensions', () => {
   type Combinable = Extension | List<Extension> | null | undefined

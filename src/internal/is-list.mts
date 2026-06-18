@@ -1,9 +1,9 @@
 /**
  * @file Internal - isList
- * @module fsm-tokenizer/internal/isList
+ * @module mark-parser/internal/isList
  */
 
-import type { List } from '@flex-development/fsm/core'
+import type { List } from '@flex-development/mark/core'
 
 /**
  * Check if `value` is a list.

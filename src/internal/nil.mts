@@ -1,6 +1,6 @@
 /**
  * @file Internal - nil
- * @module fsm-tokenizer/internal/nil
+ * @module mark-parser/internal/nil
  */
 
 /**

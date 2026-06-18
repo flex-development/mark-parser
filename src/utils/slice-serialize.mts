@@ -1,14 +1,14 @@
 /**
  * @file Utilities - sliceSerialize
- * @module fsm-tokenizer/utils/sliceSerialize
+ * @module mark-parser/utils/sliceSerialize
  */
 
-import type { List } from '@flex-development/fsm/core'
+import type { List } from '@flex-development/mark/core'
 import type {
   Chunk,
   Range,
   SerializeOptions
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import serializeChunks from './serialize-chunks.mts'
 import sliceChunks from './slice-chunks.mts'
 

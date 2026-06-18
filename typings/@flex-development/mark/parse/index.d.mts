@@ -1,6 +1,6 @@
-import type { Effects } from '@flex-development/fsm/parse'
+import type { Effects } from '@flex-development/mark/parse'
 
-declare module '@flex-development/fsm/parse' {
+declare module '@flex-development/mark/parse' {
   interface TokenFields {
     value?: string | null | undefined
   }

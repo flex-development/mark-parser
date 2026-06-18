@@ -1,18 +1,18 @@
 /**
  * @file Unit Tests - decode
- * @module fsm-tokenizer/utils/tests/unit/decode
+ * @module mark-parser/utils/tests/unit/decode
  */
 
 import chars from '#enums/chars'
 import codes from '#enums/codes'
 import testSubject from '#utils/decode'
-import type { List } from '@flex-development/fsm/core'
+import type { List } from '@flex-development/mark/core'
 import type {
   Chunk,
   Encoding,
   FileLike,
   Value
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 
 describe('unit:utils/decode', () => {
   it.each<[chunk: Chunk]>([

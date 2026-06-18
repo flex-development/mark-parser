@@ -1,6 +1,6 @@
 /**
  * @file Interfaces - Options
- * @module fsm-tokenizer/interfaces/Options
+ * @module mark-parser/interfaces/Options
  */
 
 import type {
@@ -9,8 +9,8 @@ import type {
   FinalizeContext,
   Initialize,
   PreprocessOptions
-} from '@flex-development/fsm-tokenizer'
-import type { List } from '@flex-development/fsm/core'
+} from '@flex-development/mark-parser'
+import type { List } from '@flex-development/mark/core'
 import type {
   CreateToken,
   Encoding,
@@ -18,7 +18,7 @@ import type {
   ParseContext,
   Point,
   Preprocess
-} from '@flex-development/fsm/parse'
+} from '@flex-development/mark/parse'
 import type { u } from '@flex-development/unist-util-builder'
 
 /**
@@ -32,7 +32,7 @@ interface Options extends PreprocessOptions {
   /**
    * The name of the debug logger.
    *
-   * @default 'fsm-tokenizer'
+   * @default 'mark-parser'
    */
   debug?: string | null | undefined
 
