@@ -3,8 +3,8 @@
  * @module mark-parser/utils/tests/unit/eol
  */
 
-import codes from '#enums/codes'
 import testSubject from '#utils/eol'
+import { codes } from '@flex-development/mark-util-symbol'
 
 describe('unit:utils/eol', () => {
   it('should return `false` if `code` is not line ending', () => {

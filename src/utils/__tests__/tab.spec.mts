@@ -3,8 +3,8 @@
  * @module mark-parser/utils/tests/unit/tab
  */
 
-import codes from '#enums/codes'
 import testSubject from '#utils/tab'
+import { codes } from '@flex-development/mark-util-symbol'
 
 describe('unit:utils/tab', () => {
   it('should return `false` if `code` is not horizontal tab', () => {

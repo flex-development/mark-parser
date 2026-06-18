@@ -6,6 +6,7 @@
 import type Info from '#types/info'
 import type ReturnHandle from '#types/return-handle'
 import type { Initialize, Options } from '@flex-development/mark-parser'
+import { chars, codes, constants, ev } from '@flex-development/mark-util-symbol'
 import type { List } from '@flex-development/mark/core'
 import type {
   Attempt,
@@ -42,7 +43,6 @@ import type {
 import { Location } from '@flex-development/vfile-location'
 import type { Debugger } from 'debug'
 import { ok as assert } from 'devlop'
-import { chars, codes, constants, ev } from './enums/index.mts'
 import createDebugger from './internal/create-debugger.mts'
 import createDefineSkip from './internal/create-define-skip.mts'
 import createTokenFactory from './internal/create-token-factory.mts'

@@ -3,10 +3,9 @@
  * @module mark-parser/utils/decode
  */
 
-import chars from '#enums/chars'
-import codes from '#enums/codes'
 import isList from '#internal/is-list'
 import isMutableArray from '#internal/is-mutable-array'
+import { chars, codes } from '@flex-development/mark-util-symbol'
 import type { List } from '@flex-development/mark/core'
 import type {
   Chunk,

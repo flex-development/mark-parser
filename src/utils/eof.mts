@@ -3,7 +3,7 @@
  * @module mark-parser/utils/eof
  */
 
-import codes from '#enums/codes'
+import { codes } from '@flex-development/mark-util-symbol'
 
 /**
  * Check if `code` is a character code signaling the end of stream.

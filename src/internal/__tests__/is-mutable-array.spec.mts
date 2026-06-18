@@ -3,8 +3,8 @@
  * @module mark-parser/internal/tests/unit/isMutableArray
  */
 
-import codes from '#enums/codes'
 import testSubject from '#internal/is-mutable-array'
+import { codes } from '@flex-development/mark-util-symbol'
 
 describe('unit:internal/isMutableArray', () => {
   it.each<Parameters<typeof testSubject>>([

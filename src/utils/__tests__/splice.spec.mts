@@ -3,10 +3,9 @@
  * @module mark-parser/utils/tests/unit/splice
  */
 
-import chars from '#enums/chars'
-import codes from '#enums/codes'
 import veryLargeList from '#fixtures/very-large-list'
 import testSubject from '#utils/splice'
+import { chars, codes } from '@flex-development/mark-util-symbol'
 
 describe('unit:utils/splice', () => {
   it.each<[...Parameters<typeof testSubject>, expected: unknown[]]>([

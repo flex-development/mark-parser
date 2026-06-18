@@ -3,7 +3,7 @@
  * @module mark-parser/constructs/interruptThenSucc
  */
 
-import codes from '#enums/codes'
+import { codes } from '@flex-development/mark-util-symbol'
 import type {
   Code,
   Construct,

@@ -5,9 +5,6 @@
 
 import initialize from '#constructs/initialize'
 import testSubject from '#create-tokenizer'
-import chars from '#enums/chars'
-import codes from '#enums/codes'
-import ev from '#enums/ev'
 import checkThenSucc from '#fixtures/constructs/check-then-succ'
 import consumeThenFail from '#fixtures/constructs/consume-then-fail'
 import consumeThenSucc from '#fixtures/constructs/consume-then-succ'
@@ -24,6 +21,7 @@ import tt from '#fixtures/tt'
 import alwaysFalse from '#tests/utils/always-false'
 import snapshot from '#tests/utils/snapshot-events'
 import type { Initialize, Options } from '@flex-development/mark-parser'
+import { chars, codes, ev } from '@flex-development/mark-util-symbol'
 import type { List } from '@flex-development/mark/core'
 import type {
   Chunk,

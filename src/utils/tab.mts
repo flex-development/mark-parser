@@ -3,7 +3,7 @@
  * @module mark-parser/utils/tab
  */
 
-import codes from '#enums/codes'
+import { codes } from '@flex-development/mark-util-symbol'
 import type { Code } from '@flex-development/mark/parse'
 
 /**

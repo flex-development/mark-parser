@@ -3,9 +3,8 @@
  * @module mark-parser/internal/tests/unit/sliceable
  */
 
-import chars from '#enums/chars'
-import codes from '#enums/codes'
 import testSubject from '#internal/sliceable'
+import { chars, codes } from '@flex-development/mark-util-symbol'
 
 describe('unit:internal/sliceable', () => {
   it('should return `false` if `value` is not an array or string', () => {

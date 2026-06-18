@@ -3,8 +3,8 @@
  * @module mark-parser/utils/tests/unit/eof
  */
 
-import codes from '#enums/codes'
 import testSubject from '#utils/eof'
+import { codes } from '@flex-development/mark-util-symbol'
 
 describe('unit:utils/eof', () => {
   it('should return `false` if `code` is not `codes.eof`', () => {

@@ -3,8 +3,8 @@
  * @module mark-parser/utils/tests/unit/push
  */
 
-import chars from '#enums/chars'
 import testSubject from '#utils/push'
+import { chars } from '@flex-development/mark-util-symbol'
 
 describe('unit:utils/push', () => {
   it('should return `items` if `list` is empty', () => {

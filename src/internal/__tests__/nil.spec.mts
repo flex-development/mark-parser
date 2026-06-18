@@ -3,9 +3,8 @@
  * @module mark-parser/internal/tests/unit/nil
  */
 
-import chars from '#enums/chars'
-import codes from '#enums/codes'
 import testSubject from '#internal/nil'
+import { chars, codes } from '@flex-development/mark-util-symbol'
 
 describe('unit:internal/nil', () => {
   it('should return `false` if `value` is not `null` or `undefined`', () => {

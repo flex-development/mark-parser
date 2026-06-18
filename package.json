@@ -52,10 +52,6 @@
       "mark-parser": "./src/create-tokenizer.mts",
       "default": "./dist/create-tokenizer.mjs"
     },
-    "#enums/*": {
-      "mark-parser": "./src/enums/*.mts",
-      "default": "./dist/enums/*.mjs"
-    },
     "#fixtures/*": "./__fixtures__/*.mts",
     "#interfaces/*": {
       "mark-parser": "./src/interfaces/*.mts",
@@ -129,6 +125,7 @@
   },
   "dependencies": {
     "@flex-development/mark": "flex-development/mark#commit=a63a5f141eab963ad04acc45a6e883ae510448b7",
+    "@flex-development/mark-util-symbol": "1.0.1",
     "@flex-development/unist-util-builder": "2.0.0",
     "@flex-development/vfile-location": "1.1.1",
     "debug": "4.4.3",

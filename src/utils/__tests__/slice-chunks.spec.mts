@@ -3,9 +3,8 @@
  * @module mark-parser/utils/tests/unit/sliceChunks
  */
 
-import chars from '#enums/chars'
-import codes from '#enums/codes'
 import testSubject from '#utils/slice-chunks'
+import { chars, codes } from '@flex-development/mark-util-symbol'
 
 describe('unit:utils/sliceChunks', () => {
   it.each<Parameters<typeof testSubject>>([

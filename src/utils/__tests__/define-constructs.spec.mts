@@ -3,8 +3,8 @@
  * @module mark-parser/utils/tests/unit/defineConstructs
  */
 
-import codes from '#enums/codes'
 import testSubject from '#utils/define-constructs'
+import { codes } from '@flex-development/mark-util-symbol'
 import { codeFenced, codeIndented, codeText } from 'micromark-core-commonmark'
 
 describe('unit:utils/defineConstructs', () => {

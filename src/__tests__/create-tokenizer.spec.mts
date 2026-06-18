@@ -4,10 +4,6 @@
  */
 
 import testSubject from '#create-tokenizer'
-import chars from '#enums/chars'
-import codes from '#enums/codes'
-import constants from '#enums/constants'
-import ev from '#enums/ev'
 import ct from '#fixtures/ct'
 import tt from '#fixtures/tt'
 import type {
@@ -15,6 +11,7 @@ import type {
   Initialize,
   Options
 } from '@flex-development/mark-parser'
+import { chars, codes, constants, ev } from '@flex-development/mark-util-symbol'
 import type {
   Chunk,
   Code,

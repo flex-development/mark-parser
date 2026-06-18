@@ -3,10 +3,10 @@
  * @module mark-parser/utils/tests/functional/sliceSerialize
  */
 
-import codes from '#enums/codes'
 import serializeChunks from '#utils/serialize-chunks'
 import sliceChunks from '#utils/slice-chunks'
 import testSubject from '#utils/slice-serialize'
+import { codes } from '@flex-development/mark-util-symbol'
 import type { List } from '@flex-development/mark/core'
 import type { Chunk, Range } from '@flex-development/mark/parse'
 import type { MockContext } from 'vitest'

@@ -3,7 +3,7 @@
  * @module mark-parser/utils/splice
  */
 
-import constants from '#enums/constants'
+import { constants } from '@flex-development/mark-util-symbol'
 import type { List, Numeric } from '@flex-development/mark/core'
 
 /**

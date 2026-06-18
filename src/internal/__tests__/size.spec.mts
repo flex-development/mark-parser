@@ -3,8 +3,8 @@
  * @module mark-parser/internal/tests/unit/size
  */
 
-import chars from '#enums/chars'
 import testSubject from '#internal/size'
+import { chars } from '@flex-development/mark-util-symbol'
 
 describe('unit:internal/size', () => {
   it('should return size of `list` (Set)', () => {

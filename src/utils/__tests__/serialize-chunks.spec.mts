@@ -3,9 +3,8 @@
  * @module mark-parser/utils/tests/unit/serializeChunks
  */
 
-import chars from '#enums/chars'
-import codes from '#enums/codes'
 import testSubject from '#utils/serialize-chunks'
+import { chars, codes } from '@flex-development/mark-util-symbol'
 
 describe('unit:utils/serializeChunks', () => {
   it.each<Parameters<typeof testSubject>>([

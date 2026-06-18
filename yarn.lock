@@ -1824,6 +1824,7 @@ __metadata:
     "@flex-development/grease": "npm:3.0.0-alpha.9"
     "@flex-development/import-regex": "npm:3.0.0"
     "@flex-development/mark": "flex-development/mark#commit=a63a5f141eab963ad04acc45a6e883ae510448b7"
+    "@flex-development/mark-util-symbol": "npm:1.0.1"
     "@flex-development/pathe": "npm:4.0.2"
     "@flex-development/remark-preset": "npm:1.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
@@ -1873,6 +1874,13 @@ __metadata:
     vitest: "npm:4.1.9"
   languageName: unknown
   linkType: soft
+
+"@flex-development/mark-util-symbol@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@flex-development/mark-util-symbol@npm:1.0.1"
+  checksum: 10/81a014771838c60644edffbb8444f98ef6444efca00a90b7761779a59ce18ba3b554c4ee2b1b50861460983e3daddb76999f11d10be4a03290368593104239d7
+  languageName: node
+  linkType: hard
 
 "@flex-development/mark@flex-development/mark#commit=a63a5f141eab963ad04acc45a6e883ae510448b7":
   version: 0.0.0

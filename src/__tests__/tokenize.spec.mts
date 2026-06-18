@@ -5,12 +5,11 @@
 
 import initialize from '#constructs/initialize'
 import createTokenizer from '#create-tokenizer'
-import chars from '#enums/chars'
-import codes from '#enums/codes'
 import consumeThenSucc from '#fixtures/constructs/consume-then-succ'
 import testSubject from '#tokenize'
 import decode from '#utils/decode'
 import type { TokenizeOptions } from '@flex-development/mark-parser'
+import { chars, codes } from '@flex-development/mark-util-symbol'
 import type { List } from '@flex-development/mark/core'
 import type {
   Encoding,

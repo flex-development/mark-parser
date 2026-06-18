@@ -3,9 +3,9 @@
  * @module mark-parser/utils/tests/functional/resolveAll
  */
 
-import ev from '#enums/ev'
 import tt from '#fixtures/tt'
 import testSubject from '#utils/resolve-all'
+import { ev } from '@flex-development/mark-util-symbol'
 import type {
   Construct,
   Event,

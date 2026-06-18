@@ -3,8 +3,8 @@
  * @module mark-parser/internal/tests/unit/toList
  */
 
-import chars from '#enums/chars'
 import testSubject from '#internal/to-list'
+import { chars } from '@flex-development/mark-util-symbol'
 
 describe('unit:internal/toList', () => {
   it('should return `value` as array if `value` is a `Set`', () => {

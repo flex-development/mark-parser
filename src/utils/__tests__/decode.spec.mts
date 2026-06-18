@@ -3,9 +3,8 @@
  * @module mark-parser/utils/tests/unit/decode
  */
 
-import chars from '#enums/chars'
-import codes from '#enums/codes'
 import testSubject from '#utils/decode'
+import { chars, codes } from '@flex-development/mark-util-symbol'
 import type { List } from '@flex-development/mark/core'
 import type {
   Chunk,

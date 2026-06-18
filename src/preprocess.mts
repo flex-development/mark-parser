@@ -4,6 +4,7 @@
  */
 
 import type { PreprocessOptions } from '@flex-development/mark-parser'
+import { chars, codes, constants } from '@flex-development/mark-util-symbol'
 import type {
   Code,
   Column,
@@ -12,9 +13,6 @@ import type {
   Preprocess,
   Value
 } from '@flex-development/mark/parse'
-import chars from './enums/chars.mts'
-import codes from './enums/codes.mts'
-import constants from './enums/constants.mts'
 import nil from './internal/nil.mts'
 import decode from './utils/decode.mts'
 

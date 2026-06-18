@@ -3,7 +3,7 @@
  * @module fixtures/veryLargeList
  */
 
-import constants from '#enums/constants'
+import { constants } from '@flex-development/mark-util-symbol'
 
 /**
  * A very large list.

@@ -3,10 +3,9 @@
  * @module mark-parser/utils/serializeChunks
  */
 
-import chars from '#enums/chars'
-import codes from '#enums/codes'
 import nil from '#internal/nil'
 import size from '#internal/size'
+import { chars, codes } from '@flex-development/mark-util-symbol'
 import type { List } from '@flex-development/mark/core'
 import type {
   Chunk,

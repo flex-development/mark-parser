@@ -3,8 +3,8 @@
  * @module fixtures/constructs/eos
  */
 
-import codes from '#enums/codes'
 import tt from '#fixtures/tt'
+import { codes } from '@flex-development/mark-util-symbol'
 import type {
   Code,
   Construct,
