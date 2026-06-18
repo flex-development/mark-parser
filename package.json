@@ -136,6 +136,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.3",
+    "@codecov/rollup-plugin": "2.0.1",
     "@commitlint/cli": "21.0.2",
     "@commitlint/types": "21.0.1",
     "@edge-runtime/vm": "5.0.0",
@@ -143,6 +144,7 @@
     "@flex-development/eslint-config": "1.1.1",
     "@flex-development/export-regex": "2.0.0",
     "@flex-development/grease": "3.0.0-alpha.9",
+    "@flex-development/import-regex": "3.0.0",
     "@flex-development/pathe": "4.0.2",
     "@flex-development/remark-preset": "1.0.0",
     "@flex-development/tutils": "6.0.0-alpha.25",

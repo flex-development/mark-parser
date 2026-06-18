@@ -3,9 +3,12 @@
  * @module config/rollup
  */
 
+import { codecovRollupPlugin as codecov } from '@codecov/rollup-plugin'
 import { EXPORT_AGGREGATE_REGEX } from '@flex-development/export-regex'
+import { STATIC_IMPORT_REGEX } from '@flex-development/import-regex'
 import resolve from '@rollup/plugin-node-resolve'
 import { ok } from 'devlop'
+import ci from 'is-ci'
 import type {
   NormalizedOutputOptions,
   OutputBundle,
@@ -40,7 +43,16 @@ export default files.map(input => {
   const plugins: (Plugin | Plugin[])[] = []
 
   if (input.endsWith('.mjs')) {
-    plugins.push(resolve(), cleanup({ comments: 'none' }))
+    plugins.push(
+      resolve(),
+      cleanup({ comments: 'none' }),
+      codecov({
+        bundleName: pkg.name,
+        debug: true,
+        enableBundleAnalysis: ci,
+        uploadToken: process.env['CODECOV_TOKEN']!
+      })
+    )
   } else {
     plugins.push(resolve({ extensions: ['.d.mts', '.mts'] }), dts())
   }
@@ -95,7 +107,12 @@ function dts(this: void): Plugin[] {
               return type ? match : match.replace('export {', 'export type {')
             })
 
-            output.code = output.code.replaceAll('import {', 'import type {')
+            output.code = output.code.replace(STATIC_IMPORT_REGEX, (
+              match: string,
+              type: string | undefined
+            ) => {
+              return type ? match : match.replace('import', 'import type')
+            })
           }
         }
 
