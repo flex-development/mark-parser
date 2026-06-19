@@ -7,7 +7,7 @@ import type Info from '#types/info'
 import type ReturnHandle from '#types/return-handle'
 import type { Initialize, Options } from '@flex-development/mark-parser'
 import { chars, codes, constants, ev } from '@flex-development/mark-util-symbol'
-import type { List } from '@flex-development/mark/core'
+import type { IfNever, List } from '@flex-development/mark/core'
 import type {
   Attempt,
   Chunk,
@@ -17,6 +17,7 @@ import type {
   ConstructRecord,
   Constructs,
   ContentType,
+  Context,
   Create,
   CreateToken,
   Effects,
@@ -70,6 +71,8 @@ export default createTokenizer
 /**
  * Create a tokenizer.
  *
+ * @see {@linkcode Context}
+ * @see {@linkcode IfNever}
  * @see {@linkcode Initialize}
  * @see {@linkcode Options}
  * @see {@linkcode Point}
@@ -82,18 +85,20 @@ export default createTokenizer
  *  or a function that returns the initial construct or record
  * @param {Partial<Options> | Point | null | undefined} [options]
  *  The tokenizer options or the point before the first character in the content
- * @return {TokenizeContext}
- *  The tokenize context
+ * @return {IfNever<Context, TokenizeContext, Context>}
+ *  The tokenization context
  */
 function createTokenizer(
   this: void,
   initialize: Initialize,
   options?: Partial<Options> | Point | null | undefined
-): TokenizeContext
+): IfNever<Context, TokenizeContext, Context>
 
 /**
  * Create a tokenizer.
  *
+ * @see {@linkcode Context}
+ * @see {@linkcode IfNever}
  * @see {@linkcode Initialize}
  * @see {@linkcode Options}
  * @see {@linkcode TokenizeContext}
@@ -103,13 +108,13 @@ function createTokenizer(
  * @param {Initialize | Options} options
  *  The initial construct, a record of initial constructs, a function that
  *  returns the initial construct or record, or the tokenizer options
- * @return {TokenizeContext}
- *  The tokenize context
+ * @return {IfNever<Context, TokenizeContext, Context>}
+ *  The tokenization context
  */
 function createTokenizer(
   this: void,
   options: Initialize | Options
-): TokenizeContext
+): IfNever<Context, TokenizeContext, Context>
 
 /**
  * Create a tokenizer.
@@ -126,7 +131,7 @@ function createTokenizer(
  * @param {Partial<Options> | Point | null | undefined} [options]
  *  The tokenizer options or the point before the first character in the content
  * @return {TokenizeContext}
- *  The tokenize context
+ *  The tokenization context
  */
 function createTokenizer(
   this: void,
@@ -295,7 +300,7 @@ function createTokenizer(
    * @param {ReturnHandle} onreturn
    *  The success callback
    * @param {Partial<TokenizeContext> | null | undefined} [fields]
-   *  The fields to attach to the tokenize context
+   *  The fields to attach to the tokenization context
    * @return {Attempt}
    *  attempt/check/interrupt
    */
@@ -472,7 +477,7 @@ function createTokenizer(
           }
 
           /**
-           * The tokenize context to use.
+           * The tokenization context to use.
            *
            * @var {TokenizeContext} self
            */
@@ -627,7 +632,7 @@ function createTokenizer(
      * @param {Point | null | undefined} [from]
      *  Where to start the tokenizer
      * @return {TokenizeContext}
-     *  The new tokenize context
+     *  The new tokenization context
      */
     function create(
       this: void,
@@ -744,14 +749,14 @@ function createTokenizer(
   }
 
   /**
-   * Finalize the tokenize context.
+   * Finalize the tokenization context.
    *
    * @see {@linkcode TokenizeContext}
    *
    * @this {void}
    *
    * @param {TokenizeContext} context
-   *  The base tokenize context
+   *  The base tokenization context
    * @param {InitialConstruct | InitialConstructs} initialize
    *  The initial construct, or the record of initial constructs
    * @param {Partial<Options>} options

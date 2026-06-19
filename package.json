@@ -124,7 +124,7 @@
     "typecheck:ui": "yarn test:ui --typecheck --mode=typecheck"
   },
   "dependencies": {
-    "@flex-development/mark": "flex-development/mark#commit=a63a5f141eab963ad04acc45a6e883ae510448b7",
+    "@flex-development/mark": "flex-development/mark#commit=9a157dbfc5822e3bd6c513e32855bceace566320",
     "@flex-development/mark-util-symbol": "1.0.1",
     "@flex-development/unist-util-builder": "2.0.0",
     "@flex-development/vfile-location": "1.1.1",

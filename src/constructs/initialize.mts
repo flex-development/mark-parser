@@ -48,7 +48,7 @@ function initialize(
    */
   function tokenizeInitial(this: TokenizeContext, effects: Effects): State {
     /**
-     * The tokenize context.
+     * The tokenization context.
      *
      * @const {TokenizeContext} self
      */

@@ -9,6 +9,7 @@ import type {
 } from '@flex-development/mark-parser'
 import { codes } from '@flex-development/mark-util-symbol'
 import type {
+  Context,
   Event,
   FileLike,
   TokenizeContext,
@@ -24,6 +25,7 @@ export default tokenize
 /**
  * Tokenize a `value`.
  *
+ * @see {@linkcode Context}
  * @see {@linkcode Event}
  * @see {@linkcode Tokenizable}
  * @see {@linkcode TokenizeContext}
@@ -33,7 +35,7 @@ export default tokenize
  *
  * @param {Tokenizable | null | undefined} value
  *  The file, value, or list to tokenize
- * @param {TokenizeContext} context
+ * @param {Context | TokenizeContext} context
  *  The tokenizer to write to
  * @param {TokenizeOptions | null | undefined} [options]
  *  Options for tokenizing `value`
@@ -43,7 +45,7 @@ export default tokenize
 function tokenize(
   this: void,
   value: Tokenizable | null | undefined,
-  context: TokenizeContext,
+  context: Context | TokenizeContext,
   options?: TokenizeOptions | null | undefined
 ): Event[] {
   options ??= {}

@@ -1,6 +1,10 @@
 import type { Effects } from '@flex-development/mark/parse'
 
 declare module '@flex-development/mark/parse' {
+  interface ContextMap {
+    mark: TokenizeContext
+  }
+
   interface TokenFields {
     value?: string | null | undefined
   }

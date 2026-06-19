@@ -6,9 +6,9 @@
 import type TestSubject from '#types/finalize-context'
 import type { Options } from '@flex-development/mark-parser'
 import type {
+  Context,
   InitialConstruct,
-  InitialConstructs,
-  TokenizeContext
+  InitialConstructs
 } from '@flex-development/mark/parse'
 
 describe('unit-d:types/FinalizeContext', () => {
@@ -17,10 +17,10 @@ describe('unit-d:types/FinalizeContext', () => {
   })
 
   describe('parameters', () => {
-    it('should be callable with [TokenizeContext, InitialConstruct | InitialConstructs, Partial<Options>]', () => {
+    it('should be callable with [Context, InitialConstruct | InitialConstructs, Partial<Options>]', () => {
       // Arrange
       type Expect = [
-        TokenizeContext,
+        Context,
         InitialConstruct | InitialConstructs,
         Partial<Options>
       ]

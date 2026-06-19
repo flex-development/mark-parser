@@ -5,17 +5,17 @@
 
 import type {
   Construct,
+  Context,
   Event,
-  Resolver,
-  TokenizeContext
+  Resolver
 } from '@flex-development/mark/parse'
 
 /**
  * Call all `resolveAll` handlers.
  *
  * @see {@linkcode Construct.resolveAll}
+ * @see {@linkcode Context}
  * @see {@linkcode Event}
- * @see {@linkcode TokenizeContext}
  *
  * @category
  *  utils
@@ -26,8 +26,8 @@ import type {
  *  The list of constructs
  * @param {Event[]} events
  *  The list of events
- * @param {TokenizeContext} context
- *  The tokenize context
+ * @param {Context} context
+ *  The tokenization context
  * @return {Event[]}
  *  The list of changed events
  */
@@ -35,7 +35,7 @@ function resolveAll(
   this: void,
   constructs: Partial<Construct>[],
   events: Event[],
-  context: TokenizeContext
+  context: Context
 ): Event[] {
   /**
    * The list of called resolvers.
