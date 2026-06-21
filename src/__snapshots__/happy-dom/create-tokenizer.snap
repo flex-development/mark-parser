@@ -36,7 +36,7 @@ exports[`unit:createTokenizer > #effects.exit > should return closed token 1`] =
 
 exports[`unit:createTokenizer > should create tokenize context (0) 1`] = `
 {
-  "code": null,
+  "code": -1000,
   "currentConstruct": undefined,
   "defineSkip": [Function defineSkip],
   "encoding": undefined,
@@ -51,7 +51,7 @@ exports[`unit:createTokenizer > should create tokenize context (0) 1`] = `
   },
   "peek": [Function peek],
   "preprocess": [Function preprocess],
-  "previous": null,
+  "previous": -1000,
   "serializeChunks": [Function serializeChunks],
   "sliceSerialize": [Function sliceSerialize],
   "sliceStream": [Function sliceStream],
@@ -62,7 +62,7 @@ exports[`unit:createTokenizer > should create tokenize context (0) 1`] = `
 
 exports[`unit:createTokenizer > should create tokenize context (1) 1`] = `
 {
-  "code": null,
+  "code": -1000,
   "currentConstruct": undefined,
   "defineSkip": [Function defineSkip],
   "encoding": undefined,
@@ -77,7 +77,7 @@ exports[`unit:createTokenizer > should create tokenize context (1) 1`] = `
   },
   "peek": [Function peek],
   "preprocess": [Function preprocess],
-  "previous": null,
+  "previous": -1000,
   "serializeChunks": [Function serializeChunks],
   "sliceSerialize": [Function sliceSerialize],
   "sliceStream": [Function sliceStream],
@@ -88,7 +88,7 @@ exports[`unit:createTokenizer > should create tokenize context (1) 1`] = `
 
 exports[`unit:createTokenizer > should create tokenize context from ContentType (0) 1`] = `
 {
-  "code": null,
+  "code": -1000,
   "currentConstruct": undefined,
   "defineSkip": [Function defineSkip],
   "encoding": undefined,
@@ -104,7 +104,7 @@ exports[`unit:createTokenizer > should create tokenize context from ContentType 
   },
   "peek": [Function peek],
   "preprocess": [Function preprocess],
-  "previous": null,
+  "previous": -1000,
   "serializeChunks": [Function serializeChunks],
   "sliceSerialize": [Function sliceSerialize],
   "sliceStream": [Function sliceStream],
@@ -115,7 +115,7 @@ exports[`unit:createTokenizer > should create tokenize context from ContentType 
 
 exports[`unit:createTokenizer > should create tokenize context from ContentType (1) 1`] = `
 {
-  "code": null,
+  "code": -1000,
   "currentConstruct": undefined,
   "defineSkip": [Function defineSkip],
   "encoding": undefined,
@@ -131,7 +131,7 @@ exports[`unit:createTokenizer > should create tokenize context from ContentType 
   },
   "peek": [Function peek],
   "preprocess": [Function preprocess],
-  "previous": null,
+  "previous": -1000,
   "serializeChunks": [Function serializeChunks],
   "sliceSerialize": [Function sliceSerialize],
   "sliceStream": [Function sliceStream],

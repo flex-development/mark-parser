@@ -125,7 +125,7 @@
   },
   "dependencies": {
     "@flex-development/mark": "flex-development/mark#commit=9a157dbfc5822e3bd6c513e32855bceace566320",
-    "@flex-development/mark-util-symbol": "1.0.1",
+    "@flex-development/mark-util-symbol": "1.1.0",
     "@flex-development/unist-util-builder": "2.0.0",
     "@flex-development/vfile-location": "1.1.1",
     "debug": "4.4.3",

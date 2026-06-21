@@ -250,7 +250,7 @@ function createTokenizer(
    * @const {TokenizeContext} context
    */
   const context: TokenizeContext = Object.defineProperties({
-    code: codes.eos,
+    code: codes.bos,
     currentConstruct: undefined,
     debug,
     defineSkip: createDefineSkip(place, skips, debug),
@@ -261,7 +261,7 @@ function createTokenizer(
     parser: options.parser ?? {} as ParseContext,
     peek,
     preprocess: options.preprocess ?? preprocess(options),
-    previous: codes.eos,
+    previous: codes.bos,
     serializeChunks,
     sliceSerialize,
     sliceStream,
