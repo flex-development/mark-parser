@@ -89,7 +89,7 @@ jobs:
         run: echo "result=${{ hashFiles('yarn.lock') }}" >>$GITHUB_OUTPUT
       - id: cache
         name: Cache dependencies
-        uses: actions/cache@v6.0.0
+        uses: actions/cache@v6.1.0
         with:
           key: ${{ steps.cache-key.outputs.result }}
           path: ${{ env.CACHE_PATH }}
@@ -116,7 +116,7 @@ jobs:
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v6.0.0
+        uses: actions/cache@v6.1.0
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -143,7 +143,7 @@ jobs:
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v6.0.0
+        uses: actions/cache@v6.1.0
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -179,7 +179,7 @@ jobs:
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v6.0.0
+        uses: actions/cache@v6.1.0
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -229,7 +229,7 @@ jobs:
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v6.0.0
+        uses: actions/cache@v6.1.0
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -270,7 +270,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v6.0.0
+        uses: actions/cache@v6.1.0
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -349,7 +349,7 @@ jobs:
           bun-version: ${{ matrix.bun-version }}
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v6.0.0
+        uses: actions/cache@v6.1.0
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -433,7 +433,7 @@ jobs:
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v6.0.0
+        uses: actions/cache@v6.1.0
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
