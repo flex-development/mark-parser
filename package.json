@@ -161,7 +161,7 @@
     "convert-hrtime": "5.0.0",
     "cross-env": "10.1.0",
     "cspell": "10.0.1",
-    "dprint": "0.54.0",
+    "dprint": "0.55.1",
     "editorconfig": "3.0.2",
     "eslint": "9.33.0",
     "gemoji": "8.1.0",
