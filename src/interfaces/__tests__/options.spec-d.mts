@@ -68,6 +68,12 @@ describe('unit-d:interfaces/Options', () => {
       .toEqualTypeOf<Nilable<boolean>>()
   })
 
+  it('should match [noEmptyTokens?: boolean | null | undefined]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('noEmptyTokens')
+      .toEqualTypeOf<Nilable<boolean>>()
+  })
+
   it('should match [parser?: ParseContext | null | undefined]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('parser')

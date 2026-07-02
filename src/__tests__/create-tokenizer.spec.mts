@@ -315,22 +315,6 @@ describe('unit:createTokenizer', () => {
       expect(subject.events[1]).to.have.property('2', subject)
     })
 
-    it('should handle empty token closed at end of string chunk', () => {
-      // Arrange
-      const chunk: string = import.meta.url
-
-      // Setup
-      subject.write(chunk)
-      subject.effects.enter(tt.succ)
-
-      // Act
-      const result = subject.effects.exit(tt.succ)
-
-      // Expect
-      expect(result.start._bufferIndex).to.eq(chunk.length)
-      expect(result.start._index).to.eq(result.end._index - 1)
-    })
-
     it('should return closed token', () => {
       // Arrange
       const entered: Token = subject.effects.enter(tt.eoc)
@@ -343,6 +327,39 @@ describe('unit:createTokenizer', () => {
       expect(result).to.have.property('start')
       expect(result).to.have.property('end')
       expect(result).toMatchSnapshot()
+    })
+
+    describe('empty tokens', () => {
+      it('should close empty token if empty tokens are allowed', () => {
+        // Arrange
+        const chunk: string = import.meta.url
+        const subject: TokenizeContext = testSubject(initialize)
+
+        // Setup
+        subject.write(chunk)
+        subject.effects.enter(tt.succ)
+
+        // Act
+        const result = subject.effects.exit(tt.succ)
+
+        // Expect
+        expect(result.start._bufferIndex).to.eq(chunk.length)
+        expect(result.start._index).to.eq(result.end._index - 1)
+      })
+
+      it('should error on empty token if empty tokens are not allowed', () => {
+        // Arrange
+        const chunk: string = import.meta.url
+        const options: Options = { initialize, noEmptyTokens: true }
+        const subject: TokenizeContext = testSubject(options)
+
+        // Setup
+        subject.write(chunk)
+        subject.effects.enter(tt.succ)
+
+        // Act + Expect
+        expect(() => subject.effects.exit(tt.succ)).to.throw(Error)
+      })
     })
   })
 

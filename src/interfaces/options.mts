@@ -85,6 +85,15 @@ interface Options {
   moveOnBreak?: boolean | null | undefined
 
   /**
+   * Whether to error on empty tokens.
+   *
+   * > 👉 **Note**: Error only thrown with `development` export condition.
+   *
+   * @see https://github.com/wooorm/devlop#okvalue-message
+   */
+  noEmptyTokens?: boolean | null | undefined
+
+  /**
    * The relevant parsing context.
    *
    * @see {@linkcode ParseContext}

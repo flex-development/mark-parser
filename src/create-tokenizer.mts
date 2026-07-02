@@ -775,6 +775,7 @@ function createTokenizer(
   function exit(this: void, type: TokenType): Token {
     assert(typeof type === 'string', 'expected `type` to be a string')
     assert(type.length > 0, 'expected `type` to be a non-empty string')
+    assert(options && 'initialize' in options, 'expected options object')
 
     /**
      * The token to close.
@@ -788,10 +789,19 @@ function createTokenizer(
     // close token.
     token.end = context.now()
 
-    // empty token closed at end of string chunk.
-    if (
-      token.start._index === token.end._index &&
-      token.start._bufferIndex === token.end._bufferIndex &&
+    /**
+     * Whether the token is empty.
+     *
+     * @const {boolean} emptyToken
+     */
+    const emptyToken: boolean = token.start._index === token.end._index &&
+      token.start._bufferIndex === token.end._bufferIndex
+
+    // handle empty token closed at end of string chunk.
+    if (options.noEmptyTokens) {
+      assert(!emptyToken, 'expected non-empty token (`' + type + '`)')
+    } else if (
+      emptyToken &&
       token.start._bufferIndex < 0 &&
       typeof context.chunks[token.start._index - 1] === 'string'
     ) {
