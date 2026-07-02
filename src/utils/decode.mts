@@ -5,6 +5,7 @@
 
 import isList from '#internal/is-list'
 import isMutableArray from '#internal/is-mutable-array'
+import { splice } from '@flex-development/mark-util-chunked'
 import { chars, codes } from '@flex-development/mark-util-symbol'
 import type { List } from '@flex-development/mark/core'
 import type {
@@ -15,7 +16,6 @@ import type {
   Value
 } from '@flex-development/mark/parse'
 import isCode from './is-code.mts'
-import splice from './splice.mts'
 
 export default decode
 

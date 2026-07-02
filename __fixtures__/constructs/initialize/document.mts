@@ -5,7 +5,7 @@
  */
 
 import factorySpace from '#tests/utils/factory-space'
-import splice from '#utils/splice'
+import { splice } from '@flex-development/mark-util-chunked'
 import { codes, ev } from '@flex-development/mark-util-symbol'
 import type {
   Chunk,

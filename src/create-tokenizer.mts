@@ -10,11 +10,10 @@ import {
   combineExtensions,
   eol,
   eos,
-  push,
   resolveAll,
-  serializeChunks,
-  splice
+  serializeChunks
 } from '@flex-development/mark-parser/utils'
+import { push, splice } from '@flex-development/mark-util-chunked'
 import { chars, codes, ev } from '@flex-development/mark-util-symbol'
 import type { IfNever, List } from '@flex-development/mark/core'
 import type {

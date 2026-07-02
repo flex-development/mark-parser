@@ -8,10 +8,8 @@ exports[`e2e:utils > should expose public api 1`] = `
   "eos",
   "eol",
   "isCode",
-  "push",
   "resolveAll",
   "serializeChunks",
-  "splice",
   "htab",
   "tab",
 ]

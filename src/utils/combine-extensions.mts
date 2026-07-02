@@ -4,13 +4,13 @@
  */
 
 import toList from '#internal/to-list'
+import { splice } from '@flex-development/mark-util-chunked'
 import type { List } from '@flex-development/mark/core'
 import type {
   Extension,
   NormalizedExtension
 } from '@flex-development/mark/parse'
 import { ok as assert } from 'devlop'
-import splice from './splice.mts'
 
 export default combineExtensions
 
