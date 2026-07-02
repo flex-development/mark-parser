@@ -4,8 +4,13 @@
  */
 
 import type { Options } from '@flex-development/mark-parser'
-import type { CreateToken } from '@flex-development/mark/parse'
-import token from './token.mts'
+import type {
+  CreateToken,
+  Token,
+  TokenInfo,
+  TokenType
+} from '@flex-development/mark/parse'
+import { u } from '@flex-development/unist-util-builder'
 
 /**
  * Create a token factory.
@@ -24,6 +29,24 @@ function createTokenFactory(
   options: Partial<Options>
 ): CreateToken {
   return options.token ?? token
+
+  /**
+   * @this {void}
+   *
+   * @param {TokenType} type
+   *  The token type
+   * @param {TokenInfo | null | undefined} [info]
+   *  The token info
+   * @return {Token}
+   *  The new token
+   */
+  function token(
+    this: void,
+    type: TokenType,
+    info?: TokenInfo | null | undefined
+  ): Token {
+    return u(type, { ...info } as TokenInfo)
+  }
 }
 
 export default createTokenFactory

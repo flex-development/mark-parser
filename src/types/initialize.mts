@@ -17,6 +17,6 @@ import type {
  * @see {@linkcode InitialConstruct}
  * @see {@linkcode InitialConstructs}
  */
-type Initialize = CreateInitial | InitialConstruct | InitialConstructs
+type Initialize = CreateInitial | InitialConstruct | Partial<InitialConstructs>
 
 export type { Initialize as default }

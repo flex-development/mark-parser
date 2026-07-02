@@ -15,7 +15,10 @@ import fldv from '@flex-development/eslint-config'
 const config = [
   ...fldv.configs.node,
   {
-    files: ['__fixtures__/constructs/*.mts', 'src/constructs/initialize.mts'],
+    files: [
+      '__fixtures__/constructs/**/*.mts',
+      'src/constructs/initialize.mts'
+    ],
     rules: {
       'unicorn/no-this-assignment': 0
     }
@@ -27,18 +30,9 @@ const config = [
     }
   },
   {
-    files: ['src/enums/codes.mts'],
+    files: ['src/interfaces/preprocessor.mts'],
     rules: {
-      'sort-keys': 0
-    }
-  },
-  {
-    files: [
-      'src/types/__tests__/encoding.spec-d.mts',
-      'src/types/encoding.mts'
-    ],
-    rules: {
-      'unicorn/text-encoding-identifier-case': 0
+      'jsdoc/valid-types': 0
     }
   }
 ]

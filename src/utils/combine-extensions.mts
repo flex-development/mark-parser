@@ -6,11 +6,10 @@
 import toList from '#internal/to-list'
 import type { List } from '@flex-development/mark/core'
 import type {
-  Construct,
   Extension,
   NormalizedExtension
 } from '@flex-development/mark/parse'
-import { ok } from 'devlop'
+import { ok as assert } from 'devlop'
 import splice from './splice.mts'
 
 export default combineExtensions
@@ -117,7 +116,7 @@ function combineExtensions<T extends NormalizedExtension>(
      */
     let hook: keyof Extension
 
-    for (hook in (ok(extension, 'expected `extension`'), extension)) {
+    for (hook in (assert(extension, 'expected `extension`'), extension)) {
       /**
        * The field value of the combined extension.
        *
@@ -174,16 +173,16 @@ type ExtensionField = Extension[keyof Extension]
  *
  * @this {void}
  *
- * @param {(Construct | string)[]} existing
+ * @param {unknown[]} existing
  *  The list to merge into
- * @param {(Construct | string)[]} list
+ * @param {unknown[]} list
  *  The list to merge
  * @return {undefined}
  */
 function merge(
   this: void,
-  existing: (Construct | string)[],
-  list: (Construct | string)[]
+  existing: unknown[],
+  list: unknown[]
 ): undefined {
   /**
    * The items to inject into the existing list.

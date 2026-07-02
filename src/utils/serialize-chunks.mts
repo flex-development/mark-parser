@@ -3,23 +3,14 @@
  * @module mark-parser/utils/serializeChunks
  */
 
-import nil from '#internal/nil'
-import size from '#internal/size'
 import { chars, codes } from '@flex-development/mark-util-symbol'
-import type { List } from '@flex-development/mark/core'
-import type {
-  Chunk,
-  Code,
-  SerializeOptions
-} from '@flex-development/mark/parse'
-import { ok } from 'devlop'
+import type { Chunk, SerializeOptions } from '@flex-development/mark/parse'
+import { ok as assert } from 'devlop'
 
 /**
  * Get the string value of a slice of `chunks`.
  *
  * @see {@linkcode Chunk}
- * @see {@linkcode Code}
- * @see {@linkcode List}
  * @see {@linkcode SerializeOptions}
  *
  * @category
@@ -27,7 +18,7 @@ import { ok } from 'devlop'
  *
  * @this {void}
  *
- * @param {List<Chunk | NonNullable<Code>[]>} chunks
+ * @param {Chunk[]} chunks
  *  The chunks to serialize
  * @param {SerializeOptions | boolean | null | undefined} [options]
  *  Options for serializing or whether to expand tabs
@@ -36,7 +27,7 @@ import { ok } from 'devlop'
  */
 function serializeChunks(
   this: void,
-  chunks: List<Chunk | NonNullable<Code>[]>,
+  chunks: Chunk[],
   options?: SerializeOptions | boolean | null | undefined
 ): string {
   if (typeof options === 'boolean' || !options) {
@@ -64,13 +55,13 @@ function serializeChunks(
    */
   let tab: boolean = false
 
-  while (++index < size(chunks)) {
+  while (++index < chunks.length) {
     /**
      * The current chunk.
      *
-     * @const {Chunk | NonNullable<Code>[] | undefined} chunk
+     * @const {Chunk | undefined} chunk
      */
-    const chunk: Chunk | NonNullable<Code>[] | undefined = [...chunks][index]
+    const chunk: Chunk | undefined = [...chunks][index]
 
     /**
      * The serialized chunk.
@@ -79,21 +70,24 @@ function serializeChunks(
      */
     let value: string
 
-    ok(typeof chunk !== 'undefined', 'expected `chunk`')
+    assert(typeof chunk !== 'undefined', 'expected `chunk`')
 
-    if (Array.isArray(chunk)) {
-      value = serializeChunks(chunk, options)
-    } else if (typeof chunk === 'string') {
+    if (typeof chunk === 'string') {
       value = chunk
     } else {
       switch (true) {
-        case chunk === codes.break && !nil(options.breaks):
-          value = options.breaks ? chars.space : chars.empty
-          if (typeof options.breaks === 'string') value = options.breaks
+        case chunk === codes.break && options.breaks !== null:
+          if (typeof options.breaks === 'string') {
+            value = options.breaks
+          } else {
+            value = options.breaks ? chars.space : chars.empty
+          }
+
           break
         case chunk === codes.crlf:
           value = chars.crlf
           break
+        case chunk === codes.bos:
         case chunk === codes.empty:
           value = chars.empty
           break
@@ -111,8 +105,7 @@ function serializeChunks(
           value = chars.space
           break
         default:
-          ok(typeof chunk === 'number', 'expected code point')
-          ok(chunk !== codes.break, 'expected valid code point')
+          assert(typeof chunk === 'number', 'expected code point')
           value = String.fromCodePoint(chunk)
       }
     }

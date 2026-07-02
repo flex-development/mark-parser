@@ -17,11 +17,11 @@ describe('unit-d:types/FinalizeContext', () => {
   })
 
   describe('parameters', () => {
-    it('should be callable with [Context, InitialConstruct | InitialConstructs, Partial<Options>]', () => {
+    it('should be callable with [Context, InitialConstruct | Partial<InitialConstructs>, Partial<Options>]', () => {
       // Arrange
       type Expect = [
         Context,
-        InitialConstruct | InitialConstructs,
+        InitialConstruct | Partial<InitialConstructs>,
         Partial<Options>
       ]
 

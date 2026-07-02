@@ -3,45 +3,50 @@
  * @module mark-parser/preprocess
  */
 
-import type { PreprocessOptions } from '@flex-development/mark-parser'
-import { chars, codes, constants } from '@flex-development/mark-util-symbol'
 import type {
+  PreprocessOptions,
+  Preprocessor
+} from '@flex-development/mark-parser'
+import { decode } from '@flex-development/mark-parser/utils'
+import { codes, constants } from '@flex-development/mark-util-symbol'
+import type {
+  Chunk,
   Code,
-  Column,
   Encoding,
   FileLike,
-  Preprocess,
   Value
 } from '@flex-development/mark/parse'
+import { equal } from 'devlop'
 import nil from './internal/nil.mts'
-import decode from './utils/decode.mts'
+
+export default preprocess
 
 /**
- * Create a preprocessor to turn a value into character code chunks.
+ * Create a preprocessor.
  *
- * @see {@linkcode Preprocess}
+ * @see {@linkcode Code}
+ * @see {@linkcode Preprocessor}
  * @see {@linkcode PreprocessOptions}
  *
  * @this {void}
  *
  * @param {PreprocessOptions | null | undefined} [options]
  *  The configuration options
- * @return {Preprocess}
+ * @return {Preprocessor<Code>}
  *  The character code preprocessor
  */
 function preprocess(
   this: void,
   options?: PreprocessOptions | null | undefined
-): Preprocess {
+): Preprocessor<Code> {
   /**
-   * The number of spaces a tab is equivalent to.
+   * The number of columns represented by a horizontal tab.
    *
    * @const {number} tabSize
    */
   const tabSize: number = options?.tabSize ?? constants.tabSize
 
-  Object.defineProperties(preprocessor, { name: { value: 'preprocess' } })
-  return preprocessor as Preprocess
+  return preprocessor as Preprocessor<Code>
 
   /**
    * Turn `value` into character code chunks.
@@ -52,7 +57,7 @@ function preprocess(
    *  The code, file, or value to preprocess
    * @param {Encoding | null | undefined} [encoding]
    *  The character encoding to use when `value`
-   *  or its contents is {@linkcode Uint8Array}
+   *  or its contents is an {@linkcode Uint8Array}
    * @param {boolean | null | undefined} [end]
    *  Whether the end of stream has been reached
    * @return {Code[]}
@@ -71,57 +76,96 @@ function preprocess(
      */
     const chunks: Code[] = []
 
+    /**
+     * Whether the previous chunk was a carriage return.
+     *
+     * If the next chunk is a line feed, both characters are normalized into a
+     * single CRLF virtual code.
+     *
+     * @var {boolean} atCarriageReturn
+     */
+    let atCarriageReturn: boolean = false
+
+    /**
+     * The current visual column.
+     *
+     * Used to determine how many virtual spaces follow a horizontal tab.
+     *
+     * @var {number} column
+     */
+    let column: number = 1
+
+    /**
+     * The index of the current character code.
+     *
+     * @var {number} index
+     */
+    let index: number = 0
+
+    // add character code chunk.,
+    // or decode file or value and extract character code chunks.
     if (typeof value === 'number') {
       chunks.push(value)
-    } else if (value === chars.empty) {
-      chunks.push(codes.empty)
     } else if (!nil(value)) {
-      value = decode<string | typeof codes.empty>(value, encoding)
+      /**
+       * The decoded chunk.
+       *
+       * @var {Chunk | undefined} decoded
+       */
+      let decoded: Chunk | undefined = decode(value, encoding)
 
-      if (typeof value === 'number') {
-        chunks.push(codes.empty)
+      // empty file or value was decoded.
+      if (typeof decoded === 'number') {
+        equal(decoded, codes.empty, 'expected `codes.empty`')
+        if (options?.allowEmptyChunk) chunks.push(codes.empty)
       } else {
-        /**
-         * The current column.
-         *
-         * @var {Column} column
-         */
-        let column: Column = 1
+        // value is now decoded.
+        value = decoded
 
-        /**
-         * The index of the current character code.
-         *
-         * @var {number} index
-         */
-        let index: number = 0
+        // move past byte order mark.
+        if (options?.ignoreBOM && value.codePointAt(0) === codes.bom) index++
 
+        // store character code chunks.
         while (index < value.length) {
           /**
            * The current character code.
            *
-           * @var {NonNullable<Code>} code
+           * @const {NonNullable<Code>} code
            */
-          let code: NonNullable<Code> = value[index]!.codePointAt(0)!
+          const code: NonNullable<Code> = value.codePointAt(index)!
 
           /**
            * The difference between the next column and the current column.
            *
            * @var {number} k
            */
-          let k: number = 1
+          let k: number = code > 0xffff ? 2 : 1
 
-          switch (true) {
-            case code === codes.cr:
-              if (value[index + 1]?.codePointAt(0) === codes.lf) {
-                chunks.push(codes.crlf)
-                k++
-              } else {
-                chunks.push(codes.vcr)
-              }
+          // handle carriage return.
+          if (atCarriageReturn) {
+            atCarriageReturn = false
 
+            // if the next chunk is a line feed,
+            // both characters are normalized into a single crlf virtual code.
+
+            // normalize carriage return and line feed.
+            if (code === codes.lf) {
+              chunks.push(codes.crlf)
+              index += k
+              continue
+            }
+
+            // carriage return without line feed.
+            chunks.push(codes.vcr)
+          }
+
+          // process character code.
+          switch (code) {
+            case codes.cr:
+              atCarriageReturn = true
               column = 1
               break
-            case code === codes.ht:
+            case codes.ht:
               /**
                * The next column.
                *
@@ -129,15 +173,20 @@ function preprocess(
                */
               const n: number = Math.ceil(column / tabSize) * tabSize
 
+              // normalize htab into virtual htab and spaces.
               chunks.push(codes.vht)
               while (column++ < n) chunks.push(codes.vs)
 
               break
-            case code === codes.lf:
+            case codes.lf: // add virtual line feed.
               chunks.push(codes.vlf)
               column = 1
               break
-            default:
+            case codes.nul: // substitute nul with replacement character.
+              chunks.push(options?.nul ? codes.nul : codes.replacement)
+              column++
+              break
+            default: // normal code point.
               chunks.push(code)
               column++
               break
@@ -148,8 +197,12 @@ function preprocess(
       }
     }
 
-    return end && chunks.push(codes.eos), chunks
+    // end of stream.
+    if (end) {
+      if (atCarriageReturn) chunks.push(codes.vcr)
+      chunks.push(codes.eos)
+    }
+
+    return chunks
   }
 }
-
-export default preprocess

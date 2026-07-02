@@ -34,12 +34,51 @@ exports[`unit:createTokenizer > #effects.exit > should return closed token 1`] =
 }
 `;
 
+exports[`unit:createTokenizer > #sliceStream > should return list of chunks spanning \`range\` (0) 1`] = `
+[
+  "",
+]
+`;
+
+exports[`unit:createTokenizer > #sliceStream > should return list of chunks spanning \`range\` (1) 1`] = `
+[
+  "",
+]
+`;
+
+exports[`unit:createTokenizer > #sliceStream > should return list of chunks spanning \`range\` (2) 1`] = `
+[
+  "b",
+]
+`;
+
+exports[`unit:createTokenizer > #sliceStream > should return list of chunks spanning \`range\` (3) 1`] = `
+[
+  -4,
+]
+`;
+
+exports[`unit:createTokenizer > #sliceStream > should return list of chunks spanning \`range\` (4) 1`] = `
+[
+  "***c***",
+  -4,
+  "****d****",
+]
+`;
+
+exports[`unit:createTokenizer > #sliceStream > should return list of chunks spanning \`range\` (5) 1`] = `
+[
+  "**e*",
+  -4,
+  "*f**",
+]
+`;
+
 exports[`unit:createTokenizer > should create tokenize context (0) 1`] = `
 {
   "code": -1000,
   "currentConstruct": undefined,
   "defineSkip": [Function defineSkip],
-  "encoding": undefined,
   "events": [],
   "now": [Function now],
   "parser": {
@@ -49,10 +88,7 @@ exports[`unit:createTokenizer > should create tokenize context (0) 1`] = `
       },
     },
   },
-  "peek": [Function peek],
-  "preprocess": [Function preprocess],
-  "previous": -1000,
-  "serializeChunks": [Function serializeChunks],
+  "previous": null,
   "sliceSerialize": [Function sliceSerialize],
   "sliceStream": [Function sliceStream],
   "token": [Function token],
@@ -65,7 +101,6 @@ exports[`unit:createTokenizer > should create tokenize context (1) 1`] = `
   "code": -1000,
   "currentConstruct": undefined,
   "defineSkip": [Function defineSkip],
-  "encoding": undefined,
   "events": [],
   "now": [Function now],
   "parser": {
@@ -75,64 +110,7 @@ exports[`unit:createTokenizer > should create tokenize context (1) 1`] = `
       },
     },
   },
-  "peek": [Function peek],
-  "preprocess": [Function preprocess],
-  "previous": -1000,
-  "serializeChunks": [Function serializeChunks],
-  "sliceSerialize": [Function sliceSerialize],
-  "sliceStream": [Function sliceStream],
-  "token": [Function token],
-  "write": [Function write],
-}
-`;
-
-exports[`unit:createTokenizer > should create tokenize context from ContentType (0) 1`] = `
-{
-  "code": -1000,
-  "currentConstruct": undefined,
-  "defineSkip": [Function defineSkip],
-  "encoding": undefined,
-  "events": [],
-  "now": [Function now],
-  "parser": {
-    "constructs": {
-      "disable": {
-        "null": [],
-      },
-    },
-    "document": [Function create],
-  },
-  "peek": [Function peek],
-  "preprocess": [Function preprocess],
-  "previous": -1000,
-  "serializeChunks": [Function serializeChunks],
-  "sliceSerialize": [Function sliceSerialize],
-  "sliceStream": [Function sliceStream],
-  "token": [Function token],
-  "write": [Function write],
-}
-`;
-
-exports[`unit:createTokenizer > should create tokenize context from ContentType (1) 1`] = `
-{
-  "code": -1000,
-  "currentConstruct": undefined,
-  "defineSkip": [Function defineSkip],
-  "encoding": undefined,
-  "events": [],
-  "now": [Function now],
-  "parser": {
-    "constructs": {
-      "disable": {
-        "null": [],
-      },
-    },
-    "document": [Function create],
-  },
-  "peek": [Function peek],
-  "preprocess": [Function preprocess],
-  "previous": -1000,
-  "serializeChunks": [Function serializeChunks],
+  "previous": null,
   "sliceSerialize": [Function sliceSerialize],
   "sliceStream": [Function sliceStream],
   "token": [Function token],

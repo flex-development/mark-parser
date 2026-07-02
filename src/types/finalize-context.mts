@@ -22,7 +22,7 @@ import type {
  *
  * @param {Context} context
  *  The current tokenization context
- * @param {InitialConstruct | InitialConstructs} initialize
+ * @param {InitialConstruct | Partial<InitialConstructs>} initialize
  *  The initial construct, or the record of initial constructs
  * @param {Partial<Options>} options
  *  The options used to create the tokenizer
@@ -31,7 +31,7 @@ import type {
 type FinalizeContext = (
   this: void,
   context: Context,
-  initialize: InitialConstruct | InitialConstructs,
+  initialize: InitialConstruct | Partial<InitialConstructs>,
   options: Partial<Options>
 ) => null | undefined
 

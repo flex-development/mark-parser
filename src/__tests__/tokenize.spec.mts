@@ -6,15 +6,18 @@
 import initialize from '#constructs/initialize'
 import createTokenizer from '#create-tokenizer'
 import consumeThenSucc from '#fixtures/constructs/consume-then-succ'
+import createPreprocess from '#preprocess'
 import testSubject from '#tokenize'
 import decode from '#utils/decode'
-import type { TokenizeOptions } from '@flex-development/mark-parser'
+import type {
+  Preprocessor,
+  TokenizeOptions
+} from '@flex-development/mark-parser'
 import { chars, codes } from '@flex-development/mark-util-symbol'
 import type { List } from '@flex-development/mark/core'
 import type {
   Encoding,
   FileLike,
-  Preprocess,
   TokenizeContext,
   Value,
   Write
@@ -31,17 +34,19 @@ describe('unit:tokenize', () => {
   let chunker: RegExp
   let context: TokenizeContext
   let encoding: Encoding | null | undefined
-  let preprocess: Mock<Preprocess>
+  let preprocess: Preprocessor
   let write: Mock<Write>
 
   beforeAll(() => {
     chunker = /\s+/g
     context = createTokenizer(initialize(consumeThenSucc))
-    encoding = context.encoding
+    encoding = 'utf8'
   })
 
   beforeEach(() => {
-    preprocess = vi.spyOn(context, 'preprocess').mockName('context.preprocess')
+    preprocess = vi.fn(createPreprocess()) as unknown as Preprocessor
+    preprocess = vi.mocked(preprocess).mockName('preprocess')
+
     write = vi.spyOn(context, 'write').mockName('context.write')
   })
 
@@ -67,7 +72,7 @@ describe('unit:tokenize', () => {
       const value: List<FileLike | Value> = []
 
       // Act
-      void testSubject(value, context)
+      void testSubject(value, context, { encoding })
 
       // Expect
       expect(decode).toHaveBeenCalledWith(value, encoding)
@@ -83,7 +88,7 @@ describe('unit:tokenize', () => {
       options
     ) => {
       // Act
-      void testSubject(value, context, { ...options, chunker })
+      void testSubject(value, context, { ...options, chunker, preprocess })
 
       // Expect
       expect(preprocess).toHaveBeenCalled()
@@ -99,7 +104,7 @@ describe('unit:tokenize', () => {
       options
     ) => {
       // Act
-      void testSubject(value, context, options)
+      void testSubject(value, context, { ...options, preprocess })
 
       // Expect
       expect(preprocess).not.toHaveBeenCalled()
@@ -116,7 +121,7 @@ describe('unit:tokenize', () => {
       const matches: RegExpExecArray[] = [...value.matchAll(chunker)]
 
       // Act
-      void testSubject(buffer, context, { chunker })
+      void testSubject(buffer, context, { chunker, encoding, preprocess })
 
       // Expect
       expect(decode).toHaveBeenCalledWith(buffer, encoding)
@@ -127,7 +132,7 @@ describe('unit:tokenize', () => {
 
     it('should write decoded empty chunk if `value` is empty string', () => {
       // Act
-      void testSubject(chars.empty, context)
+      void testSubject(chars.empty, context, { preprocess })
 
       // Expect
       expect(preprocess).not.toHaveBeenCalled()
@@ -140,15 +145,16 @@ describe('unit:tokenize', () => {
       // Arrange
       const value: string = chars.digit3 + chars.digit1 + chars.digit3
       const buffer: Uint8Array = Buffer.from(value)
+      const preprocessor: Mock<Preprocessor> = vi.mocked(preprocess)
 
       // Act
-      void testSubject(buffer, context)
+      void testSubject(buffer, context, { encoding, preprocess })
 
       // Expect
       expect(decode).toHaveBeenCalledWith(buffer, encoding)
       expect(preprocess).toHaveBeenCalledExactlyOnceWith(value, encoding)
       expect(write).toHaveBeenCalledTimes(2)
-      expect(write).toHaveBeenCalledWith(preprocess.mock.results[0]!.value)
+      expect(write).toHaveBeenCalledWith(preprocessor.mock.results[0]!.value)
       expect(write).toHaveBeenLastCalledWith(codes.eos)
     })
   })

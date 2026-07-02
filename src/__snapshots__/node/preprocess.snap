@@ -1,39 +1,101 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`unit:preprocess > preprocess > should return character code chunk list (0) 1`] = `
-[
-  null,
-]
-`;
-
-exports[`unit:preprocess > preprocess > should return character code chunk list (1) 1`] = `
+exports[`unit:preprocess > preprocessor > should return chunk list (0) 1`] = `
 [
   -13,
 ]
 `;
 
-exports[`unit:preprocess > preprocess > should return character code chunk list (2) 1`] = `
+exports[`unit:preprocess > preprocessor > should return chunk list (1) 1`] = `
 [
-  -999,
+  null,
 ]
 `;
 
-exports[`unit:preprocess > preprocess > should return character code chunk list (3) 1`] = `
+exports[`unit:preprocess > preprocessor > should return chunk list (2) 1`] = `
 [
-  -4,
-  -5,
-  -3,
+  null,
 ]
 `;
 
-exports[`unit:preprocess > preprocess > should return character code chunk list (4) 1`] = `
+exports[`unit:preprocess > preprocessor > should return chunk list (3) 1`] = `
 [
   -999,
   null,
 ]
 `;
 
-exports[`unit:preprocess > preprocess > should return character code chunk list (5) 1`] = `
+exports[`unit:preprocess > preprocessor > should return chunk list (4) 1`] = `
+[
+  65279,
+  null,
+]
+`;
+
+exports[`unit:preprocess > preprocessor > should return chunk list (5) 1`] = `
+[
+  null,
+]
+`;
+
+exports[`unit:preprocess > preprocessor > should return chunk list (6) 1`] = `
+[
+  65533,
+  null,
+]
+`;
+
+exports[`unit:preprocess > preprocessor > should return chunk list (7) 1`] = `
+[
+  0,
+  null,
+]
+`;
+
+exports[`unit:preprocess > preprocessor > should return chunk list (8) 1`] = `
+[
+  -4,
+  -5,
+  null,
+]
+`;
+
+exports[`unit:preprocess > preprocessor > should return chunk list (9) 1`] = `
+[
+  -5,
+  104,
+]
+`;
+
+exports[`unit:preprocess > preprocessor > should return chunk list (10) 1`] = `
+[
+  -3,
+  97,
+  98,
+]
+`;
+
+exports[`unit:preprocess > preprocessor > should return chunk list (11) 1`] = `
+[
+  104,
+  101,
+  108,
+  108,
+  111,
+  32,
+  128075,
+  -2,
+  119,
+  111,
+  114,
+  108,
+  100,
+  32,
+  127758,
+]
+`;
+
+exports[`unit:preprocess > preprocessor > should return chunk list (12) 1`] = `
 [
   104,
   101,
@@ -51,21 +113,7 @@ exports[`unit:preprocess > preprocess > should return character code chunk list 
 ]
 `;
 
-exports[`unit:preprocess > preprocess > should return character code chunk list (6) 1`] = `
-[
-  104,
-  105,
-  -2,
-  -1,
-  119,
-  111,
-  114,
-  108,
-  100,
-]
-`;
-
-exports[`unit:preprocess > preprocess > should return character code chunk list (7) 1`] = `
+exports[`unit:preprocess > preprocessor > should return chunk list (13) 1`] = `
 [
   45,
   45,
@@ -105,6 +153,5 @@ exports[`unit:preprocess > preprocess > should return character code chunk list 
   97,
   108,
   108,
-  null,
 ]
 `;

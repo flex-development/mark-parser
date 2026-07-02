@@ -4,9 +4,11 @@
  */
 
 import type {
+  Preprocessor,
   Tokenizable,
   TokenizeOptions
 } from '@flex-development/mark-parser'
+import { decode } from '@flex-development/mark-parser/utils'
 import { codes } from '@flex-development/mark-util-symbol'
 import type {
   Context,
@@ -18,7 +20,7 @@ import type {
 import isList from './internal/is-list.mts'
 import nil from './internal/nil.mts'
 import size from './internal/size.mts'
-import decode from './utils/decode.mts'
+import preprocess from './preprocess.mts'
 
 export default tokenize
 
@@ -50,6 +52,13 @@ function tokenize(
 ): Event[] {
   options ??= {}
 
+  /**
+   * The preprocessor.
+   *
+   * @const {Preprocessor} pre
+   */
+  const pre: Preprocessor = options.preprocess ?? preprocess(options)
+
   if (isList<FileLike | Value>(value)) {
     /**
      * The size of the list.
@@ -58,7 +67,7 @@ function tokenize(
      */
     const count: number = size(value)
 
-    for (const [index, chunk] of decode(value, context.encoding).entries()) {
+    for (const [index, chunk] of decode(value, options.encoding).entries()) {
       /**
        * Whether this is the end of the stream.
        *
@@ -82,14 +91,14 @@ function tokenize(
      *
      * @const {string | typeof codes.empty} decoded
      */
-    const decoded: string | typeof codes.empty = decode(value, context.encoding)
+    const decoded: string | typeof codes.empty = decode(value, options.encoding)
 
     if (decoded === codes.empty) {
       context.write(decoded)
     } else if (options.chunker) {
       chunker(options.chunker, decoded)
     } else {
-      context.write(context.preprocess(decoded, context.encoding))
+      context.write(pre(decoded, options.encoding))
     }
   }
 
@@ -125,7 +134,7 @@ function tokenize(
       if (start > index) context.write(input.slice(index, start))
 
       // the match itself; write preprocessed match to stream.
-      context.write(context.preprocess(match))
+      context.write(pre(match, options!.encoding))
       index = end
     }
 

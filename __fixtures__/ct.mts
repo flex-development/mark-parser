@@ -5,20 +5,17 @@
 
 import type { ContentType } from '@flex-development/mark/parse'
 
-declare module '@flex-development/mark/parse' {
-  interface ContentTypeMap {
-    document: ct.document
-  }
-}
-
 /**
  * Content types.
  *
  * @enum {ContentType}
  */
 enum ct {
+  content = 'content',
+  flow = 'flow',
   document = 'document',
-  string = 'string'
+  string = 'string',
+  text = 'text'
 }
 
 export default ct

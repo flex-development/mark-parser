@@ -7,28 +7,21 @@ import type {
   CodeCheck,
   CreateExtensions,
   FinalizeContext,
-  Initialize,
-  PreprocessOptions
+  Initialize
 } from '@flex-development/mark-parser'
 import type { List } from '@flex-development/mark/core'
 import type {
   CreateToken,
-  Encoding,
   Extensions,
   ParseContext,
-  Point,
-  Preprocess
+  Point
 } from '@flex-development/mark/parse'
 import type { u } from '@flex-development/unist-util-builder'
 
 /**
  * Options for configuring a tokenizer.
- *
- * @see {@linkcode PreprocessOptions}
- *
- * @extends {PreprocessOptions}
  */
-interface Options extends PreprocessOptions {
+interface Options {
   /**
    * The name of the debug logger.
    *
@@ -52,13 +45,6 @@ interface Options extends PreprocessOptions {
    * @see {@linkcode CodeCheck}
    */
   eol?: CodeCheck | null | undefined
-
-  /**
-   * The character encoding to use when decoding a {@linkcode Uint8Array}.
-   *
-   * @see {@linkcode Encoding}
-   */
-  encoding?: Encoding | null | undefined
 
   /**
    * A syntax extension, a list of syntax extensions, or a factory function.
@@ -104,13 +90,6 @@ interface Options extends PreprocessOptions {
    * @see {@linkcode ParseContext}
    */
   parser?: ParseContext | null | undefined
-
-  /**
-   * Turn a code, file, or value into character code chunks.
-   *
-   * @see {@linkcode Preprocess}
-   */
-  preprocess?: Preprocess | null | undefined
 
   /**
    * Create a new token.

@@ -41,7 +41,11 @@
       "mark-parser": "./src/index.mts",
       "default": "./dist/index.mjs"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./utils": {
+      "mark-parser": "./src/utils/index.mts",
+      "default": "./dist/utils/index.mjs"
+    }
   },
   "imports": {
     "#constructs/*": {
@@ -87,7 +91,7 @@
     ]
   },
   "scripts": {
-    "build": "yarn clean:build && tsc -p tsconfig.build.json --noEmit false && rollup -c=rollup.config.mts && trash dist/** \"!dist/index.{d.mts,mjs}\"",
+    "build": "yarn clean:build && tsc -p tsconfig.build.json --noEmit false && rollup -c=rollup.config.mts && trash dist/{constructs,interfaces,internal,types,utils}/** dist/*.{d.mts,mjs} \"!dist/index.{d.mts,mjs}\" \"!dist/utils/index.{d.mts,mjs}\" && delete-empty dist",
     "check:ci": "yarn dedupe --check && yarn check:format && yarn check:lint && yarn check:spelling && yarn typecheck && yarn check:types && yarn test:cov && attw --pack && yarn check:types:build",
     "check:format": "dprint check --incremental=false",
     "check:lint": "eslint --exit-on-fatal-error --max-warnings 0 .",
@@ -124,10 +128,9 @@
     "typecheck:ui": "yarn test:ui --typecheck --mode=typecheck"
   },
   "dependencies": {
-    "@flex-development/mark": "flex-development/mark#commit=9a157dbfc5822e3bd6c513e32855bceace566320",
-    "@flex-development/mark-util-symbol": "1.1.0",
+    "@flex-development/mark": "flex-development/mark#commit=6cf00d3c75a2078516c2680a2e24c04420493a4a",
+    "@flex-development/mark-util-symbol": "3.0.0",
     "@flex-development/unist-util-builder": "2.0.0",
-    "@flex-development/vfile-location": "1.1.1",
     "debug": "4.4.3",
     "devlop": "1.1.0"
   },
@@ -161,15 +164,15 @@
     "convert-hrtime": "5.0.0",
     "cross-env": "10.1.0",
     "cspell": "10.0.1",
+    "delete-empty": "3.0.0",
     "dprint": "0.54.0",
     "editorconfig": "3.0.2",
-    "eslint": "9.33.0",
-    "gemoji": "8.1.0",
+    "eslint": "9.39.4",
     "growl": "1.10.5",
     "happy-dom": "20.10.6",
     "husky": "9.1.7",
     "is-ci": "4.1.0",
-    "micromark-core-commonmark": "2.0.3",
+    "micromark": "4.0.2",
     "node-notifier": "10.0.1",
     "pkg-size": "2.4.0",
     "remark": "15.0.1",
@@ -178,6 +181,7 @@
     "rollup-plugin-cleanup": "3.2.1",
     "rollup-plugin-dts": "6.4.1",
     "sh-syntax": "0.5.8",
+    "to-vfile": "8.0.0",
     "trash-cli": "7.2.0",
     "ts-dedent": "2.3.0",
     "tsx": "4.22.4",

@@ -3,53 +3,72 @@
  * @module mark-parser/tests/unit/preprocess
  */
 
-import nil from '#internal/nil'
 import testSubject from '#preprocess'
-import type { PreprocessOptions } from '@flex-development/mark-parser'
+import decode from '#utils/decode'
+import type {
+  PreprocessOptions,
+  Preprocessor
+} from '@flex-development/mark-parser'
 import { chars, codes } from '@flex-development/mark-util-symbol'
 import type {
   Code,
+  Encoding,
   FileLike,
-  Preprocess,
   Value
 } from '@flex-development/mark/parse'
 
+vi.mock('#utils/decode', async og => {
+  const module: { default: typeof decode } = await og()
+  return { default: vi.fn(module.default).mockName('decode') }
+})
+
 describe('unit:preprocess', () => {
-  it('should return character code preprocessor', () => {
+  it('should return preprocessor', () => {
     // Act
-    const subject: Preprocess = testSubject()
+    const subject: Preprocessor = testSubject()
 
     // Expect
-    expect(subject).to.be.a('function').with.property('name', 'preprocess')
+    expect(subject).to.be.a('function').with.property('name', 'preprocessor')
   })
 
-  describe('preprocess', () => {
+  describe('preprocessor', () => {
     it.each<[
       value: Code | FileLike | Value | undefined,
       end?: boolean | null | undefined,
       options?: PreprocessOptions | null | undefined
     ]>([
-      [codes.eos, true],
       [codes.break],
-      [chars.empty],
-      [chars.lf + chars.cr + chars.crlf],
-      [{ value: chars.empty }, true],
-      [{ value: Buffer.from('hello' + chars.ht + 'world') }],
-      [Buffer.from('hi' + chars.ht + 'world'), null, { tabSize: 4 }],
-      [Buffer.from('--debug=true --pizza-type meat --small'), true]
-    ])('should return character code chunk list (%#)', (value, end) => {
+      [codes.eos, true],
+      [chars.empty, true],
+      [chars.empty, true, { allowEmptyChunk: true }],
+      [chars.bom, true],
+      [chars.bom, true, { ignoreBOM: true }],
+      [chars.nul, true],
+      [chars.nul, true, { nul: true }],
+      [chars.lf + chars.cr, true],
+      [chars.cr + chars.lowercaseH],
+      [chars.cr + chars.lf + chars.lowercaseA + chars.lowercaseB],
+      [{ value: Buffer.from('hello 👋' + chars.ht + 'world 🌎') }],
+      [Buffer.from('hello' + chars.ht + 'world'), null, { tabSize: 4 }],
+      [Buffer.from('--debug=true --pizza-type meat --small')]
+    ])('should return chunk list (%#)', (value, end, options) => {
       // Arrange
-      const subject: Preprocess = testSubject({ tabSize: 4 })
+      const encoding: Encoding | null | undefined = 'utf8'
+      const subject: Preprocessor = testSubject(options)
 
       // Act
-      const result = subject(value, null, end)
+      const result = subject(value, encoding, end)
 
       // Expect
       expect(result).to.be.an('array')
 
-      // Expect (conditional)
-      if (!nil(value)) expect(result).to.have.property('length').be.gte(1)
+      // Expect (conditional, end)
       if (end) expect(result.at(-1)).to.eq(codes.eos)
+
+      // Expect (conditional, decode)
+      if (typeof value === 'string' || value && typeof value === 'object') {
+        expect(decode).toHaveBeenCalledExactlyOnceWith(value, encoding)
+      }
 
       // Expect (snapshot)
       expect(result).toMatchSnapshot()

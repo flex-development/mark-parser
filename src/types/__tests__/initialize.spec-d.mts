@@ -19,7 +19,9 @@ describe('unit-d:types/Initialize', () => {
     expectTypeOf<TestSubject>().extract<InitialConstruct>().not.toBeNever()
   })
 
-  it('should extract InitialConstructs', () => {
-    expectTypeOf<TestSubject>().extract<InitialConstructs>().not.toBeNever()
+  it('should extract Partial<InitialConstructs>', () => {
+    expectTypeOf<TestSubject>()
+      .extract<Partial<InitialConstructs>>()
+      .not.toBeNever()
   })
 })

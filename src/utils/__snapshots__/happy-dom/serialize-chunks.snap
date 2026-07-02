@@ -1,16 +1,20 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (0) 1`] = `
+exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (0) 1`] = `""`;
+
+exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (1) 1`] = `
 "
 
 
 "
 `;
 
-exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (1) 1`] = `"	1"`;
+exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (2) 1`] = `"	1"`;
 
-exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (2) 1`] = `"  2"`;
+exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (3) 1`] = `"  3"`;
 
-exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (3) 1`] = `" 3"`;
+exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (4) 1`] = `"3/13"`;
 
-exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (4) 1`] = `"hello world"`;
+exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (5) 1`] = `"hi"`;
+
+exports[`unit:utils/serializeChunks > should return string value of \`chunks\` (6) 1`] = `"hello world"`;

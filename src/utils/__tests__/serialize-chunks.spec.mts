@@ -8,15 +8,12 @@ import { chars, codes } from '@flex-development/mark-util-symbol'
 
 describe('unit:utils/serializeChunks', () => {
   it.each<Parameters<typeof testSubject>>([
+    [[codes.bos, codes.sof, codes.empty]],
     [[codes.vlf, codes.vcr, codes.crlf]],
-    [
-      [[codes.vht, codes.vs], codes.break, [codes.digit1]],
-      {
-        breaks: chars.empty
-      }
-    ],
-    [[codes.vht, codes.vs, codes.digit2], true],
-    [[[codes.empty], codes.break, [codes.digit3]], { breaks: chars.space }],
+    [[codes.vht, codes.vs, codes.digit1]],
+    [[codes.vht, codes.vs, codes.digit3], true],
+    [[codes.digit3, codes.break, '13'], { breaks: chars.slash }],
+    [[codes.lowercaseH, codes.break, codes.lowercaseI]],
     [['hello', codes.break, 'world'], { breaks: true }]
   ])('should return string value of `chunks` (%#)', (chunks, options) => {
     expect(testSubject(chunks, options)).toMatchSnapshot()

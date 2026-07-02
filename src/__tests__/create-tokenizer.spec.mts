@@ -5,13 +5,14 @@
 
 import testSubject from '#create-tokenizer'
 import ct from '#fixtures/ct'
+import initialConstructs from '#fixtures/initialize'
 import tt from '#fixtures/tt'
 import type {
   FinalizeContext,
   Initialize,
   Options
 } from '@flex-development/mark-parser'
-import { chars, codes, constants, ev } from '@flex-development/mark-util-symbol'
+import { chars, codes, ev } from '@flex-development/mark-util-symbol'
 import type {
   Chunk,
   Code,
@@ -19,6 +20,7 @@ import type {
   InitialConstruct,
   Place,
   Point,
+  Position,
   State,
   Token,
   TokenizeContext
@@ -85,8 +87,8 @@ describe('unit:createTokenizer', () => {
   })
 
   it.each<[Initialize]>([
-    [{ [ct.document]: { tokenize: vi.fn() } }],
-    [vi.fn(() => ({ [ct.document]: { tokenize: vi.fn() } }))]
+    [initialConstructs],
+    [vi.fn(() => initialConstructs)]
   ])('should create tokenize context from ContentType (%#)', initialize => {
     // Arrange
     const finalizeContext: FinalizeContext = vi.fn().mockName('finalizeContext')
@@ -94,17 +96,46 @@ describe('unit:createTokenizer', () => {
     const context: TokenizeContext = testSubject(options)
 
     // Act
-    const result = context.parser.document(from)
+    const result1 = context.parser.document(from)
+    const result2 = context.parser.flow(from)
+    const result3 = context.parser.content(from)
+    const result4 = context.parser.string(from)
+    const result5 = context.parser.text(from)
 
     // Expect
-    expect(finalizeContext).toHaveBeenCalledTimes(2)
+    expect(finalizeContext).toHaveBeenCalledTimes(6)
     expect(vi.mocked(finalizeContext).mock.calls[0]).to.have.length(3)
     expect(vi.mocked(finalizeContext).mock.calls[0]![0]).to.eq(context)
     expect(vi.mocked(finalizeContext).mock.calls[1]).to.have.length(3)
-    expect(vi.mocked(finalizeContext).mock.calls[1]![0]).to.eq(result)
-    expect(result).to.not.eq(context)
-    expect(result.now()).to.eql(place)
-    expect(result).toMatchSnapshot()
+    expect(vi.mocked(finalizeContext).mock.calls[1]![0]).to.eq(result1)
+    expect(vi.mocked(finalizeContext).mock.calls[2]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[2]![0]).to.eq(result2)
+    expect(vi.mocked(finalizeContext).mock.calls[3]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[3]![0]).to.eq(result3)
+    expect(vi.mocked(finalizeContext).mock.calls[4]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[4]![0]).to.eq(result4)
+    expect(vi.mocked(finalizeContext).mock.calls[5]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[5]![0]).to.eq(result5)
+    expect(result1).to.not.eq(context)
+    expect(result2).to.not.eq(context)
+    expect(result3).to.not.eq(context)
+    expect(result4).to.not.eq(context)
+    expect(result5).to.not.eq(context)
+    expect(result1).to.not.eq(result2)
+    expect(result1).to.not.eq(result3)
+    expect(result1).to.not.eq(result4)
+    expect(result1).to.not.eq(result5)
+    expect(result2).to.not.eq(result3)
+    expect(result2).to.not.eq(result4)
+    expect(result2).to.not.eq(result5)
+    expect(result3).to.not.eq(result4)
+    expect(result3).to.not.eq(result5)
+    expect(result4).to.not.eq(result5)
+    expect(result1.now()).to.eql(place).but.not.eq(place)
+    expect(result2.now()).to.eql(place).but.not.eq(place)
+    expect(result3.now()).to.eql(place).but.not.eq(place)
+    expect(result4.now()).to.eql(place).but.not.eq(place)
+    expect(result5.now()).to.eql(place).but.not.eq(place)
   })
 
   it.each<[Initialize]>([
@@ -122,12 +153,42 @@ describe('unit:createTokenizer', () => {
     }
   })
 
+  describe('#code', () => {
+    let subject: TokenizeContext
+
+    beforeEach(() => {
+      subject = testSubject(initialize)
+    })
+
+    it('should equal `codes.bos` if at beginning of stream', () => {
+      expect(subject.code).to.eq(codes.bos)
+    })
+
+    it('should equal `codes.break` if out of chunks but not done', () => {
+      // Setup
+      subject.write(codes.asterisk)
+
+      // Act + Expect
+      expect(subject.code).to.eq(codes.break)
+    })
+
+    it('should equal `codes.eos` if at end of stream', () => {
+      // Setup
+      subject.write([chars.digit1 + chars.digit3, codes.eos])
+
+      // Act + Expect
+      expect(subject.code).to.eq(codes.eos)
+    })
+  })
+
   describe('#effects.consume', () => {
     it.each<[keyof typeof codes]>([
+      ['bos'],
       ['break'],
       ['empty'],
       ['eof'],
       ['eos'],
+      ['sof'],
       ['vs']
     ])('should only move chunk position (`codes.%s`)', key => {
       // Arrange
@@ -140,27 +201,6 @@ describe('unit:createTokenizer', () => {
 
       // Expect
       expect(subject.now()).to.eql({ ...now, _index: now._index + 1 })
-    })
-
-    it.each<[key: keyof typeof codes, options?: Partial<Options>]>([
-      ['ht'],
-      ['vht', { tabSize: 0 }]
-    ])('should move based on tab size (`codes.%s`)', (key, options) => {
-      // Arrange
-      const code: Code = codes[key]
-      const subject: TokenizeContext = testSubject({ ...options, initialize })
-      const now: Place = subject.now()
-
-      // Act
-      subject.write(code)
-
-      // Expect
-      expect(subject.now()).to.eql({
-        ...now,
-        _index: now._index + 1,
-        column: now.column + (options?.tabSize ?? constants.tabSize),
-        offset: now.offset + (code && code < 0 ? 1 : 0)
-      })
     })
 
     it.each<[key: keyof typeof codes, options?: Partial<Options>]>([
@@ -306,31 +346,109 @@ describe('unit:createTokenizer', () => {
     })
   })
 
-  describe('#peek', () => {
-    let subject: TokenizeContext
+  describe('#sliceStream', () => {
+    let chunks: Chunk[]
 
-    beforeEach(() => {
-      subject = testSubject(initialize)
+    beforeAll(() => {
+      chunks = [
+        '*a*',
+        codes.lineFeed,
+        '**b**',
+        codes.lineFeed,
+        '***c***',
+        codes.lineFeed,
+        '****d****',
+        codes.lineFeed,
+        codes.lineFeed,
+        '**e*',
+        codes.lineFeed,
+        '*f**',
+        codes.lineFeed,
+        codes.lineFeed,
+        '*g',
+        codes.lineFeed,
+        'h*',
+        codes.lineFeed,
+        codes.lineFeed,
+        '**i',
+        codes.lineFeed,
+        'j**',
+        codes.lineFeed,
+        codes.lineFeed,
+        '***k*',
+        codes.lineFeed,
+        codes.lineFeed,
+        '****l*',
+        codes.lineFeed,
+        codes.lineFeed,
+        '***m**',
+        codes.lineFeed,
+        codes.lineFeed,
+        '****m**',
+        codes.lineFeed,
+        codes.eof
+      ]
     })
 
-    it('should return `codes.break` if at beginning of stream', () => {
-      expect(subject.peek()).to.eq(codes.break)
-    })
-
-    it('should return `codes.break` if out of chunks but not done', () => {
-      // Setup
-      subject.write(codes.asterisk)
+    it('should return empty list without chunks', () => {
+      // Arrange
+      const subject: TokenizeContext = testSubject(initialize)
+      const range: Position = { end: subject.now(), start: subject.now() }
 
       // Act + Expect
-      expect(subject.peek()).to.eq(codes.break)
+      expect(subject.sliceStream(range)).to.be.an('array').and.empty
     })
 
-    it('should return `codes.eos` if at end of stream', () => {
-      // Setup
-      subject.write(codes.eos)
+    it.each<[range: Position]>([
+      [
+        {
+          end: { _bufferIndex: -1, _index: 0, column: 1, line: 1, offset: 0 },
+          start: { _bufferIndex: -1, _index: 0, column: 1, line: 1, offset: 0 }
+        }
+      ],
+      [
+        {
+          end: { _bufferIndex: 0, _index: 0, column: 1, line: 1, offset: 0 },
+          start: { _bufferIndex: 0, _index: 0, column: 1, line: 1, offset: 0 }
+        }
+      ],
+      [
+        {
+          end: { _bufferIndex: 3, _index: 2, column: 4, line: 2, offset: 7 },
+          start: { _bufferIndex: 2, _index: 2, column: 3, line: 2, offset: 6 }
+        }
+      ],
+      [
+        {
+          end: { _bufferIndex: -1, _index: 2, column: 1, line: 2, offset: 4 },
+          start: { _bufferIndex: -1, _index: 1, column: 4, line: 1, offset: 3 }
+        }
+      ],
+      [
+        {
+          end: { _bufferIndex: 9, _index: 6, column: 10, line: 4, offset: 27 },
+          start: { _bufferIndex: 0, _index: 4, column: 1, line: 3, offset: 10 }
+        }
+      ],
+      [
+        {
+          end: { _bufferIndex: -1, _index: 12, column: 5, line: 7, offset: 38 },
+          start: { _bufferIndex: 0, _index: 9, column: 1, line: 6, offset: 29 }
+        }
+      ]
+    ])('should return list of chunks spanning `range` (%#)', range => {
+      // Arrange
+      const subject: TokenizeContext = testSubject(initialize)
 
-      // Act + Expect
-      expect(subject.peek()).to.eq(codes.eos)
+      // Setup
+      subject.chunks = chunks
+
+      // Act
+      const result = subject.sliceStream(range)
+
+      // Expect
+      expect(result).to.be.an('array')
+      expect(result).toMatchSnapshot()
     })
   })
 

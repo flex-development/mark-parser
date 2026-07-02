@@ -3,25 +3,8 @@
 exports[`e2e:mark-parser > should expose public api 1`] = `
 [
   "createTokenizer",
-  "createPreprocess",
   "preprocess",
   "tokenize",
   "initialize",
-  "combineExtensions",
-  "decode",
-  "defineConstruct",
-  "defineConstructs",
-  "eof",
-  "eos",
-  "eol",
-  "isCode",
-  "push",
-  "resolveAll",
-  "serializeChunks",
-  "sliceChunks",
-  "sliceSerialize",
-  "splice",
-  "htab",
-  "tab",
 ]
 `;

@@ -22,12 +22,10 @@ describe('unit-d:types/CreateInitial', () => {
   })
 
   describe('returns', () => {
-    it('should return InitialConstruct', () => {
-      // Arrange
-      type Expect = InitialConstruct | InitialConstructs
-
-      // Expect
-      expectTypeOf<TestSubject>().returns.toEqualTypeOf<Expect>()
+    it('should return InitialConstruct | Partial<InitialConstructs>', () => {
+      expectTypeOf<TestSubject>()
+        .returns
+        .toEqualTypeOf<InitialConstruct | Partial<InitialConstructs>>()
     })
   })
 })

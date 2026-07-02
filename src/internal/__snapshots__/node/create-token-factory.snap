@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`unit:internal/token > should return new token 1`] = `
+exports[`unit:internal/createTokenFactory > token > should return new token 1`] = `
 {
   "end": {
     "_bufferIndex": -1,

@@ -8,25 +8,18 @@ import type {
   CodeCheck,
   CreateExtensions,
   FinalizeContext,
-  Initialize,
-  PreprocessOptions
+  Initialize
 } from '@flex-development/mark-parser'
 import type { List } from '@flex-development/mark/core'
 import type {
   CreateToken,
-  Encoding,
   Extensions,
   ParseContext,
-  Point,
-  Preprocess
+  Point
 } from '@flex-development/mark/parse'
 import type { Nilable } from '@flex-development/tutils'
 
 describe('unit-d:interfaces/Options', () => {
-  it('should extend PreprocessOptions', () => {
-    expectTypeOf<TestSubject>().toExtend<PreprocessOptions>()
-  })
-
   it('should match [debug?: string | null | undefined]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('debug')
@@ -43,12 +36,6 @@ describe('unit-d:interfaces/Options', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('eol')
       .toEqualTypeOf<Nilable<CodeCheck>>()
-  })
-
-  it('should match [encoding?: Encoding | null | undefined]', () => {
-    expectTypeOf<TestSubject>()
-      .toHaveProperty('encoding')
-      .toEqualTypeOf<Nilable<Encoding>>()
   })
 
   it('should match [extensions?: CreateExtensions | Extensions | null | undefined]', () => {
@@ -85,12 +72,6 @@ describe('unit-d:interfaces/Options', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('parser')
       .toEqualTypeOf<Nilable<ParseContext>>()
-  })
-
-  it('should match [preprocess?: Preprocess | null | undefined]', () => {
-    expectTypeOf<TestSubject>()
-      .toHaveProperty('preprocess')
-      .toEqualTypeOf<Nilable<Preprocess>>()
   })
 
   it('should match [token?: CreateToken | null | undefined]', () => {

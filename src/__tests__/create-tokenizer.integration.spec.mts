@@ -22,17 +22,14 @@ import alwaysFalse from '#tests/utils/always-false'
 import snapshot from '#tests/utils/snapshot-events'
 import type { Initialize, Options } from '@flex-development/mark-parser'
 import { chars, codes, ev } from '@flex-development/mark-util-symbol'
-import type { List } from '@flex-development/mark/core'
 import type {
-  Chunk,
   ContentType,
   Event,
-  FileLike,
   Place,
   Token,
   TokenizeContext,
   Tokenizer,
-  Value
+  Writable
 } from '@flex-development/mark/parse'
 import { constant } from '@flex-development/tutils'
 import type { Mock } from 'vitest'
@@ -65,7 +62,7 @@ describe('integration:createTokenizer', () => {
     /**
      * The input to tokenize.
      */
-    slice: Chunk | FileLike | List<Chunk | FileLike | Value> | Value
+    slice: Writable
 
     /**
      * Whether to snapshot events.

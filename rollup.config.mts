@@ -25,7 +25,12 @@ import pkg from './package.json' with { type: 'json' }
  *
  * @const {ReadonlyArray<string>} files
  */
-const files: readonly string[] = ['./dist/index.d.mts', './dist/index.mjs']
+const files: readonly string[] = [
+  './dist/index.d.mts',
+  './dist/index.mjs',
+  './dist/utils/index.d.mts',
+  './dist/utils/index.mjs'
+]
 
 /**
  * The rollup configuration.
@@ -34,7 +39,7 @@ const files: readonly string[] = ['./dist/index.d.mts', './dist/index.mjs']
  *
  * @type {RollupOptions[]}
  */
-export default files.map(input => {
+export default files.map((input: string): RollupOptions => {
   /**
    * The list of plugins.
    *
@@ -47,7 +52,7 @@ export default files.map(input => {
       resolve(),
       cleanup({ comments: 'none' }),
       codecov({
-        bundleName: pkg.name,
+        bundleName: input.includes('utils') ? pkg.name + '/utils' : pkg.name,
         debug: true,
         enableBundleAnalysis: ci,
         uploadToken: process.env['CODECOV_TOKEN']!
@@ -58,7 +63,7 @@ export default files.map(input => {
   }
 
   return {
-    external: Object.keys(pkg.dependencies),
+    external: [...Object.keys(pkg.dependencies), pkg.name + '/utils'],
     input,
     output: [{ file: input, format: 'esm' }],
     plugins

@@ -15,9 +15,11 @@ import type {
  *
  * @this {void}
  *
- * @return {InitialConstruct | InitialConstructs}
+ * @return {InitialConstruct | Partial<InitialConstructs>}
  *  The initial construct or the initial construct record
  */
-type CreateInitial = (this: void) => InitialConstruct | InitialConstructs
+type CreateInitial = (
+  this: void
+) => InitialConstruct | Partial<InitialConstructs>
 
 export type { CreateInitial as default }
