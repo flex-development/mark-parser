@@ -8,11 +8,10 @@ import type ReturnHandle from '#types/return-handle'
 import type { Initialize, Options } from '@flex-development/mark-parser'
 import {
   combineExtensions,
-  eol,
-  eos,
   resolveAll,
   serializeChunks
 } from '@flex-development/mark-parser/utils'
+import { eol, eos } from '@flex-development/mark-util-character'
 import { push, splice } from '@flex-development/mark-util-chunked'
 import { chars, codes, ev } from '@flex-development/mark-util-symbol'
 import type { IfNever, List } from '@flex-development/mark/core'

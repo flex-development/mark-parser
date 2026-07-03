@@ -5,6 +5,7 @@
 
 import isList from '#internal/is-list'
 import isMutableArray from '#internal/is-mutable-array'
+import { isCode } from '@flex-development/mark-util-character'
 import { splice } from '@flex-development/mark-util-chunked'
 import { chars, codes } from '@flex-development/mark-util-symbol'
 import type { List } from '@flex-development/mark/core'
@@ -15,7 +16,6 @@ import type {
   FileLike,
   Value
 } from '@flex-development/mark/parse'
-import isCode from './is-code.mts'
 
 export default decode
 

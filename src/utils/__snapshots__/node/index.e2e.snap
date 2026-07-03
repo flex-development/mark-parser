@@ -4,13 +4,7 @@ exports[`e2e:utils > should expose public api 1`] = `
 [
   "combineExtensions",
   "decode",
-  "eof",
-  "eos",
-  "eol",
-  "isCode",
   "resolveAll",
   "serializeChunks",
-  "htab",
-  "tab",
 ]
 `;
