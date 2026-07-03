@@ -136,7 +136,7 @@
   "dependencies": {
     "@flex-development/mark": "1.0.0-alpha.1",
     "@flex-development/mark-util-character": "flex-development/mark-util-character#commit=fb443edf7cfbfbf7e97864e227aab583f74dfad4",
-    "@flex-development/mark-util-chunked": "flex-development/mark-util-chunked#commit=79041e33c0320adad02ad65408654eabf266d297",
+    "@flex-development/mark-util-chunked": "1.0.0",
     "@flex-development/mark-util-symbol": "3.0.0",
     "@flex-development/unist-util-builder": "2.0.0",
     "debug": "4.4.3",
