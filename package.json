@@ -13,6 +13,12 @@
   "homepage": "https://github.com/flex-development/mark-parser",
   "repository": "https://github.com/flex-development/mark-parser.git",
   "bugs": "https://github.com/flex-development/mark-parser/issues",
+  "funding": [
+    {
+      "type": "GitHub Sponsors",
+      "url": "https://github.com/sponsors/flex-development"
+    }
+  ],
   "author": {
     "name": "Lexus Drumgold",
     "url": "https://github.com/unicornware"
