@@ -175,7 +175,7 @@
     "delete-empty": "3.0.0",
     "dprint": "0.54.0",
     "editorconfig": "3.0.2",
-    "eslint": "9.39.4",
+    "eslint": "10.6.0",
     "growl": "1.10.5",
     "happy-dom": "20.10.6",
     "husky": "9.1.7",
