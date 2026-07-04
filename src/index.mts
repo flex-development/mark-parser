@@ -1,5 +1,5 @@
 /**
- * @file Package Entry Point
+ * @file Entry Point - Package
  * @module mark-parser
  */
 

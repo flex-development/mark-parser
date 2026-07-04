@@ -4,13 +4,13 @@
  */
 
 import type {
-  CodeCheck,
   CreateExtensions,
   FinalizeContext,
   Initialize
 } from '@flex-development/mark-parser'
 import type { List } from '@flex-development/mark/core'
 import type {
+  CodeCheck,
   CreateToken,
   Extensions,
   ParseContext,
