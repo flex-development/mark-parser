@@ -1,3 +1,67 @@
+## [1.0.0-alpha.10](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.9...1.0.0-alpha.10) (2026-07-04)
+
+### ⚠ BREAKING CHANGES
+
+- **deps:** bump @flex-development/mark-util-character to 1.0.0
+- **deps:** add @flex-development/mark-util-character
+- **deps:** add @flex-development/mark-util-chunked
+- api improvements
+- support `codes.bos`
+- `ContextMap` support
+- **deps:** `@flex-development/mark-util-symbol` integration
+- project rename
+- `@flex-development/fsm` integration
+
+### :package: Build
+
+- [[`ea332a8`](https://github.com/flex-development/mark-parser/commit/ea332a88aeb4b7839f355932af4fd703fc29d0f1)] codecov bundle analysis
+- [[`7d966c7`](https://github.com/flex-development/mark-parser/commit/7d966c755920de3009c1583ceda624dd56ddfab3)] **deps-dev:** bump @arethetypeswrong/cli from 0.18.3 to 0.18.4 ([#375](https://github.com/flex-development/mark-parser/issues/375))
+- [[`a4abde2`](https://github.com/flex-development/mark-parser/commit/a4abde2f947ddbda76aeb0f80a20a67be4f33c72)] **deps-dev:** bump dprint from 0.54.0 to 0.55.1
+- [[`005531c`](https://github.com/flex-development/mark-parser/commit/005531c83452b90fcbdf0534c74c1b0173adeb2a)] **deps-dev:** bump happy-dom from 20.10.1 to 20.10.2 ([#364](https://github.com/flex-development/mark-parser/issues/364))
+- [[`2cbde17`](https://github.com/flex-development/mark-parser/commit/2cbde17a4a3a6af0e367ff8b99fd44d2d0b0745e)] **deps-dev:** bump happy-dom from 20.10.2 to 20.10.3 ([#368](https://github.com/flex-development/mark-parser/issues/368))
+- [[`b8cca05`](https://github.com/flex-development/mark-parser/commit/b8cca0528aef600283947915eae7518765e9296b)] **deps-dev:** bump happy-dom from 20.10.3 to 20.10.4 ([#370](https://github.com/flex-development/mark-parser/issues/370))
+- [[`2dd802b`](https://github.com/flex-development/mark-parser/commit/2dd802bb97204583b002b75a420f858912e61966)] **deps-dev:** bump happy-dom from 20.10.4 to 20.10.5 ([#371](https://github.com/flex-development/mark-parser/issues/371))
+- [[`8f5808e`](https://github.com/flex-development/mark-parser/commit/8f5808e0f360c83b840b926ae23fbc7345c41394)] **deps-dev:** bump happy-dom from 20.10.5 to 20.10.6 ([#372](https://github.com/flex-development/mark-parser/issues/372))
+- [[`a090bea`](https://github.com/flex-development/mark-parser/commit/a090beae841bac0de9c436f7cd8e12b6ab1c7bc5)] **deps-dev:** bump rollup from 4.61.1 to 4.62.0 ([#367](https://github.com/flex-development/mark-parser/issues/367))
+- [[`a8dbf5c`](https://github.com/flex-development/mark-parser/commit/a8dbf5c9e704f25463b09f957bd28a7e969653f4)] **deps-dev:** bump rollup from 4.62.0 to 4.62.2 ([#374](https://github.com/flex-development/mark-parser/issues/374))
+- [[`abc40cd`](https://github.com/flex-development/mark-parser/commit/abc40cdfcbd6305f1a629305c255a3296a0cabdb)] **deps-dev:** bump the commitlint group across 1 directory with 2 updates ([#377](https://github.com/flex-development/mark-parser/issues/377))
+- [[`50cafdf`](https://github.com/flex-development/mark-parser/commit/50cafdfbfac0bc9ffe4c589d47737399972e3314)] **deps-dev:** bump the commitlint group with 2 updates ([#381](https://github.com/flex-development/mark-parser/issues/381))
+- [[`9b9d00b`](https://github.com/flex-development/mark-parser/commit/9b9d00b7cae76044398b388d6f842fb381ee91a1)] **deps-dev:** bump the vitest group with 3 updates ([#366](https://github.com/flex-development/mark-parser/issues/366))
+- [[`a86e8f9`](https://github.com/flex-development/mark-parser/commit/a86e8f90832a3845a17d7074059f9d810cb5f090)] **deps-dev:** bump ts-dedent from 2.2.0 to 2.3.0 ([#365](https://github.com/flex-development/mark-parser/issues/365))
+- [[`5a44495`](https://github.com/flex-development/mark-parser/commit/5a4449514fe144d3e08b3e6d7ee67c5822d7de03)] **deps-dev:** bump tsx from 4.22.4 to 4.22.5 ([#382](https://github.com/flex-development/mark-parser/issues/382))
+- [[`52273e2`](https://github.com/flex-development/mark-parser/commit/52273e2abbbd2aac081c646ca18760676e95daa9)] **deps:** bump @flex-development/fsm from 566fbcd to 4f44837
+- [[`33048e1`](https://github.com/flex-development/mark-parser/commit/33048e1199bb4125eee48d1a25c4aa7674b3f03f)] **deps:** bump @flex-development/mark to 1.0.0-alpha.1
+- [[`82cbf71`](https://github.com/flex-development/mark-parser/commit/82cbf7148600dd743273a0088ecca083649e8e7a)] **deps:** bump @flex-development/mark-util-chunked to 1.0.0
+- [[`343b28e`](https://github.com/flex-development/mark-parser/commit/343b28ea251569eb3cfa6b1f3e9d8899746d59ea)] **deps:** bump @flex-development/mark-util-symbol from 3.0.0 to 3.1.0
+- [[`4361b3e`](https://github.com/flex-development/mark-parser/commit/4361b3eaabda1ca6e76095d19bca255900a9beb5)] **deps:** `@flex-development/mark-util-symbol` integration
+- [[`59ddc91`](https://github.com/flex-development/mark-parser/commit/59ddc914bb76fb1fa63cd860d2526ce9783a70fe)] **deps:** add @flex-development/mark-util-character
+- [[`98f00b1`](https://github.com/flex-development/mark-parser/commit/98f00b1a60ae5372f90999838664d18b36b37d09)] **deps:** add @flex-development/mark-util-chunked
+- [[`9bf9ed4`](https://github.com/flex-development/mark-parser/commit/9bf9ed4cfcda7550b4333fb0dfde94416cca7a47)] **deps:** bump @flex-development/mark-util-character to 1.0.0
+- [[`3cf47ad`](https://github.com/flex-development/mark-parser/commit/3cf47ad965f8d1e96e4cffa0cd1561d5977b0310)] **yarn:** bump yarn from 4.14.1 to 4.17.0
+
+### :robot: Continuous Integration
+
+- [[`0d11fbe`](https://github.com/flex-development/mark-parser/commit/0d11fbeea31b4a8779f48a54e8051e60841767a7)] **deps:** bump actions/cache from 5.0.5 to 6.0.0 ([#376](https://github.com/flex-development/mark-parser/issues/376))
+- [[`0a8b651`](https://github.com/flex-development/mark-parser/commit/0a8b651fed2993a85e2e9a4ed5720bc9c404d1dc)] **deps:** bump actions/cache from 6.0.0 to 6.1.0 ([#378](https://github.com/flex-development/mark-parser/issues/378))
+- [[`dad2184`](https://github.com/flex-development/mark-parser/commit/dad2184e189c30401b814a5a56d460429bfc7ac0)] **deps:** bump actions/checkout from 6.0.3 to 7.0.0 ([#373](https://github.com/flex-development/mark-parser/issues/373))
+- [[`9d927ec`](https://github.com/flex-development/mark-parser/commit/9d927ecf0680e04c9b514a6d59751b4c50874407)] **deps:** bump codecov/codecov-action from 6.0.1 to 7.0.0 ([#363](https://github.com/flex-development/mark-parser/issues/363))
+
+### :sparkles: Features
+
+- [[`7d1ecf9`](https://github.com/flex-development/mark-parser/commit/7d1ecf9c5583b830e62d75fc463d9c8663e2061c)] `Options#noEmptyTokens`
+- [[`8c66ac3`](https://github.com/flex-development/mark-parser/commit/8c66ac342e53f1b7a23308597be4a38bd23de4d4)] support `codes.bos`
+
+### :house_with_garden: Housekeeping
+
+- [[`4887710`](https://github.com/flex-development/mark-parser/commit/4887710471e74424727cb08be89ee385410771cc)] **pkg:** `funding`
+
+### :mechanical_arm: Refactors
+
+- [[`0d7f2cb`](https://github.com/flex-development/mark-parser/commit/0d7f2cb62fd2d9d770fca78ca6ed5d3a01684cb5)] `@flex-development/fsm` integration
+- [[`605c3c5`](https://github.com/flex-development/mark-parser/commit/605c3c5965e826a2ded09557bbba0eaf0cf4775c)] `ContextMap` support
+- [[`df8ceea`](https://github.com/flex-development/mark-parser/commit/df8ceeab7c8f5a65007332a2fe1dfe9e3eb5846c)] api improvements
+- [[`e80a4bd`](https://github.com/flex-development/mark-parser/commit/e80a4bd3a5431b02b1f9ee3d75b16db3f5676ee8)] project rename
+
 ## [1.0.0-alpha.9](https://github.com/flex-development/mark-tokenizer/compare/1.0.0-alpha.8...1.0.0-alpha.9) (2026-06-05)
 
 ### :sparkles: Features
@@ -668,3 +732,4 @@
 
 - [[`85f91f2`](https://github.com/flex-development/mark-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/mark-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
