@@ -1846,7 +1846,7 @@ __metadata:
     "@flex-development/mark": "npm:1.0.0-alpha.1"
     "@flex-development/mark-util-character": "flex-development/mark-util-character#commit=fb443edf7cfbfbf7e97864e227aab583f74dfad4"
     "@flex-development/mark-util-chunked": "npm:1.0.0"
-    "@flex-development/mark-util-symbol": "npm:3.0.0"
+    "@flex-development/mark-util-symbol": "npm:3.1.0"
     "@flex-development/pathe": "npm:4.0.2"
     "@flex-development/remark-preset": "npm:1.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
@@ -1921,6 +1921,13 @@ __metadata:
   version: 3.0.0
   resolution: "@flex-development/mark-util-symbol@npm:3.0.0"
   checksum: 10/45ec31061e04a0366016d66f9c445caced13cf9b61eb6e09a1e1bb1f6b2353ed8fc4f70aebd3010d70eb83d1a9d197a202cbd131952ff377c2f5383c2c7656e7
+  languageName: node
+  linkType: hard
+
+"@flex-development/mark-util-symbol@npm:3.1.0":
+  version: 3.1.0
+  resolution: "@flex-development/mark-util-symbol@npm:3.1.0"
+  checksum: 10/5fbdbdfbc89011ab7389d4216dbaa5ef40f82c6dfd7e7694155d35d3f1b3d248d5ac7806a7b448c6c97b7075b79b69603599bb07b439e3de4498c27675f7d262
   languageName: node
   linkType: hard
 
