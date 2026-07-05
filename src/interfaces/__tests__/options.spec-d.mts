@@ -74,6 +74,12 @@ describe('unit-d:interfaces/Options', () => {
       .toEqualTypeOf<Nilable<boolean>>()
   })
 
+  it('should match [noPrevious?: boolean | null | undefined]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('noPrevious')
+      .toEqualTypeOf<Nilable<boolean>>()
+  })
+
   it('should match [parser?: ParseContext | null | undefined]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('parser')

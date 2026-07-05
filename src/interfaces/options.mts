@@ -11,10 +11,12 @@ import type {
 import type { List } from '@flex-development/mark/core'
 import type {
   CodeCheck,
+  Construct,
   CreateToken,
   Extensions,
   ParseContext,
-  Point
+  Point,
+  State
 } from '@flex-development/mark/parse'
 import type { u } from '@flex-development/unist-util-builder'
 
@@ -92,6 +94,14 @@ interface Options {
    * @see https://github.com/wooorm/devlop#okvalue-message
    */
   noEmptyTokens?: boolean | null | undefined
+
+  /**
+   * When trying a construct, whether {@linkcode Construct.previous}
+   * should **not** be called.
+   *
+   * If `false`, `previous` should be called via {@linkcode State} function.
+   */
+  noPrevious?: boolean | null | undefined
 
   /**
    * The relevant parsing context.

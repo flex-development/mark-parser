@@ -515,12 +515,19 @@ function createTokenizer(
             return nok(code)
           }
 
-          // construct is disabled by guard.
-          if (
-            construct.previous &&
-            !construct.previous.call(context, context.previous)
-          ) {
-            return nok(code)
+          // always normalized.
+          assert(options && 'initialize' in options, 'expected options object')
+
+          // check if construct is disabled by guard.
+          if (!options.noPrevious) {
+            const { previous } = construct
+
+            // construct is disabled by guard.
+            if (previous && !previous.call(context, context.previous)) {
+              return nok(code)
+            }
+          } else {
+            // user is responsible for calling `previous`.
           }
 
           return construct.tokenize.call(
@@ -670,21 +677,34 @@ function createTokenizer(
       assert(options && 'initialize' in options, 'expected options object')
       assert(contentType in initialize, 'expected initial construct record')
 
-      /**
-       * The new tokenization context.
-       *
-       * @const {TokenizeContext} ctx
-       */
-      const ctx: TokenizeContext = createTokenizer({
+      return createTokenizer({
         ...options,
         debug: debug.namespace + chars.colon + contentType,
+        /**
+         * @this {void}
+         *
+         * @param {TokenizeContext} self
+         *  The base tokenization context
+         * @param {InitialConstruct | Partial<InitialConstructs>} initialize
+         *  The initial construct, or the record of initial constructs
+         * @param {Partial<Options>} opts
+         *  The options used to create the tokenizer
+         * @return {undefined}
+         */
+        finalizeContext(
+          this: void,
+          self: TokenizeContext,
+          initialize: InitialConstruct | Partial<InitialConstructs>,
+          opts: Partial<Options>
+        ): undefined {
+          assert('tokenize' in initialize, 'expected initial construct')
+          self.contentType = contentType
+          return void opts.finalizeContext?.(self, initialize, options)
+        },
         from: from ?? options.from,
         initialize: (initialize as InitialConstructs)[contentType],
         parser: context.parser
       })
-
-      ctx.contentType = contentType
-      return ctx
     }
   }
 

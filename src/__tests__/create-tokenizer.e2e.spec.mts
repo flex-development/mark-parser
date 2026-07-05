@@ -16,6 +16,7 @@ import type {
   Chunk,
   Extension,
   FileLike,
+  InitialConstruct,
   InitialConstructs,
   NormalizedExtension,
   TokenizeContext
@@ -48,14 +49,25 @@ describe('e2e:createTokenizer', () => {
        *
        * @param {TokenizeContext} self
        *  The base tokenization context
+       * @param {InitialConstruct | Partial<InitialConstructs>} initialize
+       *  The initial construct, or the record of initial constructs
+       * @param {Partial<Options>} options
+       *  The options used to create the tokenizer
        * @return {undefined}
        */
       finalizeContext = function finalizeContext(
         this: void,
-        self: TokenizeContext
+        self: TokenizeContext,
+        initialize: InitialConstruct | Partial<InitialConstructs>,
+        options: Partial<Options>
       ): undefined {
         if (typeof self.parser.defined === 'undefined') self.parser.defined = []
         if (typeof self.parser.lazy === 'undefined') self.parser.lazy = {}
+
+        if (self.contentType === ct.string || self.contentType === ct.text) {
+          options.noPrevious = true
+        }
+
         return void void self
       }
     })
