@@ -1,3 +1,9 @@
+## [1.0.0-alpha.11](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.10...1.0.0-alpha.11) (2026-07-05)
+
+### :sparkles: Features
+
+- [[`3c6ec99`](https://github.com/flex-development/mark-parser/commit/3c6ec99462a5c32834da3ef5ba67fed9d1c9c952)] configure calls to `Construct#previous`
+
 ## [1.0.0-alpha.10](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.9...1.0.0-alpha.10) (2026-07-04)
 
 ### ⚠ BREAKING CHANGES
@@ -732,4 +738,5 @@
 
 - [[`85f91f2`](https://github.com/flex-development/mark-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/mark-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
