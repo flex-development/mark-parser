@@ -1913,7 +1913,7 @@ __metadata:
     rollup: "npm:4.62.2"
     rollup-plugin-cleanup: "npm:3.2.1"
     rollup-plugin-dts: "npm:6.4.1"
-    sh-syntax: "npm:0.5.8"
+    sh-syntax: "npm:0.6.0"
     to-vfile: "npm:8.0.0"
     trash-cli: "npm:7.2.0"
     ts-dedent: "npm:2.3.0"
@@ -11137,12 +11137,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sh-syntax@npm:0.5.8":
-  version: 0.5.8
-  resolution: "sh-syntax@npm:0.5.8"
-  dependencies:
-    tslib: "npm:^2.8.1"
-  checksum: 10/cbc046244b81a997f988f7f2244f953756332720c82054c22d4680d4eee5dc3c5058c9bd84c13b3e9c320ba25970a99e24be465cf265f41ef7cb4c4030cab6d1
+"sh-syntax@npm:0.6.0":
+  version: 0.6.0
+  resolution: "sh-syntax@npm:0.6.0"
+  checksum: 10/ad2ddff06374a6e422741d286a5e7012222b0d16f23df6842c7e06af3a01390dab53821e953b33671d816e961a9af32fdd61feb8ddf882b50f3d3d08a81a913e
   languageName: node
   linkType: hard
 
