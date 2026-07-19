@@ -350,12 +350,12 @@ describe('unit:createTokenizer', () => {
       it('should error on empty token if empty tokens are not allowed', () => {
         // Arrange
         const chunk: string = import.meta.url
-        const options: Options = { initialize, noEmptyTokens: true }
-        const subject: TokenizeContext = testSubject(options)
+        const subject: TokenizeContext = testSubject({ initialize })
 
         // Setup
         subject.write(chunk)
         subject.effects.enter(tt.succ)
+        subject.noEmptyTokens = true
 
         // Act + Expect
         expect(() => subject.effects.exit(tt.succ)).to.throw(Error)

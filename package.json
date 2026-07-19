@@ -134,7 +134,7 @@
     "typecheck:ui": "yarn test:ui --typecheck --mode=typecheck"
   },
   "dependencies": {
-    "@flex-development/mark": "1.0.0-alpha.1",
+    "@flex-development/mark": "1.0.0-alpha.2",
     "@flex-development/mark-util-character": "1.0.0",
     "@flex-development/mark-util-chunked": "1.0.0",
     "@flex-development/mark-util-symbol": "3.1.0",

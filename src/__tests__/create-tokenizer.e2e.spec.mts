@@ -64,8 +64,16 @@ describe('e2e:createTokenizer', () => {
         if (typeof self.parser.defined === 'undefined') self.parser.defined = []
         if (typeof self.parser.lazy === 'undefined') self.parser.lazy = {}
 
-        if (self.contentType === ct.string || self.contentType === ct.text) {
-          options.noPrevious = true
+        if (self.contentType) {
+          expect(initialize).to.have.property('tokenize').be.a('function')
+          expect(options).to.have.property('initialize').not.eq(initialize)
+
+          if (self.contentType === ct.string || self.contentType === ct.text) {
+            self.noEmptyTokens = true
+            self.noPrevious = true
+          }
+        } else {
+          expect(options).to.have.property('initialize', initialize)
         }
 
         return void void self

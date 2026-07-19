@@ -515,11 +515,8 @@ function createTokenizer(
             return nok(code)
           }
 
-          // always normalized.
-          assert(options && 'initialize' in options, 'expected options object')
-
           // check if construct is disabled by guard.
-          if (!options.noPrevious) {
+          if (!context.noPrevious) {
             const { previous } = construct
 
             // construct is disabled by guard.
@@ -793,7 +790,6 @@ function createTokenizer(
   function exit(this: void, type: TokenType): Token {
     assert(typeof type === 'string', 'expected `type` to be a string')
     assert(type.length > 0, 'expected `type` to be a non-empty string')
-    assert(options && 'initialize' in options, 'expected options object')
 
     /**
      * The token to close.
@@ -816,7 +812,7 @@ function createTokenizer(
       token.start._bufferIndex === token.end._bufferIndex
 
     // handle empty token closed at end of string chunk.
-    if (options.noEmptyTokens) {
+    if (context.noEmptyTokens) {
       assert(!emptyToken, 'expected non-empty token (`' + type + '`)')
     } else if (
       emptyToken &&
