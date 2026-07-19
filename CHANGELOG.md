@@ -1,3 +1,25 @@
+## [1.0.0-alpha.12](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.11...1.0.0-alpha.12) (2026-07-19)
+
+### ⚠ BREAKING CHANGES
+
+- **deps:** bump @flex-development/mark from 1.0.0-alpha.1 to 1.0.0-alpha.2
+
+### :package: Build
+
+- [[`197f564`](https://github.com/flex-development/mark-parser/commit/197f5647d36f67a04a64b35ed2d32c26357ddbbf)] **deps-dev:** bump @arethetypeswrong/cli from 0.18.4 to 0.18.5 ([#391](https://github.com/flex-development/mark-parser/issues/391))
+- [[`7d59525`](https://github.com/flex-development/mark-parser/commit/7d5952586dbedd287712b537517e46605670c29b)] **deps-dev:** bump @commitlint/cli from 21.2.0 to 21.2.1 in the commitlint group ([#389](https://github.com/flex-development/mark-parser/issues/389))
+- [[`f0e00c8`](https://github.com/flex-development/mark-parser/commit/f0e00c8746d44b9a7b87a302a0c1e17019d1d00b)] **deps-dev:** bump dprint from 0.55.1 to 0.55.2 ([#395](https://github.com/flex-development/mark-parser/issues/395))
+- [[`f000f49`](https://github.com/flex-development/mark-parser/commit/f000f490926d12c37863992afa8f7e93eff61715)] **deps-dev:** bump sh-syntax from 0.5.8 to 0.6.0 ([#390](https://github.com/flex-development/mark-parser/issues/390))
+- [[`16a3cff`](https://github.com/flex-development/mark-parser/commit/16a3cff032406d6fc5bea05f599a4727ba19faf4)] **deps-dev:** bump the vitest group with 3 updates ([#387](https://github.com/flex-development/mark-parser/issues/387))
+- [[`ce1f014`](https://github.com/flex-development/mark-parser/commit/ce1f0146766455b32c4b97d99fcb98993348aa78)] **deps-dev:** bump tsx from 4.22.5 to 4.23.0 ([#388](https://github.com/flex-development/mark-parser/issues/388))
+- [[`f134e5a`](https://github.com/flex-development/mark-parser/commit/f134e5a2d74fce5d7267fc677589d746262e740d)] **deps-dev:** bump tsx from 4.23.0 to 4.23.1 ([#392](https://github.com/flex-development/mark-parser/issues/392))
+- [[`5d9f65e`](https://github.com/flex-development/mark-parser/commit/5d9f65e94a1681817ad8b6105570e385120e5792)] **deps:** bump @flex-development/mark from 1.0.0-alpha.1 to 1.0.0-alpha.2
+- [[`8d87bea`](https://github.com/flex-development/mark-parser/commit/8d87beac777211395737cd94317f59d6ae098c4d)] **yarn:** bump yarn from 4.17.0 to 4.17.1
+
+### :robot: Continuous Integration
+
+- [[`c16406b`](https://github.com/flex-development/mark-parser/commit/c16406b32e15c701529630f77b7dd3a39693d591)] **deps:** bump actions/setup-node from 6.4.0 to 7.0.0 ([#394](https://github.com/flex-development/mark-parser/issues/394))
+
 ## [1.0.0-alpha.11](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.10...1.0.0-alpha.11) (2026-07-05)
 
 ### :sparkles: Features
@@ -738,5 +760,6 @@
 
 - [[`85f91f2`](https://github.com/flex-development/mark-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/mark-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
