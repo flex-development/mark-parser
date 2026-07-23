@@ -177,7 +177,7 @@
     "editorconfig": "3.0.2",
     "eslint": "9.39.4",
     "growl": "1.10.5",
-    "happy-dom": "20.11.0",
+    "happy-dom": "20.11.1",
     "husky": "9.1.7",
     "is-ci": "4.1.0",
     "micromark": "4.0.2",
