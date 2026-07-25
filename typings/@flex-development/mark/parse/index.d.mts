@@ -7,6 +7,7 @@ import type {
   ContentType,
   Effects,
   Line,
+  Place,
   Token
 } from '@flex-development/mark/parse'
 import type * as micromark from 'micromark-util-types'
@@ -82,6 +83,26 @@ declare module '@flex-development/mark/parse' {
      * @internal
      */
     readonly effects: Effects
+
+    /**
+     * The current point in the content.
+     *
+     * @see {@linkcode Place}
+     *
+     * @internal
+     */
+    place: Place
+
+    /**
+     * Move {@linkcode place} a bit forward.
+     *
+     * @internal
+     *
+     * @this {TokenizeContext}
+     *
+     * @return {undefined}
+     */
+    skip(this: TokenizeContext): undefined
 
     /**
      * Record, where each key is a line number and each value a column to be

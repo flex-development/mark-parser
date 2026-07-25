@@ -193,13 +193,6 @@ function createTokenizer(
   let lastBufferIndex: number = -1
 
   /**
-   * The current point in the content.
-   *
-   * @var {Place} place
-   */
-  let place: Place = { column: 1, line: 1, offset: 0, ...options.from } as Place
-
-  /**
    * The token stack.
    *
    * @var {Token[]} stack
@@ -230,8 +223,10 @@ function createTokenizer(
     events: [],
     now,
     parser: options.parser ?? {} as ParseContext,
+    place: { column: 1, line: 1, offset: 0, ...options.from } as Place,
     previous: codes.eos,
     serializeChunks,
+    skip,
     skips: {},
     sliceSerialize,
     sliceStream,
@@ -253,7 +248,17 @@ function createTokenizer(
       enumerable: false,
       writable: false
     },
+    place: {
+      configurable: false,
+      enumerable: false,
+      writable: true
+    },
     serializeChunks: {
+      configurable: false,
+      enumerable: false,
+      writable: true
+    },
+    skip: {
       configurable: false,
       enumerable: false,
       writable: true
@@ -265,8 +270,8 @@ function createTokenizer(
     }
   })
 
-  place._bufferIndex = lastBufferIndex
-  place._index = 0
+  context.place._bufferIndex = lastBufferIndex
+  context.place._index = 0
 
   finalizeContext(context, initialize, options)
 
@@ -276,22 +281,6 @@ function createTokenizer(
   }
 
   return context
-
-  /**
-   * Move {@linkcode place} a bit forward.
-   *
-   * @this {void}
-   *
-   * @return {undefined}
-   */
-  function accountForPotentialSkip(this: void): undefined {
-    if (place.line in context.skips && place.column < 2) {
-      place.column = context.skips[place.line]!
-      place.offset += place.column - 1
-    }
-
-    return void place
-  }
 
   /**
    * Resolve events.
@@ -606,36 +595,36 @@ function createTokenizer(
       code !== codes.vs // virtual space
     ) {
       if ((options.eol ?? eol)(code)) {
-        place.column = 1
-        place.line++
-        place.offset += code === codes.crlf ? 2 : 1
-        accountForPotentialSkip()
-        debug('position after eol: %o', place)
+        context.place.column = 1
+        context.place.line++
+        context.place.offset += code === codes.crlf ? 2 : 1
+        context.skip()
+        debug('position after eol: %o', context.place)
       } else if (code !== codes.break || options.moveOnBreak) {
-        place.column++
-        place.offset++
+        context.place.column++
+        context.place.offset++
       }
     }
 
-    if (place._bufferIndex < 0) { // not in a string chunk.
-      place._index++
+    if (context.place._bufferIndex < 0) { // not in a string chunk.
+      context.place._index++
     } else { // inside string chunk.
-      lastBufferIndex = ++place._bufferIndex
+      lastBufferIndex = ++context.place._bufferIndex
 
       /**
        * The current chunk.
        *
        * @const {Chunk | undefined} chunk
        */
-      const chunk: Chunk | undefined = context.chunks[place._index]
+      const chunk: Chunk | undefined = context.chunks[context.place._index]
 
       assert(typeof chunk === 'string', 'expected string chunk')
 
       // at end of string chunk.
       // points with non-negative `_bufferIndex` values reference strings.
       if (lastBufferIndex === chunk.length) {
-        place._index++
-        place._bufferIndex = -1
+        context.place._index++
+        context.place._bufferIndex = -1
       }
     }
 
@@ -722,7 +711,7 @@ function createTokenizer(
    */
   function defineSkip(this: void, point: Place): undefined {
     context.skips[point.line] = point.column
-    accountForPotentialSkip()
+    context.skip()
     return void debug('position: define skip: `%j`', point)
   }
 
@@ -913,7 +902,7 @@ function createTokenizer(
    *  The current point
    */
   function now(this: void): Place {
-    const { _bufferIndex, _index, column, line, offset } = place
+    const { _bufferIndex, _index, column, line, offset } = context.place
     // eslint-disable-next-line sort-keys
     return { line, column, offset, _index, _bufferIndex }
   }
@@ -973,23 +962,28 @@ function createTokenizer(
      */
     let code: Code | undefined
 
-    if (place._index < context.chunks.length) {
+    if (context.place._index < context.chunks.length) {
       /**
        * The current chunk.
        *
        * @const {Chunk | undefined} chunk
        */
-      const chunk: Chunk | undefined = context.chunks[place._index]
+      const chunk: Chunk | undefined = context.chunks[context.place._index]
 
       assert(chunk !== undefined, 'expected `chunk`')
 
       if (typeof chunk !== 'string') { // not in string chunk.
-        assert(place._bufferIndex < 0, 'expected negative `_bufferIndex`')
+        assert(
+          context.place._bufferIndex < 0,
+          'expected negative `_bufferIndex`'
+        )
         code = chunk
-      } else if (place._bufferIndex < 0) { // at beginning of string chunk.
+      } else if (context.place._bufferIndex < 0) {
+        // at beginning of string chunk.
         code = chunk.codePointAt(0)
-      } else { // in or at end of string chunk.
-        code = chunk.codePointAt(place._bufferIndex)
+      } else {
+        // in or at end of string chunk.
+        code = chunk.codePointAt(context.place._bufferIndex)
       }
 
       assert(code !== undefined, 'expected `code`')
@@ -997,6 +991,22 @@ function createTokenizer(
     }
 
     return eos(context.chunks.at(-1)) ? codes.eos : codes.break
+  }
+
+  /**
+   * Move {@linkcode context.place} a bit forward.
+   *
+   * @this {TokenizeContext}
+   *
+   * @return {undefined}
+   */
+  function skip(this: TokenizeContext): undefined {
+    if (this.place.line in this.skips && this.place.column < 2) {
+      this.place.column = this.skips[this.place.line]!
+      this.place.offset += this.place.column - 1
+    }
+
+    return void this.place
   }
 
   /**
@@ -1157,7 +1167,7 @@ function createTokenizer(
      * @return {undefined}
      */
     function restore(this: void): undefined {
-      place = lastPlace
+      context.place = lastPlace
 
       context.code = code
       context.previous = previous
@@ -1165,17 +1175,18 @@ function createTokenizer(
       context.events.length = from
 
       stack = lastStack
-      lastBufferIndex = place._bufferIndex
+      lastBufferIndex = context.place._bufferIndex
 
-      return accountForPotentialSkip(), void debug('restore: %o', place)
+      context.skip()
+      return void debug('restore: %o', context.place)
     }
   }
 
   /**
    * Main loop to walk through chunks.
    *
-   * > 👉 **Note**: The {@linkcode consume} method modifies `bufferIndex` and
-   * > `_index` in {@linkcode place} to advance the loop until end of stream.
+   * > 👉 **Note**: {@linkcode consume} modifies `bufferIndex` and `_index` in
+   * > {@linkcode context.place} to advance the loop until end of stream.
    *
    * @this {void}
    *
@@ -1189,33 +1200,36 @@ function createTokenizer(
      */
     let chunkIndex: number
 
-    while (place._index < context.chunks.length) {
+    while (context.place._index < context.chunks.length) {
       /**
        * The current chunk.
        *
        * @const {Chunk | undefined} chunk
        */
-      const chunk: Chunk | undefined = context.chunks[place._index]
+      const chunk: Chunk | undefined = context.chunks[context.place._index]
 
       if (typeof chunk === 'string') {
-        chunkIndex = place._index
+        chunkIndex = context.place._index
 
         // normalize buffer index to loop through string chunk.
-        /* v8 ignore else -- @preserve */ if (place._bufferIndex < 0) {
-          place._bufferIndex = 0
+        /* v8 ignore else -- @preserve */ if (context.place._bufferIndex < 0) {
+          context.place._bufferIndex = 0
         }
 
         // loop through string chunk to deal with character codes.
         while (
-          place._index === chunkIndex &&
-          place._bufferIndex < chunk.length
+          context.place._index === chunkIndex &&
+          context.place._bufferIndex < chunk.length
         ) {
           /**
            * The current character code.
            *
-           * @const {Code | undefined} code
+           * @var {Code | undefined} code
            */
-          const code: Code | undefined = chunk.codePointAt(place._bufferIndex)
+          let code: Code | undefined
+
+          // get current character code from string chunk.
+          code = chunk.codePointAt(context.place._bufferIndex)
 
           // deal with character code.
           assert(code !== undefined, 'expected `chunk[place._bufferIndex]`')
