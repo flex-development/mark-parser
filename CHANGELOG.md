@@ -1,3 +1,22 @@
+## [1.0.0-alpha.13](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.12...1.0.0-alpha.13) (2026-07-25)
+
+### :package: Build
+
+- [[`61b1440`](https://github.com/flex-development/mark-parser/commit/61b1440fb64f640aaac871dfa21495a7a80b8b69)] **deps-dev:** bump happy-dom from 20.10.6 to 20.11.0 ([#399](https://github.com/flex-development/mark-parser/issues/399))
+- [[`10a7acf`](https://github.com/flex-development/mark-parser/commit/10a7acf6f0ac3f2a4bb72dcfe3dbc1fe8073e15f)] **deps-dev:** bump happy-dom from 20.11.0 to 20.11.1 ([#404](https://github.com/flex-development/mark-parser/issues/404))
+- [[`c27e484`](https://github.com/flex-development/mark-parser/commit/c27e484a1d8d0f306630495a146da83d23465971)] **deps:** bump brace-expansion from 1.1.15 to 1.1.16 ([#403](https://github.com/flex-development/mark-parser/issues/403))
+- [[`900dcc0`](https://github.com/flex-development/mark-parser/commit/900dcc061fedb2ca99083870c17e18727acf5ea5)] **deps:** bump fast-uri from 3.1.2 to 3.1.4 ([#405](https://github.com/flex-development/mark-parser/issues/405))
+- [[`2c98a1f`](https://github.com/flex-development/mark-parser/commit/2c98a1f048322d013e9e333d977f392367df3ab4)] **deps:** bump js-yaml from 4.2.0 to 4.3.0 ([#401](https://github.com/flex-development/mark-parser/issues/401))
+- [[`37a2f28`](https://github.com/flex-development/mark-parser/commit/37a2f28fbe68af85199e5188714a64a5026ee89b)] **deps:** bump tar from 7.5.16 to 7.5.20 ([#402](https://github.com/flex-development/mark-parser/issues/402))
+
+### :robot: Continuous Integration
+
+- [[`7eedd6a`](https://github.com/flex-development/mark-parser/commit/7eedd6a1cd94db820b1bf0104b27f273f96dcbe6)] **deps:** bump actions/checkout from 7.0.0 to 7.0.1 ([#400](https://github.com/flex-development/mark-parser/issues/400))
+
+### :sparkles: Features
+
+- [[`92529ac`](https://github.com/flex-development/mark-parser/commit/92529ac26c4c35ee3a3eb6ee43c02c107ba7a119)] [advanced] support custom `skip` method
+
 ## [1.0.0-alpha.12](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.11...1.0.0-alpha.12) (2026-07-19)
 
 ### ⚠ BREAKING CHANGES
@@ -760,6 +779,7 @@
 
 - [[`85f91f2`](https://github.com/flex-development/mark-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/mark-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
 
