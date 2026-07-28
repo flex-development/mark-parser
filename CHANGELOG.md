@@ -1,3 +1,19 @@
+## [1.0.0-alpha.14](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.13...1.0.0-alpha.14) (2026-07-27)
+
+### ⚠ BREAKING CHANGES
+
+- lifecycle hooks
+
+### :package: Build
+
+- [[`224e8a1`](https://github.com/flex-development/mark-parser/commit/224e8a14870cb4263b2d6f5568217ca7ebafc605)] **deps-dev:** bump rollup from 4.62.2 to 4.62.3 ([#411](https://github.com/flex-development/mark-parser/issues/411))
+- [[`7d49904`](https://github.com/flex-development/mark-parser/commit/7d4990411b3272541b9a95a1dfb0b39e74bde4a5)] **deps:** bump postcss from 8.5.15 to 8.5.23 ([#408](https://github.com/flex-development/mark-parser/issues/408))
+- [[`1b90512`](https://github.com/flex-development/mark-parser/commit/1b90512d8342adcc291512140cec60d4e50a7ed7)] **deps:** bump tar from 7.5.20 to 7.5.22 ([#409](https://github.com/flex-development/mark-parser/issues/409))
+
+### :sparkles: Features
+
+- [[`ee3bd9b`](https://github.com/flex-development/mark-parser/commit/ee3bd9b181a938ed0f62ed4a2adb99d25fa7a6b7)] lifecycle hooks
+
 ## [1.0.0-alpha.13](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.12...1.0.0-alpha.13) (2026-07-25)
 
 ### :package: Build
@@ -779,6 +795,7 @@
 
 - [[`85f91f2`](https://github.com/flex-development/mark-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/mark-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
 
