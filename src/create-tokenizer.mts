@@ -214,6 +214,7 @@ function createTokenizer(
    * @const {TokenizeContext} context
    */
   const context: TokenizeContext = Object.defineProperties({
+    applySkip,
     chunks: [],
     code: codes.bos,
     currentConstruct: undefined,
@@ -221,52 +222,57 @@ function createTokenizer(
     defineSkip,
     effects,
     events: [],
+    hooks: {},
     now,
-    parser: options.parser ?? {} as ParseContext,
+    parser: {} as ParseContext,
     place: { column: 1, line: 1, offset: 0, ...options.from } as Place,
     previous: codes.eos,
     serializeChunks,
-    skip,
     skips: {},
     sliceSerialize,
     sliceStream,
     token,
     write
   }, {
+    applySkip: {
+      configurable: true,
+      enumerable: false,
+      writable: true
+    },
     chunks: {
-      configurable: false,
+      configurable: true,
       enumerable: false,
       writable: true
     },
     debug: {
-      configurable: false,
+      configurable: true,
       enumerable: false,
       writable: true
     },
     effects: {
-      configurable: false,
+      configurable: true,
+      enumerable: false,
+      writable: true
+    },
+    hooks: {
+      configurable: true,
+      enumerable: false,
+      writable: true
+    },
+    place: {
+      configurable: true,
       enumerable: false,
       writable: false
     },
-    place: {
-      configurable: false,
-      enumerable: false,
-      writable: true
-    },
     serializeChunks: {
-      configurable: false,
-      enumerable: false,
-      writable: true
-    },
-    skip: {
-      configurable: false,
+      configurable: true,
       enumerable: false,
       writable: true
     },
     skips: {
-      configurable: false,
+      configurable: true,
       enumerable: false,
-      writable: false
+      writable: true
     }
   })
 
@@ -326,6 +332,22 @@ function createTokenizer(
     )
 
     return void construct
+  }
+
+  /**
+   * Move the current place a bit forward.
+   *
+   * @this {void}
+   *
+   * @return {undefined}
+   */
+  function applySkip(this: void): undefined {
+    if (context.place.line in context.skips && context.place.column < 2) {
+      context.place.column = context.skips[context.place.line]!
+      context.place.offset += context.place.column - 1
+    }
+
+    return void context.place
   }
 
   /**
@@ -585,9 +607,13 @@ function createTokenizer(
   function consume(this: void, code: Code): undefined {
     assert(options && 'initialize' in options, 'expected options object')
     equal(code, expected, 'expected `code` to equal expected code')
-    debug('consume: `%o`; previous: `%o`', code, context.previous)
+    context.debug('consume: `%o`; previous: `%o`', code, context.previous)
     assert(consumed === null, 'expected unconsumed code')
 
+    // allow users to prepare for code consumption.
+    context.hooks.beforeConsume?.call(context, code, context.place)
+
+    // move position in content.
     if (
       code !== codes.bos && // beginning of stream
       code !== codes.empty && // empty string chunk (preprocessed)
@@ -598,14 +624,15 @@ function createTokenizer(
         context.place.column = 1
         context.place.line++
         context.place.offset += code === codes.crlf ? 2 : 1
-        context.skip()
-        debug('position after eol: %o', context.place)
-      } else if (code !== codes.break || options.moveOnBreak) {
+        context.applySkip(code)
+        context.debug('position after eol: %o', context.place)
+      } else if (code !== codes.break || context.moveOnBreak) {
         context.place.column++
         context.place.offset++
       }
     }
 
+    // move position in list of chunks.
     if (context.place._bufferIndex < 0) { // not in a string chunk.
       context.place._index++
     } else { // inside string chunk.
@@ -628,11 +655,20 @@ function createTokenizer(
       }
     }
 
-    context.previous = code
-    context.code = peek()
+    // mark `code` as consumed.
+    consumed = true
 
-    debug('context.code: `%o`', context.code)
-    return consumed = true, void code
+    // `code` is now the previous character code.
+    context.previous = code
+
+    // perform lookahead to get current character code.
+    context.code = peek()
+    context.debug('context.code: `%o`', context.code)
+
+    // allow users to do something after `code` consumption.
+    context.hooks.afterConsume?.call(context, code, context.place)
+
+    return void code
   }
 
   /**
@@ -665,7 +701,7 @@ function createTokenizer(
 
       return createTokenizer({
         ...options,
-        debug: debug.namespace + chars.colon + contentType,
+        debug: context.debug.namespace + chars.colon + contentType,
         /**
          * @this {void}
          *
@@ -673,23 +709,40 @@ function createTokenizer(
          *  The base tokenization context
          * @param {InitialConstruct | Partial<InitialConstructs>} initialize
          *  The initial construct, or the record of initial constructs
-         * @param {Partial<Options>} opts
-         *  The options used to create the tokenizer
          * @return {undefined}
          */
         finalizeContext(
           this: void,
           self: TokenizeContext,
-          initialize: InitialConstruct | Partial<InitialConstructs>,
-          opts: Partial<Options>
+          initialize: InitialConstruct | Partial<InitialConstructs>
         ): undefined {
           assert('tokenize' in initialize, 'expected initial construct')
-          self.contentType = contentType
-          return void opts.finalizeContext?.(self, initialize, options)
+
+          Object.defineProperties(self, {
+            contentType: {
+              configurable: false,
+              enumerable: true,
+              value: contentType,
+              writable: false
+            },
+            hooks: {
+              configurable: true,
+              enumerable: true,
+              value: context.hooks,
+              writable: false
+            },
+            parser: {
+              configurable: true,
+              enumerable: true,
+              value: context.parser,
+              writable: false
+            }
+          })
+
+          return void options.finalizeContext?.(self, initialize)
         },
         from: from ?? options.from,
-        initialize: (initialize as InitialConstructs)[contentType],
-        parser: context.parser
+        initialize: (initialize as InitialConstructs)[contentType]
       })
     }
   }
@@ -705,14 +758,14 @@ function createTokenizer(
    *
    * @this {void}
    *
-   * @param {Place} point
+   * @param {Point} point
    *  The skip point
    * @return {undefined}
    */
-  function defineSkip(this: void, point: Place): undefined {
+  function defineSkip(this: void, point: Point): undefined {
     context.skips[point.line] = point.column
-    context.skip()
-    return void debug('position: define skip: `%j`', point)
+    context.applySkip()
+    return void context.debug('position: define skip: `%j`', point)
   }
 
   /**
@@ -723,7 +776,7 @@ function createTokenizer(
    * @param {TokenType} type
    *  The token type
    * @param {TokenFields | null | undefined} [fields]
-   *  Token fields
+   *  The token fields
    * @return {Token}
    *  The open token
    */
@@ -733,6 +786,9 @@ function createTokenizer(
     fields?: TokenFields | null | undefined
   ): Token {
     fields ??= {}
+
+    // allow users to do something before entering a token.
+    context.hooks.beforeEnter?.call(context, type, fields)
 
     /**
      * Where the token starts.
@@ -757,11 +813,14 @@ function createTokenizer(
 
     assert(typeof type === 'string', 'expected `type` to be a string')
     assert(type.length > 0, 'expected `type` to be a non-empty string')
-    debug('enter: `%s`; %o', type, token.start)
 
     // add enter event and push `token` onto the `stack`.
     context.events.push([ev.enter, token, context])
     stack.push(token)
+    context.debug('enter: `%s`; %o', type, token.start)
+
+    // allow users to do something after entering `token`.
+    context.hooks.afterEnter?.call(context, token)
 
     return token
   }
@@ -788,6 +847,10 @@ function createTokenizer(
     const token: Token | undefined = stack.pop()
 
     assert(token, 'cannot exit without open token')
+    assert(type === token.type, 'expected exit token to match current token')
+
+    // allow users to do something before exiting `token`.
+    context.hooks.beforeExit?.call(context, token)
 
     // close token.
     token.end = context.now()
@@ -812,11 +875,12 @@ function createTokenizer(
       token.start._bufferIndex = lastBufferIndex
     }
 
-    debug('exit: `%s`; %o', token.type, token.end)
-
     // add exit event.
-    assert(type === token.type, 'expected exit token to match current token')
     context.events.push([ev.exit, token, context])
+    context.debug('exit: `%s`; %o', token.type, token.end)
+
+    // allow users to do something after exiting `token`.
+    context.hooks.afterExit?.call(context, token)
 
     return token
   }
@@ -872,7 +936,7 @@ function createTokenizer(
       }
     }
 
-    return options.finalizeContext?.(context, initialize, options)
+    return options.finalizeContext?.(context, initialize)
   }
 
   /**
@@ -887,14 +951,14 @@ function createTokenizer(
   function go(this: void, code: Code): undefined {
     assert(consumed, `expected code \`${code}\` to be consumed`)
     consumed = null
-    debug('go: `%o`, %j', code, /* v8 ignore next */ state?.name)
+    context.debug('go: `%o`, %j', code, /* v8 ignore next */ state?.name)
     expected = code
     assert(typeof state === 'function', 'expected state function')
     return state = state(code), void code
   }
 
   /**
-   * Get the current point in the file.
+   * Get the current place in the content.
    *
    * @this {void}
    *
@@ -946,8 +1010,8 @@ function createTokenizer(
   }
 
   /**
-   * Get the next character code without changing position without changing the
-   * position of the tokenizer.
+   * Get the next character code without changing position without changing
+   * the position of the tokenizer.
    *
    * @this {void}
    *
@@ -977,6 +1041,7 @@ function createTokenizer(
           context.place._bufferIndex < 0,
           'expected negative `_bufferIndex`'
         )
+
         code = chunk
       } else if (context.place._bufferIndex < 0) {
         // at beginning of string chunk.
@@ -991,22 +1056,6 @@ function createTokenizer(
     }
 
     return eos(context.chunks.at(-1)) ? codes.eos : codes.break
-  }
-
-  /**
-   * Move {@linkcode context.place} a bit forward.
-   *
-   * @this {TokenizeContext}
-   *
-   * @return {undefined}
-   */
-  function skip(this: TokenizeContext): undefined {
-    if (this.place.line in this.skips && this.place.column < 2) {
-      this.place.column = this.skips[this.place.line]!
-      this.place.offset += this.place.column - 1
-    }
-
-    return void this.place
   }
 
   /**
@@ -1167,7 +1216,9 @@ function createTokenizer(
      * @return {undefined}
      */
     function restore(this: void): undefined {
-      context.place = lastPlace
+      context.hooks.beforeRestore?.call(context)
+
+      Object.assign(context.place, lastPlace)
 
       context.code = code
       context.previous = previous
@@ -1177,8 +1228,10 @@ function createTokenizer(
       stack = lastStack
       lastBufferIndex = context.place._bufferIndex
 
-      context.skip()
-      return void debug('restore: %o', context.place)
+      context.applySkip(false)
+      context.hooks.afterRestore?.call(context)
+
+      return void context.debug('restore: %o', context.place)
     }
   }
 
@@ -1186,7 +1239,7 @@ function createTokenizer(
    * Main loop to walk through chunks.
    *
    * > 👉 **Note**: {@linkcode consume} modifies `bufferIndex` and `_index` in
-   * > {@linkcode context.place} to advance the loop until end of stream.
+   * > {@linkcode place} to advance the loop until end of stream.
    *
    * @this {void}
    *

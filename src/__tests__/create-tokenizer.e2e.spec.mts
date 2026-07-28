@@ -51,29 +51,23 @@ describe('e2e:createTokenizer', () => {
        *  The base tokenization context
        * @param {InitialConstruct | Partial<InitialConstructs>} initialize
        *  The initial construct, or the record of initial constructs
-       * @param {Partial<Options>} options
-       *  The options used to create the tokenizer
        * @return {undefined}
        */
       finalizeContext = function finalizeContext(
         this: void,
         self: TokenizeContext,
-        initialize: InitialConstruct | Partial<InitialConstructs>,
-        options: Partial<Options>
+        initialize: InitialConstruct | Partial<InitialConstructs>
       ): undefined {
         if (typeof self.parser.defined === 'undefined') self.parser.defined = []
         if (typeof self.parser.lazy === 'undefined') self.parser.lazy = {}
 
         if (self.contentType) {
           expect(initialize).to.have.property('tokenize').be.a('function')
-          expect(options).to.have.property('initialize').not.eq(initialize)
 
           if (self.contentType === ct.string || self.contentType === ct.text) {
             self.noEmptyTokens = true
             self.noPrevious = true
           }
-        } else {
-          expect(options).to.have.property('initialize', initialize)
         }
 
         return void void self
@@ -127,12 +121,8 @@ describe('e2e:createTokenizer', () => {
 
       // Expect
       expect(result).to.have.property('length', baseline.length)
-
-      // Expect (conditional)
-      if (result.length) {
-        expect(result).to.each.have.nested.property('1.start')
-        expect(result).to.each.have.nested.property('1.end')
-      }
+      expect(result).to.each.have.nested.property('1.start')
+      expect(result).to.each.have.nested.property('1.end')
 
       // Expect (event v. event)
       while (++index < result.length) {

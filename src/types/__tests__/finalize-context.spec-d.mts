@@ -4,7 +4,6 @@
  */
 
 import type TestSubject from '#types/finalize-context'
-import type { Options } from '@flex-development/mark-parser'
 import type {
   Context,
   InitialConstruct,
@@ -17,13 +16,9 @@ describe('unit-d:types/FinalizeContext', () => {
   })
 
   describe('parameters', () => {
-    it('should be callable with [Context, InitialConstruct | Partial<InitialConstructs>, Partial<Options>]', () => {
+    it('should be callable with [Context, InitialConstruct | Partial<InitialConstructs>]', () => {
       // Arrange
-      type Expect = [
-        Context,
-        InitialConstruct | Partial<InitialConstructs>,
-        Partial<Options>
-      ]
+      type Expect = [Context, InitialConstruct | Partial<InitialConstructs>]
 
       // Expect
       expectTypeOf<TestSubject>().parameters.toEqualTypeOf<Expect>()

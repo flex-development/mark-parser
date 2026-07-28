@@ -14,6 +14,12 @@ import type {
 } from '@flex-development/mark-parser'
 import { chars, codes, ev } from '@flex-development/mark-util-symbol'
 import type {
+  AfterConsume,
+  AfterEnter,
+  AfterExit,
+  BeforeConsume,
+  BeforeEnter,
+  BeforeExit,
   Chunk,
   Code,
   Effects,
@@ -23,9 +29,12 @@ import type {
   Position,
   State,
   Token,
-  TokenizeContext
+  TokenFields,
+  TokenizeContext,
+  TokenType
 } from '@flex-development/mark/parse'
 import { isObjectCurly } from '@flex-development/tutils'
+import type { Mock } from 'vitest'
 
 describe('unit:createTokenizer', () => {
   let from: Point
@@ -67,11 +76,10 @@ describe('unit:createTokenizer', () => {
   ])('should create tokenize context (%#)', initialize => {
     // Arrange
     const finalizeContext: FinalizeContext = vi.fn().mockName('finalizeContext')
-    const options: Options = { finalizeContext, initialize }
     let initializer: Initialize = initialize
 
     // Act
-    const result = testSubject(options)
+    const result = testSubject({ finalizeContext, initialize })
 
     // get expected initializer.
     if (typeof initialize === 'function') {
@@ -80,7 +88,7 @@ describe('unit:createTokenizer', () => {
 
     // Expect
     expect(finalizeContext).toHaveBeenCalledOnce()
-    expect(finalizeContext).toHaveBeenCalledWith(result, initializer, options)
+    expect(finalizeContext).toHaveBeenCalledWith(result, initializer)
     expect(result).to.have.property('effects').satisfy(isObjectCurly)
     expect(result).to.have.property('debug').be.a('function')
     expect(result).toMatchSnapshot()
@@ -104,38 +112,63 @@ describe('unit:createTokenizer', () => {
 
     // Expect
     expect(finalizeContext).toHaveBeenCalledTimes(6)
-    expect(vi.mocked(finalizeContext).mock.calls[0]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[0]).to.have.length(2)
     expect(vi.mocked(finalizeContext).mock.calls[0]![0]).to.eq(context)
-    expect(vi.mocked(finalizeContext).mock.calls[1]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[1]).to.have.length(2)
     expect(vi.mocked(finalizeContext).mock.calls[1]![0]).to.eq(result1)
-    expect(vi.mocked(finalizeContext).mock.calls[2]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[2]).to.have.length(2)
     expect(vi.mocked(finalizeContext).mock.calls[2]![0]).to.eq(result2)
-    expect(vi.mocked(finalizeContext).mock.calls[3]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[3]).to.have.length(2)
     expect(vi.mocked(finalizeContext).mock.calls[3]![0]).to.eq(result3)
-    expect(vi.mocked(finalizeContext).mock.calls[4]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[4]).to.have.length(2)
     expect(vi.mocked(finalizeContext).mock.calls[4]![0]).to.eq(result4)
-    expect(vi.mocked(finalizeContext).mock.calls[5]).to.have.length(3)
+    expect(vi.mocked(finalizeContext).mock.calls[5]).to.have.length(2)
     expect(vi.mocked(finalizeContext).mock.calls[5]![0]).to.eq(result5)
     expect(result1).to.not.eq(context)
-    expect(result2).to.not.eq(context)
-    expect(result3).to.not.eq(context)
-    expect(result4).to.not.eq(context)
-    expect(result5).to.not.eq(context)
     expect(result1).to.not.eq(result2)
     expect(result1).to.not.eq(result3)
     expect(result1).to.not.eq(result4)
     expect(result1).to.not.eq(result5)
+    expect(result2).to.not.eq(context)
     expect(result2).to.not.eq(result3)
     expect(result2).to.not.eq(result4)
     expect(result2).to.not.eq(result5)
+    expect(result3).to.not.eq(context)
     expect(result3).to.not.eq(result4)
     expect(result3).to.not.eq(result5)
+    expect(result4).to.not.eq(context)
     expect(result4).to.not.eq(result5)
-    expect(result1.now()).to.eql(place).but.not.eq(place)
-    expect(result2.now()).to.eql(place).but.not.eq(place)
-    expect(result3.now()).to.eql(place).but.not.eq(place)
-    expect(result4.now()).to.eql(place).but.not.eq(place)
-    expect(result5.now()).to.eql(place).but.not.eq(place)
+    expect(result5).to.not.eq(context)
+    expect(result1.hooks).to.eq(context.hooks)
+    expect(result2.hooks).to.eq(context.hooks)
+    expect(result3.hooks).to.eq(context.hooks)
+    expect(result4.hooks).to.eq(context.hooks)
+    expect(result5.hooks).to.eq(context.hooks)
+    expect(result1.parser).to.eq(context.parser)
+    expect(result2.parser).to.eq(context.parser)
+    expect(result3.parser).to.eq(context.parser)
+    expect(result4.parser).to.eq(context.parser)
+    expect(result5.parser).to.eq(context.parser)
+    expect(result1.place).to.eql(place).but.not.eq(place)
+    expect(result2.place).to.eql(place).but.not.eq(place)
+    expect(result3.place).to.eql(place).but.not.eq(place)
+    expect(result4.place).to.eql(place).but.not.eq(place)
+    expect(result5.place).to.eql(place).but.not.eq(place)
+    expect(result1.place).to.not.eq(context.place)
+    expect(result1.place).to.not.eq(result2.place)
+    expect(result1.place).to.not.eq(result3.place)
+    expect(result1.place).to.not.eq(result4.place)
+    expect(result1.place).to.not.eq(result5.place)
+    expect(result2.place).to.not.eq(context.place)
+    expect(result2.place).to.not.eq(result3.place)
+    expect(result2.place).to.not.eq(result4.place)
+    expect(result2.place).to.not.eq(result5.place)
+    expect(result3.place).to.not.eq(context.place)
+    expect(result3.place).to.not.eq(result4.place)
+    expect(result3.place).to.not.eq(result5.place)
+    expect(result4.place).to.not.eq(context.place)
+    expect(result4.place).to.not.eq(result5.place)
+    expect(result5.place).to.not.eq(context.place)
   })
 
   it.each<[Initialize]>([
@@ -182,6 +215,31 @@ describe('unit:createTokenizer', () => {
   })
 
   describe('#effects.consume', () => {
+    it('should call consume hooks', () => {
+      // Arrange
+      const subject: TokenizeContext = testSubject(initialize)
+      let afterConsume: Mock<AfterConsume> = vi.fn().mockName('afterConsume')
+      let beforeConsume: Mock<BeforeConsume> = vi.fn().mockName('beforeConsume')
+
+      // Setup
+      afterConsume = vi.fn().mockName('afterConsume')
+      beforeConsume = vi.fn().mockName('beforeConsume')
+      subject.hooks.afterConsume = afterConsume
+      subject.hooks.beforeConsume = beforeConsume
+
+      // Act
+      subject.write(codes.eos)
+
+      // Expect
+      expect(beforeConsume).toHaveBeenCalledOnce()
+      expect(beforeConsume).toHaveBeenCalledWith(codes.eos, subject.place)
+      expect(vi.mocked(beforeConsume).mock.contexts[0]).to.eq(subject)
+      expect(afterConsume).toHaveBeenCalledOnce()
+      expect(afterConsume).toHaveBeenCalledWith(codes.eos, subject.place)
+      expect(afterConsume).toHaveBeenCalledAfter(vi.mocked(beforeConsume))
+      expect(vi.mocked(afterConsume).mock.contexts[0]).to.eq(subject)
+    })
+
     it.each<[keyof typeof codes]>([
       ['bos'],
       ['break'],
@@ -233,11 +291,11 @@ describe('unit:createTokenizer', () => {
 
     it('should move on `codes.break` if enabled', () => {
       // Arrange
-      const moveOnBreak: true = true
-      const subject: TokenizeContext = testSubject(initialize, { moveOnBreak })
+      const subject: TokenizeContext = testSubject(initialize)
       const now: Place = subject.now()
 
       // Act
+      subject.moveOnBreak = true
       subject.write(codes.break)
 
       // Expect
@@ -271,16 +329,41 @@ describe('unit:createTokenizer', () => {
   })
 
   describe('#effects.enter', () => {
+    let afterEnter: Mock<AfterEnter>
+    let beforeEnter: Mock<BeforeEnter>
+    let fields: TokenFields
     let result: Token
     let subject: TokenizeContext
+    let type: TokenType
 
     beforeAll(() => {
+      type = tt.succ
+      fields = { value: 'ok' }
       subject = testSubject(initialize)
-      result = subject.effects.enter(tt.succ, { value: 'ok' })
+      result = subject.effects.enter(type, fields)
+    })
+
+    it('should call enter hooks', () => {
+      // Arrange
+      const subject: TokenizeContext = testSubject(initialize)
+
+      // Setup
+      subject.hooks.afterEnter = afterEnter = vi.fn().mockName('afterEnter')
+      subject.hooks.beforeEnter = beforeEnter = vi.fn().mockName('beforeEnter')
+
+      // Act
+      const result = subject.effects.enter(type, fields)
+
+      // Expect
+      expect(beforeEnter.mock.contexts[0]).to.eq(subject)
+      expect(beforeEnter).toHaveBeenCalledExactlyOnceWith(type, fields)
+      expect(afterEnter.mock.contexts[0]).to.eq(subject)
+      expect(afterEnter).toHaveBeenCalledExactlyOnceWith(result)
+      expect(afterEnter).toHaveBeenCalledAfter(beforeEnter)
     })
 
     it('should create `enter` event for new token', () => {
-      expect(subject.events).to.be.an('array').of.length(1)
+      expect(subject.events.length).to.eq(1)
       expect(subject.events[0]).to.be.an('array').of.length(3)
       expect(subject.events[0]).to.have.property('0', ev.enter)
       expect(subject.events[0]).to.have.property('1', result)
@@ -298,6 +381,27 @@ describe('unit:createTokenizer', () => {
 
     beforeEach(() => {
       subject = testSubject(initialize)
+    })
+
+    it('should call exit hooks', () => {
+      // Arrange
+      const afterExit: Mock<AfterExit> = vi.fn().mockName('afterExit')
+      const beforeExit: Mock<BeforeExit> = vi.fn().mockName('beforeExit')
+
+      // Setup
+      subject.effects.enter(tt.eoc)
+      subject.hooks.afterExit = afterExit
+      subject.hooks.beforeExit = beforeExit
+
+      // Act
+      const result = subject.effects.exit(tt.eoc)
+
+      // Expect
+      expect(beforeExit.mock.contexts[0]).to.eq(subject)
+      expect(beforeExit).toHaveBeenCalledExactlyOnceWith(result)
+      expect(afterExit.mock.contexts[0]).to.eq(subject)
+      expect(afterExit).toHaveBeenCalledExactlyOnceWith(result)
+      expect(afterExit).toHaveBeenCalledAfter(beforeExit)
     })
 
     it('should create `exit` event for existing token', () => {

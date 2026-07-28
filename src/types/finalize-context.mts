@@ -3,7 +3,6 @@
  * @module mark-parser/types/FinalizeContext
  */
 
-import type { Options } from '@flex-development/mark-parser'
 import type {
   Context,
   InitialConstruct,
@@ -16,7 +15,6 @@ import type {
  * @see {@linkcode Context}
  * @see {@linkcode InitialConstruct}
  * @see {@linkcode InitialConstructs}
- * @see {@linkcode Options}
  *
  * @this {void}
  *
@@ -24,15 +22,12 @@ import type {
  *  The current tokenization context
  * @param {InitialConstruct | Partial<InitialConstructs>} initialize
  *  The initial construct, or the record of initial constructs
- * @param {Partial<Options>} options
- *  The options used to create the tokenizer
  * @return {null | undefined}
  */
 type FinalizeContext = (
   this: void,
   context: Context,
-  initialize: InitialConstruct | Partial<InitialConstructs>,
-  options: Partial<Options>
+  initialize: InitialConstruct | Partial<InitialConstructs>
 ) => null | undefined
 
 export type { FinalizeContext as default }

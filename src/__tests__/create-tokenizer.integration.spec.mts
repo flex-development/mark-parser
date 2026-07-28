@@ -23,6 +23,8 @@ import snapshot from '#tests/utils/snapshot-events'
 import type { Initialize, Options } from '@flex-development/mark-parser'
 import { chars, codes, ev } from '@flex-development/mark-util-symbol'
 import type {
+  AfterRestore,
+  BeforeRestore,
   ContentType,
   Event,
   Place,
@@ -135,8 +137,7 @@ describe('integration:createTokenizer', () => {
             }
           }
         },
-        options: { initialize: { document: initialize(ct.document) } },
-        parser: ct.document,
+        options: { initialize: initialize() },
         slice: import.meta.url
       }
     ],
@@ -375,6 +376,9 @@ describe('integration:createTokenizer', () => {
       'restore state after successful check',
       {
         hooks(this: void): Hooks {
+          let afterRestore: Mock<AfterRestore>
+          let beforeRestore: Mock<BeforeRestore>
+
           return {
             /**
              * @this {void}
@@ -393,7 +397,30 @@ describe('integration:createTokenizer', () => {
               expect(events).to.be.an('array').of.length(2)
               expect(events).to.each.have.nested.property('1.type', tt.succ)
 
+              expect(beforeRestore.mock.contexts[0]).to.eq(context)
+              expect(beforeRestore).toHaveBeenCalledExactlyOnceWith()
+              expect(afterRestore.mock.contexts[0]).to.eq(context)
+              expect(afterRestore).toHaveBeenCalledExactlyOnceWith()
+              expect(afterRestore).toHaveBeenCalledAfter(beforeRestore)
+
               return void context
+            },
+
+            /**
+             * @this {void}
+             *
+             * @param {TokenizeContext} context
+             *  The tokenize context
+             * @return {undefined}
+             */
+            before(this: void, context: TokenizeContext): undefined {
+              afterRestore = vi.fn().mockName('afterRestore')
+              beforeRestore = vi.fn().mockName('beforeRestore')
+
+              context.hooks.afterRestore = afterRestore
+              context.hooks.beforeRestore = beforeRestore
+
+              return void undefined
             }
           }
         },
@@ -409,11 +436,6 @@ describe('integration:createTokenizer', () => {
       'restore state after successful interrupt',
       {
         hooks(this: void): Hooks {
-          /**
-           * The tokenizer spy.
-           *
-           * @var {Mock<Tokenizer>} spy
-           */
           let spy: Mock<Tokenizer>
 
           return {

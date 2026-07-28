@@ -1,4 +1,5 @@
 import type {
+  ApplySkip,
   Chunk,
   Code,
   Column,
@@ -10,6 +11,7 @@ import type {
   Place,
   Token
 } from '@flex-development/mark/parse'
+import type { Debugger } from 'debug'
 import type * as micromark from 'micromark-util-types'
 
 declare module '@flex-development/mark/parse' {
@@ -67,6 +69,15 @@ declare module '@flex-development/mark/parse' {
     _gfmTableDynamicInterruptHack?: boolean
 
     /**
+     * Move {@linkcode place} a bit forward.
+     *
+     * @see {@linkcode ApplySkip}
+     *
+     * @internal
+     */
+    applySkip: ApplySkip
+
+    /**
      * The list of chunks.
      *
      * @see {@linkcode Chunk}
@@ -76,33 +87,34 @@ declare module '@flex-development/mark/parse' {
     chunks: Chunk[]
 
     /**
+     * The debug logger.
+     *
+     * @see {@linkcode Debugger}
+     *
+     * @internal
+     * @readonly
+     */
+    readonly debug: Debugger
+
+    /**
      * The context object to transition the state machine.
      *
      * @see {@linkcode Effects}
      *
      * @internal
+     * @readonly
      */
     readonly effects: Effects
 
     /**
-     * The current point in the content.
+     * The current place in the content.
      *
      * @see {@linkcode Place}
      *
      * @internal
+     * @readonly
      */
-    place: Place
-
-    /**
-     * Move {@linkcode place} a bit forward.
-     *
-     * @internal
-     *
-     * @this {TokenizeContext}
-     *
-     * @return {undefined}
-     */
-    skip(this: TokenizeContext): undefined
+    readonly place: Place
 
     /**
      * Record, where each key is a line number and each value a column to be

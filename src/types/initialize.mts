@@ -10,8 +10,8 @@ import type {
 } from '@flex-development/mark/parse'
 
 /**
- * An initial construct, a record of initial constructs, or a function that
- * returns the construct or record.
+ * An initial construct, a record of initial constructs,
+ * or a function that returns the construct or record.
  *
  * @see {@linkcode CreateInitial}
  * @see {@linkcode InitialConstruct}

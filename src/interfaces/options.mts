@@ -13,7 +13,6 @@ import type {
   CodeCheck,
   CreateToken,
   Extensions,
-  ParseContext,
   Point
 } from '@flex-development/mark/parse'
 import type { u } from '@flex-development/unist-util-builder'
@@ -78,18 +77,6 @@ interface Options {
    * @see {@linkcode Initialize}
    */
   initialize: Initialize
-
-  /**
-   * Whether to move the position of the tokenizer forward at stream breaks.
-   */
-  moveOnBreak?: boolean | null | undefined
-
-  /**
-   * The relevant parsing context.
-   *
-   * @see {@linkcode ParseContext}
-   */
-  parser?: ParseContext | null | undefined
 
   /**
    * Create a new token.

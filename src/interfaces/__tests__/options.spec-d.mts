@@ -14,7 +14,6 @@ import type {
   CodeCheck,
   CreateToken,
   Extensions,
-  ParseContext,
   Point
 } from '@flex-development/mark/parse'
 import type { Nilable } from '@flex-development/tutils'
@@ -60,18 +59,6 @@ describe('unit-d:interfaces/Options', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('initialize')
       .toEqualTypeOf<Initialize>()
-  })
-
-  it('should match [moveOnBreak?: boolean | null | undefined]', () => {
-    expectTypeOf<TestSubject>()
-      .toHaveProperty('moveOnBreak')
-      .toEqualTypeOf<Nilable<boolean>>()
-  })
-
-  it('should match [parser?: ParseContext | null | undefined]', () => {
-    expectTypeOf<TestSubject>()
-      .toHaveProperty('parser')
-      .toEqualTypeOf<Nilable<ParseContext>>()
   })
 
   it('should match [token?: CreateToken | null | undefined]', () => {

@@ -13,6 +13,8 @@ import type {
   TokenizeContext
 } from '@flex-development/mark/parse'
 
+export default initialize
+
 /**
  * Create an initial construct.
  *
@@ -89,5 +91,3 @@ function initialize(
     }
   }
 }
-
-export default initialize
