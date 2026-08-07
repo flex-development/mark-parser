@@ -1872,7 +1872,7 @@ __metadata:
     "@flex-development/grease": "npm:3.0.0-alpha.9"
     "@flex-development/import-regex": "npm:3.0.0"
     "@flex-development/mark": "npm:1.0.0-alpha.3"
-    "@flex-development/mark-util-character": "npm:1.0.0"
+    "@flex-development/mark-util-character": "npm:1.1.0"
     "@flex-development/mark-util-chunked": "npm:1.0.0"
     "@flex-development/mark-util-symbol": "npm:3.1.0"
     "@flex-development/pathe": "npm:4.0.2"
@@ -1925,13 +1925,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@flex-development/mark-util-character@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@flex-development/mark-util-character@npm:1.0.0"
+"@flex-development/mark-util-character@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@flex-development/mark-util-character@npm:1.1.0"
   dependencies:
-    "@flex-development/mark": "npm:1.0.0-alpha.1"
-    "@flex-development/mark-util-symbol": "npm:3.0.0"
-  checksum: 10/693f36a2523ac7f4c1506772cc6e5f902863c6c7c23e7ed6f336f357abfa9758b6b94972b25bc9a6489aa1612380ce81af1d23340d63d41fb701094b205676df
+    "@flex-development/mark": "npm:1.0.0-alpha.3"
+    "@flex-development/mark-util-symbol": "npm:3.1.0"
+  checksum: 10/a54a7b2a4f95b92f0d103538b59061e98f56c9bb3cecef7269273f490164d22cc96230ecc95d5a12cb283eb38a361630fb427334ebb3e991cc5d141f164fec2b
   languageName: node
   linkType: hard
 

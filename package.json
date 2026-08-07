@@ -135,7 +135,7 @@
   },
   "dependencies": {
     "@flex-development/mark": "1.0.0-alpha.3",
-    "@flex-development/mark-util-character": "1.0.0",
+    "@flex-development/mark-util-character": "1.1.0",
     "@flex-development/mark-util-chunked": "1.0.0",
     "@flex-development/mark-util-symbol": "3.1.0",
     "@flex-development/unist-util-builder": "2.0.0",
