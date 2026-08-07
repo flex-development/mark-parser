@@ -22,6 +22,7 @@ import type {
   Construct,
   ConstructRecord,
   Constructs,
+  ContainerState,
   ContentType,
   Context,
   Create,
@@ -1179,6 +1180,13 @@ function createTokenizer(
     const construct: Construct | null | undefined = context.currentConstruct
 
     /**
+     * The current container state.
+     *
+     * @const {ContainerState | null | undefined} container
+     */
+    const container: ContainerState | null | undefined = context.containerState
+
+    /**
      * The current number of events.
      *
      * @const {number} from
@@ -1222,6 +1230,8 @@ function createTokenizer(
 
       context.code = code
       context.previous = previous
+
+      context.containerState = container
       context.currentConstruct = construct
       context.events.length = from
 
