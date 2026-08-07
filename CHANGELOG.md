@@ -1,3 +1,14 @@
+## [1.0.0-alpha.15](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.14...1.0.0-alpha.15) (2026-08-06)
+
+### :package: Build
+
+- [[`860d442`](https://github.com/flex-development/mark-parser/commit/860d442ec0272139273be11a3f4e8d7c19d00b62)] **deps:** bump @flex-development/mark-util-character from 1.0.0 to 1.1.0
+
+### :sparkles: Features
+
+- [[`dc8c4d7`](https://github.com/flex-development/mark-parser/commit/dc8c4d7084fe2d30eaeefb4aea1c83a7bc013325)] [advanced] let users store internal state
+- [[`73d2a7d`](https://github.com/flex-development/mark-parser/commit/73d2a7de49ca9a46722daa78adb1d60c5be5de69)] restore `containerState`
+
 ## [1.0.0-alpha.14](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.13...1.0.0-alpha.14) (2026-07-27)
 
 ### ⚠ BREAKING CHANGES
@@ -795,6 +806,7 @@
 
 - [[`85f91f2`](https://github.com/flex-development/mark-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/mark-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
 
