@@ -17,7 +17,8 @@ const config = [
   {
     files: [
       '__fixtures__/constructs/**/*.mts',
-      'src/constructs/initialize.mts'
+      'src/constructs/initialize.mts',
+      'src/create-tokenizer.mts'
     ],
     rules: {
       'unicorn/no-this-assignment': 0

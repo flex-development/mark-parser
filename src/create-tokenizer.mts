@@ -5,7 +5,7 @@
 
 import type Info from '#types/info'
 import type ReturnHandle from '#types/return-handle'
-import type { Initialize, Options } from '@flex-development/mark-parser'
+import type { Initialize, Options, Store } from '@flex-development/mark-parser'
 import {
   combineExtensions,
   resolveAll,
@@ -232,6 +232,7 @@ function createTokenizer(
     skips: {},
     sliceSerialize,
     sliceStream,
+    store: {} as Store,
     token,
     write
   }, {
@@ -274,11 +275,18 @@ function createTokenizer(
       configurable: true,
       enumerable: false,
       writable: true
+    },
+    store: {
+      configurable: true,
+      enumerable: false,
+      writable: true
     }
   })
 
   context.place._bufferIndex = lastBufferIndex
   context.place._index = 0
+
+  context.store = store.bind(context)
 
   finalizeContext(context, initialize, options)
 
@@ -507,7 +515,7 @@ function createTokenizer(
          *  The next state
          */
         function start(code: Code): State | undefined {
-          info = store()
+          info = context.store()
           currentConstruct = construct
 
           // set current construct.
@@ -731,6 +739,12 @@ function createTokenizer(
               enumerable: true,
               value: context.hooks,
               writable: false
+            },
+            parent: {
+              configurable: true,
+              enumerable: false,
+              value: context,
+              writable: true
             },
             parser: {
               configurable: true,
@@ -1157,48 +1171,55 @@ function createTokenizer(
   }
 
   /**
-   * Store state.
+   * Store internal state.
    *
-   * @this {void}
+   * @this {TokenizeContext}
    *
    * @return {Info}
    *  Info passed around
    */
-  function store(this: void): Info {
+  function store(this: TokenizeContext): Info {
+    /**
+     * The tokenization context.
+     *
+     * @const {TokenizeContext} self
+     */
+    const self: TokenizeContext = this
+
     /**
      * The current character code.
      *
      * @const {Code} code
      */
-    const code: Code = context.code
+    const code: Code = self.code
 
     /**
      * The current construct.
      *
      * @const {Construct | null | undefined} construct
      */
-    const construct: Construct | null | undefined = context.currentConstruct
+    const construct: Construct | null | undefined = self.currentConstruct
 
     /**
      * The current container state.
      *
      * @const {ContainerState | null | undefined} container
      */
-    const container: ContainerState | null | undefined = context.containerState
+    const container: ContainerState | null | undefined = self.containerState
 
     /**
      * The current number of events.
      *
      * @const {number} from
      */
-    const from: number = context.events.length
+    const from: number = self.events.length
 
     /**
      * The current point.
      *
      * @const {Place} lastPlace
      */
-    const lastPlace: Place = context.now()
+    const lastPlace: Place = self.now()
 
     /**
      * The current token stack.
@@ -1212,36 +1233,36 @@ function createTokenizer(
      *
      * @const {Code} previous
      */
-    const previous: Code = context.previous
+    const previous: Code = self.previous
 
     return { from, restore }
 
     /**
-     * Restore state.
+     * Restore internal state.
      *
      * @this {void}
      *
      * @return {undefined}
      */
     function restore(this: void): undefined {
-      context.hooks.beforeRestore?.call(context)
+      self.hooks.beforeRestore?.call(self)
 
-      Object.assign(context.place, lastPlace)
+      Object.assign(self.place, lastPlace)
 
-      context.code = code
-      context.previous = previous
+      self.code = code
+      self.previous = previous
 
-      context.containerState = container
-      context.currentConstruct = construct
-      context.events.length = from
+      self.containerState = container
+      self.currentConstruct = construct
+      self.events.length = from
 
       stack = lastStack
-      lastBufferIndex = context.place._bufferIndex
+      lastBufferIndex = self.place._bufferIndex
 
-      context.applySkip(false)
-      context.hooks.afterRestore?.call(context)
+      self.applySkip(false)
+      self.hooks.afterRestore?.call(self)
 
-      return void context.debug('restore: %o', context.place)
+      return void self.debug('restore: %o', self.place)
     }
   }
 

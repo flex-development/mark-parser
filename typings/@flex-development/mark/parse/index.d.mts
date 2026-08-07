@@ -1,3 +1,4 @@
+import type { Store } from '@flex-development/mark-parser'
 import type {
   ApplySkip,
   Chunk,
@@ -135,6 +136,15 @@ declare module '@flex-development/mark/parse' {
      * @internal
      */
     readonly serializeChunks: SerializeChunks
+
+    /**
+     * Store internal state.
+     *
+     * @see {@linkcode Store}
+     *
+     * @internal
+     */
+    store: Store
   }
 
   interface TokenTypeMap extends micromark.TokenTypeMap {

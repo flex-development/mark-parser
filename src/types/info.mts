@@ -7,8 +7,6 @@ import type Restore from './restore.mts'
 
 /**
  * Internal state; info passed around.
- *
- * @internal
  */
 type Info = {
   /**
