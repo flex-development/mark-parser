@@ -88,6 +88,16 @@ declare module '@flex-development/mark/parse' {
     chunks: Chunk[]
 
     /**
+     * When storing internal state, whether to create a copy
+     * of the current `containerState`.
+     * By default, {@linkcode structuredClone} is used to make a deep copy.
+     *
+     * If `true`, mutations made to the `containerState` during speculative
+     * checks will **not** be propagated after a restore.
+     */
+    copyContainerState?: boolean | null | undefined
+
+    /**
      * The debug logger.
      *
      * @see {@linkcode Debugger}

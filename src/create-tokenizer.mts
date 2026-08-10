@@ -1206,9 +1206,12 @@ function createTokenizer(
     /**
      * The current container state.
      *
-     * @const {ContainerState | null | undefined} container
+     * @const {ContainerState | null | undefined} containerState
      */
-    const container: ContainerState | null | undefined = self.containerState
+    const containerState: ContainerState | null | undefined =
+      self.copyContainerState && self.containerState
+        ? structuredClone(self.containerState)
+        : self.containerState
 
     /**
      * The current number of events.
@@ -1258,7 +1261,7 @@ function createTokenizer(
       self.code = code
       self.previous = previous
 
-      self.containerState = container
+      self.containerState = containerState
       self.currentConstruct = construct
       self.events.length = from
 

@@ -35,6 +35,18 @@ const config = [
     rules: {
       'jsdoc/valid-types': 0
     }
+  },
+  {
+    files: ['src/create-tokenizer.mts'],
+    rules: {
+      'node/no-unsupported-features/node-builtins': [
+        2,
+        {
+          allowExperimental: true,
+          version: '>=17.0.0'
+        }
+      ]
+    }
   }
 ]
 

@@ -67,6 +67,8 @@ describe('e2e:createTokenizer', () => {
           if (self.contentType === ct.string || self.contentType === ct.text) {
             self.noEmptyTokens = true
             self.noPrevious = true
+          } else if (self.contentType === ct.document) {
+            self.copyContainerState = true
           }
         }
 
