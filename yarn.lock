@@ -1907,6 +1907,7 @@ __metadata:
     "@types/unist": "npm:3.0.3"
     "@vates/toggle-scripts": "npm:1.0.0"
     "@vitest/coverage-v8": "npm:4.1.10"
+    "@vitest/runner": "npm:4.1.10"
     "@vitest/ui": "npm:4.1.10"
     concat-stream: "npm:2.0.0"
     convert-hrtime: "npm:5.0.0"
@@ -1923,6 +1924,10 @@ __metadata:
     husky: "npm:9.1.7"
     is-ci: "npm:4.1.0"
     micromark: "npm:4.0.2"
+    micromark-core-commonmark: "npm:2.0.3"
+    micromark-util-character: "npm:2.1.1"
+    micromark-util-symbol: "npm:2.0.1"
+    micromark-util-types: "npm:2.0.2"
     node-notifier: "npm:10.0.1"
     pkg-size: "npm:2.4.0"
     remark: "npm:15.0.1"
@@ -8304,7 +8309,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromark-core-commonmark@npm:^2.0.0":
+"micromark-core-commonmark@npm:2.0.3, micromark-core-commonmark@npm:^2.0.0":
   version: 2.0.3
   resolution: "micromark-core-commonmark@npm:2.0.3"
   dependencies:
@@ -8598,7 +8603,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromark-util-character@npm:^2.0.0":
+"micromark-util-character@npm:2.1.1, micromark-util-character@npm:^2.0.0":
   version: 2.1.1
   resolution: "micromark-util-character@npm:2.1.1"
   dependencies:
@@ -8729,14 +8734,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromark-util-symbol@npm:^2.0.0":
+"micromark-util-symbol@npm:2.0.1, micromark-util-symbol@npm:^2.0.0":
   version: 2.0.1
   resolution: "micromark-util-symbol@npm:2.0.1"
   checksum: 10/497e6d95fc21c2bb5265b78a6a60db518c376dc438739b2e7d4aee6f9f165222711724b456c63163314f32b8eea68a064687711d41e986262926eab23ddb9229
   languageName: node
   linkType: hard
 
-"micromark-util-types@npm:^2.0.0":
+"micromark-util-types@npm:2.0.2, micromark-util-types@npm:^2.0.0":
   version: 2.0.2
   resolution: "micromark-util-types@npm:2.0.2"
   checksum: 10/a9eb067bd9384eab61942285d53738aa22f3fef4819eaf20249bec6ec13f1e4da2800230fd0ceb7e705108987aa9062fe3e9a8e5e48aa60180db80b9489dc3e2

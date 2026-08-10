@@ -167,6 +167,7 @@
     "@types/unist": "3.0.3",
     "@vates/toggle-scripts": "1.0.0",
     "@vitest/coverage-v8": "4.1.10",
+    "@vitest/runner": "4.1.10",
     "@vitest/ui": "4.1.10",
     "concat-stream": "2.0.0",
     "convert-hrtime": "5.0.0",
@@ -181,6 +182,10 @@
     "husky": "9.1.7",
     "is-ci": "4.1.0",
     "micromark": "4.0.2",
+    "micromark-core-commonmark": "2.0.3",
+    "micromark-util-character": "2.1.1",
+    "micromark-util-symbol": "2.0.1",
+    "micromark-util-types": "2.0.2",
     "node-notifier": "10.0.1",
     "pkg-size": "2.4.0",
     "remark": "15.0.1",
@@ -198,6 +203,6 @@
     "vfile": "6.0.3",
     "vitest": "4.1.10"
   },
-  "packageManager": "yarn@4.17.1",
+  "packageManager": "yarn@4.18.0",
   "sideEffects": false
 }
