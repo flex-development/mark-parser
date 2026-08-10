@@ -1,3 +1,29 @@
+## [1.0.0-alpha.16](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.15...1.0.0-alpha.16) (2026-08-10)
+
+### :package: Build
+
+- [[`6938a64`](https://github.com/flex-development/mark-parser/commit/6938a64b9fc654257313f6ce5c5a1e475baf8376)] **deps-dev:** bump happy-dom from 20.11.1 to 20.11.2
+- [[`80b6f5c`](https://github.com/flex-development/mark-parser/commit/80b6f5c1329a1ee9bfe758ca0e4b22a2fe26ce6f)] **deps-dev:** bump rollup from 4.62.3 to 4.62.4 ([#414](https://github.com/flex-development/mark-parser/issues/414))
+- [[`04c24f9`](https://github.com/flex-development/mark-parser/commit/04c24f970e937ce6b4f3076dd26253f50674132e)] **deps-dev:** bump rollup-plugin-dts from 6.4.1 to 6.5.1 ([#423](https://github.com/flex-development/mark-parser/issues/423))
+- [[`418d45e`](https://github.com/flex-development/mark-parser/commit/418d45e440c846f88babe4520c1c34454a887d5e)] **deps-dev:** bump tsx from 4.23.10 to 4.23.11 ([#425](https://github.com/flex-development/mark-parser/issues/425))
+- [[`2423df0`](https://github.com/flex-development/mark-parser/commit/2423df0bd123932f0fedcbe6bd4cb63632912869)] **deps-dev:** bump tsx from 4.23.5 to 4.23.10 ([#424](https://github.com/flex-development/mark-parser/issues/424))
+- [[`3b7f34a`](https://github.com/flex-development/mark-parser/commit/3b7f34aeeddb7186d07b75c2274d45001a804d59)] **deps:** bump fast-uri from 3.1.4 to 3.1.5 ([#417](https://github.com/flex-development/mark-parser/issues/417))
+- [[`3c2d436`](https://github.com/flex-development/mark-parser/commit/3c2d4369e6c79aeba9283cbb6d9978f88a302775)] **deps:** bump js-yaml from 4.3.0 to 4.3.1 ([#420](https://github.com/flex-development/mark-parser/issues/420))
+- [[`f2c5ca9`](https://github.com/flex-development/mark-parser/commit/f2c5ca9750d12c00cb00a07d1aceb8b6ef0aa9e4)] **deps:** bump undici from 6.27.0 to 6.28.0 ([#416](https://github.com/flex-development/mark-parser/issues/416))
+- [[`e81c7c4`](https://github.com/flex-development/mark-parser/commit/e81c7c43624f1422f974e4d4b0bf99d2ca2c781d)] **yarn:** bump yarn from 4.17.1 to 4.18.0
+
+### :robot: Continuous Integration
+
+- [[`aea157e`](https://github.com/flex-development/mark-parser/commit/aea157ebfd00c69941c944ad66b2b3e922d08cbc)] **workflows:** `dependabot-dedupe` -> `dependabot-packages`
+
+### :sparkles: Features
+
+- [[`000bd49`](https://github.com/flex-development/mark-parser/commit/000bd4947fddcebe526e005043bd14ced3fe838a)] support `beforeStore` and `afterStore` hooks
+
+### :house_with_garden: Housekeeping
+
+- [[`bec2946`](https://github.com/flex-development/mark-parser/commit/bec29463a805774a8e2b801439e34f19aa6038fa)] **github:** [dependabot] add `rollup` group
+
 ## [1.0.0-alpha.15](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.14...1.0.0-alpha.15) (2026-08-06)
 
 ### :package: Build
@@ -806,6 +832,7 @@
 
 - [[`85f91f2`](https://github.com/flex-development/mark-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/mark-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
 
