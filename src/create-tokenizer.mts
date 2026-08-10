@@ -151,7 +151,7 @@ function createTokenizer(
    */
   const effects: Effects = {
     attempt: constructFactory(onsuccessfulconstruct),
-    check: constructFactory(onsuccessfulcheck),
+    check: constructFactory(onsuccessfulcheck, { check: true }),
     consume,
     enter,
     exit,
