@@ -1,3 +1,10 @@
+## [1.0.0-alpha.17](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.16...1.0.0-alpha.17) (2026-08-10)
+
+### :sparkles: Features
+
+- [[`db2ae8c`](https://github.com/flex-development/mark-parser/commit/db2ae8c61ac4a757876ab2db23a520e149c40323)] `effects.check` live binding
+- [[`ab15303`](https://github.com/flex-development/mark-parser/commit/ab1530393df689f84dc35586bb34284cbfebc1c0)] support `TokenizeContext#copyContainerState`
+
 ## [1.0.0-alpha.16](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.15...1.0.0-alpha.16) (2026-08-10)
 
 ### :package: Build
@@ -832,6 +839,7 @@
 
 - [[`85f91f2`](https://github.com/flex-development/mark-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/mark-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
 
