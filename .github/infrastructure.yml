@@ -29,7 +29,8 @@ branches:
           - context: codecov/patch
           - context: codecov/project
           - context: commitlint
-          - context: dependabot-dedupe
+          - context: dedupe
+          - context: dprint
           - context: format
           - context: lint
           - context: spelling

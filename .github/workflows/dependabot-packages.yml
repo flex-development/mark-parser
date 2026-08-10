@@ -1,8 +1,8 @@
-# Dependabot Dedupe
+# Dependabot
 #
-# Deduplicate dependencies for @dependabot.
+# Run commands for @dependabot on package update.
 #
-# Note: This workflow can be removed once dependabot supports some type of automatic deduplication.
+# Note: The `dedupe` job can be removed once dependabot supports automatic deduplication.
 # See https://github.com/dependabot/dependabot-core/issues/5830 for details.
 #
 # References:
@@ -16,11 +16,12 @@
 # - https://github.com/actions/create-github-app-token
 # - https://github.com/actions/setup-node
 # - https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#yarn2-configuration
+# - https://github.com/dependabot/fetch-metadata
 # - https://github.com/flex-development/gh-commit
 # - https://github.com/hmarr/debug-action
 
 ---
-name: dependabot-dedupe
+name: dependabot-packages
 on:
   pull_request:
     branches:
@@ -29,11 +30,13 @@ concurrency:
   cancel-in-progress: true
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
-  dependabot-dedupe:
+  preflight:
     if: |
-      github.actor == '${{ vars.DEPENDABOT }}'
-      && startsWith(github.head_ref, 'dependabot/npm_and_yarn/')
+      ${{ github.actor == vars.DEPENDABOT
+      && startsWith(github.head_ref, 'dependabot/npm_and_yarn/') }}
     runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.metadata.outputs.dependency-names }}
     steps:
       - id: debug
         name: Print environment variables and event payload
@@ -42,7 +45,22 @@ jobs:
         name: Get bot token
         uses: actions/create-github-app-token@v3.2.0
         with:
-          app-id: ${{ secrets.BOT_APP_ID }}
+          client-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+      - id: metadata
+        name: Fetch metadata
+        uses: dependabot/fetch-metadata@v3.1.0
+        with:
+          github-token: ${{ steps.bot-token.outputs.token }}
+  dedupe:
+    needs: preflight
+    runs-on: ubuntu-latest
+    steps:
+      - id: bot-token
+        name: Get bot token
+        uses: actions/create-github-app-token@v3.2.0
+        with:
+          client-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
       - id: checkout
         name: Checkout ${{ github.head_ref }}
@@ -73,5 +91,46 @@ jobs:
         uses: flex-development/gh-commit@1.0.0
         with:
           message: 'build(yarn): [dependabot skip] deduplicate dependencies for @dependabot'
+          token: ${{ steps.bot-token.outputs.token }}
+          trailers: 'Signed-off-by: ${{ vars.BOT_NAME }} <${{ vars.BOT_EMAIL }}>'
+  dprint:
+    if: ${{ contains(needs.preflight.outputs.packages, 'dprint') }}
+    needs:
+      - dedupe
+      - preflight
+    runs-on: ubuntu-latest
+    steps:
+      - id: bot-token
+        name: Get bot token
+        uses: actions/create-github-app-token@v3.2.0
+        with:
+          client-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+      - id: checkout
+        name: Checkout ${{ github.head_ref }}
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+          ref: ${{ github.head_ref }}
+          token: ${{ steps.bot-token.outputs.token }}
+      - id: dependencies
+        name: Install dependencies
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+        run: yarn
+      - id: local-binaries
+        name: Add local binaries to $PATH
+        run: echo "$GITHUB_WORKSPACE/node_modules/.bin" >> $GITHUB_PATH
+      - id: dprint
+        name: Update dprint config
+        run: dprint config update --yes
+      - id: status
+        name: Print git status
+        run: git status --porcelain
+      - id: commit
+        name: Commit and push dprint config update
+        uses: flex-development/gh-commit@1.0.0
+        with:
+          message: 'chore: [dependabot skip] run `dprint config update` for @dependabot'
           token: ${{ steps.bot-token.outputs.token }}
           trailers: 'Signed-off-by: ${{ vars.BOT_NAME }} <${{ vars.BOT_EMAIL }}>'
