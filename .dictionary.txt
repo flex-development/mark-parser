@@ -15,6 +15,7 @@ nvmrc
 onreturn
 onsuccessfulcheck
 onsuccessfulconstruct
+rollup
 shfmt
 succ
 tokenizable

@@ -33,6 +33,12 @@ updates:
         patterns:
           - 'remark-*'
           - remark
+      rollup:
+        patterns:
+          - '@rollup/*'
+          - '@types/rollup'
+          - 'rollup-*'
+          - rollup
       vitest:
         patterns:
           - '@vitest/*'
