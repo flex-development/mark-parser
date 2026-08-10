@@ -738,7 +738,7 @@ function createTokenizer(
               configurable: true,
               enumerable: true,
               value: context.hooks,
-              writable: false
+              writable: true
             },
             parent: {
               configurable: true,
@@ -1179,6 +1179,9 @@ function createTokenizer(
    *  Info passed around
    */
   function store(this: TokenizeContext): Info {
+    // allow users to do something before storing internal state.
+    this.hooks.beforeStore?.call(this)
+
     /**
      * The tokenization context.
      *
@@ -1234,6 +1237,9 @@ function createTokenizer(
      * @const {Code} previous
      */
     const previous: Code = self.previous
+
+    // allow users to do something after storing internal state.
+    self.hooks.afterStore?.call(self)
 
     return { from, restore }
 

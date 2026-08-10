@@ -24,7 +24,9 @@ import type { Initialize, Options } from '@flex-development/mark-parser'
 import { chars, codes, ev } from '@flex-development/mark-util-symbol'
 import type {
   AfterRestore,
+  AfterStore,
   BeforeRestore,
+  BeforeStore,
   ContentType,
   Event,
   Place,
@@ -378,6 +380,8 @@ describe('integration:createTokenizer', () => {
         hooks(this: void): Hooks {
           let afterRestore: Mock<AfterRestore>
           let beforeRestore: Mock<BeforeRestore>
+          let afterStore: Mock<AfterStore>
+          let beforeStore: Mock<BeforeStore>
 
           return {
             /**
@@ -397,10 +401,19 @@ describe('integration:createTokenizer', () => {
               expect(events).to.be.an('array').of.length(2)
               expect(events).to.each.have.nested.property('1.type', tt.succ)
 
+              expect(beforeStore.mock.contexts[0]).to.eq(context)
+              expect(beforeStore.mock.calls[0]).to.eql([])
+
+              expect(afterStore.mock.contexts[0]).to.eq(context)
+              expect(afterStore.mock.calls[0]).to.eql([])
+              expect(afterStore).toHaveBeenCalledAfter(beforeStore)
+
               expect(beforeRestore.mock.contexts[0]).to.eq(context)
-              expect(beforeRestore).toHaveBeenCalledExactlyOnceWith()
+              expect(beforeRestore.mock.calls[0]).to.eql([])
+              expect(beforeRestore).toHaveBeenCalledAfter(afterStore)
+
               expect(afterRestore.mock.contexts[0]).to.eq(context)
-              expect(afterRestore).toHaveBeenCalledExactlyOnceWith()
+              expect(afterRestore.mock.calls[0]).to.eql([])
               expect(afterRestore).toHaveBeenCalledAfter(beforeRestore)
 
               return void context
@@ -415,10 +428,14 @@ describe('integration:createTokenizer', () => {
              */
             before(this: void, context: TokenizeContext): undefined {
               afterRestore = vi.fn().mockName('afterRestore')
+              afterStore = vi.fn().mockName('afterStore')
               beforeRestore = vi.fn().mockName('beforeRestore')
+              beforeStore = vi.fn().mockName('beforeStore')
 
               context.hooks.afterRestore = afterRestore
+              context.hooks.afterStore = afterStore
               context.hooks.beforeRestore = beforeRestore
+              context.hooks.beforeStore = beforeStore
 
               return void undefined
             }
