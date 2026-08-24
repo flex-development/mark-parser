@@ -1,3 +1,18 @@
+## [1.0.0-alpha.18](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.17...1.0.0-alpha.18) (2026-08-23)
+
+### :package: Build
+
+- [[`206bbf9`](https://github.com/flex-development/mark-parser/commit/206bbf9a920b81dff02106a6e4a1ef5528cbf958)] **deps-dev:** bump @commitlint/cli from 21.2.1 to 21.2.2 in the commitlint group ([#432](https://github.com/flex-development/mark-parser/issues/432))
+- [[`92f15ca`](https://github.com/flex-development/mark-parser/commit/92f15ca0fd028e9118d17e66ee8e111e20dff7b2)] **deps-dev:** bump tsx from 4.23.11 to 4.23.12 ([#431](https://github.com/flex-development/mark-parser/issues/431))
+
+### :robot: Continuous Integration
+
+- [[`f71f44a`](https://github.com/flex-development/mark-parser/commit/f71f44ae806842bb7ad81838967005b75bfffb36)] **deps:** bump streetsidesoftware/cspell-action from 8.4.0 to 9.0.1 ([#433](https://github.com/flex-development/mark-parser/issues/433))
+
+### :bug: Fixes
+
+- [[`b85cc29`](https://github.com/flex-development/mark-parser/commit/b85cc29473537184a168ca1b19965e929c36eef7)] respect code point width
+
 ## [1.0.0-alpha.17](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.16...1.0.0-alpha.17) (2026-08-10)
 
 ### :sparkles: Features
@@ -839,6 +854,7 @@
 
 - [[`85f91f2`](https://github.com/flex-development/mark-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/mark-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
 
