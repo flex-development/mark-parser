@@ -166,9 +166,9 @@
     "@types/rollup": "0.54.0",
     "@types/unist": "3.0.3",
     "@vates/toggle-scripts": "1.0.0",
-    "@vitest/coverage-v8": "4.1.10",
-    "@vitest/runner": "4.1.10",
-    "@vitest/ui": "4.1.10",
+    "@vitest/coverage-v8": "4.1.11",
+    "@vitest/runner": "4.1.11",
+    "@vitest/ui": "4.1.11",
     "concat-stream": "2.0.0",
     "convert-hrtime": "5.0.0",
     "cross-env": "10.1.0",
@@ -201,7 +201,7 @@
     "typescript": "6.0.3",
     "unified": "11.0.5",
     "vfile": "6.0.3",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   },
   "packageManager": "yarn@4.18.0",
   "sideEffects": false
