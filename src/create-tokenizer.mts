@@ -187,7 +187,7 @@ function createTokenizer(
   let expected: Code
 
   /**
-   * The last buffer chunk index.
+   * The last consumed buffer index within the current string chunk.
    *
    * @var {number} lastBufferIndex
    */
@@ -645,8 +645,6 @@ function createTokenizer(
     if (context.place._bufferIndex < 0) { // not in a string chunk.
       context.place._index++
     } else { // inside string chunk.
-      lastBufferIndex = ++context.place._bufferIndex
-
       /**
        * The current chunk.
        *
@@ -656,9 +654,19 @@ function createTokenizer(
 
       assert(typeof chunk === 'string', 'expected string chunk')
 
+      /**
+       * The width of {@linkcode code}.
+       *
+       * @const {1 | 2} width
+       */
+      const width: 1 | 2 = !eos(code) && code > 0xffff ? 2 : 1
+
+      context.place._bufferIndex += width
+      lastBufferIndex = context.place._bufferIndex - 1
+
       // at end of string chunk.
       // points with non-negative `_bufferIndex` values reference strings.
-      if (lastBufferIndex === chunk.length) {
+      if (context.place._bufferIndex === chunk.length) {
         context.place._index++
         context.place._bufferIndex = -1
       }

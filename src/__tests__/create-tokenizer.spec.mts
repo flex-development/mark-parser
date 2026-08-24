@@ -447,8 +447,10 @@ describe('unit:createTokenizer', () => {
         const result = subject.effects.exit(tt.succ)
 
         // Expect
-        expect(result.start._bufferIndex).to.eq(chunk.length)
+        expect(result.start._bufferIndex).to.eq(chunk.length - 1)
         expect(result.start._index).to.eq(result.end._index - 1)
+        expect(result.end._bufferIndex).to.eq(-1)
+        expect(result.end._index).to.eq(result.start._index + 1)
       })
 
       it('should error on empty token if empty tokens are not allowed', () => {
