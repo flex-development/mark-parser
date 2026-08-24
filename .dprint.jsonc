@@ -61,10 +61,10 @@
   "lineWidth": 80,
   "newLineKind": "lf",
   "plugins": [
-    "https://plugins.dprint.dev/typescript-0.96.1.wasm",
-    "https://plugins.dprint.dev/json-0.22.0.wasm",
-    "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.6.0.wasm",
-    "https://plugins.dprint.dev/exec-0.7.2.json@6c30bd00dfb176774ece412d0fbf149478269ecc92c55ab2d6f4116938ed993e"
+    "npm:@dprint/typescript@0.96.1",
+    "npm:@dprint/json@0.23.0",
+    "npm:dprint-plugin-yaml@0.6.0",
+    "npm:@dprint/exec@0.7.3/plugin.json@704701df449dd7e942a71144773778ac529d68c2e4657bfc236d393b898b9a67"
   ],
   "typescript": {
     "arrowFunction.useParentheses": "preferNone",
