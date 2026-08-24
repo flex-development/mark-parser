@@ -1,3 +1,9 @@
+## [1.0.0-alpha.19](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.18...1.0.0-alpha.19) (2026-08-24)
+
+### :bug: Fixes
+
+- [[`ff2dbe5`](https://github.com/flex-development/mark-parser/commit/ff2dbe5e49c1673b2d17fe0a82c62bb8336d38ae)] code point offsets
+
 ## [1.0.0-alpha.18](https://github.com/flex-development/mark-parser/compare/1.0.0-alpha.17...1.0.0-alpha.18) (2026-08-23)
 
 ### :package: Build
@@ -854,6 +860,7 @@
 
 - [[`85f91f2`](https://github.com/flex-development/mark-tokenizer/commit/85f91f22fbf2dcb23c07fae8eaf5b552841d15d5)] api
 - [[`3d662fc`](https://github.com/flex-development/mark-tokenizer/commit/3d662fc675a0a92679b9fd040acd929b1a7f610a)] api
+
 
 
 
