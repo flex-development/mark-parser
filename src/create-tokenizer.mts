@@ -622,6 +622,13 @@ function createTokenizer(
     // allow users to prepare for code consumption.
     context.hooks.beforeConsume?.call(context, code, context.place)
 
+    /**
+     * The width of {@linkcode code}.
+     *
+     * @const {1 | 2} width
+     */
+    const width: 1 | 2 = !eos(code) && code > 0xffff ? 2 : 1
+
     // move position in content.
     if (
       code !== codes.bos && // beginning of stream
@@ -637,7 +644,7 @@ function createTokenizer(
         context.debug('position after eol: %o', context.place)
       } else if (code !== codes.break || context.moveOnBreak) {
         context.place.column++
-        context.place.offset++
+        context.place.offset += width
       }
     }
 
@@ -653,13 +660,6 @@ function createTokenizer(
       const chunk: Chunk | undefined = context.chunks[context.place._index]
 
       assert(typeof chunk === 'string', 'expected string chunk')
-
-      /**
-       * The width of {@linkcode code}.
-       *
-       * @const {1 | 2} width
-       */
-      const width: 1 | 2 = !eos(code) && code > 0xffff ? 2 : 1
 
       context.place._bufferIndex += width
       lastBufferIndex = context.place._bufferIndex - 1
