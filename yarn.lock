@@ -1018,107 +1018,107 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dprint/android-arm64@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/android-arm64@npm:0.56.1"
+"@dprint/android-arm64@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/android-arm64@npm:0.57.0"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"@dprint/android-x64@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/android-x64@npm:0.56.1"
+"@dprint/android-x64@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/android-x64@npm:0.57.0"
   conditions: os=android & cpu=x64
   languageName: node
   linkType: hard
 
-"@dprint/darwin-arm64@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/darwin-arm64@npm:0.56.1"
+"@dprint/darwin-arm64@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/darwin-arm64@npm:0.57.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@dprint/darwin-x64@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/darwin-x64@npm:0.56.1"
+"@dprint/darwin-x64@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/darwin-x64@npm:0.57.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@dprint/linux-arm64-glibc@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/linux-arm64-glibc@npm:0.56.1"
+"@dprint/linux-arm64-glibc@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/linux-arm64-glibc@npm:0.57.0"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@dprint/linux-arm64-musl@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/linux-arm64-musl@npm:0.56.1"
+"@dprint/linux-arm64-musl@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/linux-arm64-musl@npm:0.57.0"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@dprint/linux-loong64-glibc@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/linux-loong64-glibc@npm:0.56.1"
+"@dprint/linux-loong64-glibc@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/linux-loong64-glibc@npm:0.57.0"
   conditions: os=linux & cpu=loong64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@dprint/linux-loong64-musl@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/linux-loong64-musl@npm:0.56.1"
+"@dprint/linux-loong64-musl@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/linux-loong64-musl@npm:0.57.0"
   conditions: os=linux & cpu=loong64 & libc=musl
   languageName: node
   linkType: hard
 
-"@dprint/linux-ppc64-glibc@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/linux-ppc64-glibc@npm:0.56.1"
+"@dprint/linux-ppc64-glibc@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/linux-ppc64-glibc@npm:0.57.0"
   conditions: os=linux & cpu=ppc64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@dprint/linux-ppc64-musl@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/linux-ppc64-musl@npm:0.56.1"
+"@dprint/linux-ppc64-musl@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/linux-ppc64-musl@npm:0.57.0"
   conditions: os=linux & cpu=ppc64 & libc=musl
   languageName: node
   linkType: hard
 
-"@dprint/linux-riscv64-glibc@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/linux-riscv64-glibc@npm:0.56.1"
+"@dprint/linux-riscv64-glibc@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/linux-riscv64-glibc@npm:0.57.0"
   conditions: os=linux & cpu=riscv64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@dprint/linux-x64-glibc@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/linux-x64-glibc@npm:0.56.1"
+"@dprint/linux-x64-glibc@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/linux-x64-glibc@npm:0.57.0"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@dprint/linux-x64-musl@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/linux-x64-musl@npm:0.56.1"
+"@dprint/linux-x64-musl@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/linux-x64-musl@npm:0.57.0"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@dprint/win32-arm64@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/win32-arm64@npm:0.56.1"
+"@dprint/win32-arm64@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/win32-arm64@npm:0.57.0"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@dprint/win32-x64@npm:0.56.1":
-  version: 0.56.1
-  resolution: "@dprint/win32-x64@npm:0.56.1"
+"@dprint/win32-x64@npm:0.57.0":
+  version: 0.57.0
+  resolution: "@dprint/win32-x64@npm:0.57.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -1916,7 +1916,7 @@ __metadata:
     debug: "npm:4.4.3"
     delete-empty: "npm:3.0.0"
     devlop: "npm:1.1.0"
-    dprint: "npm:0.56.1"
+    dprint: "npm:0.57.0"
     editorconfig: "npm:3.0.2"
     eslint: "npm:9.39.4"
     growl: "npm:1.10.5"
@@ -5216,25 +5216,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dprint@npm:0.56.1":
-  version: 0.56.1
-  resolution: "dprint@npm:0.56.1"
+"dprint@npm:0.57.0":
+  version: 0.57.0
+  resolution: "dprint@npm:0.57.0"
   dependencies:
-    "@dprint/android-arm64": "npm:0.56.1"
-    "@dprint/android-x64": "npm:0.56.1"
-    "@dprint/darwin-arm64": "npm:0.56.1"
-    "@dprint/darwin-x64": "npm:0.56.1"
-    "@dprint/linux-arm64-glibc": "npm:0.56.1"
-    "@dprint/linux-arm64-musl": "npm:0.56.1"
-    "@dprint/linux-loong64-glibc": "npm:0.56.1"
-    "@dprint/linux-loong64-musl": "npm:0.56.1"
-    "@dprint/linux-ppc64-glibc": "npm:0.56.1"
-    "@dprint/linux-ppc64-musl": "npm:0.56.1"
-    "@dprint/linux-riscv64-glibc": "npm:0.56.1"
-    "@dprint/linux-x64-glibc": "npm:0.56.1"
-    "@dprint/linux-x64-musl": "npm:0.56.1"
-    "@dprint/win32-arm64": "npm:0.56.1"
-    "@dprint/win32-x64": "npm:0.56.1"
+    "@dprint/android-arm64": "npm:0.57.0"
+    "@dprint/android-x64": "npm:0.57.0"
+    "@dprint/darwin-arm64": "npm:0.57.0"
+    "@dprint/darwin-x64": "npm:0.57.0"
+    "@dprint/linux-arm64-glibc": "npm:0.57.0"
+    "@dprint/linux-arm64-musl": "npm:0.57.0"
+    "@dprint/linux-loong64-glibc": "npm:0.57.0"
+    "@dprint/linux-loong64-musl": "npm:0.57.0"
+    "@dprint/linux-ppc64-glibc": "npm:0.57.0"
+    "@dprint/linux-ppc64-musl": "npm:0.57.0"
+    "@dprint/linux-riscv64-glibc": "npm:0.57.0"
+    "@dprint/linux-x64-glibc": "npm:0.57.0"
+    "@dprint/linux-x64-musl": "npm:0.57.0"
+    "@dprint/win32-arm64": "npm:0.57.0"
+    "@dprint/win32-x64": "npm:0.57.0"
   dependenciesMeta:
     "@dprint/android-arm64":
       optional: true
@@ -5268,7 +5268,7 @@ __metadata:
       optional: true
   bin:
     dprint: bin.cjs
-  checksum: 10/611cb09c76d44c0cc1943b67ada79417d21fe5039988b2e74f671a32cd076fd8e6d2753250f7602979571849687acf6fd411cd08eba053a272eb9a61606c9fea
+  checksum: 10/ef847574da304bc537b538f421278e8d611143a21847b462b35f9ee79a762d58ac26b9e9eb080a28fe231312d13e62aec9dbb920b87d15c2722ef69263e71aef
   languageName: node
   linkType: hard
 
