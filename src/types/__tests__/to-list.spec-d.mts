@@ -16,6 +16,14 @@ describe('unit-d:types/ToList', () => {
     expectTypeOf<TestSubject<T>>().toEqualTypeOf<T>()
   })
 
+  it('should return T[] if T is any', () => {
+    // Arrange
+    type T = any
+
+    // Expect
+    expectTypeOf<TestSubject<T>>().toEqualTypeOf<T[]>()
+  })
+
   it('should return T[] if T does not extend List', () => {
     // Arrange
     type T = string

@@ -50,6 +50,10 @@ declare module '@flex-development/mark/parse' {
     lazy: Record<Line, boolean>
   }
 
+  interface Settings {
+    sass?: { indented?: boolean | null | undefined }
+  }
+
   interface TokenFields {
     _balanced?: boolean | undefined
     _close?: boolean | undefined

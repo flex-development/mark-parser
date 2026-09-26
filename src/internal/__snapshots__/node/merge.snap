@@ -1,0 +1,129 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`unit:internal/merge > should return merged and mutated object (0) 1`] = `
+{
+  "null": [],
+}
+`;
+
+exports[`unit:internal/merge > should return merged and mutated object (1) 1`] = `
+{
+  "indented": true,
+}
+`;
+
+exports[`unit:internal/merge > should return merged and mutated object (2) 1`] = `
+{
+  "settings": {
+    "jsdoc": {
+      "structuredTags": {
+        "category": {
+          "name": "namepath-referencing",
+          "required": [
+            "name",
+          ],
+          "type": false,
+        },
+        "const": {
+          "name": "namepath-defining",
+          "required": [
+            "name",
+          ],
+        },
+        "enum": {
+          "name": "namepath-defining",
+          "required": [
+            "name",
+            "type",
+          ],
+        },
+        "experimental": {
+          "name": false,
+          "type": false,
+        },
+        "extends": {
+          "name": "namepath-defining",
+          "required": [
+            "type",
+          ],
+        },
+        "implements": {
+          "name": "namepath-defining",
+          "required": [
+            "type",
+          ],
+        },
+        "member": {
+          "name": "namepath-defining",
+          "required": [
+            "name",
+            "type",
+          ],
+        },
+        "next": {
+          "name": "namepath-defining",
+          "required": [
+            "type",
+          ],
+        },
+        "packageManager": {
+          "name": "text",
+          "required": [
+            "name",
+          ],
+        },
+        "param": {
+          "name": "namepath-defining",
+          "required": [
+            "name",
+            "type",
+          ],
+        },
+        "rejects": {
+          "required": [
+            "type",
+          ],
+        },
+        "return": {
+          "name": "namepath-defining",
+          "required": [
+            "type",
+          ],
+        },
+        "see": {
+          "name": "namepath-referencing",
+          "required": [
+            "name",
+          ],
+        },
+        "throws": {
+          "name": "namepath-defining",
+          "required": [
+            "type",
+          ],
+        },
+        "type": {
+          "name": "namepath-defining",
+          "required": [
+            "type",
+          ],
+        },
+        "var": {
+          "name": "namepath-defining",
+          "required": [
+            "name",
+          ],
+        },
+        "yield": {
+          "name": "namepath-defining",
+          "required": [
+            "type",
+          ],
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`unit:internal/merge > should return new merged object (0) 1`] = `{}`;

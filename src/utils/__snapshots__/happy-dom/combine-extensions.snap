@@ -9,6 +9,7 @@ exports[`unit:utils/combineExtensions > should return combined extension (2) 1`]
   "disable": {
     "null": [],
   },
+  "settings": {},
 }
 `;
 
@@ -19,6 +20,11 @@ exports[`unit:utils/combineExtensions > should return combined extension (3) 1`]
       "fail",
       "eoc",
     ],
+  },
+  "settings": {
+    "sass": {
+      "indented": true,
+    },
   },
 }
 `;

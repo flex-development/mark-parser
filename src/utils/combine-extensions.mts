@@ -3,6 +3,7 @@
  * @module mark-parser/utils/combineExtensions
  */
 
+import merge from '#internal/merge'
 import toList from '#internal/to-list'
 import { splice } from '@flex-development/mark-util-chunked'
 import type { List } from '@flex-development/mark/core'
@@ -17,76 +18,68 @@ export default combineExtensions
 /**
  * Combine multiple extensions into one.
  *
- * @see {@linkcode Extension}
+ * @see {@linkcode AnyExtension}
+ * @see {@linkcode AnyNormalizedExtension}
  * @see {@linkcode List}
- * @see {@linkcode NormalizedExtension}
  *
  * @category
  *  utils
  *
- * @template {NormalizedExtension} T
+ * @template {AnyNormalizedExtension} T
  *  The combined extension
  *
- * @param {Extension | List<Extension> | null | undefined} extensions
+ * @param {AnyExtension | List<AnyExtension> | null | undefined} extensions
  *  The list of extensions
  * @return {T}
  *  The combined extension
  */
-function combineExtensions<T extends NormalizedExtension>(
-  extensions: Extension | List<Extension> | null | undefined
+function combineExtensions<T extends AnyNormalizedExtension>(
+  extensions: AnyExtension | List<AnyExtension> | null | undefined
 ): T
 
 /**
  * Combine multiple extensions into one.
  *
- * @see {@linkcode Extension}
+ * @see {@linkcode AnyExtension}
+ * @see {@linkcode AnyNormalizedExtension}
  * @see {@linkcode List}
- * @see {@linkcode NormalizedExtension}
  *
  * @category
  *  utils
  *
- * @template {NormalizedExtension} T
+ * @template {AnyNormalizedExtension} T
  *  The combined extension
  *
- * @param {(Extension | List<Extension> | null | undefined)[]} extensions
+ * @param {(AnyExtension | List<AnyExtension> | null | undefined)[]} extensions
  *  The extensions to combine
  * @return {T}
  *  The combined extension
  */
-function combineExtensions<T extends NormalizedExtension>(
-  ...extensions: (Extension | List<Extension> | null | undefined)[]
+function combineExtensions<T extends AnyNormalizedExtension>(
+  ...extensions: (AnyExtension | List<AnyExtension> | null | undefined)[]
 ): T
 
 /**
  * Combine multiple extensions into one.
  *
- * @see {@linkcode Extension}
+ * @see {@linkcode AnyExtension}
+ * @see {@linkcode AnyNormalizedExtension}
  * @see {@linkcode List}
- * @see {@linkcode NormalizedExtension}
  *
  * @category
  *  utils
  *
- * @template {NormalizedExtension} T
- *  The combined extension
- *
- * @param {Extension | List<Extension> | null | undefined} extensions
+ * @param {AnyExtension | List<AnyExtension> | null | undefined} extensions
  *  The extension or list of extensions
- * @param {(Extension | List<Extension> | null | undefined)[]} sources
+ * @param {(AnyExtension | List<AnyExtension> | null | undefined)[]} sources
  *  The extensions to combine
- * @return {T}
+ * @return {AnyNormalizedExtension}
  *  The combined extension
  */
-function combineExtensions<T extends NormalizedExtension>(
-  extensions: Extension | List<Extension> | null | undefined,
-  ...sources: (Extension | List<Extension> | null | undefined)[]
-): T {
-  extensions = [
-    ...toList(extensions ?? []),
-    ...toList(sources.filter(source => !!source).flatMap(toList))
-  ]
-
+function combineExtensions(
+  extensions: AnyExtension | List<AnyExtension> | null | undefined,
+  ...sources: (AnyExtension | List<AnyExtension> | null | undefined)[]
+): AnyNormalizedExtension {
   /**
    * The combined extension.
    *
@@ -101,6 +94,10 @@ function combineExtensions<T extends NormalizedExtension>(
    */
   let index: number = -1
 
+  // normalize the list of syntax extensions.
+  extensions = [extensions, ...sources].filter(s => !!s).flatMap(toList)
+
+  // merge extensions into `all`.
   while (++index < extensions.length) {
     /**
      * The current extension.
@@ -116,60 +113,73 @@ function combineExtensions<T extends NormalizedExtension>(
      */
     let hook: keyof Extension
 
-    for (hook in (assert(extension, 'expected `extension`'), extension)) {
+    assert(extension, 'expected `extension`')
+
+    for (hook in extension) {
+      // merge `settings` fields as objects.
+      if (hook === 'settings') {
+        all[hook] = merge(all[hook], extension[hook])
+        continue
+      }
+
       /**
        * The field value of the combined extension.
        *
-       * @const {ExtensionField} maybe
+       * @const {Record<string, any> | undefined} maybe
        */
-      const maybe: ExtensionField = Object.hasOwnProperty.call(all, hook)
-        ? all[hook]
-        : undefined
+      const maybe: Record<string, any> | undefined =
+        Object.hasOwnProperty.call(all, hook) ? all[hook] : undefined
 
       /**
-       * The current field value.
+       * The current top-level extension field value.
        *
-       * @const {NonNullable<ExtensionField>} left
+       * @const {Record<string, any>} left
        */
-      const left: NonNullable<ExtensionField> = maybe ?? (all[hook] = {})
+      const left: Record<string, any> = maybe ?? (all[hook] = {})
 
       /**
-       * The incoming field value.
+       * The incoming top-level extension field value.
        *
-       * @const {ExtensionField} right
+       * @const {Record<string, any> | null | undefined} right
        */
-      const right: ExtensionField = extension[hook]
+      const right: Record<string, any> | null | undefined = extension[hook]
 
       if (right) {
         /**
-         * The current key.
+         * The current extension field key.
          *
-         * @var {keyof NonNullable<ExtensionField>} code
+         * @var {string} key
          */
-        let key: keyof NonNullable<ExtensionField>
+        let key: string
 
         for (key in right) {
           if (!Object.hasOwnProperty.call(left, key)) left[key] = []
-          merge(toList(left[key]!), toList(right[key] ?? []))
+          lists(toList(left[key]), toList(right[key] ?? []))
         }
       }
     }
   }
 
-  return all as T
+  return all
 }
 
 /**
- * Union of extension field values.
- *
- * @internal
+ * A supported extension.
  */
-type ExtensionField = Extension[keyof Extension]
+type AnyExtension = Pick<Extension, 'disable'>
 
 /**
- * Merge `list` into `existing`.
+ * A supported extension that has been normalized.
+ */
+type AnyNormalizedExtension = Pick<NormalizedExtension, 'disable'>
+
+/**
+ * Merge `list` into `existing` (both lists of constructs, partial constructs,
+ * or character codes).
  *
- * > 👉 Mutates `existing`.
+ * > 👉 **Note**: Mutates `existing`.
+ *
+ * @internal
  *
  * @this {void}
  *
@@ -179,7 +189,7 @@ type ExtensionField = Extension[keyof Extension]
  *  The list to merge
  * @return {undefined}
  */
-function merge(
+function lists(
   this: void,
   existing: unknown[],
   list: unknown[]

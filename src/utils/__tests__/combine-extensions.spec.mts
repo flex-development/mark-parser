@@ -20,8 +20,17 @@ describe('unit:utils/combineExtensions', () => {
   it.each<[extension: Combinable, ...sources: Combinable[]]>([
     [null],
     [{}, undefined],
-    [{ disable: { null: [] } }, { disable: null }],
-    [{ disable: { null: [tt.eoc] } }, { disable: { null: [tt.fail] } }],
+    [{ disable: { null: [] } }, { disable: null, settings: {} }],
+    [
+      {
+        disable: { null: [tt.eoc] },
+        settings: {}
+      },
+      {
+        disable: { null: [tt.fail] },
+        settings: { sass: { indented: true } }
+      }
+    ],
     [
       {
         [ct.document]: { [codes.lowercaseA]: consumeThenSucc }
