@@ -9,6 +9,7 @@ import type {
   InitialConstruct,
   InitialConstructs
 } from '@flex-development/mark/parse'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:types/FinalizeContext', () => {
   it('should match [this: void]', () => {

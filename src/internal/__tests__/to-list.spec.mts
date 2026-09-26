@@ -5,6 +5,7 @@
 
 import testSubject from '#internal/to-list'
 import { chars } from '@flex-development/mark-util-symbol'
+import { describe, expect, it } from 'vitest'
 
 describe('unit:internal/toList', () => {
   it('should return `value` as array if `value` is a `Set`', () => {

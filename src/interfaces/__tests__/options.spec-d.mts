@@ -17,6 +17,7 @@ import type {
   Point
 } from '@flex-development/mark/parse'
 import type { Nilable } from '@flex-development/tutils'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:interfaces/Options', () => {
   it('should match [debug?: string | null | undefined]', () => {

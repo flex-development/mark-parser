@@ -6,6 +6,7 @@
 import type Info from '#types/info'
 import type TestSubject from '#types/return-handle'
 import type { Construct } from '@flex-development/mark/parse'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:types/ReturnHandle', () => {
   it('should match [this: void]', () => {

@@ -1,6 +1,6 @@
 # Release
 #
-# Publish a GitHub release on release branch merge.
+# Publish a GitHub release after a release is merged.
 #
 # References:
 #
@@ -8,63 +8,74 @@
 # - https://docs.github.com/actions/learn-github-actions/contexts
 # - https://docs.github.com/actions/learn-github-actions/expressions
 # - https://docs.github.com/actions/reference/workflows-and-actions/workflow-commands
-# - https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#pull_request
+# - https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#push
 # - https://docs.github.com/actions/using-workflows/using-github-cli-in-workflows
 # - https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions
-# - https://docs.github.com/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
+# - https://docs.github.com/webhooks-and-events/webhooks/webhook-events-and-payloads#push
 # - https://git-scm.com/book/en/v2/Git-Basics-Tagging
 # - https://github.com/actions/checkout
 # - https://github.com/crazy-max/ghaction-import-gpg
 # - https://github.com/flex-development/dist-tag-action
 # - https://github.com/flex-development/gh-release-url-action
 # - https://github.com/flex-development/grease
-# - https://github.com/flex-development/jq-action
 # - https://github.com/flex-development/manver-action
 # - https://github.com/hmarr/debug-action
-# - https://github.com/shaneapowell/github-tweak-the-json
+# - https://github.com/kaisugi/action-regex-match
+# - https://regex101.com/r/wu576x
 # - https://yarnpkg.com/cli/pack
 
 ---
 name: release
 on:
-  pull_request:
+  push:
     branches:
       - main
-    types:
-      - closed
-env:
-  ref_name: ${{ format('{0}@{1}', github.base_ref, github.event.pull_request.merge_commit_sha) }}
 jobs:
   preflight:
-    if: ${{ startsWith(github.head_ref, 'release/') && github.event.pull_request.merged }}
+    if: ${{ startsWith(github.event.head_commit.message, 'release:') }}
     permissions:
       contents: read
     runs-on: ubuntu-latest
     outputs:
+      environment: ${{ steps.environment.outputs.url }}
       prerelease: ${{ steps.dist.outputs.prerelease }}
-      tag: ${{ steps.version.outputs.tag }}
       version: ${{ steps.version.outputs.manifest }}
-      url: ${{ steps.environment.outputs.url }}
     steps:
       - id: debug
         name: Print environment variables and event payload
         uses: hmarr/debug-action@v3.0.0
+      - id: fail-actor
+        if: contains(vars.MAINTAINERS, github.actor) == false
+        name: Fail on unauthorized actor
+        run: |
+          echo '**Unauthorized actor: ${{ github.actor }}**' >>$GITHUB_STEP_SUMMARY
+          exit 1
+      - id: metadata
+        name: Check head commit message
+        uses: kaisugi/action-regex-match@v1.0.2
+        with:
+          flags: u
+          regex: ${{ vars.RELEASE_MERGED_REGEX }}
+          text: ${{ github.event.head_commit.message }}
+      - id: fail-metadata
+        if: steps.metadata.outputs.match == ''
+        name: Fail on invalid release merge message
+        run: |
+          err='**Invalid release merge message**
+          ```sh
+          ${{ github.event.head_commit.message }}
+          ```
+          Message must match [`${{ vars.RELEASE_MERGED_REGEX }}`](https://regex101.com/r/wu576x)'
+          echo "$err" >>$GITHUB_STEP_SUMMARY
+          exit 1
       - id: checkout
-        name: Checkout ${{ env.ref_name }}
+        name: Checkout ${{ github.ref_name }}
         uses: actions/checkout@v7.0.1
         with:
-          ref: ${{ github.event.pull_request.merge_commit_sha }}
-      - id: tag-prefix
-        name: Get release tag prefix
-        uses: flex-development/jq-action@1.0.0
-        with:
-          data: grease.config.json
-          filter: .tag.prefix
+          ref: ${{ github.sha }}
       - id: version
         name: Get release version
         uses: flex-development/manver-action@1.1.0
-        with:
-          tag-prefix: ${{ steps.tag-prefix.outputs.result }}
       - id: environment
         name: Get release url
         uses: flex-development/gh-release-url-action@2.1.0
@@ -80,19 +91,19 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: release
-      url: ${{ needs.preflight.outputs.url }}
+      url: ${{ needs.preflight.outputs.environment }}
     env:
       GITHUB_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
       HUSKY: 0
       NOTES_FILE: RELEASE_NOTES.md
     steps:
       - id: checkout
-        name: Checkout ${{ env.ref_name }}
+        name: Checkout ${{ github.ref_name }}
         uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: true
-          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          ref: ${{ github.sha }}
           token: ${{ env.GITHUB_TOKEN }}
       - id: gpg-import
         name: Import GPG key
@@ -112,29 +123,32 @@ jobs:
           cache: yarn
           cache-dependency-path: yarn.lock
           node-version-file: .nvmrc
-      - id: yarn
+      - id: dependencies
         name: Install dependencies
-        run: yarn --no-immutable && echo "$GITHUB_WORKSPACE/node_modules/.bin" >>$GITHUB_PATH
+        run: yarn --immutable
+      - id: local-binaries
+        name: Add local binaries to $PATH
+        run: echo "${{ github.workspace }}/node_modules/.bin" >> ${{ github.path }}
       - id: build
         name: Add build metadata to package.json
-        uses: shaneapowell/github-tweak-the-json@v1
-        with:
-          action: write
-          filename: package.json
-          field: build
-          value: ${{ github.event.pull_request.merge_commit_sha }}
+        run: yq '.build="${{ github.sha }}"' -i package.json
       - id: pack
         name: Pack project
-        run: npm pack
-      - id: release-notes
+        run: |
+          mv CHANGELOG.md _CHANGELOG.md
+          yarn pack --out %s-%v.tgz
+          mv _CHANGELOG.md CHANGELOG.md
+      - id: notes
         name: Generate release notes
         env:
           TZ: ${{ vars.TZ }}
-        run: grease changelog -wo $NOTES_FILE && echo "$(cat $NOTES_FILE)" >>$GITHUB_STEP_SUMMARY
+        run: |
+          grease changelog -wo $NOTES_FILE
+          echo "$(cat $NOTES_FILE)" >>$GITHUB_STEP_SUMMARY
       - id: tag
         name: Create annotated tag
         run: 'grease tag -ps -m "release: {tag}" ${{ needs.preflight.outputs.version }}'
       - id: publish
         name: Publish release
         run: |
-          gh release create ${{ needs.preflight.outputs.tag }} *.tgz --title=${{ needs.preflight.outputs.tag }} --notes-file=$NOTES_FILE --verify-tag --prerelease=${{ needs.preflight.outputs.prerelease }} --discussion-category=releases
+          gh release create ${{ needs.preflight.outputs.version }} *.tgz --title=${{ needs.preflight.outputs.version }} --notes-file=${{ env.NOTES_FILE }} --prerelease=${{ needs.preflight.outputs.prerelease }} --verify-tag --discussion-category=releases

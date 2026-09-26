@@ -12,6 +12,7 @@ import testSubject from '#utils/combine-extensions'
 import { codes } from '@flex-development/mark-util-symbol'
 import type { List } from '@flex-development/mark/core'
 import type { Extension } from '@flex-development/mark/parse'
+import { describe, expect, it } from 'vitest'
 
 describe('unit:utils/combineExtensions', () => {
   type Combinable = Extension | List<Extension> | null | undefined

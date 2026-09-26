@@ -17,8 +17,7 @@ const config: UserConfig = {
   rules: {
     'scope-enum': [RuleConfigSeverity.Error, 'always', scopes([
       'chore',
-      'constructs',
-      'errors'
+      'constructs'
     ])]
   }
 }

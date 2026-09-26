@@ -5,6 +5,7 @@
 
 import testSubject from '#utils/serialize-chunks'
 import { chars, codes } from '@flex-development/mark-util-symbol'
+import { describe, expect, it } from 'vitest'
 
 describe('unit:utils/serializeChunks', () => {
   it.each<Parameters<typeof testSubject>>([

@@ -6,6 +6,7 @@
 import type TestSubject from '#types/store'
 import type { Info } from '@flex-development/mark-parser'
 import type { EmptyArray } from '@flex-development/tutils'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:types/Store', () => {
   it('should match [this: void]', () => {

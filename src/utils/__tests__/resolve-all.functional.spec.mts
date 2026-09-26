@@ -14,7 +14,7 @@ import type {
   Token,
   TokenizeContext
 } from '@flex-development/mark/parse'
-import type { MockInstance } from 'vitest'
+import { beforeEach, describe, expect, it, vi, type MockInstance } from 'vitest'
 
 describe('functional:utils/resolveAll', () => {
   let constructs: { resolveAll: MockInstance<Resolver> }[]

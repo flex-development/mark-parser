@@ -4,6 +4,7 @@
  */
 
 import testSubject from '#internal/noop'
+import { describe, expect, it } from 'vitest'
 
 describe('unit:internal/noop', () => {
   it('should return `undefined`', () => {

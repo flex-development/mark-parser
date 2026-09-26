@@ -6,6 +6,7 @@
 import type TestSubject from '#types/tokenizable'
 import type { List } from '@flex-development/mark/core'
 import type { FileLike, Value } from '@flex-development/mark/parse'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:types/Tokenizable', () => {
   it('should extract FileLike', () => {

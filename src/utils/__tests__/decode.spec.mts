@@ -12,6 +12,7 @@ import type {
   FileLike,
   Value
 } from '@flex-development/mark/parse'
+import { describe, expect, it } from 'vitest'
 
 describe('unit:utils/decode', () => {
   it.each<[chunk: Chunk]>([

@@ -5,6 +5,7 @@
 
 import type TestSubject from '#types/create-extensions'
 import type { Extensions } from '@flex-development/mark/parse'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:types/CreateExtensions', () => {
   it('should match [this: void]', () => {

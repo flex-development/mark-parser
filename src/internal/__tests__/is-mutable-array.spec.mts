@@ -5,6 +5,7 @@
 
 import testSubject from '#internal/is-mutable-array'
 import { codes } from '@flex-development/mark-util-symbol'
+import { describe, expect, it } from 'vitest'
 
 describe('unit:internal/isMutableArray', () => {
   it.each<Parameters<typeof testSubject>>([

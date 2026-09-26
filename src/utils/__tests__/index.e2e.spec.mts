@@ -4,6 +4,7 @@
  */
 
 import * as testSubject from '#utils/index'
+import { describe, expect, it } from 'vitest'
 
 describe('e2e:utils', () => {
   it('should expose public api', () => {

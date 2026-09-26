@@ -42,7 +42,8 @@ on:
 permissions:
   contents: read
 env:
-  CACHE_PATH: node_modules
+  CACHE_PATH_DEPS: node_modules
+  CACHE_PATH_BUILD: dist
   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   COVERAGE_SUMMARY: ./coverage/coverage-summary.json
   HUSKY: 0
@@ -61,7 +62,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       cache-key: ${{ steps.cache-key.outputs.result }}
-      version: ${{ steps.version.outputs.build }}
     steps:
       - id: debug
         name: Print environment variables and event payload
@@ -92,10 +92,7 @@ jobs:
         uses: actions/cache@v6.1.0
         with:
           key: ${{ steps.cache-key.outputs.result }}
-          path: ${{ env.CACHE_PATH }}
-      - id: version
-        name: Extract version metadata
-        uses: flex-development/manver-action@1.1.0
+          path: ${{ env.CACHE_PATH_DEPS }}
   commitlint:
     needs: preflight
     runs-on: ubuntu-latest
@@ -114,12 +111,13 @@ jobs:
           cache: yarn
           cache-dependency-path: yarn.lock
           node-version-file: .nvmrc
-      - id: cache
+      - id: restore-dep-cache
         name: Restore dependencies cache
         uses: actions/cache@v6.1.0
         with:
+          fail-on-cache-miss: true
           key: ${{ needs.preflight.outputs.cache-key }}
-          path: ${{ env.CACHE_PATH }}
+          path: ${{ env.CACHE_PATH_DEPS }}
       - id: lint
         name: Check commitlint status
         if: github.run_number != '1'
@@ -141,12 +139,13 @@ jobs:
           cache: yarn
           cache-dependency-path: yarn.lock
           node-version-file: .nvmrc
-      - id: cache
+      - id: restore-dep-cache
         name: Restore dependencies cache
         uses: actions/cache@v6.1.0
         with:
+          fail-on-cache-miss: true
           key: ${{ needs.preflight.outputs.cache-key }}
-          path: ${{ env.CACHE_PATH }}
+          path: ${{ env.CACHE_PATH_DEPS }}
       - id: version
         name: Get dprint version
         uses: flex-development/jq-action@1.0.0
@@ -177,12 +176,13 @@ jobs:
           cache: yarn
           cache-dependency-path: yarn.lock
           node-version-file: .nvmrc
-      - id: cache
+      - id: restore-dep-cache
         name: Restore dependencies cache
         uses: actions/cache@v6.1.0
         with:
+          fail-on-cache-miss: true
           key: ${{ needs.preflight.outputs.cache-key }}
-          path: ${{ env.CACHE_PATH }}
+          path: ${{ env.CACHE_PATH_DEPS }}
       - id: remark
         name: Check markdown files
         run: yarn remark
@@ -227,12 +227,13 @@ jobs:
           cache: yarn
           cache-dependency-path: yarn.lock
           node-version-file: .nvmrc
-      - id: cache
+      - id: restore-dep-cache
         name: Restore dependencies cache
         uses: actions/cache@v6.1.0
         with:
+          fail-on-cache-miss: true
           key: ${{ needs.preflight.outputs.cache-key }}
-          path: ${{ env.CACHE_PATH }}
+          path: ${{ env.CACHE_PATH_DEPS }}
       - id: typecheck
         name: Run typecheck
         run: yarn typecheck
@@ -268,12 +269,13 @@ jobs:
           cache-dependency-path: yarn.lock
           check-latest: true
           node-version: ${{ matrix.node-version }}
-      - id: cache
+      - id: restore-dep-cache
         name: Restore dependencies cache
         uses: actions/cache@v6.1.0
         with:
+          fail-on-cache-miss: true
           key: ${{ needs.preflight.outputs.cache-key }}
-          path: ${{ env.CACHE_PATH }}
+          path: ${{ env.CACHE_PATH_DEPS }}
       - id: test
         name: Run tests
         run: yarn test:cov --coverage.thresholds.100=false
@@ -295,6 +297,12 @@ jobs:
         with:
           name: ${{ format('{0}.node{1}.coverage.json', env.SHA, matrix.node-version) }}
           path: ${{ env.COVERAGE_SUMMARY }}
+      - id: coverage-lcov
+        name: Upload lcov.info
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: ${{ format('{0}.node{1}.lcov.info', env.SHA, matrix.node-version) }}
+          path: ./coverage/lcov.info
       - id: codecov-results
         if: ${{ !cancelled() }}
         name: Upload test results to Codecov
@@ -306,21 +314,21 @@ jobs:
           files: ./__tests__/reports/test.junit.xml
           flags: ${{ format('node{0}', matrix.node-version) }}
           name: ${{ format('{0}.node{1}', env.SHA, matrix.node-version) }}
-          override_branch: ${{ env.REF_NAME }}
           report_type: test_results
           verbose: true
       - id: codecov-coverage
         name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v7.1.1
         with:
-          disable_file_fixes: true
           disable_search: true
           env_vars: GITHUB_JOB,GITHUB_REF_TYPE
           fail_ci_if_error: true
           files: ./coverage/lcov.info
           flags: ${{ format('node{0}', matrix.node-version) }}
           name: ${{ format('{0}.node{1}', env.SHA, matrix.node-version) }}
-          override_branch: ${{ env.REF_NAME }}
+          root_dir: ./
+          slug: ${{ github.repository }}
+          token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
       - id: coverage-failure
         if: fromJson(steps.coverage.outputs.result) != 400
@@ -345,14 +353,17 @@ jobs:
       - id: bun
         name: Setup Bun (${{ matrix.bun-version }})
         uses: oven-sh/setup-bun@v2.2.0
+        continue-on-error: ${{ matrix.bun-version == 'canary' }}
         with:
           bun-version: ${{ matrix.bun-version }}
-      - id: cache
+      - id: restore-dep-cache
+        if: ${{ !cancelled() }}
         name: Restore dependencies cache
         uses: actions/cache@v6.1.0
         with:
+          fail-on-cache-miss: true
           key: ${{ needs.preflight.outputs.cache-key }}
-          path: ${{ env.CACHE_PATH }}
+          path: ${{ env.CACHE_PATH_DEPS }}
       - id: test
         name: Run tests
         run: yarn test:cov --coverage.thresholds.100=false
@@ -374,8 +385,13 @@ jobs:
         with:
           name: ${{ format('{0}.bun-{1}.coverage.json', env.SHA, matrix.bun-version) }}
           path: ${{ env.COVERAGE_SUMMARY }}
+      - id: coverage-lcov
+        name: Upload lcov.info
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: ${{ format('{0}.bun-{1}.lcov.info', env.SHA, matrix.bun-version) }}
+          path: ./coverage/lcov.info
       - id: codecov-results
-        if: ${{ !cancelled() }}
         name: Upload test results to Codecov
         uses: codecov/codecov-action@v7.1.1
         with:
@@ -385,28 +401,68 @@ jobs:
           files: ./__tests__/reports/test.junit.xml
           flags: ${{ format('bun-{0}', matrix.bun-version) }}
           name: ${{ format('{0}.bun-{1}', env.SHA, matrix.bun-version) }}
-          override_branch: ${{ env.REF_NAME }}
           report_type: test_results
           verbose: true
       - id: codecov-coverage
         name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v7.1.1
         with:
-          disable_file_fixes: true
           disable_search: true
           env_vars: GITHUB_JOB,GITHUB_REF_TYPE
           fail_ci_if_error: true
           files: ./coverage/lcov.info
           flags: ${{ format('bun-{0}', matrix.bun-version) }}
           name: ${{ format('{0}.bun-{1}', env.SHA, matrix.bun-version) }}
-          override_branch: ${{ env.REF_NAME }}
+          root_dir: ./
+          slug: ${{ github.repository }}
+          token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
       - id: coverage-failure
         if: fromJson(steps.coverage.outputs.result) != 400
         name: Coverage threshold failure (${{ steps.coverage.outputs.result }})
         run: yarn test:cov:reports
+  build:
+    needs:
+      - preflight
+    runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.cache-key.outputs.result }}
+    steps:
+      - id: checkout
+        name: Checkout ${{ env.REF_NAME }}
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+          ref: ${{ env.REF }}
+      - id: node
+        name: Setup Node.js
+        uses: actions/setup-node@v7.0.0
+        with:
+          cache: yarn
+          cache-dependency-path: yarn.lock
+          node-version-file: .nvmrc
+      - id: dependencies
+        name: Restore dependencies cache
+        uses: actions/cache@v6.1.0
+        with:
+          fail-on-cache-miss: true
+          key: ${{ needs.preflight.outputs.cache-key }}
+          path: ${{ env.CACHE_PATH_DEPS }}
+      - id: build
+        name: Build project
+        run: yarn build
+      - id: cache-key
+        name: Get cache key
+        run: echo "result=${{ hashFiles(env.CACHE_PATH_BUILD) }}" >>$GITHUB_OUTPUT
+      - id: cache
+        name: Cache build
+        uses: actions/cache@v6.1.0
+        with:
+          key: ${{ steps.cache-key.outputs.result }}
+          path: ${{ env.CACHE_PATH_BUILD }}
   artifacts:
     needs:
+      - build
       - commitlint
       - format
       - lint
@@ -431,41 +487,56 @@ jobs:
           cache: yarn
           cache-dependency-path: yarn.lock
           node-version-file: .nvmrc
-      - id: cache
+      - id: restore-dep-cache
         name: Restore dependencies cache
         uses: actions/cache@v6.1.0
         with:
+          fail-on-cache-miss: true
           key: ${{ needs.preflight.outputs.cache-key }}
-          path: ${{ env.CACHE_PATH }}
+          path: ${{ env.CACHE_PATH_DEPS }}
+      - id: restore-build-cache
+        name: Restore build cache
+        uses: actions/cache@v6.1.0
+        with:
+          fail-on-cache-miss: true
+          key: ${{ needs.build.outputs.cache-key }}
+          path: ${{ env.CACHE_PATH_BUILD }}
       - id: local-binaries
         name: Add local binaries to $PATH
-        run: echo "$GITHUB_WORKSPACE/node_modules/.bin" >> $GITHUB_PATH
+        run: echo "${{ github.workspace }}/node_modules/.bin" >> ${{ github.path }}
+      - id: directory
+        name: Get package directory
+        run: echo "result=." >>$GITHUB_OUTPUT
+      - id: manifest
+        name: Get package manifest path
+        run: echo "result=${{ steps.directory.outputs.result }}/package.json" >>$GITHUB_OUTPUT
+      - id: version
+        name: Extract version metadata
+        uses: flex-development/manver-action@1.1.0
+      - id: version-update
+        name: Update package.json version
+        uses: shaneapowell/github-tweak-the-json@v1
+        with:
+          action: write
+          filename: ./package.json
+          field: version
+          value: ${{ steps.version.outputs.build }}
+      - id: tarball
+        name: Get tarball path
+        run: |
+          echo "result=${{ format('{0}-{1}-{2}.tgz', github.repository_owner, github.event.repository.name, steps.version.outputs.build) }}" >>$GITHUB_OUTPUT
+      - id: pack
+        name: Pack project
+        run: npm pack
+      - id: attw
+        name: Analyze types distribution
+        run: attw ${{ steps.tarball.outputs.result }}
       - id: changelog
         name: Changelog preview
         env:
           TZ: ${{ vars.TZ }}
         run: echo "$(grease changelog)" >>$GITHUB_STEP_SUMMARY
-      - id: version
-        name: Update package.json version
-        uses: shaneapowell/github-tweak-the-json@v1
-        with:
-          action: write
-          filename: package.json
-          field: version
-          value: ${{ needs.preflight.outputs.version }}
-      - id: pack
-        name: Pack project
-        run: npm pack
-      - id: typecheck
-        name: Run typecheck
-        run: yarn check:types:build
-      - id: tarball
-        name: Get tarball path
-        run: |
-          echo "result=${{ format('{0}-{1}-{2}.tgz', github.repository_owner, github.event.repository.name, needs.preflight.outputs.version) }}" >>$GITHUB_OUTPUT
-      - id: attw
-        name: Analyze types distribution
-        run: attw ${{ steps.tarball.outputs.result }}
+        working-directory: ${{ steps.directory.outputs.result }}
       - id: archive
         name: Archive production artifact
         uses: actions/upload-artifact@v7.0.1

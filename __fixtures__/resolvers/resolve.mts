@@ -4,7 +4,7 @@
  */
 
 import type { Event, Resolver } from '@flex-development/mark/parse'
-import type { Mock } from 'vitest'
+import { vi, type Mock } from 'vitest'
 
 /**
  * Resolve the events parsed by `tokenize`.

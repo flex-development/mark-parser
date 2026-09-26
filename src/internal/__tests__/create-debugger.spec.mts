@@ -5,6 +5,7 @@
 
 import testSubject from '#internal/create-debugger'
 import pathe from '@flex-development/pathe'
+import { describe, expect, it } from 'vitest'
 
 describe('unit:internal/createDebugger', () => {
   it('should return custom debugger', () => {

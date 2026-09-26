@@ -1,7 +1,6 @@
 # Publish
 #
-# Cross-publish package to GitHub Package Registry and NPM when a GitHub release is published or on
-# workflow dispatch.
+# Cross-publish package to GitHub Package Registry and NPM when a GitHub release is published.
 #
 # References:
 #
@@ -14,11 +13,12 @@
 # - https://github.com/actions/checkout
 # - https://github.com/actions/setup-node
 # - https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#yarn2-configuration
-# - https://github.com/hmarr/debug-action
 # - https://github.com/flex-development/gh-release-url-action
 # - https://github.com/flex-development/ghr-url-action
-# - https://github.com/flex-development/manver-action
 # - https://github.com/flex-development/npm-url-action
+# - https://github.com/hmarr/debug-action
+# - https://github.com/kaisugi/action-regex-match
+# - https://regex101.com/r/3gxjZI
 
 ---
 name: publish
@@ -36,6 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       command: ${{ steps.command.outputs.result }}
+      package: ${{ steps.package.outputs.result }}
       version: ${{ steps.version.outputs.manifest }}
     steps:
       - id: debug
@@ -47,16 +48,22 @@ jobs:
         with:
           persist-credentials: false
           ref: ${{ github.ref }}
+      - id: package
+        name: Get package name
+        uses: flex-development/jq-action@1.0.0
+        with:
+          data: package.json
+          filter: .name
       - id: version
-        name: Get package version
+        name: Get release version
         uses: flex-development/manver-action@1.1.0
       - id: artifact
         name: Get release artifact download url
         uses: flex-development/gh-release-url-action@2.1.0
         with:
           artifact: |
-            ${{ format('{0}-{1}-{2}.tgz', github.repository_owner, github.event.repository.name, steps.version.outputs.manifest) }}
-          version: ${{ github.ref_name }}
+            ${{ format('@{0}-{1}-{2}.tgz', github.repository_owner, github.event.repository.name, steps.version.outputs.manifest) }}
+          version: ${{ steps.version.outputs.manifest }}
       - id: dist
         name: Get dist tag
         uses: flex-development/dist-tag-action@1.1.2
@@ -64,10 +71,8 @@ jobs:
           target: ${{ steps.version.outputs.manifest }}
       - id: command
         name: Get publish command
-        env:
-          ARTIFACT: ${{ steps.artifact.outputs.artifact }}
-          FLAGS: ${{ steps.dist.outputs.flag }}
-        run: echo "result=npm publish --provenance $FLAGS $ARTIFACT" >>$GITHUB_OUTPUT
+        run: |
+          echo "result=npm publish --provenance ${{ steps.artifact.outputs.artifact }} ${{ steps.dist.outputs.flag }}" >>$GITHUB_OUTPUT
   gpr:
     needs: preflight
     permissions:
@@ -78,6 +83,8 @@ jobs:
     environment:
       name: gpr
       url: ${{ steps.environment.outputs.url }}
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - id: environment
         name: Get environment url
@@ -100,9 +107,12 @@ jobs:
         run: cat $NPM_CONFIG_USERCONFIG
       - id: publish
         name: Publish package
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ${{ needs.preflight.outputs.command }}
+      - id: latest
+        name: Set latest version
+        run: |
+          release=${{ needs.preflight.outputs.package }}@${{ needs.preflight.outputs.version }}
+          npm dist-tag add $release latest
   npm:
     needs: preflight
     permissions:
@@ -113,6 +123,8 @@ jobs:
     environment:
       name: npm
       url: ${{ steps.environment.outputs.url }}
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - id: environment
         name: Get environment url
@@ -138,6 +150,9 @@ jobs:
         run: cat $NPM_CONFIG_USERCONFIG
       - id: publish
         name: Publish package
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: ${{ needs.preflight.outputs.command }}
+      - id: latest
+        name: Set latest version
+        run: |
+          release=${{ needs.preflight.outputs.package }}@${{ needs.preflight.outputs.version }}
+          npm dist-tag add $release latest

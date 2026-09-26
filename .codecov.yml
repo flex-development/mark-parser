@@ -13,6 +13,7 @@ comment:
   behavior: default
   layout: header,diff,flags,components,tree,footer
   require_base: false
+  require_bundle_changes: true
   require_changes: false
   require_head: true
   show_carryforward_flags: true
@@ -84,30 +85,12 @@ coverage:
         threshold: 0%
 
 flags:
-  bun-canary:
-    carryforward: false
-    paths:
-      - src/
-  bun-latest:
-    carryforward: false
-    paths:
-      - src/
-  node26:
-    carryforward: false
-    paths:
-      - src/
-  node25:
-    carryforward: false
-    paths:
-      - src/
-  node24:
-    carryforward: false
-    paths:
-      - src/
-  node22:
-    carryforward: false
-    paths:
-      - src/
+  bun-canary: {}
+  bun-latest: {}
+  node26: {}
+  node25: {}
+  node24: {}
+  node22: {}
 
 github_checks:
   annotations: true

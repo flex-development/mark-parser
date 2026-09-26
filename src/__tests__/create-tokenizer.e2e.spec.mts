@@ -25,6 +25,7 @@ import { ok } from 'devlop'
 import { preprocess } from 'micromark'
 import { markdownLineEnding } from 'micromark-util-character'
 import { readSync as read } from 'to-vfile'
+import { beforeAll, describe, expect, it } from 'vitest'
 import { decode } from '../utils/index.mts'
 
 describe('e2e:createTokenizer', () => {

@@ -25,6 +25,7 @@ branches:
           - context: artifacts
           - context: auto-merge
           - context: auto-review
+          - context: build
           - context: codecov/changes
           - context: codecov/patch
           - context: codecov/project

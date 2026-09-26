@@ -5,6 +5,7 @@
 
 import type TestSubject from '#types/restore'
 import type { EmptyArray } from '@flex-development/tutils'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:types/Restore', () => {
   it('should match [this: void]', () => {

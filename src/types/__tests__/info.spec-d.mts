@@ -5,6 +5,7 @@
 
 import type TestSubject from '#types/info'
 import type Restore from '#types/restore'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:types/Info', () => {
   it('should match [from: number]', () => {

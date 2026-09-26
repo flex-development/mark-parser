@@ -5,6 +5,7 @@
 
 import type { InitialConstructs } from '@flex-development/mark/parse'
 import { constants } from 'micromark-util-symbol'
+import { vi } from 'vitest'
 
 /**
  * Record, where each key is a content type,

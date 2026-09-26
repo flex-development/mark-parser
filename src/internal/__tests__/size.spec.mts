@@ -5,6 +5,7 @@
 
 import testSubject from '#internal/size'
 import { chars } from '@flex-development/mark-util-symbol'
+import { describe, expect, it } from 'vitest'
 
 describe('unit:internal/size', () => {
   it('should return size of `list` (Set)', () => {

@@ -5,6 +5,7 @@
 
 import type TestSubject from '#interfaces/preprocess-options'
 import type { Nilable } from '@flex-development/tutils'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:interfaces/PreprocessOptions', () => {
   it('should match [allowEmptyChunk?: boolean | null | undefined]', () => {

@@ -12,9 +12,13 @@ import type { LabelColor } from 'vitest'
 import {
   defineConfig,
   type ConfigEnv,
+  type TestProjectInlineConfiguration,
   type ViteUserConfig
 } from 'vitest/config'
-import type { ResolveSnapshotPathHandlerContext } from 'vitest/node'
+import type {
+  BuiltinEnvironment,
+  ResolveSnapshotPathHandlerContext
+} from 'vitest/node'
 import pkg from './package.json' with { type: 'json' }
 import tsconfig from './tsconfig.json' with { type: 'json' }
 
@@ -60,13 +64,12 @@ function config(this: void, env: ConfigEnv): ViteUserConfig {
         reportOnFailure: !ci,
         reporter: env.mode === 'reports'
           ? ['text']
-          : [ci ? 'lcovonly' : 'html', 'json-summary', 'text'],
+          : ['html', 'json-summary', 'lcov', 'text'],
         reportsDirectory: './coverage',
         skipFull: false,
         thresholds: { 100: true, perFile: true }
       },
       globalSetup: [],
-      globals: true,
       include: ['src/**/__tests__/*.spec.mts'],
       mockReset: true,
       outputFile: {
@@ -79,7 +82,10 @@ function config(this: void, env: ConfigEnv): ViteUserConfig {
         'node' as const,
         'edge-runtime' as const,
         'happy-dom' as const
-      ].map((environment, groupOrder) => {
+      ].map((
+        environment: BuiltinEnvironment,
+        groupOrder: number
+      ): TestProjectInlineConfiguration => {
         const { customConditions } = tsconfig.compilerOptions
 
         /**
@@ -90,7 +96,7 @@ function config(this: void, env: ConfigEnv): ViteUserConfig {
         const conditions: string[] = Object.assign([], customConditions)
 
         /**
-         * The project name label color.
+         * The color of the project name label.
          *
          * @var {LabelColor} color
          */
@@ -101,7 +107,8 @@ function config(this: void, env: ConfigEnv): ViteUserConfig {
             color = 'magenta'
             break
           case 'happy-dom':
-            color = 'blue'
+            // @ts-expect-error blueBright is a valid color (2322).
+            color = env.mode === 'typecheck' ? 'blueBright' : 'blue'
             conditions.unshift('browser')
             break
           default:
@@ -149,13 +156,13 @@ function config(this: void, env: ConfigEnv): ViteUserConfig {
        * @this {void}
        *
        * @param {string} file
-       *  Path to test file
+       *  The path to the test file
        * @param {string} extension
-       *  Snapshot extension
+       *  The snapshot file extension
        * @param {ResolveSnapshotPathHandlerContext} context
-       *  Snapshot path handler context
+       *  The snapshot path handler context
        * @return {string}
-       *  Custom snapshot path
+       *  The custom snapshot path
        */
       resolveSnapshotPath(
         this: void,
@@ -180,7 +187,7 @@ function config(this: void, env: ConfigEnv): ViteUserConfig {
           inline: ['@flex-development/pathe', 'devlop']
         }
       },
-      setupFiles: [pathe.resolve('__tests__/setup/chai.mts')],
+      setupFiles: ['./__tests__/setup/chai.mts'],
       snapshotFormat: {
         callToJSON: true,
         min: false,

@@ -2,12 +2,14 @@
  * @file Type Tests - Preprocessor
  * @module mark-parser/interfaces/tests/unit-d/Preprocessor
  */
+
 import type {
   Code,
   Encoding,
   FileLike,
   Value
 } from '@flex-development/mark/parse'
+import { describe, expectTypeOf, it } from 'vitest'
 import type TestSubject from '../preprocessor.mts'
 
 describe('unit-d:interfaces/Preprocessor', () => {

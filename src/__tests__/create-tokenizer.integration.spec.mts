@@ -36,7 +36,8 @@ import type {
   Writable
 } from '@flex-development/mark/parse'
 import { constant } from '@flex-development/tutils'
-import type { Mock } from 'vitest'
+import { ok as assert } from 'devlop'
+import { describe, expect, it, vi, type Mock } from 'vitest'
 
 describe('integration:createTokenizer', () => {
   type Case = {

@@ -31,9 +31,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   preflight:
-    if: |
-      ${{ github.actor == vars.DEPENDABOT
-      && startsWith(github.head_ref, 'dependabot/npm_and_yarn/') }}
+    if: github.actor == vars.DEPENDABOT && startsWith(github.head_ref, 'dependabot/npm_and_yarn/')
     runs-on: ubuntu-latest
     outputs:
       packages: ${{ steps.metadata.outputs.dependency-names }}
@@ -120,7 +118,7 @@ jobs:
         run: yarn
       - id: local-binaries
         name: Add local binaries to $PATH
-        run: echo "$GITHUB_WORKSPACE/node_modules/.bin" >> $GITHUB_PATH
+        run: echo "${{ github.workspace }}/node_modules/.bin" >> ${{ github.path }}
       - id: dprint
         name: Update dprint config
         run: dprint config update --yes

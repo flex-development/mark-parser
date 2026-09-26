@@ -7,6 +7,7 @@ import tt from '#fixtures/tt'
 import testSubject from '#internal/create-token-factory'
 import type { TokenInfo } from '@flex-development/mark/parse'
 import { u } from '@flex-development/unist-util-builder'
+import { beforeAll, describe, expect, it } from 'vitest'
 
 describe('unit:internal/createTokenFactory', () => {
   it('should return custom token factory', () => {

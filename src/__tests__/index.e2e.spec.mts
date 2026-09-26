@@ -4,6 +4,7 @@
  */
 
 import * as testSubject from '@flex-development/mark-parser'
+import { describe, expect, it } from 'vitest'
 
 describe('e2e:mark-parser', () => {
   it('should expose public api', () => {

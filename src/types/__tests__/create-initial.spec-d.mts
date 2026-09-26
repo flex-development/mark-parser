@@ -9,6 +9,7 @@ import type {
   InitialConstructs
 } from '@flex-development/mark/parse'
 import type { EmptyArray } from '@flex-development/tutils'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:types/CreateInitial', () => {
   it('should match [this: void]', () => {

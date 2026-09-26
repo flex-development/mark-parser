@@ -5,6 +5,7 @@
 
 import type TestSubject from '#types/to-list'
 import type { Chunk } from '@flex-development/mark/parse'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:types/ToList', () => {
   it('should return T if T extends readonly unknown[]', () => {

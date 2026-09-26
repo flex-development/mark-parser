@@ -16,6 +16,7 @@ import type {
   FileLike,
   Value
 } from '@flex-development/mark/parse'
+import { describe, expect, it, vi } from 'vitest'
 
 vi.mock('#utils/decode', async og => {
   const module: { default: typeof decode } = await og()

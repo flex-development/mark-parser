@@ -10,6 +10,7 @@ import type {
 } from '@flex-development/mark-parser'
 import type { Encoding } from '@flex-development/mark/parse'
 import type { Nilable } from '@flex-development/tutils'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('unit-d:interfaces/TokenizeOptions', () => {
   it('should extend PreprocessOptions', () => {

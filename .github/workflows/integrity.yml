@@ -34,7 +34,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   integrity:
-    if: github.actor != '${{ vars.DEPENDABOT }}'
+    if: github.actor != vars.DEPENDABOT
     runs-on: ubuntu-latest
     steps:
       - id: checkout

@@ -5,7 +5,6 @@ commitlintrc
 dedupe
 devlop
 fbca
-gemoji
 gpgsign
 hmarr
 htab
@@ -23,4 +22,3 @@ unstub
 vates
 vitest
 yarnrc
-zwnj

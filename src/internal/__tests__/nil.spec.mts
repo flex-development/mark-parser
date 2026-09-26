@@ -5,6 +5,7 @@
 
 import testSubject from '#internal/nil'
 import { chars, codes } from '@flex-development/mark-util-symbol'
+import { describe, expect, it } from 'vitest'
 
 describe('unit:internal/nil', () => {
   it('should return `false` if `value` is not `null` or `undefined`', () => {
