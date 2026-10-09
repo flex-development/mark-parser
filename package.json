@@ -174,7 +174,7 @@
     "cross-env": "10.1.0",
     "cspell": "10.3.6",
     "delete-empty": "3.0.0",
-    "dprint": "0.57.4",
+    "dprint": "0.60.1",
     "editorconfig": "3.0.2",
     "eslint": "9.39.5",
     "growl": "1.10.5",
