@@ -157,7 +157,7 @@ jobs:
         run: echo "${{ github.workspace }}/node_modules/.bin" >> ${{ github.path }}
       - id: versions
         name: Upload version manifest
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: ${{ needs.preflight.outputs.version }}.yml
           path: .yarn/versions/*.yml
