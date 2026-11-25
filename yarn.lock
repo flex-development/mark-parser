@@ -11629,14 +11629,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinybench@npm:^6.0.1":
-  version: 6.2.2
-  resolution: "tinybench@npm:6.2.2"
-  checksum: 10/66fc85c584761dba305f01781f3e579fe35a0067139c14e66d52eb7eaad5626e1e78eb3f2c5f8ece857b181dc0e1ec22f7e967ad49997b3818c8f53643d99b0a
-  languageName: node
-  linkType: hard
-
-"tinybench@npm:^6.2.3":
+"tinybench@npm:^6.0.1, tinybench@npm:^6.2.3":
   version: 6.2.4
   resolution: "tinybench@npm:6.2.4"
   checksum: 10/3211b3c88ed975e907b1f40393bf52d9975568ba383f9d3ac81d77be44c410c8abced1d1f97fd9226a40830ab3ce83003aa9f327a838c39bd48cb0f2232180e4
