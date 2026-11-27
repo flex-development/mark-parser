@@ -1898,7 +1898,7 @@ __metadata:
     "@flex-development/unist-util-builder": "npm:2.0.0"
     "@flex-development/unist-util-inspect": "npm:1.1.0"
     "@rollup/plugin-node-resolve": "npm:16.0.3"
-    "@tsconfig/strictest": "npm:2.0.8"
+    "@tsconfig/strictest": "npm:2.0.9"
     "@types/concat-stream": "npm:2.0.3"
     "@types/debug": "npm:4.1.13"
     "@types/is-ci": "npm:3.0.4"
@@ -3227,10 +3227,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/strictest@npm:2.0.8":
-  version: 2.0.8
-  resolution: "@tsconfig/strictest@npm:2.0.8"
-  checksum: 10/74c493af61886c2653df94635ecb79a0d9e61ecc0136475698cfa4adbb8957583497a1907de4ed9882557fd22d187985a4e4ab28290db236d7a0dd8264a6ba44
+"@tsconfig/strictest@npm:2.0.9":
+  version: 2.0.9
+  resolution: "@tsconfig/strictest@npm:2.0.9"
+  checksum: 10/3e6c52ed387ed9d0d3f5ddb3585414bb1d215a75cbf42d4daab7810be2289b4dcf68dd98a3228a49cfdc70e7bd21ebd50dfe502173b61f4cef80ca823089b448
   languageName: node
   linkType: hard
 
